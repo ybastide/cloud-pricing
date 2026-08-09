@@ -1,13 +1,19 @@
 <script>
   import { families, instances, operatingSystem, region } from './lib/data/instances.js'
   import { applyQuery } from './lib/data/query.js'
-  import { defaultQuery } from './lib/data/urlState.js'
+  import { fromSearchParams, toSearchParams } from './lib/data/urlState.js'
   import InstanceTable from './lib/InstanceTable.svelte'
   import Toolbar from './lib/Toolbar.svelte'
 
-  let query = $state(defaultQuery())
+  let query = $state(fromSearchParams(window.location.search))
 
   const visible = $derived(applyQuery(instances, query))
+
+  $effect(() => {
+    const params = toSearchParams(query)
+    const url = params ? `?${params}` : window.location.pathname
+    window.history.replaceState(null, '', url)
+  })
 
   function sortBy(key) {
     if (query.sort === key) {
