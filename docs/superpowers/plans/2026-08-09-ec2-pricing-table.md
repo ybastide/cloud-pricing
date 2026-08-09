@@ -917,10 +917,10 @@ describe('toSearchParams', () => {
     expect(toSearchParams({ ...defaultQuery(), search: 'm5' })).toBe('q=m5')
   })
 
-  it('joins families with commas', () => {
+  it('emits one fam parameter per family', () => {
     const families = new Set(['General purpose', 'Compute optimized'])
     expect(toSearchParams({ ...defaultQuery(), families })).toBe(
-      'fam=General+purpose%2CCompute+optimized',
+      'fam=General+purpose&fam=Compute+optimized',
     )
   })
 
@@ -956,9 +956,24 @@ describe('fromSearchParams', () => {
     expect(fromSearchParams('?q=m5').search).toBe('m5')
   })
 
-  it('splits families on commas', () => {
-    const q = fromSearchParams('fam=General+purpose%2CCompute+optimized')
+  it('collects every fam parameter', () => {
+    const q = fromSearchParams('fam=General+purpose&fam=Compute+optimized')
     expect(q.families).toEqual(new Set(['General purpose', 'Compute optimized']))
+  })
+
+  it('round-trips a family name containing a comma', () => {
+    const query = { ...defaultQuery(), families: new Set(['Machine Learning, ASIC']) }
+    expect(fromSearchParams(toSearchParams(query))).toEqual(query)
+  })
+
+  it('round-trips family names containing separators and unicode', () => {
+    const families = new Set(['a,b', 'c&d', 'e=f', 'g h', 'é'])
+    const query = { ...defaultQuery(), families }
+    expect(fromSearchParams(toSearchParams(query))).toEqual(query)
+  })
+
+  it('ignores empty fam parameters', () => {
+    expect(fromSearchParams('fam=&fam=').families).toEqual(new Set())
   })
 
   it('accepts a known sort key', () => {
@@ -1041,7 +1056,7 @@ export function defaultQuery() {
 export function toSearchParams(query) {
   const params = new URLSearchParams()
   if (query.search) params.set('q', query.search)
-  if (query.families?.size) params.set('fam', [...query.families].join(','))
+  for (const family of query.families ?? []) params.append('fam', family)
   if (query.arch && query.arch !== DEFAULT_ARCH) params.set('arch', query.arch)
   if (query.sort && query.sort !== DEFAULT_SORT) params.set('sort', query.sort)
   if (query.dir && query.dir !== DEFAULT_DIR) params.set('dir', query.dir)
@@ -1055,10 +1070,8 @@ export function fromSearchParams(search) {
 
   query.search = params.get('q') ?? ''
 
-  const families = params.get('fam')
-  if (families) {
-    query.families = new Set(families.split(',').filter(Boolean))
-  }
+  const families = params.getAll('fam').filter(Boolean)
+  if (families.length) query.families = new Set(families)
 
   const arch = params.get('arch')
   if (arch && ARCHES.includes(arch)) query.arch = arch
@@ -1080,12 +1093,12 @@ An unrecognised family is deliberately *not* filtered out: it simply matches no 
 - [ ] **Step 4: Run the tests to verify they pass**
 
 Run: `npx vitest run src/lib/data/urlState.test.js`
-Expected: PASS, 22 tests.
+Expected: PASS, 25 tests.
 
 - [ ] **Step 5: Run the whole suite**
 
 Run: `npm test`
-Expected: PASS, 85 tests across 3 files.
+Expected: PASS, 88 tests across 3 files.
 
 - [ ] **Step 6: Commit**
 
@@ -1666,7 +1679,7 @@ Stop the dev server when done.
 - [ ] **Step 5: Run the test suite to confirm nothing regressed**
 
 Run: `npm test`
-Expected: PASS, 85 tests.
+Expected: PASS, 88 tests.
 
 - [ ] **Step 6: Commit**
 
@@ -1752,7 +1765,7 @@ Run:
 cd /Users/zeb/src/Perso/cloud-pricing
 npm test && npm run build
 ```
-Expected: 85 tests pass, build succeeds.
+Expected: 88 tests pass, build succeeds.
 
 - [ ] **Step 5: Commit**
 
@@ -1766,7 +1779,7 @@ git commit -m "feat: sync filter and sort state to the URL for shareable views"
 
 ## Done When
 
-- `npm test` passes 85 tests across three files (39 normalize, 24 query, 22 urlState).
+- `npm test` passes 88 tests across three files (39 normalize, 24 query, 25 urlState).
 - `npm run build` succeeds.
 - The table renders 1322 rows, sorts numerically on every numeric column, filters by family and search, toggles hourly/monthly, and round-trips through the URL.
 - No `Counter.svelte`, no demo CSS, and no Vite/Svelte branding remains — including `public/favicon.svg`, `public/icons.svg` and `README-svelte.md`.

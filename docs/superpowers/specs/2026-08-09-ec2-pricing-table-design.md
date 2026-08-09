@@ -219,7 +219,14 @@ Ties break on `type` so the order is stable and reproducible.
 ### `urlState.js`
 
 `toSearchParams(query) -> string` and `fromSearchParams(string) -> query`, mutual
-inverses. Keys: `q`, `fam` (comma-separated), `arch`, `sort`, `dir`, `unit`.
+inverses. Keys: `q`, `fam` (repeated once per selected family), `arch`, `sort`, `dir`,
+`unit`.
+
+`fam` repeats rather than comma-joining because a comma-joined list cannot represent a
+value containing a comma: `Set(['a,b'])` would serialise to `fam=a%2Cb` and parse back
+as two families. No AWS family name contains a comma today, so the bug would have been
+latent — but `params.append` / `params.getAll` costs nothing and removes the class of
+error entirely.
 
 Defaults are omitted from the URL so an untouched view has a clean address. Unknown or
 malformed values fall back to the default rather than throwing — a hand-edited URL must
