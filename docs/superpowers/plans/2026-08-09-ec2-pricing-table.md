@@ -1459,7 +1459,7 @@ Create `src/lib/Toolbar.svelte`:
 
 ```svelte
 <script>
-  let { query, families } = $props()
+  let { query = $bindable(), families } = $props()
 
   function toggleFamily(family) {
     const next = new Set(query.families)
@@ -1545,9 +1545,9 @@ Create `src/lib/Toolbar.svelte`:
 
 `query.families = next` assigns a **new** `Set` rather than mutating the existing one. Svelte 5's `$state` proxy tracks property assignment on plain objects but does not make a `Set`'s internal mutations reactive, so `query.families.add(x)` would update the data and never re-render. Replacing the Set wholesale is what makes the chips work, and it is also what `applyQuery` expects.
 
-`bind:value` on a prop works here because `query` is the same `$state` proxy object `App` created — it is passed by reference, so mutations propagate upward without `$bindable`.
+`query` is declared `$bindable()` and `App.svelte` passes it with `bind:query`. Mutating it unbound also works — `query` is the same `$state` proxy object, passed by reference — but Svelte logs `ownership_invalid_mutation` (*"Mutating unbound props is strongly discouraged"*) on every mutation in dev, which means a three-character search prints three warnings. `$bindable` is the declared-intent form and produces a silent console.
 
-**Expect a dev-mode console warning and do not "fix" it.** Svelte logs `ownership_invalid_mutation` — *"Mutating unbound props (`query`...) is strongly discouraged. Consider using `bind:query={...}`"* — on every mutation, so a three-character search prints three warnings. This was verified end to end: the behaviour is correct, the warning is cosmetic, and it does not appear in a production build. If the noise is unwanted, the silencing change is `bind:query={query}` in `App.svelte` plus `let { query = $bindable(), families } = $props()` here — functionally identical.
+**There should be no `ownership_invalid_mutation` warning in the console.** If one appears, the `bind:` in `App.svelte` or the `$bindable()` here is missing.
 
 - [ ] **Step 2: Wire the toolbar into `src/App.svelte`**
 
@@ -1563,7 +1563,7 @@ Add to the imports:
 Then inside `<main>`, immediately before the `<p class="count">` line:
 
 ```svelte
-  <Toolbar {query} {families} />
+  <Toolbar bind:query {families} />
 ```
 
 - [ ] **Step 3: Append toolbar styles to `src/app.css`**
