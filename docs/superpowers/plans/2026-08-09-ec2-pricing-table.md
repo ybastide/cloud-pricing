@@ -1496,12 +1496,20 @@ Create `src/lib/Toolbar.svelte`:
     { value: 'arm', label: 'ARM' },
     { value: 'x86', label: 'x86' },
   ]
+
+  const PLACEHOLDERS = {
+    all: 'Filter by instance type, e.g. m5 or 4xlarge',
+    arm: 'Filter by instance type, e.g. c7g or m8g',
+    x86: 'Filter by instance type, e.g. m5 or c7i',
+  }
+
+  const placeholder = $derived(PLACEHOLDERS[query.arch] ?? PLACEHOLDERS.all)
 </script>
 
 <div class="toolbar">
   <input
     type="search"
-    placeholder="Filter by instance type, e.g. m5 or 4xlarge"
+    {placeholder}
     bind:value={query.search}
     aria-label="Filter by instance type"
   />
@@ -1669,6 +1677,7 @@ Expected, checked by eye:
 - Adding "Compute optimized" widens to 712 rows — the two families union rather than intersect.
 - Clicking an active chip again removes it.
 - "Clear" appears only while filtering, and resets both search and chips.
+- The search placeholder tracks the architecture toggle: `m5 or 4xlarge` on All, `c7g or m8g` on ARM, `m5 or c7i` on x86. The `aria-label` stays fixed at "Filter by instance type" so the accessible name does not shift under a screen reader while the visible hint does.
 - The `$/month` toggle multiplies every price by 730 and the header reads "Price /month". The row order does **not** change.
 - The ARM toggle narrows to 390 rows, all Graviton (`c6g`, `m7g`, `t4g`, …), and no GPU family (`g4dn`, `g6e`, `gr6`) appears in it. x86 gives the remaining 932.
 - "Clear" resets the architecture toggle back to All along with the search and chips.
