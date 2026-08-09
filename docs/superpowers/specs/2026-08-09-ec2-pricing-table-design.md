@@ -65,8 +65,8 @@ Measured across all 1322 rows:
   no dedup needed. `Pre Installed S/W`, `License Model` and `Operating System` are
   single-valued and carry no signal in this file.
 - `vCPU` — always an integer string.
-- `Memory` — always `"<number> GiB"`. Values range `0.5 GiB` to `1152 GiB`, and include
-  both `1024 GiB` and `1024.0 GiB`.
+- `Memory` — always `"<number> GiB"`. Values range `0.5 GiB` to `32768 GiB` (99 rows exceed 1152 GiB), and include both
+  `1024 GiB` and `1024.0 GiB`.
 - `price` — decimal string, `0.0042` to `360.98695`. No zeros, no nulls.
 - `Instance Family` — 8 values: Memory optimized (409), General purpose (392), Compute
   optimized (320), Storage optimized (101), GPU instance (79), Machine Learning ASIC
@@ -75,7 +75,7 @@ Measured across all 1322 rows:
 - `Storage` — free text in 8 shapes: `EBS only` (790), `N x N NVMe SSD` (421),
   `N x N SSD` (38), `N x N GB NVMe SSD` (27), `N x N HDD` (14), `N GB NVMe SSD` (11),
   `N x NGB` (11), and an unspaced `NxN GB NVMe SSD` (6).
-- `Network Performance` — 95 distinct values across three incompatible encodings:
+- `Network Performance` — 94 distinct values across three incompatible encodings:
   Gigabit (`100 Gigabit`), Megabit (`12500 Megabit`), and burstable variants of each
   (`Up to 10 Gigabit`). 18 rows are qualitative: `High` (9), `Low to Moderate` (4),
   `Moderate` (4), `Low` (1).
@@ -122,6 +122,12 @@ module observes the difference. Not doing it now.
 {
   type:       'm5.large',        // Instance Type, primary key
   series:     'm5',              // substring before the dot, for search
+  letters:    'm',               // series family letters, for natural ordering
+  generation: 5,                 // series generation number
+  attrs:      '',                // series attribute letters ('gd', 'i-flex', ...)
+  size:       'large',           // substring after the dot
+  sizeRank:   5,                 // derived, for natural ordering
+  arch:       'x86',             // derived: 'arm' | 'x86'
   family:     'General purpose', // Instance Family
   vcpu:       2,
   memGiB:     8,
@@ -148,10 +154,31 @@ Rules:
   421 `N x N NVMe SSD` rows omit it entirely, and `\s*` inside the group is what lets
   the unspaced `2 x 40GB` form match.
 
-Both patterns were checked against the fixture before this spec was written: all 532
-non-EBS storage strings match, and all 1322 network strings either parse to a positive
-number or fall into the 18 known qualitative values. Neither produces `NaN`.
 - `usd` — `parseFloat` once, at normalization time.
+- `letters` / `generation` / `attrs` — `/^([a-z]+)(\d+)([a-z0-9-]*)$/` over the substring
+  before the dot. `c7i-flex` yields `('c', 7, 'i-flex')`; `p6-b200` yields
+  `('p', 6, '-b200')`. Two prefixes in the fixture do not match at all — `u-3tb1` and
+  `u-6tb1` — and fall back to `(series, 0, '')`, which keeps them sorted together.
+- `sizeRank` — `nano`…`xlarge` map to 1–6; `<N>xlarge` maps to `6 + N`; `metal-<N>xl`
+  maps to `1000 + N`; bare `metal` maps to `2000`, placing the whole machine after its
+  sized variants. All 31 distinct sizes in the fixture rank.
+- `arch` — `'arm'` when `attrs` starts with `g`, else `'x86'`.
+
+Every pattern above was checked against the fixture before this spec was written: all
+532 non-EBS storage strings match; all 1322 network strings either parse to a positive
+number or fall into the 18 known qualitative values; all 31 sizes rank; and the `arch`
+rule classifies all 1322 rows, yielding exactly the 40 Graviton prefixes. Nothing
+produces `NaN`.
+
+The `arch` rule is the only derived field with a correctness argument worth stating.
+The fixture has **no processor column** — `metadata.json` exposes no secondary
+selectors — so architecture is inferred from AWS's naming convention. It is safe only
+because the `g` must sit in the *attribute* position: `c6g`, `m7gd`, `x2gd`, `im4gn`
+and `hpc7g` are ARM, while the GPU families `g4dn`, `g6e` and `gr6` are not, since
+there the `g` is the family letter. `g5g` — Graviton host with a GPU — is correctly
+ARM. Intel-vs-AMD is deliberately **not** derived: 277 rows are pre-convention
+generations (`m5`, `c5`, `r5`, `t3`) whose processor the name does not encode, so a
+three-way split would silently hide matching rows behind an "Intel" filter.
 
 **No field may ever be `NaN`.** A `NaN` in a comparator silently corrupts an entire
 sort rather than failing loudly. Anything unparsed falls back to the `0` sentinel, and
@@ -163,27 +190,36 @@ Normalization runs once at module load over all 1322 rows.
 
 `applyQuery(rows, query) -> Row[]`, pure, no mutation of the input array.
 
-`App.svelte` holds a single state object with five keys; `applyQuery` reads the first
-four and ignores `unit`, which is render-only.
+`App.svelte` holds a single state object with six keys; `applyQuery` reads the first
+five and ignores `unit`, which is render-only.
 
 ```js
 query = {
   search:   '',                  // matches `type` (substring, case-insensitive)
   families: Set<string>,         // empty set means no family filter
+  arch:     'all',               // 'all' | 'arm' | 'x86'
   sort:     'usd',               // one of: type vcpu memGiB storageGB netGbps usd
   dir:      'asc',               // 'asc' | 'desc'
   unit:     'hour'               // 'hour' | 'month' — ignored by applyQuery
 }
 ```
 
-Order: filter by family, then by search, then sort. Sorting is numeric on every column
-except `type`, which uses `localeCompare`. Ties break on `type` so the order is stable
-and reproducible.
+Order: filter by family, then architecture, then search, then sort.
+
+Every column sorts numerically except `type`, which sorts in **natural AWS order** —
+`letters`, then `generation`, then `attrs`, then `sizeRank`, compared in that order.
+This is the whole reason those four fields exist. Plain `localeCompare` on the type
+string produces `c4.2xlarge < c4.4xlarge < c4.8xlarge < c4.large < c4.xlarge`, which
+scrambles the size ladder within every family, and would order a hypothetical `c10g`
+before `c4g`. Natural order gives `c5.large < c5.xlarge < c5.2xlarge < … < c5.metal <
+c5a.large < c6g.medium`.
+
+Ties break on `type` so the order is stable and reproducible.
 
 ### `urlState.js`
 
 `toSearchParams(query) -> string` and `fromSearchParams(string) -> query`, mutual
-inverses. Keys: `q`, `fam` (comma-separated), `sort`, `dir`, `unit`.
+inverses. Keys: `q`, `fam` (comma-separated), `arch`, `sort`, `dir`, `unit`.
 
 Defaults are omitted from the URL so an untouched view has a clean address. Unknown or
 malformed values fall back to the default rather than throwing — a hand-edited URL must
@@ -198,14 +234,22 @@ render-time concern.
   `location.search` on mount, `$derived` the visible rows via `applyQuery`, and an
   `$effect` writes changes back with `history.replaceState`. Renders the fixed context
   label "US East (N. Virginia) · Linux" and the row count.
-- **`Toolbar.svelte`** — search input, 8 family filter chips, and the $/hour vs $/month
-  unit toggle. Emits changes upward; holds no state of its own.
+- **`Toolbar.svelte`** — search input, 8 family filter chips, an All / ARM / x86
+  architecture toggle, and the $/hour vs $/month unit toggle. Emits changes upward;
+  holds no state of its own.
 - **`InstanceTable.svelte`** — a dumb renderer over the derived rows. Sortable column
   headers, and the empty state. Columns: Instance Type, vCPU, Memory, Storage, Network
   Performance, Price.
 
 The `unit` toggle multiplies `usd` by 730 at render only. It never re-sorts and never
 touches the normalized data.
+
+**Every column is right-aligned**, including Instance Type. The table is read by
+comparing figures down a column, and a consistent right edge is what makes that
+scanning work; `font-variant-numeric: tabular-nums` keeps the digits on a common grid.
+
+**Typography is macOS-first**: `-apple-system, BlinkMacSystemFont, 'SF Pro Text'` for
+text and `'SF Mono', Menlo, ui-monospace` for the instance type and price columns.
 
 All 1322 rows render straight into the DOM. No virtualization: filters cut the set down
 in practice, and adding a virtualizer before measuring a real problem is speculative.
@@ -224,11 +268,16 @@ There is no network and no user-supplied data, so the surface is three cases:
 Vitest, on the three data modules only. Components are verified by running the app.
 
 - `normalize.js` — the memory/network/storage/price coercions, including the unspaced
-  storage variant and the `1024.0 GiB` form. One test asserts that **all 1322 fixture
-  rows normalize with no `NaN` and no `undefined` in any numeric field**, which covers
-  every one of the 95 network strings without enumerating them.
-- `query.js` — family filter, search, each sort column in both directions, tie-breaking,
-  empty result, and that the input array is not mutated.
+  storage variant and the `1024.0 GiB` form; the series parser including the `c7i-flex`,
+  `p6-b200` and unparseable `u-3tb1` cases; the size ranking; and the `arch` rule
+  including the `g4dn`-is-x86 / `g5g`-is-ARM distinction. One test asserts that **all
+  1322 fixture rows normalize with no `NaN` and no `undefined` in any numeric field**,
+  which covers every one of the 94 network strings without enumerating them, and a
+  second asserts every row ranks and classifies.
+- `query.js` — family filter, architecture filter, search, each sort column in both
+  directions, natural type ordering, tie-breaking, empty result, and that the input
+  array is not mutated. One test asserts the full natural ordering of a scrambled
+  single-family ladder, since that is the behaviour `localeCompare` gets wrong.
 - `urlState.js` — round-trip for a populated query, default omission, and that garbage
   input yields defaults.
 
