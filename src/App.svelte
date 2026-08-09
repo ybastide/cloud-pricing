@@ -1,8 +1,9 @@
 <script>
-  import { instances, operatingSystem, region } from './lib/data/instances.js'
+  import { families, instances, operatingSystem, region } from './lib/data/instances.js'
   import { applyQuery } from './lib/data/query.js'
   import { defaultQuery } from './lib/data/urlState.js'
   import InstanceTable from './lib/InstanceTable.svelte'
+  import Toolbar from './lib/Toolbar.svelte'
 
   let query = $state(defaultQuery())
 
@@ -24,6 +25,7 @@
 </header>
 
 <main>
+  <Toolbar bind:query {families} />
   <p class="count">{visible.length} of {instances.length} instances</p>
   <InstanceTable
     rows={visible}
