@@ -1789,7 +1789,7 @@ git commit -m "feat: sync filter and sort state to the URL for shareable views"
 ## Done When
 
 - `npm test` passes 88 tests across three files (39 normalize, 24 query, 25 urlState).
-- `npm run test:e2e` passes 12 Playwright tests against the preview build, and CI runs both suites on push.
+- `npm run test:e2e` passes 13 Playwright tests against the preview build, and CI runs both suites on push.
 - `npm run build` succeeds.
 - The table renders 1322 rows, sorts numerically on every numeric column, filters by family and search, toggles hourly/monthly, and round-trips through the URL.
 - No `Counter.svelte`, no demo CSS, and no Vite/Svelte branding remains — including `public/favicon.svg`, `public/icons.svg` and `README-svelte.md`.
@@ -1994,6 +1994,19 @@ test('round-trips filter state through the URL', async ({ page }) => {
   expect(await typeCells(page).allTextContents()).toEqual(rows)
 })
 
+test('replaces history entries instead of pushing one per interaction', async ({ page }) => {
+  await page.goto('/')
+  const before = await page.evaluate(() => history.length)
+
+  await searchBox(page).fill('c7g')
+  await archButton(page, 'ARM').click()
+  await unitButton(page, '$/month').click()
+  await page.getByRole('button', { name: 'vCPU', exact: true }).click()
+  await expect(page).toHaveURL(/unit=month/)
+
+  expect(await page.evaluate(() => history.length)).toBe(before)
+})
+
 test('degrades a hand-edited URL to the default view', async ({ page }) => {
   await page.goto('/?sort=bogus&dir=sideways&unit=fortnight&arch=sparc')
   await expect(count(page)).toHaveText(`${TOTAL} of ${TOTAL} instances`)
@@ -2081,7 +2094,7 @@ cd /Users/zeb/src/Perso/cloud-pricing
 npm test && npm run test:e2e
 ```
 
-Expected: 88 unit tests pass, then 12 Playwright tests pass against the preview build.
+Expected: 88 unit tests pass, then 13 Playwright tests pass against the preview build.
 
 - [ ] **Step 8: Commit**
 
