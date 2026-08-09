@@ -25,3 +25,9 @@ dist-ssr
 
 # browser-verification artifacts from agent sessions
 .playwright-mcp/
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
