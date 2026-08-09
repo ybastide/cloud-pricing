@@ -23,12 +23,20 @@
     { value: 'arm', label: 'ARM' },
     { value: 'x86', label: 'x86' },
   ]
+
+  const PLACEHOLDERS = {
+    all: 'Filter by instance type, e.g. m5 or 4xlarge',
+    arm: 'Filter by instance type, e.g. c7g or m8g',
+    x86: 'Filter by instance type, e.g. m5 or c7i',
+  }
+
+  const placeholder = $derived(PLACEHOLDERS[query.arch] ?? PLACEHOLDERS.all)
 </script>
 
 <div class="toolbar">
   <input
     type="search"
-    placeholder="Filter by instance type, e.g. m5 or 4xlarge"
+    placeholder={placeholder}
     bind:value={query.search}
     aria-label="Filter by instance type"
   />
