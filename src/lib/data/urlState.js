@@ -18,7 +18,7 @@ export function defaultQuery() {
 export function toSearchParams(query) {
   const params = new URLSearchParams()
   if (query.search) params.set('q', query.search)
-  if (query.families?.size) params.set('fam', [...query.families].join(','))
+  for (const family of query.families ?? []) params.append('fam', family)
   if (query.arch && query.arch !== DEFAULT_ARCH) params.set('arch', query.arch)
   if (query.sort && query.sort !== DEFAULT_SORT) params.set('sort', query.sort)
   if (query.dir && query.dir !== DEFAULT_DIR) params.set('dir', query.dir)
@@ -32,10 +32,8 @@ export function fromSearchParams(search) {
 
   query.search = params.get('q') ?? ''
 
-  const families = params.get('fam')
-  if (families) {
-    query.families = new Set(families.split(',').filter(Boolean))
-  }
+  const families = params.getAll('fam').filter(Boolean)
+  if (families.length) query.families = new Set(families)
 
   const arch = params.get('arch')
   if (arch && ARCHES.includes(arch)) query.arch = arch

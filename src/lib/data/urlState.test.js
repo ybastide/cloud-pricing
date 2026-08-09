@@ -32,7 +32,7 @@ describe('toSearchParams', () => {
   it('joins families with commas', () => {
     const families = new Set(['General purpose', 'Compute optimized'])
     expect(toSearchParams({ ...defaultQuery(), families })).toBe(
-      'fam=General+purpose%2CCompute+optimized',
+      'fam=General+purpose&fam=Compute+optimized',
     )
   })
 
@@ -69,7 +69,7 @@ describe('fromSearchParams', () => {
   })
 
   it('splits families on commas', () => {
-    const q = fromSearchParams('fam=General+purpose%2CCompute+optimized')
+    const q = fromSearchParams('fam=General+purpose&fam=Compute+optimized')
     expect(q.families).toEqual(new Set(['General purpose', 'Compute optimized']))
   })
 
@@ -119,5 +119,20 @@ describe('round trip', () => {
 
   it('survives an untouched query', () => {
     expect(fromSearchParams(toSearchParams(defaultQuery()))).toEqual(defaultQuery())
+  })
+
+  it('round-trips a family name containing a comma', () => {
+    const query = { ...defaultQuery(), families: new Set(['Machine Learning, ASIC']) }
+    expect(fromSearchParams(toSearchParams(query))).toEqual(query)
+  })
+
+  it('round-trips family names containing separators and unicode', () => {
+    const families = new Set(['a,b', 'c&d', 'e=f', 'g h', 'é'])
+    const query = { ...defaultQuery(), families }
+    expect(fromSearchParams(toSearchParams(query))).toEqual(query)
+  })
+
+  it('ignores empty fam parameters', () => {
+    expect(fromSearchParams('fam=&fam=').families).toEqual(new Set())
   })
 })
