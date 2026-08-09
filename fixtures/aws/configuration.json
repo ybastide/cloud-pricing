@@ -1,0 +1,107 @@
+{
+    "pathOrigins": {
+      "partition": "aws",
+      "filterTablePublishBaseUrl": {
+        "prod": "https://b0.p.awsstatic.com",
+        "gamma": "https://gb0.p.awsstatic.com",
+        "beta": "https://bb0.p.awsstatic.com",
+        "alpha": "https://bb0.p.awsstatic.com"
+      },
+      "filterTableStageBaseUrl": {
+        "prod": "https://view-stage.us-west-2.prod.pricing.aws.a2z.com",
+        "gamma": "https://view-stage.us-west-2.gamma.pricing.aws.a2z.com",
+        "beta": "https://view-stage.us-west-2.beta.pricing.aws.a2z.com",
+        "alpha": "https://view-stage.us-west-2.beta.pricing.aws.a2z.com"
+      },
+      "g11nLibPath": {
+        "prod": "https://b0.p.awsstatic.com/pricing-static-assets",
+        "gamma": "https://gb0.p.awsstatic.com/pricing-static-assets",
+        "beta": "https://bb0.p.awsstatic.com/pricing-static-assets",
+        "alpha": "https://bb0.p.awsstatic.com/pricing-static-assets"
+      },
+      "staticAssetsOrigin": {
+        "prod": "https://a0.awsstatic.com",
+        "gamma": "https://ga0.awsstatic.com",
+        "beta": "https://ba0.awsstatic.com",
+        "alpha": "https://aa0.awsstatic.com"
+      },
+      "plcAssetsLiveOrigin": {
+        "prod": "https://a0.p.awsstatic.com",
+        "gamma": "https://ga0.p.awsstatic.com",
+        "beta": "https://ba0.p.awsstatic.com",
+        "alpha": "https://d34qzactisn0wa.cloudfront.net"
+      },
+      "plcAssetsStagingOrigin": {
+        "prod": "https://view-staging.us-east-1.prod.plc1-prod.pricing.aws.a2z.com",
+        "gamma": "https://view-staging.us-east-1.gamma.plc1-prod.pricing.aws.a2z.com",
+        "beta": "https://view-staging.us-east-1.beta.plc1-preprod.pricing.aws.a2z.com",
+        "alpha": "https://d12xni3ol9risv.cloudfront.net"
+      },
+      "plcMappingStageAssetsOrigin": {
+        "prod": "https://view-stage.us-west-2.prod.pricing.aws.a2z.com/pricing/2.0/meteredUnitMaps",
+        "gamma": "https://view-stage.us-west-2.gamma.pricing.aws.a2z.com/pricing/2.0/meteredUnitMaps",
+        "beta": "https://view-stage.us-west-2.beta.pricing.aws.a2z.com/pricing/2.0/meteredUnitMaps",
+        "alpha": "https://view-stage.us-west-2.beta.pricing.aws.a2z.com/pricing/2.0/meteredUnitMaps"
+      },
+      "plcMappingProdAssetsOrigin": {
+        "prod": "https://b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps",
+        "gamma": "https://gb0.p.awsstatic.com/pricing/2.0/meteredUnitMaps",
+        "beta": "https://bb0.p.awsstatic.com/pricing/2.0/meteredUnitMaps",
+        "alpha": "https://bb0.p.awsstatic.com/pricing/2.0/meteredUnitMaps"
+      },
+      "plcMappingStageDiscoveryOrigin": {
+        "prod": "https://api.us-west-2.prod.pricing.aws.a2z.com/pricing/stage/products",
+        "gamma": "https://api.us-west-2.gamma.pricing.aws.a2z.com/pricing/stage/products",
+        "beta": "https://api.us-west-2.beta.pricing.aws.a2z.com/pricing/stage/products",
+        "alpha": "https://api.us-west-2.beta.pricing.aws.a2z.com/pricing/stage/products"
+      },
+      "plcMappingProdDiscoveryOrigin": {
+        "prod": "https://api.us-west-2.prod.pricing.aws.a2z.com/pricing/publish/products",
+        "gamma": "https://api.us-west-2.gamma.pricing.aws.a2z.com/pricing/publish/products",
+        "beta": "https://api.us-west-2.beta.pricing.aws.a2z.com/pricing/publish/products",
+        "alpha": "https://api.us-west-2.beta.pricing.aws.a2z.com/pricing/publish/products"
+      },
+      "pricingI18nStringOrigin": {
+        "prod": "https://i18n-string.us-west-2.prod.pricing.aws.a2z.com",
+        "gamma": "https://i18n-string.us-west-2.prod.pricing.aws.a2z.com",
+        "beta": "https://i18n-string.us-west-2.prod.pricing.aws.a2z.com",
+        "alpha": "https://i18n-string.us-west-2.prod.pricing.aws.a2z.com"
+      },
+      "plcIframeOrigin": {
+        "prod": "https://c0.b0.p.awsstatic.com",
+        "gamma": "https://pricing-component.us-west-2.beta.site-preprod.p.awsstatic.com/grid",
+        "beta": "https://savings-plan.us-west-2.beta.pricing.aws.a2z.com",
+        "alpha": "https://savings-plan.us-west-2.beta.pricing.aws.a2z.com"
+      },
+      "plcCSMLEndpoint": {
+        "prod": "https://csml-plc-prod.us-west-2.api.aws/plc/csml/logging",
+        "gamma": "https://csml-plc-gamma.us-west-2.api.aws/plc/csml/logging",
+        "beta": "https://csml-plc-beta.us-west-2.api.aws/plc/csml/logging",
+        "alpha": "https://3mhzp4ycc1.execute-api.us-west-2.amazonaws.com/beta/plc/csml/logging"
+      },
+      "plcTokenIframeOrigin": {
+        "prod": "https://token.us-west-2.prod.site.p.awsstatic.com",
+        "gamma": "https://token.us-west-2.gamma.site-preprod.p.awsstatic.com",
+        "beta": "https://token.us-west-2.beta.site-preprod.p.awsstatic.com",
+        "alpha": "https://token.us-west-2.beta.site-preprod.p.awsstatic.com"
+      },
+      "plcTokenBundleJsSource": {
+        "prod": "https://token.us-west-2.prod.site.p.awsstatic.com/websitev2/main.bundle.js",
+        "gamma": "https://pricing-component.us-west-2.beta.site-preprod.p.awsstatic.com/websitev2/main.bundle.js",
+        "beta": "https://token.us-west-2.beta.site-preprod.p.awsstatic.com/websitev2/main.bundle.js",
+        "alpha": "https://token.us-west-2.beta.site-preprod.p.awsstatic.com/websitev2/main.bundle.js"
+      },
+      "plcTokenBundleCssSource": {
+        "prod": "https://token.us-west-2.prod.site.p.awsstatic.com/websitev2/static/css/main.bundle.css",
+        "gamma": "https://pricing-component.us-west-2.beta.site-preprod.p.awsstatic.com/websitev2/static/css/main.bundle.css",
+        "beta": "https://token.us-west-2.beta.site-preprod.p.awsstatic.com/websitev2/static/css/main.bundle.css",
+        "alpha": "https://token.us-west-2.beta.site-preprod.p.awsstatic.com/websitev2/static/css/main.bundle.css"
+      },
+      "plcPricingTableIframeOrigin": {
+        "prod": "https://pricing-table.us-west-2.prod.site.p.awsstatic.com",
+        "gamma": "https://pricing-table.us-west-2.gamma.site-preprod.p.awsstatic.com",
+        "beta": "https://pricing-table.us-west-2.beta.site-preprod.p.awsstatic.com",
+        "alpha": "https://pricing-table.us-west-2.beta.site-preprod.p.awsstatic.com"
+      }
+    }
+  }
