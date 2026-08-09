@@ -1789,6 +1789,7 @@ git commit -m "feat: sync filter and sort state to the URL for shareable views"
 ## Done When
 
 - `npm test` passes 88 tests across three files (39 normalize, 24 query, 25 urlState).
+- `npm run test:e2e` passes 12 Playwright tests against the preview build, and CI runs both suites on push.
 - `npm run build` succeeds.
 - The table renders 1322 rows, sorts numerically on every numeric column, filters by family and search, toggles hourly/monthly, and round-trips through the URL.
 - No `Counter.svelte`, no demo CSS, and no Vite/Svelte branding remains — including `public/favicon.svg`, `public/icons.svg` and `README-svelte.md`.
@@ -1797,3 +1798,295 @@ git commit -m "feat: sync filter and sort state to the URL for shareable views"
 ## Deliberately Not Done
 
 Region and OS switching, spot prices, GCP, S3, cross-region transfer, row virtualization, and column visibility toggles. Virtualization in particular should only be added against a measured frame time, not on suspicion — 1322 rows is well within what the DOM handles.
+
+---
+
+### Task 8: Playwright end-to-end tests and CI
+
+Added after Task 7, at the human partner's request. Tasks 5–7 were verified by agents driving a live browser, but nothing about those checks was reproducible — the whole UI layer had no automated coverage. This task captures exactly what was verified by hand, so it can be re-run on every push.
+
+**Files:**
+- Modify: `package.json` (add `@playwright/test`, `test:e2e` script)
+- Modify: `.gitignore` (Playwright output directories)
+- Create: `playwright.config.js`
+- Create: `e2e/pricing-table.spec.js`
+- Create: `.github/workflows/ci.yml`
+
+**Interfaces:**
+- Consumes: the running app. No source file changes — if a test fails, the test is wrong or the app has a real bug; do not edit `src/` to make a test pass without reporting it first.
+- Produces: `npm run test:e2e`.
+
+The test directories do not overlap: Vitest's `include` is `src/**/*.test.js`, Playwright's `testDir` is `./e2e` with `*.spec.js`. Neither runner picks up the other's files.
+
+- [ ] **Step 1: Install Playwright**
+
+```bash
+cd /Users/zeb/src/Perso/cloud-pricing
+npm install -D @playwright/test
+npx playwright install chromium
+```
+
+- [ ] **Step 2: Add the script to `package.json`**
+
+Alongside the existing `test` and `test:watch` entries:
+
+```json
+    "test:e2e": "playwright test"
+```
+
+- [ ] **Step 3: Create `playwright.config.js`**
+
+```js
+import { defineConfig, devices } from '@playwright/test'
+
+const PORT = 4173
+const baseURL = `http://localhost:${PORT}`
+
+export default defineConfig({
+  testDir: './e2e',
+  fullyParallel: true,
+  forbidOnly: Boolean(process.env.CI),
+  retries: process.env.CI ? 2 : 0,
+  workers: process.env.CI ? 1 : undefined,
+  reporter: [['list'], ['html', { open: 'never' }]],
+  use: {
+    baseURL,
+    trace: 'on-first-retry',
+  },
+  projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
+  webServer: {
+    command: `npm run build && npm run preview -- --port ${PORT} --strictPort`,
+    url: baseURL,
+    reuseExistingServer: !process.env.CI,
+    timeout: 120_000,
+  },
+})
+```
+
+Tests run against `vite preview` over a production build rather than the dev server, so CI exercises the artifact that actually ships. `--strictPort` makes a port collision fail loudly instead of silently serving a different app on another port.
+
+- [ ] **Step 4: Create `e2e/pricing-table.spec.js`**
+
+Every number below was measured against `fixtures/aws/index.json` and independently confirmed during the Task 5–7 reviews. If one fails, the app changed — do not adjust the number to match.
+
+```js
+import { expect, test } from '@playwright/test'
+
+const TOTAL = 1322
+
+const searchBox = (page) => page.getByRole('searchbox', { name: 'Filter by instance type' })
+const archButton = (page, name) =>
+  page.getByRole('group', { name: 'Processor architecture' }).getByRole('button', { name })
+const unitButton = (page, name) =>
+  page.getByRole('group', { name: 'Price unit' }).getByRole('button', { name })
+const count = (page) => page.locator('p.count')
+const typeCells = (page) => page.locator('tbody td.type')
+
+test.beforeEach(async ({ page }) => {
+  const errors = []
+  page.on('console', (message) => {
+    if (message.type() === 'error' || message.type() === 'warning') errors.push(message.text())
+  })
+  page.on('pageerror', (error) => errors.push(String(error)))
+  page.errors = errors
+})
+
+test('renders every instance for the fixed region and OS', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.getByRole('heading', { name: 'EC2 On-Demand Pricing' })).toBeVisible()
+  await expect(page.locator('p.context')).toHaveText('US East (N. Virginia) · Linux')
+  await expect(count(page)).toHaveText(`${TOTAL} of ${TOTAL} instances`)
+  await expect(typeCells(page)).toHaveCount(TOTAL)
+})
+
+test('sorts by price ascending on load', async ({ page }) => {
+  await page.goto('/')
+  await expect(typeCells(page).first()).toHaveText('t4g.nano')
+  await expect(page.locator('tbody tr').first().locator('td.price')).toHaveText('$0.0042')
+})
+
+test('sorts memory numerically, not lexicographically', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Memory', exact: true }).click()
+  await expect(typeCells(page).first()).toHaveText('u7in-32tb.224xlarge')
+  await expect(page.locator('tbody tr').first().locator('td').nth(2)).toHaveText('32768 GiB')
+})
+
+test('orders the instance-type size ladder naturally', async ({ page }) => {
+  await page.goto('/')
+  await searchBox(page).fill('c5.')
+  await page.getByRole('button', { name: 'Instance', exact: true }).click()
+  await expect(typeCells(page)).toHaveText([
+    'c5.large',
+    'c5.xlarge',
+    'c5.2xlarge',
+    'c5.4xlarge',
+    'c5.9xlarge',
+    'c5.12xlarge',
+    'c5.18xlarge',
+    'c5.24xlarge',
+    'c5.metal',
+  ])
+})
+
+test('unions family filters rather than intersecting them', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('button', { name: 'General purpose' }).click()
+  await expect(count(page)).toHaveText(`392 of ${TOTAL} instances`)
+  await page.getByRole('button', { name: 'Compute optimized' }).click()
+  await expect(count(page)).toHaveText(`712 of ${TOTAL} instances`)
+})
+
+test('splits the fleet into ARM and x86 with no overlap', async ({ page }) => {
+  await page.goto('/')
+  await archButton(page, 'ARM').click()
+  await expect(count(page)).toHaveText(`390 of ${TOTAL} instances`)
+  for (const gpu of ['g4dn', 'g6e', 'gr6']) {
+    await expect(typeCells(page).filter({ hasText: new RegExp(`^${gpu}\\.`) })).toHaveCount(0)
+  }
+  await archButton(page, 'x86').click()
+  await expect(count(page)).toHaveText(`932 of ${TOTAL} instances`)
+})
+
+test('varies the search placeholder with the architecture filter', async ({ page }) => {
+  await page.goto('/')
+  await expect(searchBox(page)).toHaveAttribute('placeholder', /m5 or 4xlarge/)
+  await archButton(page, 'ARM').click()
+  await expect(searchBox(page)).toHaveAttribute('placeholder', /c7g or m8g/)
+  await expect(searchBox(page)).toHaveAttribute('aria-label', 'Filter by instance type')
+})
+
+test('the month toggle rescales prices without reordering rows', async ({ page }) => {
+  await page.goto('/')
+  const before = await typeCells(page).allTextContents()
+  await unitButton(page, '$/month').click()
+  await expect(page.locator('tbody tr').first().locator('td.price')).toHaveText('$3.07')
+  expect(await typeCells(page).allTextContents()).toEqual(before)
+})
+
+test('shows an empty state when nothing matches', async ({ page }) => {
+  await page.goto('/')
+  await searchBox(page).fill('zzz-no-such-instance')
+  await expect(count(page)).toHaveText(`0 of ${TOTAL} instances`)
+  await expect(page.locator('td.empty')).toHaveText('No instances match these filters.')
+})
+
+test('round-trips filter state through the URL', async ({ page }) => {
+  await page.goto('/')
+  await expect(page).toHaveURL(/\/$/)
+
+  await searchBox(page).fill('c7g')
+  await page.getByRole('button', { name: 'Compute optimized' }).click()
+  await page.getByRole('button', { name: 'vCPU', exact: true }).click()
+  await unitButton(page, '$/month').click()
+
+  await expect(page).toHaveURL(
+    '/?q=c7g&fam=Compute+optimized&sort=vcpu&dir=desc&unit=month',
+  )
+
+  const rows = await typeCells(page).allTextContents()
+  await page.reload()
+  await expect(searchBox(page)).toHaveValue('c7g')
+  await expect(page.getByRole('button', { name: 'Compute optimized' })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  )
+  expect(await typeCells(page).allTextContents()).toEqual(rows)
+})
+
+test('degrades a hand-edited URL to the default view', async ({ page }) => {
+  await page.goto('/?sort=bogus&dir=sideways&unit=fortnight&arch=sparc')
+  await expect(count(page)).toHaveText(`${TOTAL} of ${TOTAL} instances`)
+  await expect(typeCells(page).first()).toHaveText('t4g.nano')
+  await expect(page).toHaveURL(/\/$/)
+})
+
+test('clears every filter at once', async ({ page }) => {
+  await page.goto('/')
+  await searchBox(page).fill('c7')
+  await page.getByRole('button', { name: 'General purpose' }).click()
+  await archButton(page, 'ARM').click()
+  await page.getByRole('button', { name: 'Clear' }).click()
+
+  await expect(count(page)).toHaveText(`${TOTAL} of ${TOTAL} instances`)
+  await expect(searchBox(page)).toHaveValue('')
+  await expect(page.getByRole('button', { name: 'General purpose' })).toHaveAttribute(
+    'aria-pressed',
+    'false',
+  )
+  await expect(page).toHaveURL(/\/$/)
+})
+
+test.afterEach(async ({ page }) => {
+  expect(page.errors ?? []).toEqual([])
+})
+```
+
+- [ ] **Step 5: Ignore Playwright output**
+
+Append to `.gitignore`:
+
+```
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+```
+
+- [ ] **Step 6: Create `.github/workflows/ci.yml`**
+
+```yaml
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: End-to-end tests
+        run: npm run test:e2e
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
+```
+
+- [ ] **Step 7: Run both suites**
+
+```bash
+cd /Users/zeb/src/Perso/cloud-pricing
+npm test && npm run test:e2e
+```
+
+Expected: 88 unit tests pass, then 12 Playwright tests pass against the preview build.
+
+- [ ] **Step 8: Commit**
+
+```bash
+cd /Users/zeb/src/Perso/cloud-pricing
+git add package.json package-lock.json playwright.config.js e2e .github .gitignore
+git commit -m "test: add Playwright end-to-end coverage and CI workflow"
+```
