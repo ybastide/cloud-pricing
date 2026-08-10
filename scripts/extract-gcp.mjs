@@ -114,6 +114,62 @@ export function extractInstanceRows(html) {
   return rows
 }
 
+function parseDiskRow(name, priceCell) {
+  const match = PRICE_TOKEN.exec(priceCell)
+  const rateType = name.endsWith('IOPS') ? 'iops' : name.endsWith('throughput') ? 'throughput' : 'space'
+  return { name, rateType, usd: match ? parseFloat(match[1]) : 0 }
+}
+
+export function extractDiskRows(html) {
+  const headings = findHeadings(html)
+  const tables = findTables(html)
+  const rows = []
+
+  const persistentHeading = headings.find((h) => h.text === 'Persistent disk space pricing')
+  const persistentTable = tables.find((t) => t.index > persistentHeading.index)
+  const pCells = tableCells(persistentTable.html).slice(2) // drop the 2-cell header row
+  for (let i = 0; i < pCells.length; i += 2) {
+    rows.push(parseDiskRow(pCells[i], pCells[i + 1]))
+  }
+
+  const localSsdHeading = headings.find((h) => h.text === 'Local SSD pricing')
+  const localSsdTable = tables.find((t) => t.index > localSsdHeading.index)
+  const lCells = tableCells(localSsdTable.html)
+  // 6-cell header (Type + 5 price columns), then the row: name at index 6, Default price at index 7
+  rows.push(parseDiskRow(lCells[6], lCells[7]))
+
+  return rows
+}
+
+const DISK_TYPES = ['Hyperdisk Balanced', 'Hyperdisk Balanced HA', 'Hyperdisk Extreme', 'Hyperdisk Throughput', 'Hyperdisk ML']
+
+export function extractHyperdiskCompat(html) {
+  const tables = findTables(html)
+  const compatTable = tables.find((t) => tableCells(t.html)[0] === 'Machine series')
+  if (!compatTable) throw new Error('Could not find the Hyperdisk compatibility table')
+
+  const rowsHtml = compatTable.html.match(/<tr[^>]*>.*?<\/tr>/gs) ?? []
+  return rowsHtml.slice(1).map((rowHtml) => {
+    const tds = rowHtml.match(/<td[^>]*>.*?<\/td>/gs) ?? []
+    const series = stripTags(tds[0])
+    const flags = tds.slice(1).map((td, i) => {
+      const m = /aria-label="([^"]*)"/.exec(td)
+      const label = m ? m[1] : ''
+      if (/don't support|doesn't support|aren't support/.test(label)) return false
+      if (/support/.test(label)) return true
+      throw new Error(`Ambiguous Hyperdisk compatibility label for ${series} / ${DISK_TYPES[i]}: "${label}"`)
+    })
+    return {
+      series,
+      balanced: flags[0],
+      balancedHA: flags[1],
+      extreme: flags[2],
+      throughput: flags[3],
+      ml: flags[4],
+    }
+  })
+}
+
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs'
 
 function findFixture(prefix) {
@@ -125,9 +181,19 @@ function findFixture(prefix) {
 
 function main() {
   const pricingHtml = readFileSync(findFixture('General Purpose VM pricing'), 'utf8')
+  const hyperdiskHtml = readFileSync(findFixture('Google Cloud Hyperdisk overview'), 'utf8')
+
   const instances = extractInstanceRows(pricingHtml)
+  const disks = extractDiskRows(pricingHtml)
+  const hyperdiskCompat = extractHyperdiskCompat(hyperdiskHtml)
+
   writeFileSync('fixtures/gcp/instances.json', JSON.stringify(instances, null, 2) + '\n')
+  writeFileSync('fixtures/gcp/disks.json', JSON.stringify(disks, null, 2) + '\n')
+  writeFileSync('fixtures/gcp/hyperdisk-compat.json', JSON.stringify(hyperdiskCompat, null, 2) + '\n')
+
   console.log(`instances: ${instances.length} rows`)
+  console.log(`disks: ${disks.length} rows`)
+  console.log(`hyperdisk-compat: ${hyperdiskCompat.length} rows`)
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

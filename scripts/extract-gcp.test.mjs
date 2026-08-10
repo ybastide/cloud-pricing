@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { readFileSync } from 'node:fs'
+import { readFileSync, readdirSync } from 'node:fs'
 import { extractInstanceRows } from './extract-gcp.mjs'
 
 const EXCERPT = `
@@ -121,5 +121,106 @@ describe('extractInstanceRows over the real fixture', () => {
   it('keeps the two fractional-vCPU rows exact', () => {
     expect(rows.find((r) => r.type === 'f1-micro').vcpu).toBe(0.2)
     expect(rows.find((r) => r.type === 'g1-small').vcpu).toBe(0.5)
+  })
+})
+
+import { extractDiskRows, extractHyperdiskCompat } from './extract-gcp.mjs'
+
+const DISK_EXCERPT = `
+<h3>Persistent disk space pricing</h3>
+<table>
+  <tr><th>Item</th><th>Default (USD)</th></tr>
+  <tr><td>Standard provisioned space</td><td>$0.000054795 / 1 gibibyte hour</td></tr>
+  <tr><td>Hyperdisk Extreme provisioned IOPS</td><td>$0.000043836 / 1 hour</td></tr>
+</table>
+<h3>Local SSD pricing</h3>
+<table>
+  <tr><th>Type</th><th>Default (USD)</th><th>Compute Flexible CUD - 1 Year (USD)</th><th>Compute Flexible CUD - 3 Year (USD)</th><th>Compute Resource CUDs - 1 Year (USD)</th><th>Compute Resource CUDs - 3 Year (USD)</th></tr>
+  <tr><td>Local SSD provisioned space</td><td>$0.000109589 / 1 gibibyte hour</td><td>$0.000078904 / 1 gibibyte hour</td><td>$0.000059178 / 1 gibibyte hour</td><td>$0.000069041 / 1 gibibyte hour</td><td>$0.000049315 / 1 gibibyte hour</td></tr>
+</table>
+`
+
+describe('extractDiskRows', () => {
+  const rows = extractDiskRows(DISK_EXCERPT)
+
+  it('extracts persistent disk and Local SSD rows', () => {
+    expect(rows.map((r) => r.name)).toEqual([
+      'Standard provisioned space',
+      'Hyperdisk Extreme provisioned IOPS',
+      'Local SSD provisioned space',
+    ])
+  })
+
+  it('classifies rate type from the row name', () => {
+    expect(rows.find((r) => r.name === 'Standard provisioned space').rateType).toBe('space')
+    expect(rows.find((r) => r.name === 'Hyperdisk Extreme provisioned IOPS').rateType).toBe('iops')
+  })
+
+  it('takes only the Default (on-demand) column for Local SSD, not a CUD column', () => {
+    expect(rows.find((r) => r.name === 'Local SSD provisioned space').usd).toBeCloseTo(0.000109589)
+  })
+})
+
+describe('extractDiskRows over the real fixture', () => {
+  const html = readFileSync('fixtures/gcp/General Purpose VM pricing _ Google Cloud.html', 'utf8')
+  const rows = extractDiskRows(html)
+
+  it('extracts exactly 31 rows', () => {
+    expect(rows).toHaveLength(31)
+  })
+
+  it('gives every row a positive price', () => {
+    expect(rows.every((r) => r.usd > 0)).toBe(true)
+  })
+})
+
+const COMPAT_EXCERPT = `
+<table>
+  <tr><th>Machine series</th><th>Hyperdisk Balanced</th><th>Hyperdisk Balanced HA</th><th>Hyperdisk Extreme</th><th>Hyperdisk Throughput</th><th>Hyperdisk ML</th></tr>
+  <tr>
+    <td><a href='/x'>A2</a></td>
+    <td aria-label="A2 instances don't support Hyperdisk Balanced"><span style="color:red"><b>&mdash;</b></span></td>
+    <td aria-label="A2 instances don't support Hyperdisk Balanced HA"><span style="color:red"><b>&mdash;</b></span></td>
+    <td aria-label="A2 instances don't support Hyperdisk Extreme"><span style="color:red"><b>&mdash;</b></span></td>
+    <td aria-label="A2 instances don't support Hyperdisk Throughput"><span style="color:red"><b>&mdash;</b></span></td>
+    <td aria-label="A2 instances support Hyperdisk ML"><span class="compare-yes"></span></td>
+  </tr>
+  <tr>
+    <td><a href='/y'>C4</a></td>
+    <td aria-label="C4 instances support Hyperdisk Balanced"><span class="compare-yes"></span></td>
+    <td aria-label="C4 instances support Hyperdisk Balanced HA"><span class="compare-yes"></span></td>
+    <td aria-label="C4 instances support Hyperdisk Extreme"><span class="compare-yes"></span></td>
+    <td aria-label="C4 instances support Hyperdisk Throughput"><span class="compare-yes"></span></td>
+    <td aria-label="C4 instances support Hyperdisk ML"><span class="compare-yes"></span></td>
+  </tr>
+</table>
+`
+
+describe('extractHyperdiskCompat', () => {
+  const rows = extractHyperdiskCompat(COMPAT_EXCERPT)
+
+  it('reads the aria-label, not the icon markup', () => {
+    expect(rows).toEqual([
+      { series: 'A2', balanced: false, balancedHA: false, extreme: false, throughput: false, ml: true },
+      { series: 'C4', balanced: true, balancedHA: true, extreme: true, throughput: true, ml: true },
+    ])
+  })
+})
+
+describe('extractHyperdiskCompat over the real fixture', () => {
+  const files = readdirSync('fixtures/gcp')
+  const hyperdiskFile = files.find((f) => f.includes('Hyperdisk overview'))
+  const html = readFileSync(`fixtures/gcp/${hyperdiskFile}`, 'utf8')
+  const rows = extractHyperdiskCompat(html)
+
+  it('extracts exactly 42 machine series', () => {
+    expect(rows).toHaveLength(42)
+  })
+
+  it('includes every family this app prices', () => {
+    const series = new Set(rows.map((r) => r.series))
+    for (const s of ['C3', 'C3D', 'C4', 'C4A', 'C4D', 'E2', 'N1', 'N2', 'N2D', 'N4', 'N4A', 'N4D', 'T2A', 'T2D']) {
+      expect(series.has(s)).toBe(true)
+    }
   })
 })

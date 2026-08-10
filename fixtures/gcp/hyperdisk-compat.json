@@ -1,0 +1,338 @@
+[
+  {
+    "series": "A2",
+    "balanced": false,
+    "balancedHA": false,
+    "extreme": false,
+    "throughput": false,
+    "ml": true
+  },
+  {
+    "series": "A3 (H100)",
+    "balanced": true,
+    "balancedHA": true,
+    "extreme": true,
+    "throughput": true,
+    "ml": true
+  },
+  {
+    "series": "A3 (H200)",
+    "balanced": true,
+    "balancedHA": true,
+    "extreme": true,
+    "throughput": false,
+    "ml": true
+  },
+  {
+    "series": "A4",
+    "balanced": true,
+    "balancedHA": false,
+    "extreme": true,
+    "throughput": false,
+    "ml": true
+  },
+  {
+    "series": "A4X",
+    "balanced": true,
+    "balancedHA": false,
+    "extreme": true,
+    "throughput": false,
+    "ml": true
+  },
+  {
+    "series": "A4X Max",
+    "balanced": true,
+    "balancedHA": false,
+    "extreme": true,
+    "throughput": true,
+    "ml": true
+  },
+  {
+    "series": "C2",
+    "balanced": false,
+    "balancedHA": false,
+    "extreme": false,
+    "throughput": false,
+    "ml": false
+  },
+  {
+    "series": "C2D",
+    "balanced": false,
+    "balancedHA": false,
+    "extreme": false,
+    "throughput": false,
+    "ml": false
+  },
+  {
+    "series": "C3",
+    "balanced": true,
+    "balancedHA": true,
+    "extreme": true,
+    "throughput": true,
+    "ml": true
+  },
+  {
+    "series": "C3D",
+    "balanced": true,
+    "balancedHA": true,
+    "extreme": true,
+    "throughput": true,
+    "ml": true
+  },
+  {
+    "series": "C4",
+    "balanced": true,
+    "balancedHA": true,
+    "extreme": true,
+    "throughput": true,
+    "ml": true
+  },
+  {
+    "series": "C4A",
+    "balanced": true,
+    "balancedHA": true,
+    "extreme": true,
+    "throughput": true,
+    "ml": true
+  },
+  {
+    "series": "C4D",
+    "balanced": true,
+    "balancedHA": true,
+    "extreme": true,
+    "throughput": false,
+    "ml": true
+  },
+  {
+    "series": "C4N",
+    "balanced": true,
+    "balancedHA": true,
+    "extreme": true,
+    "throughput": true,
+    "ml": true
+  },
+  {
+    "series": "E2",
+    "balanced": false,
+    "balancedHA": false,
+    "extreme": false,
+    "throughput": false,
+    "ml": false
+  },
+  {
+    "series": "G2",
+    "balanced": false,
+    "balancedHA": false,
+    "extreme": false,
+    "throughput": true,
+    "ml": true
+  },
+  {
+    "series": "G4",
+    "balanced": true,
+    "balancedHA": true,
+    "extreme": true,
+    "throughput": true,
+    "ml": true
+  },
+  {
+    "series": "H3",
+    "balanced": true,
+    "balancedHA": false,
+    "extreme": false,
+    "throughput": true,
+    "ml": false
+  },
+  {
+    "series": "H4D",
+    "balanced": true,
+    "balancedHA": false,
+    "extreme": false,
+    "throughput": false,
+    "ml": false
+  },
+  {
+    "series": "M1",
+    "balanced": true,
+    "balancedHA": false,
+    "extreme": true,
+    "throughput": false,
+    "ml": false
+  },
+  {
+    "series": "M2",
+    "balanced": true,
+    "balancedHA": false,
+    "extreme": true,
+    "throughput": false,
+    "ml": false
+  },
+  {
+    "series": "M3",
+    "balanced": true,
+    "balancedHA": true,
+    "extreme": true,
+    "throughput": true,
+    "ml": false
+  },
+  {
+    "series": "M4",
+    "balanced": true,
+    "balancedHA": false,
+    "extreme": true,
+    "throughput": false,
+    "ml": false
+  },
+  {
+    "series": "M4N",
+    "balanced": true,
+    "balancedHA": false,
+    "extreme": true,
+    "throughput": false,
+    "ml": false
+  },
+  {
+    "series": "N1",
+    "balanced": false,
+    "balancedHA": false,
+    "extreme": false,
+    "throughput": false,
+    "ml": false
+  },
+  {
+    "series": "N1+GPU",
+    "balanced": false,
+    "balancedHA": false,
+    "extreme": false,
+    "throughput": false,
+    "ml": false
+  },
+  {
+    "series": "N2",
+    "balanced": false,
+    "balancedHA": false,
+    "extreme": true,
+    "throughput": true,
+    "ml": false
+  },
+  {
+    "series": "N2D",
+    "balanced": false,
+    "balancedHA": false,
+    "extreme": false,
+    "throughput": true,
+    "ml": false
+  },
+  {
+    "series": "N4",
+    "balanced": true,
+    "balancedHA": true,
+    "extreme": false,
+    "throughput": true,
+    "ml": true
+  },
+  {
+    "series": "N4A",
+    "balanced": true,
+    "balancedHA": true,
+    "extreme": false,
+    "throughput": true,
+    "ml": true
+  },
+  {
+    "series": "N4D",
+    "balanced": true,
+    "balancedHA": true,
+    "extreme": false,
+    "throughput": true,
+    "ml": true
+  },
+  {
+    "series": "T2A",
+    "balanced": false,
+    "balancedHA": false,
+    "extreme": false,
+    "throughput": false,
+    "ml": false
+  },
+  {
+    "series": "T2D",
+    "balanced": false,
+    "balancedHA": false,
+    "extreme": false,
+    "throughput": true,
+    "ml": false
+  },
+  {
+    "series": "TPU v2",
+    "balanced": false,
+    "balancedHA": false,
+    "extreme": false,
+    "throughput": false,
+    "ml": false
+  },
+  {
+    "series": "TPU v3",
+    "balanced": false,
+    "balancedHA": false,
+    "extreme": false,
+    "throughput": false,
+    "ml": false
+  },
+  {
+    "series": "TPU v4",
+    "balanced": false,
+    "balancedHA": false,
+    "extreme": false,
+    "throughput": false,
+    "ml": false
+  },
+  {
+    "series": "TPU v5e",
+    "balanced": false,
+    "balancedHA": false,
+    "extreme": false,
+    "throughput": false,
+    "ml": true
+  },
+  {
+    "series": "TPU v5p",
+    "balanced": false,
+    "balancedHA": false,
+    "extreme": false,
+    "throughput": false,
+    "ml": true
+  },
+  {
+    "series": "TPU v6e",
+    "balanced": true,
+    "balancedHA": false,
+    "extreme": false,
+    "throughput": false,
+    "ml": true
+  },
+  {
+    "series": "TPU7x",
+    "balanced": true,
+    "balancedHA": false,
+    "extreme": false,
+    "throughput": false,
+    "ml": true
+  },
+  {
+    "series": "X4",
+    "balanced": true,
+    "balancedHA": false,
+    "extreme": true,
+    "throughput": false,
+    "ml": false
+  },
+  {
+    "series": "Z3",
+    "balanced": true,
+    "balancedHA": true,
+    "extreme": true,
+    "throughput": true,
+    "ml": false
+  }
+]

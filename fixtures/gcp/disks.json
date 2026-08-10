@@ -1,0 +1,157 @@
+[
+  {
+    "name": "Standard provisioned space",
+    "rateType": "space",
+    "usd": 0.000054795
+  },
+  {
+    "name": "SSD provisioned space",
+    "rateType": "space",
+    "usd": 0.000232877
+  },
+  {
+    "name": "Balanced provisioned space",
+    "rateType": "space",
+    "usd": 0.000136986
+  },
+  {
+    "name": "Extreme provisioned space",
+    "rateType": "space",
+    "usd": 0.000171233
+  },
+  {
+    "name": "Extreme provisioned IOPS",
+    "rateType": "iops",
+    "usd": 0.000089041
+  },
+  {
+    "name": "Regional standard provisioned space",
+    "rateType": "space",
+    "usd": 0.000109589
+  },
+  {
+    "name": "Regional SSD provisioned space",
+    "rateType": "space",
+    "usd": 0.000465753
+  },
+  {
+    "name": "Regional balanced provisioned space",
+    "rateType": "space",
+    "usd": 0.000273973
+  },
+  {
+    "name": "Hyperdisk Extreme provisioned space",
+    "rateType": "space",
+    "usd": 0.000171233
+  },
+  {
+    "name": "Hyperdisk Extreme provisioned IOPS",
+    "rateType": "iops",
+    "usd": 0.000043836
+  },
+  {
+    "name": "Hyperdisk Throughput provisioned space",
+    "rateType": "space",
+    "usd": 0.000006849
+  },
+  {
+    "name": "Hyperdisk Throughput provisioned throughput",
+    "rateType": "throughput",
+    "usd": 0.000342466
+  },
+  {
+    "name": "Hyperdisk Balanced provisioned space",
+    "rateType": "space",
+    "usd": 0.000109589
+  },
+  {
+    "name": "Hyperdisk Balanced provisioned IOPS",
+    "rateType": "iops",
+    "usd": 0.000006849
+  },
+  {
+    "name": "Hyperdisk Balanced provisioned throughput",
+    "rateType": "throughput",
+    "usd": 0.000054795
+  },
+  {
+    "name": "Hyperdisk Balanced High Availability provisioned space",
+    "rateType": "space",
+    "usd": 0.000219178
+  },
+  {
+    "name": "Hyperdisk Balanced High Availability provisioned IOPS",
+    "rateType": "iops",
+    "usd": 0.000013699
+  },
+  {
+    "name": "Hyperdisk Balanced High Availability provisioned throughput",
+    "rateType": "throughput",
+    "usd": 0.000109589
+  },
+  {
+    "name": "Hyperdisk Storage Pool Throughput provisioned space standard",
+    "rateType": "space",
+    "usd": 0.000006849
+  },
+  {
+    "name": "Hyperdisk Storage Pool Throughput provisioned space advanced",
+    "rateType": "space",
+    "usd": 0.000012329
+  },
+  {
+    "name": "Hyperdisk Storage Pool Throughput provisioned throughput standard",
+    "rateType": "space",
+    "usd": 0.000342466
+  },
+  {
+    "name": "Hyperdisk Storage Pool Throughput provisioned throughput advanced",
+    "rateType": "space",
+    "usd": 0.000650685
+  },
+  {
+    "name": "Hyperdisk Storage Pool Balanced provisioned space standard",
+    "rateType": "space",
+    "usd": 0.000109589
+  },
+  {
+    "name": "Hyperdisk Storage Pool Balanced provisioned space advanced",
+    "rateType": "space",
+    "usd": 0.000191781
+  },
+  {
+    "name": "Hyperdisk Storage Pool Balanced provisioned IOPS standard",
+    "rateType": "space",
+    "usd": 0.000006849
+  },
+  {
+    "name": "Hyperdisk Storage Pool Balanced provisioned IOPS advanced",
+    "rateType": "space",
+    "usd": 0.000012329
+  },
+  {
+    "name": "Hyperdisk Storage Pool Balanced provisioned throughput standard",
+    "rateType": "space",
+    "usd": 0.000054795
+  },
+  {
+    "name": "Hyperdisk Storage Pool Balanced provisioned throughput advanced",
+    "rateType": "space",
+    "usd": 0.00010411
+  },
+  {
+    "name": "Hyperdisk ML provisioned space",
+    "rateType": "space",
+    "usd": 0.000109589
+  },
+  {
+    "name": "Hyperdisk ML provisioned throughput",
+    "rateType": "throughput",
+    "usd": 0.000164384
+  },
+  {
+    "name": "Local SSD provisioned space",
+    "rateType": "space",
+    "usd": 0.000109589
+  }
+]
