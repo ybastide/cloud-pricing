@@ -108,6 +108,7 @@ export function normalizeGcp(raw) {
   const generation = match ? finite(parseInt(match[2], 10)) : 0
   const attrs = match ? match[3] : ''
   const vcpu = finite(raw.vcpu)
+  const arch = attrs === 'a' ? 'arm' : 'x86'
 
   return {
     type,
@@ -115,6 +116,7 @@ export function normalizeGcp(raw) {
     letters,
     generation,
     attrs,
+    arch,
     family: raw.family,
     vcpu,
     memGiB: finite(raw.memGiB),

@@ -44,8 +44,12 @@
       context: gcpRegion,
       instances: gcpInstances,
       families: gcpFamilies,
-      showArch: false,
-      placeholders: { all: 'Filter by machine type, e.g. c4 or n2-standard' },
+      showArch: true,
+      placeholders: {
+        all: 'Filter by machine type, e.g. c4 or n2-standard',
+        arm: 'Filter by machine type, e.g. c4a or n4a',
+        x86: 'Filter by machine type, e.g. c4 or n2d',
+      },
       columns: GCP_COLUMNS,
     },
   }

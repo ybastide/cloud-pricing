@@ -196,13 +196,13 @@ floor to `0`.
 rows (no regex parsing needed — the extraction script already isolated that column as a
 number), `0` for the other 329.
 
-No AWS field has an equivalent for `arch`, `netGbps`, `netBurst`, or `netLabel` — this
-fixture carries no network or CPU-architecture data. Those fields are simply absent from
-the GCP row shape rather than defaulted to a sentinel, and `query.js`'s existing
-`arch`/`netGbps` comparators and filters are only ever invoked by the AWS tab's Toolbar
-— the GCP Toolbar variant doesn't offer those controls, so the comparators for those
-keys are never exercised against GCP rows. `COMPARATORS` and `SORT_KEYS` in `query.js`
-are unchanged; a component decides which sort keys to expose, not the query layer.
+No AWS field has an equivalent for `netGbps`, `netBurst`, or `netLabel` — this fixture
+carries no network data. `arch` *is* derivable, from the same `attrs` suffix already
+split out above: `attrs === 'a'` means Arm (verified against Google's official
+CPU-platforms documentation — `C4A`, `N4A`, and `Tau T2A` are Arm; a suffix of `d` is
+AMD and no suffix is Intel, both x86). This was missed in the original research — the
+billing CSV's SKU description text happens to say "Arm" for `C4A`/`T2A` but not for
+`N4A`, which looked like a real signal until checked against all three families.
 
 ### Components
 

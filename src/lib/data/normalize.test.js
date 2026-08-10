@@ -278,6 +278,7 @@ describe('normalizeGcp', () => {
       letters: 'c',
       generation: 4,
       attrs: '',
+      arch: 'x86',
       family: 'C4',
       vcpu: 4,
       memGiB: 15,
@@ -345,5 +346,42 @@ describe('normalizeGcp over the real fixture', () => {
 
   it('keys uniquely on type', () => {
     expect(new Set(rows.map((r) => r.type)).size).toBe(381)
+  })
+})
+
+describe('normalizeGcp arch classification', () => {
+  it('classifies the three Arm families correctly', () => {
+    expect(normalizeGcp({ ...GCP_RAW, type: 'c4a-standard-4', family: 'C4A' }).arch).toBe('arm')
+    expect(normalizeGcp({ ...GCP_RAW, type: 'n4a-standard-4', family: 'N4A' }).arch).toBe('arm')
+    expect(normalizeGcp({ ...GCP_RAW, type: 't2a-standard-1', family: 'Tau T2A' }).arch).toBe('arm')
+  })
+
+  it('classifies AMD (d suffix) and Intel (no suffix) families as x86', () => {
+    expect(normalizeGcp({ ...GCP_RAW, type: 'c4d-standard-4', family: 'C4D' }).arch).toBe('x86')
+    expect(normalizeGcp({ ...GCP_RAW, type: 'n2d-standard-4', family: 'N2D' }).arch).toBe('x86')
+    expect(normalizeGcp({ ...GCP_RAW, type: 't2d-standard-1', family: 'Tau T2D' }).arch).toBe('x86')
+    expect(normalizeGcp({ ...GCP_RAW, type: 'c4-standard-4', family: 'C4' }).arch).toBe('x86')
+    expect(normalizeGcp({ ...GCP_RAW, type: 'e2-standard-4', family: 'E2' }).arch).toBe('x86')
+  })
+})
+
+describe('arch classification over the real fixture', () => {
+  const raw = JSON.parse(readFileSync('fixtures/gcp/instances.json', 'utf8'))
+  const rows = raw.map(normalizeGcp)
+
+  it('classifies every row as arm or x86, nothing else', () => {
+    expect(rows.filter((r) => r.arch !== 'arm' && r.arch !== 'x86')).toEqual([])
+  })
+
+  it('finds Arm rows only in C4A, N4A, and Tau T2A', () => {
+    const arm = rows.filter((r) => r.arch === 'arm')
+    expect(arm.length).toBeGreaterThan(0)
+    expect(new Set(arm.map((r) => r.family))).toEqual(new Set(['C4A', 'N4A', 'Tau T2A']))
+  })
+
+  it('keeps every other family on x86', () => {
+    const x86 = rows.filter((r) => r.arch === 'x86')
+    const x86Families = new Set(x86.map((r) => r.family))
+    for (const f of ['C4A', 'N4A', 'Tau T2A']) expect(x86Families.has(f)).toBe(false)
   })
 })
