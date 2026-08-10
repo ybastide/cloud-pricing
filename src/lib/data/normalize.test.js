@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs'
 import {
   normalizeAws,
   normalizeAllAws,
+  normalizeGcp,
   parseMemoryGiB,
   parseNetwork,
   parseSeries,
@@ -257,5 +258,92 @@ describe('normalizeAll over the real fixture', () => {
 
   it('keys uniquely on instance type', () => {
     expect(new Set(rows.map((r) => r.type)).size).toBe(1322)
+  })
+})
+
+const GCP_RAW = {
+  type: 'c4-standard-4',
+  family: 'C4',
+  vcpu: 4,
+  memGiB: 15,
+  storageGB: 0,
+  usd: 0.19767,
+}
+
+describe('normalizeGcp', () => {
+  it('maps a standard row to the typed shape', () => {
+    expect(normalizeGcp(GCP_RAW)).toEqual({
+      type: 'c4-standard-4',
+      series: 'c4-standard-4',
+      letters: 'c',
+      generation: 4,
+      attrs: '',
+      family: 'C4',
+      vcpu: 4,
+      memGiB: 15,
+      storageGB: 0,
+      sizeRank: 4,
+      usd: 0.19767,
+    })
+  })
+
+  it('splits letters/generation/attrs from the first hyphenated segment, not the whole type', () => {
+    expect(normalizeGcp({ ...GCP_RAW, type: 'n2d-highmem-8', family: 'N2D' })).toMatchObject({
+      letters: 'n',
+      generation: 2,
+      attrs: 'd',
+    })
+    expect(normalizeGcp({ ...GCP_RAW, type: 't2a-standard-1', family: 'Tau T2A' })).toMatchObject({
+      letters: 't',
+      generation: 2,
+      attrs: 'a',
+    })
+  })
+
+  it('keeps fractional vCPU counts exact', () => {
+    const row = normalizeGcp({ ...GCP_RAW, type: 'f1-micro', family: 'N1', vcpu: 0.2, memGiB: 0.6 })
+    expect(row.vcpu).toBe(0.2)
+    expect(row.sizeRank).toBe(0.2)
+  })
+
+  it('carries storageGB through for a Local SSD row', () => {
+    const row = normalizeGcp({ ...GCP_RAW, type: 'c4-standard-4-lssd', storageGB: 375 })
+    expect(row.storageGB).toBe(375)
+  })
+
+  it('has no NaN when a field is missing', () => {
+    const row = normalizeGcp({ type: 'x-unknown-1', family: 'X' })
+    expect(Number.isFinite(row.vcpu)).toBe(true)
+    expect(Number.isFinite(row.memGiB)).toBe(true)
+    expect(Number.isFinite(row.storageGB)).toBe(true)
+    expect(Number.isFinite(row.sizeRank)).toBe(true)
+    expect(Number.isFinite(row.usd)).toBe(true)
+    expect(Number.isFinite(row.generation)).toBe(true)
+  })
+})
+
+describe('normalizeGcp over the real fixture', () => {
+  const raw = JSON.parse(readFileSync('fixtures/gcp/instances.json', 'utf8'))
+  const rows = raw.map(normalizeGcp)
+
+  it('returns every row', () => {
+    expect(rows).toHaveLength(381)
+  })
+
+  it('produces a finite number for every numeric field in every row', () => {
+    const bad = rows.filter(
+      (r) =>
+        !Number.isFinite(r.vcpu) ||
+        !Number.isFinite(r.memGiB) ||
+        !Number.isFinite(r.storageGB) ||
+        !Number.isFinite(r.sizeRank) ||
+        !Number.isFinite(r.usd) ||
+        !Number.isFinite(r.generation),
+    )
+    expect(bad).toEqual([])
+  })
+
+  it('keys uniquely on type', () => {
+    expect(new Set(rows.map((r) => r.type)).size).toBe(381)
   })
 })

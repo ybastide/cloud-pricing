@@ -97,3 +97,29 @@ export function normalizeAllAws(index) {
     Object.values(rows).map(normalizeAws),
   )
 }
+
+const GCP_SERIES = /^([a-z]+)(\d+)([a-z0-9-]*)$/i
+
+export function normalizeGcp(raw) {
+  const type = raw.type
+  const [firstSegment = ''] = type.split('-')
+  const match = GCP_SERIES.exec(firstSegment)
+  const letters = match ? match[1] : firstSegment
+  const generation = match ? finite(parseInt(match[2], 10)) : 0
+  const attrs = match ? match[3] : ''
+  const vcpu = finite(raw.vcpu)
+
+  return {
+    type,
+    series: type,
+    letters,
+    generation,
+    attrs,
+    family: raw.family,
+    vcpu,
+    memGiB: finite(raw.memGiB),
+    storageGB: finite(raw.storageGB),
+    sizeRank: vcpu,
+    usd: finite(raw.usd),
+  }
+}
