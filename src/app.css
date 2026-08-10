@@ -4,7 +4,7 @@
   --bg: #fff;
   --bg-alt: #faf9fb;
   --border: #e5e4e7;
-  --accent: #aa3bff;
+  --accent: #a837ff;
   --sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
   --mono: 'SF Mono', SFMono-Regular, Menlo, ui-monospace, monospace;
 
@@ -21,6 +21,7 @@
     --bg: #16141a;
     --bg-alt: #1e1b24;
     --border: #322e3a;
+    --accent: #af48ff;
   }
 }
 

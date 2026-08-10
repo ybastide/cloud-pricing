@@ -29,7 +29,7 @@ describe('toSearchParams', () => {
     expect(toSearchParams({ ...defaultQuery(), search: 'm5' })).toBe('q=m5')
   })
 
-  it('joins families with commas', () => {
+  it('emits one fam parameter per family', () => {
     const families = new Set(['General purpose', 'Compute optimized'])
     expect(toSearchParams({ ...defaultQuery(), families })).toBe(
       'fam=General+purpose&fam=Compute+optimized',
@@ -68,7 +68,7 @@ describe('fromSearchParams', () => {
     expect(fromSearchParams('?q=m5').search).toBe('m5')
   })
 
-  it('splits families on commas', () => {
+  it('collects every fam parameter', () => {
     const q = fromSearchParams('fam=General+purpose&fam=Compute+optimized')
     expect(q.families).toEqual(new Set(['General purpose', 'Compute optimized']))
   })

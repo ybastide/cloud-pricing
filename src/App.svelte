@@ -32,7 +32,7 @@
 
 <main>
   <Toolbar bind:query {families} />
-  <p class="count">{visible.length} of {instances.length} instances</p>
+  <p class="count" role="status">{visible.length} of {instances.length} instances</p>
   <InstanceTable
     rows={visible}
     sort={query.sort}

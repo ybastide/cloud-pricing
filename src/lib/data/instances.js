@@ -5,5 +5,8 @@ export const instances = normalizeAll(rawIndex)
 
 export const families = [...new Set(instances.map((row) => row.family))].sort()
 
-export const region = 'US East (N. Virginia)'
-export const operatingSystem = 'Linux'
+const regionNames = Object.keys(rawIndex.regions)
+const firstRow = Object.values(rawIndex.regions[regionNames[0]] ?? {})[0]
+
+export const region = regionNames[0] ?? 'Unknown region'
+export const operatingSystem = firstRow?.['Operating System'] ?? 'Unknown OS'

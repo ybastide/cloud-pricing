@@ -58,6 +58,7 @@
     <button
       type="button"
       class:active={query.unit === 'hour'}
+      aria-pressed={query.unit === 'hour'}
       onclick={() => (query.unit = 'hour')}
     >
       $/hour
@@ -65,6 +66,7 @@
     <button
       type="button"
       class:active={query.unit === 'month'}
+      aria-pressed={query.unit === 'month'}
       onclick={() => (query.unit = 'month')}
     >
       $/month
@@ -72,7 +74,7 @@
   </div>
 </div>
 
-<div class="families">
+<div class="families" role="group" aria-label="Instance family">
   {#each families as family (family)}
     <button
       type="button"
