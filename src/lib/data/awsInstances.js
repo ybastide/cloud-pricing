@@ -1,7 +1,7 @@
 import rawIndex from '../../../fixtures/aws/index.json'
-import { normalizeAll } from './normalize.js'
+import { normalizeAllAws } from './normalize.js'
 
-export const instances = normalizeAll(rawIndex)
+export const instances = normalizeAllAws(rawIndex)
 
 export const families = [...new Set(instances.map((row) => row.family))].sort()
 

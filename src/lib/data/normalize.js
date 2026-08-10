@@ -62,7 +62,7 @@ export function sizeRank(size) {
   return 0
 }
 
-export function normalize(raw) {
+export function normalizeAws(raw) {
   const type = raw['Instance Type']
   const netLabel = raw['Network Performance']
   const storage = raw.Storage
@@ -92,8 +92,8 @@ export function normalize(raw) {
   }
 }
 
-export function normalizeAll(index) {
+export function normalizeAllAws(index) {
   return Object.values(index.regions).flatMap((rows) =>
-    Object.values(rows).map(normalize),
+    Object.values(rows).map(normalizeAws),
   )
 }

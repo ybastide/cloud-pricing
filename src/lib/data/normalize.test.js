@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { readFileSync } from 'node:fs'
 import {
-  normalize,
-  normalizeAll,
+  normalizeAws,
+  normalizeAllAws,
   parseMemoryGiB,
   parseNetwork,
   parseSeries,
@@ -136,7 +136,7 @@ describe('sizeRank', () => {
 })
 
 describe('arch', () => {
-  const arch = (type) => normalize({ ...RAW, 'Instance Type': type }).arch
+  const arch = (type) => normalizeAws({ ...RAW, 'Instance Type': type }).arch
 
   it('reads a g in the attribute position as Graviton', () => {
     expect(arch('c6g.large')).toBe('arm')
@@ -170,7 +170,7 @@ describe('arch', () => {
 
 describe('normalize', () => {
   it('maps a row to the typed shape', () => {
-    expect(normalize(RAW)).toEqual({
+    expect(normalizeAws(RAW)).toEqual({
       type: 'm5.large',
       series: 'm5',
       letters: 'm',
@@ -192,14 +192,14 @@ describe('normalize', () => {
   })
 
   it('keeps the original strings for display', () => {
-    const row = normalize({ ...RAW, Storage: '4 x 1900 NVMe SSD' })
+    const row = normalizeAws({ ...RAW, Storage: '4 x 1900 NVMe SSD' })
     expect(row.storage).toBe('4 x 1900 NVMe SSD')
     expect(row.netLabel).toBe('Up to 10 Gigabit')
   })
 })
 
 describe('normalizeAll over the real fixture', () => {
-  const rows = normalizeAll(index)
+  const rows = normalizeAllAws(index)
 
   it('returns every row', () => {
     expect(rows).toHaveLength(1322)

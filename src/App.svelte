@@ -1,5 +1,5 @@
 <script>
-  import { families, instances, operatingSystem, region } from './lib/data/instances.js'
+  import { families, instances, operatingSystem, region } from './lib/data/awsInstances.js'
   import { applyQuery } from './lib/data/query.js'
   import { fromSearchParams, toSearchParams } from './lib/data/urlState.js'
   import InstanceTable from './lib/InstanceTable.svelte'
