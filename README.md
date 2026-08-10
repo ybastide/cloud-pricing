@@ -42,3 +42,22 @@ serves under the `meteredUnitMaps` path; the 106 locations x 17 operating
 systems in `metadata.json` are the selector vocabulary, and each combination is
 a separate file. That is why multi-region on-demand comparison is out of scope
 for the MVP.
+
+### GCP
+
+See `fixtures/gcp`. Three files — none of them fetched with `wget`, since GCP
+doesn't expose a comparable public JSON endpoint (Google retired the old
+`cloudpricingcalculator.appspot.com` calculator and its static data files along
+with it). Instead:
+
+- `General Purpose VM pricing _ Google Cloud.html` and `Google Cloud Hyperdisk
+  overview _ Compute Engine _ Google Cloud Documentation.html` are full-page
+  saves of the rendered pricing/documentation pages (File → Save Page As, with
+  JS already executed), frozen at whatever region was selected when saved
+  (**Iowa / us-central1** for the pricing page).
+- `Pricing for My Billing Account.csv` is GCP's full SKU catalog, exported from
+  a Cloud Billing account. **Not used by the app** — see the design spec for why.
+
+Run `npm run extract:gcp` to regenerate `instances.json`, `disks.json`, and
+`hyperdisk-compat.json` from the two HTML files. Re-run it if either HTML file is
+refreshed — the app only ever reads the generated JSON, never the HTML directly.
