@@ -1,0 +1,3050 @@
+[
+  {
+    "type": "c4-standard-2",
+    "family": "C4",
+    "vcpu": 2,
+    "memGiB": 7,
+    "storageGB": 0,
+    "usd": 0.096866
+  },
+  {
+    "type": "c4-standard-4",
+    "family": "C4",
+    "vcpu": 4,
+    "memGiB": 15,
+    "storageGB": 0,
+    "usd": 0.19767
+  },
+  {
+    "type": "c4-standard-8",
+    "family": "C4",
+    "vcpu": 8,
+    "memGiB": 30,
+    "storageGB": 0,
+    "usd": 0.39534
+  },
+  {
+    "type": "c4-standard-16",
+    "family": "C4",
+    "vcpu": 16,
+    "memGiB": 60,
+    "storageGB": 0,
+    "usd": 0.79068
+  },
+  {
+    "type": "c4-standard-24",
+    "family": "C4",
+    "vcpu": 24,
+    "memGiB": 90,
+    "storageGB": 0,
+    "usd": 1.18602
+  },
+  {
+    "type": "c4-standard-32",
+    "family": "C4",
+    "vcpu": 32,
+    "memGiB": 120,
+    "storageGB": 0,
+    "usd": 1.58136
+  },
+  {
+    "type": "c4-standard-48",
+    "family": "C4",
+    "vcpu": 48,
+    "memGiB": 180,
+    "storageGB": 0,
+    "usd": 2.37204
+  },
+  {
+    "type": "c4-standard-96",
+    "family": "C4",
+    "vcpu": 96,
+    "memGiB": 360,
+    "storageGB": 0,
+    "usd": 4.74408
+  },
+  {
+    "type": "c4-standard-144",
+    "family": "C4",
+    "vcpu": 144,
+    "memGiB": 540,
+    "storageGB": 0,
+    "usd": 7.11612
+  },
+  {
+    "type": "c4-standard-192",
+    "family": "C4",
+    "vcpu": 192,
+    "memGiB": 720,
+    "storageGB": 0,
+    "usd": 9.48816
+  },
+  {
+    "type": "c4-standard-288",
+    "family": "C4",
+    "vcpu": 288,
+    "memGiB": 1080,
+    "storageGB": 0,
+    "usd": 14.23224
+  },
+  {
+    "type": "c4-standard-288-metal",
+    "family": "C4",
+    "vcpu": 288,
+    "memGiB": 1080,
+    "storageGB": 0,
+    "usd": 14.23224
+  },
+  {
+    "type": "c4-highmem-2",
+    "family": "C4",
+    "vcpu": 2,
+    "memGiB": 15,
+    "storageGB": 0,
+    "usd": 0.12837
+  },
+  {
+    "type": "c4-highmem-4",
+    "family": "C4",
+    "vcpu": 4,
+    "memGiB": 31,
+    "storageGB": 0,
+    "usd": 0.260678
+  },
+  {
+    "type": "c4-highmem-8",
+    "family": "C4",
+    "vcpu": 8,
+    "memGiB": 62,
+    "storageGB": 0,
+    "usd": 0.521356
+  },
+  {
+    "type": "c4-highmem-16",
+    "family": "C4",
+    "vcpu": 16,
+    "memGiB": 124,
+    "storageGB": 0,
+    "usd": 1.042712
+  },
+  {
+    "type": "c4-highmem-24",
+    "family": "C4",
+    "vcpu": 24,
+    "memGiB": 186,
+    "storageGB": 0,
+    "usd": 1.564068
+  },
+  {
+    "type": "c4-highmem-32",
+    "family": "C4",
+    "vcpu": 32,
+    "memGiB": 248,
+    "storageGB": 0,
+    "usd": 2.085424
+  },
+  {
+    "type": "c4-highmem-48",
+    "family": "C4",
+    "vcpu": 48,
+    "memGiB": 372,
+    "storageGB": 0,
+    "usd": 3.128136
+  },
+  {
+    "type": "c4-highmem-96",
+    "family": "C4",
+    "vcpu": 96,
+    "memGiB": 744,
+    "storageGB": 0,
+    "usd": 6.256272
+  },
+  {
+    "type": "c4-highmem-144",
+    "family": "C4",
+    "vcpu": 144,
+    "memGiB": 1116,
+    "storageGB": 0,
+    "usd": 9.384408
+  },
+  {
+    "type": "c4-highmem-192",
+    "family": "C4",
+    "vcpu": 192,
+    "memGiB": 1488,
+    "storageGB": 0,
+    "usd": 12.512544
+  },
+  {
+    "type": "c4-highmem-288",
+    "family": "C4",
+    "vcpu": 288,
+    "memGiB": 2232,
+    "storageGB": 0,
+    "usd": 18.768816
+  },
+  {
+    "type": "c4-highmem-288-metal",
+    "family": "C4",
+    "vcpu": 288,
+    "memGiB": 2232,
+    "storageGB": 0,
+    "usd": 18.768816
+  },
+  {
+    "type": "c4-highcpu-2",
+    "family": "C4",
+    "vcpu": 2,
+    "memGiB": 4,
+    "storageGB": 0,
+    "usd": 0.085052
+  },
+  {
+    "type": "c4-highcpu-4",
+    "family": "C4",
+    "vcpu": 4,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.170104
+  },
+  {
+    "type": "c4-highcpu-8",
+    "family": "C4",
+    "vcpu": 8,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.340208
+  },
+  {
+    "type": "c4-highcpu-16",
+    "family": "C4",
+    "vcpu": 16,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.680416
+  },
+  {
+    "type": "c4-highcpu-24",
+    "family": "C4",
+    "vcpu": 24,
+    "memGiB": 48,
+    "storageGB": 0,
+    "usd": 1.020624
+  },
+  {
+    "type": "c4-highcpu-32",
+    "family": "C4",
+    "vcpu": 32,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 1.360832
+  },
+  {
+    "type": "c4-highcpu-48",
+    "family": "C4",
+    "vcpu": 48,
+    "memGiB": 96,
+    "storageGB": 0,
+    "usd": 2.041248
+  },
+  {
+    "type": "c4-highcpu-96",
+    "family": "C4",
+    "vcpu": 96,
+    "memGiB": 192,
+    "storageGB": 0,
+    "usd": 4.082496
+  },
+  {
+    "type": "c4-highcpu-144",
+    "family": "C4",
+    "vcpu": 144,
+    "memGiB": 288,
+    "storageGB": 0,
+    "usd": 6.123744
+  },
+  {
+    "type": "c4-highcpu-192",
+    "family": "C4",
+    "vcpu": 192,
+    "memGiB": 384,
+    "storageGB": 0,
+    "usd": 8.164992
+  },
+  {
+    "type": "c4-highcpu-288",
+    "family": "C4",
+    "vcpu": 288,
+    "memGiB": 576,
+    "storageGB": 0,
+    "usd": 12.247488
+  },
+  {
+    "type": "c4-highcpu-288-metal",
+    "family": "C4",
+    "vcpu": 288,
+    "memGiB": 576,
+    "storageGB": 0,
+    "usd": 12.247488
+  },
+  {
+    "type": "c4-standard-4-lssd",
+    "family": "C4",
+    "vcpu": 4,
+    "memGiB": 15,
+    "storageGB": 375,
+    "usd": 0.279861781
+  },
+  {
+    "type": "c4-standard-8-lssd",
+    "family": "C4",
+    "vcpu": 8,
+    "memGiB": 30,
+    "storageGB": 375,
+    "usd": 0.477531781
+  },
+  {
+    "type": "c4-standard-16-lssd",
+    "family": "C4",
+    "vcpu": 16,
+    "memGiB": 60,
+    "storageGB": 750,
+    "usd": 0.955063562
+  },
+  {
+    "type": "c4-standard-24-lssd",
+    "family": "C4",
+    "vcpu": 24,
+    "memGiB": 90,
+    "storageGB": 1500,
+    "usd": 1.514787123
+  },
+  {
+    "type": "c4-standard-32-lssd",
+    "family": "C4",
+    "vcpu": 32,
+    "memGiB": 120,
+    "storageGB": 1875,
+    "usd": 1.992318904
+  },
+  {
+    "type": "c4-standard-48-lssd",
+    "family": "C4",
+    "vcpu": 48,
+    "memGiB": 180,
+    "storageGB": 3000,
+    "usd": 3.029574247
+  },
+  {
+    "type": "c4-standard-96-lssd",
+    "family": "C4",
+    "vcpu": 96,
+    "memGiB": 360,
+    "storageGB": 6000,
+    "usd": 6.059148493
+  },
+  {
+    "type": "c4-standard-144-lssd",
+    "family": "C4",
+    "vcpu": 144,
+    "memGiB": 540,
+    "storageGB": 9000,
+    "usd": 9.08872274
+  },
+  {
+    "type": "c4-standard-192-lssd",
+    "family": "C4",
+    "vcpu": 192,
+    "memGiB": 720,
+    "storageGB": 12000,
+    "usd": 12.118296986
+  },
+  {
+    "type": "c4-standard-288-lssd",
+    "family": "C4",
+    "vcpu": 288,
+    "memGiB": 1080,
+    "storageGB": 18000,
+    "usd": 18.177445479
+  },
+  {
+    "type": "c4-standard-288-lssd-metal",
+    "family": "C4",
+    "vcpu": 288,
+    "memGiB": 1080,
+    "storageGB": 18000,
+    "usd": 18.177445479
+  },
+  {
+    "type": "c4-highmem-4-lssd",
+    "family": "C4",
+    "vcpu": 4,
+    "memGiB": 31,
+    "storageGB": 375,
+    "usd": 0.342869781
+  },
+  {
+    "type": "c4-highmem-8-lssd",
+    "family": "C4",
+    "vcpu": 8,
+    "memGiB": 62,
+    "storageGB": 375,
+    "usd": 0.603547781
+  },
+  {
+    "type": "c4-highmem-16-lssd",
+    "family": "C4",
+    "vcpu": 16,
+    "memGiB": 124,
+    "storageGB": 750,
+    "usd": 1.207095562
+  },
+  {
+    "type": "c4-highmem-24-lssd",
+    "family": "C4",
+    "vcpu": 24,
+    "memGiB": 186,
+    "storageGB": 1500,
+    "usd": 1.892835123
+  },
+  {
+    "type": "c4-highmem-32-lssd",
+    "family": "C4",
+    "vcpu": 32,
+    "memGiB": 248,
+    "storageGB": 1875,
+    "usd": 2.496382904
+  },
+  {
+    "type": "c4-highmem-48-lssd",
+    "family": "C4",
+    "vcpu": 48,
+    "memGiB": 372,
+    "storageGB": 3000,
+    "usd": 3.785670247
+  },
+  {
+    "type": "c4-highmem-96-lssd",
+    "family": "C4",
+    "vcpu": 96,
+    "memGiB": 744,
+    "storageGB": 6000,
+    "usd": 7.571340493
+  },
+  {
+    "type": "c4-highmem-144-lssd",
+    "family": "C4",
+    "vcpu": 144,
+    "memGiB": 1116,
+    "storageGB": 9000,
+    "usd": 11.35701074
+  },
+  {
+    "type": "c4-highmem-192-lssd",
+    "family": "C4",
+    "vcpu": 192,
+    "memGiB": 1488,
+    "storageGB": 12000,
+    "usd": 15.142680986
+  },
+  {
+    "type": "c4-highmem-288-lssd",
+    "family": "C4",
+    "vcpu": 288,
+    "memGiB": 2232,
+    "storageGB": 18000,
+    "usd": 22.714021479
+  },
+  {
+    "type": "c4-highmem-288-lssd-metal",
+    "family": "C4",
+    "vcpu": 288,
+    "memGiB": 2232,
+    "storageGB": 18000,
+    "usd": 22.714021479
+  },
+  {
+    "type": "c4a-standard-1",
+    "family": "C4A",
+    "vcpu": 1,
+    "memGiB": 4,
+    "storageGB": 0,
+    "usd": 0.0449
+  },
+  {
+    "type": "c4a-standard-2",
+    "family": "C4A",
+    "vcpu": 2,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.0898
+  },
+  {
+    "type": "c4a-standard-4",
+    "family": "C4A",
+    "vcpu": 4,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.1796
+  },
+  {
+    "type": "c4a-standard-8",
+    "family": "C4A",
+    "vcpu": 8,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.3592
+  },
+  {
+    "type": "c4a-standard-16",
+    "family": "C4A",
+    "vcpu": 16,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.7184
+  },
+  {
+    "type": "c4a-standard-32",
+    "family": "C4A",
+    "vcpu": 32,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 1.4368
+  },
+  {
+    "type": "c4a-standard-48",
+    "family": "C4A",
+    "vcpu": 48,
+    "memGiB": 192,
+    "storageGB": 0,
+    "usd": 2.1552
+  },
+  {
+    "type": "c4a-standard-64",
+    "family": "C4A",
+    "vcpu": 64,
+    "memGiB": 256,
+    "storageGB": 0,
+    "usd": 2.8736
+  },
+  {
+    "type": "c4a-standard-72",
+    "family": "C4A",
+    "vcpu": 72,
+    "memGiB": 288,
+    "storageGB": 0,
+    "usd": 3.2328
+  },
+  {
+    "type": "c4a-highmem-1",
+    "family": "C4A",
+    "vcpu": 1,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.05894
+  },
+  {
+    "type": "c4a-highmem-2",
+    "family": "C4A",
+    "vcpu": 2,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.11788
+  },
+  {
+    "type": "c4a-highmem-4",
+    "family": "C4A",
+    "vcpu": 4,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.23576
+  },
+  {
+    "type": "c4a-highmem-8",
+    "family": "C4A",
+    "vcpu": 8,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.47152
+  },
+  {
+    "type": "c4a-highmem-16",
+    "family": "C4A",
+    "vcpu": 16,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 0.94304
+  },
+  {
+    "type": "c4a-highmem-32",
+    "family": "C4A",
+    "vcpu": 32,
+    "memGiB": 256,
+    "storageGB": 0,
+    "usd": 1.88608
+  },
+  {
+    "type": "c4a-highmem-48",
+    "family": "C4A",
+    "vcpu": 48,
+    "memGiB": 384,
+    "storageGB": 0,
+    "usd": 2.82912
+  },
+  {
+    "type": "c4a-highmem-64",
+    "family": "C4A",
+    "vcpu": 64,
+    "memGiB": 512,
+    "storageGB": 0,
+    "usd": 3.77216
+  },
+  {
+    "type": "c4a-highmem-72",
+    "family": "C4A",
+    "vcpu": 72,
+    "memGiB": 576,
+    "storageGB": 0,
+    "usd": 4.24368
+  },
+  {
+    "type": "c4a-highcpu-1",
+    "family": "C4A",
+    "vcpu": 1,
+    "memGiB": 2,
+    "storageGB": 0,
+    "usd": 0.03788
+  },
+  {
+    "type": "c4a-highcpu-2",
+    "family": "C4A",
+    "vcpu": 2,
+    "memGiB": 4,
+    "storageGB": 0,
+    "usd": 0.07576
+  },
+  {
+    "type": "c4a-highcpu-4",
+    "family": "C4A",
+    "vcpu": 4,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.15152
+  },
+  {
+    "type": "c4a-highcpu-8",
+    "family": "C4A",
+    "vcpu": 8,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.30304
+  },
+  {
+    "type": "c4a-highcpu-16",
+    "family": "C4A",
+    "vcpu": 16,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.60608
+  },
+  {
+    "type": "c4a-highcpu-32",
+    "family": "C4A",
+    "vcpu": 32,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 1.21216
+  },
+  {
+    "type": "c4a-highcpu-48",
+    "family": "C4A",
+    "vcpu": 48,
+    "memGiB": 96,
+    "storageGB": 0,
+    "usd": 1.81824
+  },
+  {
+    "type": "c4a-highcpu-64",
+    "family": "C4A",
+    "vcpu": 64,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 2.42432
+  },
+  {
+    "type": "c4a-highcpu-72",
+    "family": "C4A",
+    "vcpu": 72,
+    "memGiB": 144,
+    "storageGB": 0,
+    "usd": 2.72736
+  },
+  {
+    "type": "c4a-standard-4-lssd",
+    "family": "C4A",
+    "vcpu": 4,
+    "memGiB": 16,
+    "storageGB": 375,
+    "usd": 0.241243836
+  },
+  {
+    "type": "c4a-standard-8-lssd",
+    "family": "C4A",
+    "vcpu": 8,
+    "memGiB": 32,
+    "storageGB": 750,
+    "usd": 0.482487671
+  },
+  {
+    "type": "c4a-standard-16-lssd",
+    "family": "C4A",
+    "vcpu": 16,
+    "memGiB": 64,
+    "storageGB": 1500,
+    "usd": 0.964975342
+  },
+  {
+    "type": "c4a-standard-32-lssd",
+    "family": "C4A",
+    "vcpu": 32,
+    "memGiB": 128,
+    "storageGB": 2250,
+    "usd": 1.806663014
+  },
+  {
+    "type": "c4a-standard-48-lssd",
+    "family": "C4A",
+    "vcpu": 48,
+    "memGiB": 192,
+    "storageGB": 3750,
+    "usd": 2.771638356
+  },
+  {
+    "type": "c4a-standard-64-lssd",
+    "family": "C4A",
+    "vcpu": 64,
+    "memGiB": 256,
+    "storageGB": 5250,
+    "usd": 3.736613699
+  },
+  {
+    "type": "c4a-standard-72-lssd",
+    "family": "C4A",
+    "vcpu": 72,
+    "memGiB": 288,
+    "storageGB": 6000,
+    "usd": 4.21910137
+  },
+  {
+    "type": "c4a-highmem-4-lssd",
+    "family": "C4A",
+    "vcpu": 4,
+    "memGiB": 32,
+    "storageGB": 375,
+    "usd": 0.297403836
+  },
+  {
+    "type": "c4a-highmem-8-lssd",
+    "family": "C4A",
+    "vcpu": 8,
+    "memGiB": 64,
+    "storageGB": 750,
+    "usd": 0.594807671
+  },
+  {
+    "type": "c4a-highmem-16-lssd",
+    "family": "C4A",
+    "vcpu": 16,
+    "memGiB": 128,
+    "storageGB": 1500,
+    "usd": 1.189615342
+  },
+  {
+    "type": "c4a-highmem-32-lssd",
+    "family": "C4A",
+    "vcpu": 32,
+    "memGiB": 256,
+    "storageGB": 2250,
+    "usd": 2.255943014
+  },
+  {
+    "type": "c4a-highmem-48-lssd",
+    "family": "C4A",
+    "vcpu": 48,
+    "memGiB": 384,
+    "storageGB": 3750,
+    "usd": 3.445558356
+  },
+  {
+    "type": "c4a-highmem-64-lssd",
+    "family": "C4A",
+    "vcpu": 64,
+    "memGiB": 512,
+    "storageGB": 5250,
+    "usd": 4.635173699
+  },
+  {
+    "type": "c4a-highmem-72-lssd",
+    "family": "C4A",
+    "vcpu": 72,
+    "memGiB": 576,
+    "storageGB": 6000,
+    "usd": 5.22998137
+  },
+  {
+    "type": "c4d-standard-2",
+    "family": "C4D",
+    "vcpu": 2,
+    "memGiB": 7,
+    "storageGB": 0,
+    "usd": 0.091680438
+  },
+  {
+    "type": "c4d-standard-4",
+    "family": "C4D",
+    "vcpu": 4,
+    "memGiB": 15,
+    "storageGB": 0,
+    "usd": 0.187114224
+  },
+  {
+    "type": "c4d-standard-8",
+    "family": "C4D",
+    "vcpu": 8,
+    "memGiB": 31,
+    "storageGB": 0,
+    "usd": 0.377981797
+  },
+  {
+    "type": "c4d-standard-16",
+    "family": "C4D",
+    "vcpu": 16,
+    "memGiB": 62,
+    "storageGB": 0,
+    "usd": 0.755963594
+  },
+  {
+    "type": "c4d-standard-32",
+    "family": "C4D",
+    "vcpu": 32,
+    "memGiB": 124,
+    "storageGB": 0,
+    "usd": 1.511927189
+  },
+  {
+    "type": "c4d-standard-48",
+    "family": "C4D",
+    "vcpu": 48,
+    "memGiB": 186,
+    "storageGB": 0,
+    "usd": 2.267890783
+  },
+  {
+    "type": "c4d-standard-64",
+    "family": "C4D",
+    "vcpu": 64,
+    "memGiB": 248,
+    "storageGB": 0,
+    "usd": 3.023854378
+  },
+  {
+    "type": "c4d-standard-96",
+    "family": "C4D",
+    "vcpu": 96,
+    "memGiB": 372,
+    "storageGB": 0,
+    "usd": 4.535781567
+  },
+  {
+    "type": "c4d-standard-192",
+    "family": "C4D",
+    "vcpu": 192,
+    "memGiB": 744,
+    "storageGB": 0,
+    "usd": 9.071563133
+  },
+  {
+    "type": "c4d-standard-384",
+    "family": "C4D",
+    "vcpu": 384,
+    "memGiB": 1488,
+    "storageGB": 0,
+    "usd": 18.143126267
+  },
+  {
+    "type": "c4d-standard-384-metal",
+    "family": "C4D",
+    "vcpu": 384,
+    "memGiB": 1536,
+    "storageGB": 0,
+    "usd": 18.323286985
+  },
+  {
+    "type": "c4d-highmem-2",
+    "family": "C4D",
+    "vcpu": 2,
+    "memGiB": 15,
+    "storageGB": 0,
+    "usd": 0.121707224
+  },
+  {
+    "type": "c4d-highmem-4",
+    "family": "C4D",
+    "vcpu": 4,
+    "memGiB": 31,
+    "storageGB": 0,
+    "usd": 0.247167797
+  },
+  {
+    "type": "c4d-highmem-8",
+    "family": "C4D",
+    "vcpu": 8,
+    "memGiB": 63,
+    "storageGB": 0,
+    "usd": 0.498088943
+  },
+  {
+    "type": "c4d-highmem-16",
+    "family": "C4D",
+    "vcpu": 16,
+    "memGiB": 126,
+    "storageGB": 0,
+    "usd": 0.996177886
+  },
+  {
+    "type": "c4d-highmem-32",
+    "family": "C4D",
+    "vcpu": 32,
+    "memGiB": 252,
+    "storageGB": 0,
+    "usd": 1.992355771
+  },
+  {
+    "type": "c4d-highmem-48",
+    "family": "C4D",
+    "vcpu": 48,
+    "memGiB": 378,
+    "storageGB": 0,
+    "usd": 2.988533657
+  },
+  {
+    "type": "c4d-highmem-64",
+    "family": "C4D",
+    "vcpu": 64,
+    "memGiB": 504,
+    "storageGB": 0,
+    "usd": 3.984711542
+  },
+  {
+    "type": "c4d-highmem-96",
+    "family": "C4D",
+    "vcpu": 96,
+    "memGiB": 756,
+    "storageGB": 0,
+    "usd": 5.977067313
+  },
+  {
+    "type": "c4d-highmem-192",
+    "family": "C4D",
+    "vcpu": 192,
+    "memGiB": 1512,
+    "storageGB": 0,
+    "usd": 11.954134626
+  },
+  {
+    "type": "c4d-highmem-384",
+    "family": "C4D",
+    "vcpu": 384,
+    "memGiB": 3024,
+    "storageGB": 0,
+    "usd": 23.908269252
+  },
+  {
+    "type": "c4d-highmem-384-metal",
+    "family": "C4D",
+    "vcpu": 384,
+    "memGiB": 3072,
+    "storageGB": 0,
+    "usd": 24.08842997
+  },
+  {
+    "type": "c4d-highcpu-2",
+    "family": "C4D",
+    "vcpu": 2,
+    "memGiB": 3,
+    "storageGB": 0,
+    "usd": 0.076667045
+  },
+  {
+    "type": "c4d-highcpu-4",
+    "family": "C4D",
+    "vcpu": 4,
+    "memGiB": 7,
+    "storageGB": 0,
+    "usd": 0.157087438
+  },
+  {
+    "type": "c4d-highcpu-8",
+    "family": "C4D",
+    "vcpu": 8,
+    "memGiB": 15,
+    "storageGB": 0,
+    "usd": 0.317928224
+  },
+  {
+    "type": "c4d-highcpu-16",
+    "family": "C4D",
+    "vcpu": 16,
+    "memGiB": 30,
+    "storageGB": 0,
+    "usd": 0.635856449
+  },
+  {
+    "type": "c4d-highcpu-32",
+    "family": "C4D",
+    "vcpu": 32,
+    "memGiB": 60,
+    "storageGB": 0,
+    "usd": 1.271712898
+  },
+  {
+    "type": "c4d-highcpu-48",
+    "family": "C4D",
+    "vcpu": 48,
+    "memGiB": 90,
+    "storageGB": 0,
+    "usd": 1.907569347
+  },
+  {
+    "type": "c4d-highcpu-64",
+    "family": "C4D",
+    "vcpu": 64,
+    "memGiB": 120,
+    "storageGB": 0,
+    "usd": 2.543425796
+  },
+  {
+    "type": "c4d-highcpu-96",
+    "family": "C4D",
+    "vcpu": 96,
+    "memGiB": 180,
+    "storageGB": 0,
+    "usd": 3.815138694
+  },
+  {
+    "type": "c4d-highcpu-192",
+    "family": "C4D",
+    "vcpu": 192,
+    "memGiB": 360,
+    "storageGB": 0,
+    "usd": 7.630277387
+  },
+  {
+    "type": "c4d-highcpu-384",
+    "family": "C4D",
+    "vcpu": 384,
+    "memGiB": 720,
+    "storageGB": 0,
+    "usd": 15.260554774
+  },
+  {
+    "type": "c4d-highcpu-384-metal",
+    "family": "C4D",
+    "vcpu": 384,
+    "memGiB": 768,
+    "storageGB": 0,
+    "usd": 15.440715493
+  },
+  {
+    "type": "c4d-standard-8-lssd",
+    "family": "C4D",
+    "vcpu": 8,
+    "memGiB": 31,
+    "storageGB": 375,
+    "usd": 0.460173578
+  },
+  {
+    "type": "c4d-standard-16-lssd",
+    "family": "C4D",
+    "vcpu": 16,
+    "memGiB": 62,
+    "storageGB": 375,
+    "usd": 0.838155375
+  },
+  {
+    "type": "c4d-standard-32-lssd",
+    "family": "C4D",
+    "vcpu": 32,
+    "memGiB": 124,
+    "storageGB": 750,
+    "usd": 1.676310751
+  },
+  {
+    "type": "c4d-standard-48-lssd",
+    "family": "C4D",
+    "vcpu": 48,
+    "memGiB": 186,
+    "storageGB": 1500,
+    "usd": 2.596657906
+  },
+  {
+    "type": "c4d-standard-64-lssd",
+    "family": "C4D",
+    "vcpu": 64,
+    "memGiB": 248,
+    "storageGB": 2250,
+    "usd": 3.517005063
+  },
+  {
+    "type": "c4d-standard-96-lssd",
+    "family": "C4D",
+    "vcpu": 96,
+    "memGiB": 372,
+    "storageGB": 3000,
+    "usd": 5.193315814
+  },
+  {
+    "type": "c4d-standard-192-lssd",
+    "family": "C4D",
+    "vcpu": 192,
+    "memGiB": 744,
+    "storageGB": 6000,
+    "usd": 10.386631626
+  },
+  {
+    "type": "c4d-standard-384-lssd",
+    "family": "C4D",
+    "vcpu": 384,
+    "memGiB": 1488,
+    "storageGB": 12000,
+    "usd": 20.773263253
+  },
+  {
+    "type": "c4d-highmem-8-lssd",
+    "family": "C4D",
+    "vcpu": 8,
+    "memGiB": 63,
+    "storageGB": 375,
+    "usd": 0.580280724
+  },
+  {
+    "type": "c4d-highmem-16-lssd",
+    "family": "C4D",
+    "vcpu": 16,
+    "memGiB": 126,
+    "storageGB": 375,
+    "usd": 1.078369667
+  },
+  {
+    "type": "c4d-highmem-32-lssd",
+    "family": "C4D",
+    "vcpu": 32,
+    "memGiB": 252,
+    "storageGB": 750,
+    "usd": 2.156739333
+  },
+  {
+    "type": "c4d-highmem-48-lssd",
+    "family": "C4D",
+    "vcpu": 48,
+    "memGiB": 378,
+    "storageGB": 1500,
+    "usd": 3.31730078
+  },
+  {
+    "type": "c4d-highmem-64-lssd",
+    "family": "C4D",
+    "vcpu": 64,
+    "memGiB": 504,
+    "storageGB": 2250,
+    "usd": 4.477862227
+  },
+  {
+    "type": "c4d-highmem-96-lssd",
+    "family": "C4D",
+    "vcpu": 96,
+    "memGiB": 756,
+    "storageGB": 3000,
+    "usd": 6.63460156
+  },
+  {
+    "type": "c4d-highmem-192-lssd",
+    "family": "C4D",
+    "vcpu": 192,
+    "memGiB": 1512,
+    "storageGB": 6000,
+    "usd": 13.269203119
+  },
+  {
+    "type": "c4d-highmem-384-lssd",
+    "family": "C4D",
+    "vcpu": 384,
+    "memGiB": 3024,
+    "storageGB": 12000,
+    "usd": 26.538406238
+  },
+  {
+    "type": "n4-standard-2",
+    "family": "N4",
+    "vcpu": 2,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.0907
+  },
+  {
+    "type": "n4-standard-4",
+    "family": "N4",
+    "vcpu": 4,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.1814
+  },
+  {
+    "type": "n4-standard-8",
+    "family": "N4",
+    "vcpu": 8,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.3628
+  },
+  {
+    "type": "n4-standard-16",
+    "family": "N4",
+    "vcpu": 16,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.7256
+  },
+  {
+    "type": "n4-standard-32",
+    "family": "N4",
+    "vcpu": 32,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 1.4512
+  },
+  {
+    "type": "n4-standard-48",
+    "family": "N4",
+    "vcpu": 48,
+    "memGiB": 192,
+    "storageGB": 0,
+    "usd": 2.1768
+  },
+  {
+    "type": "n4-standard-64",
+    "family": "N4",
+    "vcpu": 64,
+    "memGiB": 256,
+    "storageGB": 0,
+    "usd": 2.9024
+  },
+  {
+    "type": "n4-standard-80",
+    "family": "N4",
+    "vcpu": 80,
+    "memGiB": 320,
+    "storageGB": 0,
+    "usd": 3.628
+  },
+  {
+    "type": "n4-highmem-2",
+    "family": "N4",
+    "vcpu": 2,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.11902
+  },
+  {
+    "type": "n4-highmem-4",
+    "family": "N4",
+    "vcpu": 4,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.23804
+  },
+  {
+    "type": "n4-highmem-8",
+    "family": "N4",
+    "vcpu": 8,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.47608
+  },
+  {
+    "type": "n4-highmem-16",
+    "family": "N4",
+    "vcpu": 16,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 0.95216
+  },
+  {
+    "type": "n4-highmem-32",
+    "family": "N4",
+    "vcpu": 32,
+    "memGiB": 256,
+    "storageGB": 0,
+    "usd": 1.90432
+  },
+  {
+    "type": "n4-highmem-48",
+    "family": "N4",
+    "vcpu": 48,
+    "memGiB": 384,
+    "storageGB": 0,
+    "usd": 2.85648
+  },
+  {
+    "type": "n4-highmem-64",
+    "family": "N4",
+    "vcpu": 64,
+    "memGiB": 512,
+    "storageGB": 0,
+    "usd": 3.80864
+  },
+  {
+    "type": "n4-highmem-80",
+    "family": "N4",
+    "vcpu": 80,
+    "memGiB": 640,
+    "storageGB": 0,
+    "usd": 4.7608
+  },
+  {
+    "type": "n4-highcpu-2",
+    "family": "N4",
+    "vcpu": 2,
+    "memGiB": 4,
+    "storageGB": 0,
+    "usd": 0.07654
+  },
+  {
+    "type": "n4-highcpu-4",
+    "family": "N4",
+    "vcpu": 4,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.15308
+  },
+  {
+    "type": "n4-highcpu-8",
+    "family": "N4",
+    "vcpu": 8,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.30616
+  },
+  {
+    "type": "n4-highcpu-16",
+    "family": "N4",
+    "vcpu": 16,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.61232
+  },
+  {
+    "type": "n4-highcpu-32",
+    "family": "N4",
+    "vcpu": 32,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 1.22464
+  },
+  {
+    "type": "n4-highcpu-48",
+    "family": "N4",
+    "vcpu": 48,
+    "memGiB": 96,
+    "storageGB": 0,
+    "usd": 1.83696
+  },
+  {
+    "type": "n4-highcpu-64",
+    "family": "N4",
+    "vcpu": 64,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 2.44928
+  },
+  {
+    "type": "n4-highcpu-80",
+    "family": "N4",
+    "vcpu": 80,
+    "memGiB": 160,
+    "storageGB": 0,
+    "usd": 3.0616
+  },
+  {
+    "type": "n4d-standard-2",
+    "family": "N4D",
+    "vcpu": 2,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.0847
+  },
+  {
+    "type": "n4d-standard-4",
+    "family": "N4D",
+    "vcpu": 4,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.1694
+  },
+  {
+    "type": "n4d-standard-8",
+    "family": "N4D",
+    "vcpu": 8,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.3388
+  },
+  {
+    "type": "n4d-standard-16",
+    "family": "N4D",
+    "vcpu": 16,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.6776
+  },
+  {
+    "type": "n4d-standard-32",
+    "family": "N4D",
+    "vcpu": 32,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 1.3552
+  },
+  {
+    "type": "n4d-standard-48",
+    "family": "N4D",
+    "vcpu": 48,
+    "memGiB": 192,
+    "storageGB": 0,
+    "usd": 2.0328
+  },
+  {
+    "type": "n4d-standard-64",
+    "family": "N4D",
+    "vcpu": 64,
+    "memGiB": 256,
+    "storageGB": 0,
+    "usd": 2.7104
+  },
+  {
+    "type": "n4d-standard-80",
+    "family": "N4D",
+    "vcpu": 80,
+    "memGiB": 320,
+    "storageGB": 0,
+    "usd": 3.388
+  },
+  {
+    "type": "n4d-standard-96",
+    "family": "N4D",
+    "vcpu": 96,
+    "memGiB": 384,
+    "storageGB": 0,
+    "usd": 4.0656
+  },
+  {
+    "type": "n4d-highmem-2",
+    "family": "N4D",
+    "vcpu": 2,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.11118
+  },
+  {
+    "type": "n4d-highmem-4",
+    "family": "N4D",
+    "vcpu": 4,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.22236
+  },
+  {
+    "type": "n4d-highmem-8",
+    "family": "N4D",
+    "vcpu": 8,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.44472
+  },
+  {
+    "type": "n4d-highmem-16",
+    "family": "N4D",
+    "vcpu": 16,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 0.88944
+  },
+  {
+    "type": "n4d-highmem-32",
+    "family": "N4D",
+    "vcpu": 32,
+    "memGiB": 256,
+    "storageGB": 0,
+    "usd": 1.77888
+  },
+  {
+    "type": "n4d-highmem-48",
+    "family": "N4D",
+    "vcpu": 48,
+    "memGiB": 384,
+    "storageGB": 0,
+    "usd": 2.66832
+  },
+  {
+    "type": "n4d-highmem-64",
+    "family": "N4D",
+    "vcpu": 64,
+    "memGiB": 512,
+    "storageGB": 0,
+    "usd": 3.55776
+  },
+  {
+    "type": "n4d-highmem-80",
+    "family": "N4D",
+    "vcpu": 80,
+    "memGiB": 640,
+    "storageGB": 0,
+    "usd": 4.4472
+  },
+  {
+    "type": "n4d-highmem-96",
+    "family": "N4D",
+    "vcpu": 96,
+    "memGiB": 768,
+    "storageGB": 0,
+    "usd": 5.33664
+  },
+  {
+    "type": "n4d-highcpu-2",
+    "family": "N4D",
+    "vcpu": 2,
+    "memGiB": 4,
+    "storageGB": 0,
+    "usd": 0.07146
+  },
+  {
+    "type": "n4d-highcpu-4",
+    "family": "N4D",
+    "vcpu": 4,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.14292
+  },
+  {
+    "type": "n4d-highcpu-8",
+    "family": "N4D",
+    "vcpu": 8,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.28584
+  },
+  {
+    "type": "n4d-highcpu-16",
+    "family": "N4D",
+    "vcpu": 16,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.57168
+  },
+  {
+    "type": "n4d-highcpu-32",
+    "family": "N4D",
+    "vcpu": 32,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 1.14336
+  },
+  {
+    "type": "n4d-highcpu-48",
+    "family": "N4D",
+    "vcpu": 48,
+    "memGiB": 96,
+    "storageGB": 0,
+    "usd": 1.71504
+  },
+  {
+    "type": "n4d-highcpu-64",
+    "family": "N4D",
+    "vcpu": 64,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 2.28672
+  },
+  {
+    "type": "n4d-highcpu-80",
+    "family": "N4D",
+    "vcpu": 80,
+    "memGiB": 160,
+    "storageGB": 0,
+    "usd": 2.8584
+  },
+  {
+    "type": "n4d-highcpu-96",
+    "family": "N4D",
+    "vcpu": 96,
+    "memGiB": 192,
+    "storageGB": 0,
+    "usd": 3.43008
+  },
+  {
+    "type": "n4a-standard-1",
+    "family": "N4A",
+    "vcpu": 1,
+    "memGiB": 4,
+    "storageGB": 0,
+    "usd": 0.0385
+  },
+  {
+    "type": "n4a-standard-2",
+    "family": "N4A",
+    "vcpu": 2,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.077
+  },
+  {
+    "type": "n4a-standard-4",
+    "family": "N4A",
+    "vcpu": 4,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.154
+  },
+  {
+    "type": "n4a-standard-8",
+    "family": "N4A",
+    "vcpu": 8,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.308
+  },
+  {
+    "type": "n4a-standard-16",
+    "family": "N4A",
+    "vcpu": 16,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.616
+  },
+  {
+    "type": "n4a-standard-32",
+    "family": "N4A",
+    "vcpu": 32,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 1.232
+  },
+  {
+    "type": "n4a-standard-48",
+    "family": "N4A",
+    "vcpu": 48,
+    "memGiB": 192,
+    "storageGB": 0,
+    "usd": 1.848
+  },
+  {
+    "type": "n4a-standard-64",
+    "family": "N4A",
+    "vcpu": 64,
+    "memGiB": 256,
+    "storageGB": 0,
+    "usd": 2.464
+  },
+  {
+    "type": "n4a-highmem-1",
+    "family": "N4A",
+    "vcpu": 1,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.05054
+  },
+  {
+    "type": "n4a-highmem-2",
+    "family": "N4A",
+    "vcpu": 2,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.10108
+  },
+  {
+    "type": "n4a-highmem-4",
+    "family": "N4A",
+    "vcpu": 4,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.20216
+  },
+  {
+    "type": "n4a-highmem-8",
+    "family": "N4A",
+    "vcpu": 8,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.40432
+  },
+  {
+    "type": "n4a-highmem-16",
+    "family": "N4A",
+    "vcpu": 16,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 0.80864
+  },
+  {
+    "type": "n4a-highmem-32",
+    "family": "N4A",
+    "vcpu": 32,
+    "memGiB": 256,
+    "storageGB": 0,
+    "usd": 1.61728
+  },
+  {
+    "type": "n4a-highmem-48",
+    "family": "N4A",
+    "vcpu": 48,
+    "memGiB": 384,
+    "storageGB": 0,
+    "usd": 2.42592
+  },
+  {
+    "type": "n4a-highmem-64",
+    "family": "N4A",
+    "vcpu": 64,
+    "memGiB": 512,
+    "storageGB": 0,
+    "usd": 3.23456
+  },
+  {
+    "type": "n4a-highcpu-1",
+    "family": "N4A",
+    "vcpu": 1,
+    "memGiB": 2,
+    "storageGB": 0,
+    "usd": 0.03248
+  },
+  {
+    "type": "n4a-highcpu-2",
+    "family": "N4A",
+    "vcpu": 2,
+    "memGiB": 4,
+    "storageGB": 0,
+    "usd": 0.06496
+  },
+  {
+    "type": "n4a-highcpu-4",
+    "family": "N4A",
+    "vcpu": 4,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.12992
+  },
+  {
+    "type": "n4a-highcpu-8",
+    "family": "N4A",
+    "vcpu": 8,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.25984
+  },
+  {
+    "type": "n4a-highcpu-16",
+    "family": "N4A",
+    "vcpu": 16,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.51968
+  },
+  {
+    "type": "n4a-highcpu-32",
+    "family": "N4A",
+    "vcpu": 32,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 1.03936
+  },
+  {
+    "type": "n4a-highcpu-48",
+    "family": "N4A",
+    "vcpu": 48,
+    "memGiB": 96,
+    "storageGB": 0,
+    "usd": 1.55904
+  },
+  {
+    "type": "n4a-highcpu-64",
+    "family": "N4A",
+    "vcpu": 64,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 2.07872
+  },
+  {
+    "type": "c3-standard-4",
+    "family": "C3",
+    "vcpu": 4,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.201608
+  },
+  {
+    "type": "c3-standard-8",
+    "family": "C3",
+    "vcpu": 8,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.403216
+  },
+  {
+    "type": "c3-standard-22",
+    "family": "C3",
+    "vcpu": 22,
+    "memGiB": 88,
+    "storageGB": 0,
+    "usd": 1.108844
+  },
+  {
+    "type": "c3-standard-44",
+    "family": "C3",
+    "vcpu": 44,
+    "memGiB": 176,
+    "storageGB": 0,
+    "usd": 2.217688
+  },
+  {
+    "type": "c3-standard-88",
+    "family": "C3",
+    "vcpu": 88,
+    "memGiB": 352,
+    "storageGB": 0,
+    "usd": 4.435376
+  },
+  {
+    "type": "c3-standard-176",
+    "family": "C3",
+    "vcpu": 176,
+    "memGiB": 704,
+    "storageGB": 0,
+    "usd": 8.870752
+  },
+  {
+    "type": "c3-standard-192-metal",
+    "family": "C3",
+    "vcpu": 192,
+    "memGiB": 768,
+    "storageGB": 0,
+    "usd": 9.677184
+  },
+  {
+    "type": "c3-highmem-4",
+    "family": "C3",
+    "vcpu": 4,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.264616
+  },
+  {
+    "type": "c3-highmem-8",
+    "family": "C3",
+    "vcpu": 8,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.529232
+  },
+  {
+    "type": "c3-highmem-22",
+    "family": "C3",
+    "vcpu": 22,
+    "memGiB": 176,
+    "storageGB": 0,
+    "usd": 1.455388
+  },
+  {
+    "type": "c3-highmem-44",
+    "family": "C3",
+    "vcpu": 44,
+    "memGiB": 352,
+    "storageGB": 0,
+    "usd": 2.910776
+  },
+  {
+    "type": "c3-highmem-88",
+    "family": "C3",
+    "vcpu": 88,
+    "memGiB": 704,
+    "storageGB": 0,
+    "usd": 5.821552
+  },
+  {
+    "type": "c3-highmem-176",
+    "family": "C3",
+    "vcpu": 176,
+    "memGiB": 1408,
+    "storageGB": 0,
+    "usd": 11.643104
+  },
+  {
+    "type": "c3-highmem-192-metal",
+    "family": "C3",
+    "vcpu": 192,
+    "memGiB": 1536,
+    "storageGB": 0,
+    "usd": 12.701568
+  },
+  {
+    "type": "c3-highcpu-4",
+    "family": "C3",
+    "vcpu": 4,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.170104
+  },
+  {
+    "type": "c3-highcpu-8",
+    "family": "C3",
+    "vcpu": 8,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.340208
+  },
+  {
+    "type": "c3-highcpu-22",
+    "family": "C3",
+    "vcpu": 22,
+    "memGiB": 44,
+    "storageGB": 0,
+    "usd": 0.935572
+  },
+  {
+    "type": "c3-highcpu-44",
+    "family": "C3",
+    "vcpu": 44,
+    "memGiB": 88,
+    "storageGB": 0,
+    "usd": 1.871144
+  },
+  {
+    "type": "c3-highcpu-88",
+    "family": "C3",
+    "vcpu": 88,
+    "memGiB": 176,
+    "storageGB": 0,
+    "usd": 3.742288
+  },
+  {
+    "type": "c3-highcpu-176",
+    "family": "C3",
+    "vcpu": 176,
+    "memGiB": 352,
+    "storageGB": 0,
+    "usd": 7.484576
+  },
+  {
+    "type": "c3-highcpu-192-metal",
+    "family": "C3",
+    "vcpu": 192,
+    "memGiB": 512,
+    "storageGB": 0,
+    "usd": 8.669056
+  },
+  {
+    "type": "c3d-standard-4",
+    "family": "C3D",
+    "vcpu": 4,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.181596
+  },
+  {
+    "type": "c3d-standard-8",
+    "family": "C3D",
+    "vcpu": 8,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.363192
+  },
+  {
+    "type": "c3d-standard-16",
+    "family": "C3D",
+    "vcpu": 16,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.726384
+  },
+  {
+    "type": "c3d-standard-30",
+    "family": "C3D",
+    "vcpu": 30,
+    "memGiB": 120,
+    "storageGB": 0,
+    "usd": 1.36197
+  },
+  {
+    "type": "c3d-standard-60",
+    "family": "C3D",
+    "vcpu": 60,
+    "memGiB": 240,
+    "storageGB": 0,
+    "usd": 2.72394
+  },
+  {
+    "type": "c3d-standard-90",
+    "family": "C3D",
+    "vcpu": 90,
+    "memGiB": 360,
+    "storageGB": 0,
+    "usd": 4.08591
+  },
+  {
+    "type": "c3d-standard-180",
+    "family": "C3D",
+    "vcpu": 180,
+    "memGiB": 720,
+    "storageGB": 0,
+    "usd": 8.17182
+  },
+  {
+    "type": "c3d-standard-360",
+    "family": "C3D",
+    "vcpu": 360,
+    "memGiB": 1440,
+    "storageGB": 0,
+    "usd": 16.34364
+  },
+  {
+    "type": "c3d-highmem-4",
+    "family": "C3D",
+    "vcpu": 4,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.24494
+  },
+  {
+    "type": "c3d-highmem-8",
+    "family": "C3D",
+    "vcpu": 8,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.48988
+  },
+  {
+    "type": "c3d-highmem-16",
+    "family": "C3D",
+    "vcpu": 16,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 0.97976
+  },
+  {
+    "type": "c3d-highmem-30",
+    "family": "C3D",
+    "vcpu": 30,
+    "memGiB": 240,
+    "storageGB": 0,
+    "usd": 1.83705
+  },
+  {
+    "type": "c3d-highmem-60",
+    "family": "C3D",
+    "vcpu": 60,
+    "memGiB": 480,
+    "storageGB": 0,
+    "usd": 3.6741
+  },
+  {
+    "type": "c3d-highmem-90",
+    "family": "C3D",
+    "vcpu": 90,
+    "memGiB": 720,
+    "storageGB": 0,
+    "usd": 5.51115
+  },
+  {
+    "type": "c3d-highmem-180",
+    "family": "C3D",
+    "vcpu": 180,
+    "memGiB": 1440,
+    "storageGB": 0,
+    "usd": 11.0223
+  },
+  {
+    "type": "c3d-highmem-360",
+    "family": "C3D",
+    "vcpu": 360,
+    "memGiB": 2880,
+    "storageGB": 0,
+    "usd": 22.0446
+  },
+  {
+    "type": "c3d-highcpu-4",
+    "family": "C3D",
+    "vcpu": 4,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.149924
+  },
+  {
+    "type": "c3d-highcpu-8",
+    "family": "C3D",
+    "vcpu": 8,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.299848
+  },
+  {
+    "type": "c3d-highcpu-16",
+    "family": "C3D",
+    "vcpu": 16,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.599696
+  },
+  {
+    "type": "c3d-highcpu-30",
+    "family": "C3D",
+    "vcpu": 30,
+    "memGiB": 60,
+    "storageGB": 0,
+    "usd": 1.12443
+  },
+  {
+    "type": "c3d-highcpu-60",
+    "family": "C3D",
+    "vcpu": 60,
+    "memGiB": 120,
+    "storageGB": 0,
+    "usd": 2.24886
+  },
+  {
+    "type": "c3d-highcpu-90",
+    "family": "C3D",
+    "vcpu": 90,
+    "memGiB": 180,
+    "storageGB": 0,
+    "usd": 3.37329
+  },
+  {
+    "type": "c3d-highcpu-180",
+    "family": "C3D",
+    "vcpu": 180,
+    "memGiB": 360,
+    "storageGB": 0,
+    "usd": 6.74658
+  },
+  {
+    "type": "c3d-highcpu-360",
+    "family": "C3D",
+    "vcpu": 360,
+    "memGiB": 720,
+    "storageGB": 0,
+    "usd": 13.49316
+  },
+  {
+    "type": "e2-standard-2",
+    "family": "E2",
+    "vcpu": 2,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.06701142
+  },
+  {
+    "type": "e2-standard-4",
+    "family": "E2",
+    "vcpu": 4,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.13402284
+  },
+  {
+    "type": "e2-standard-8",
+    "family": "E2",
+    "vcpu": 8,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.26804568
+  },
+  {
+    "type": "e2-standard-16",
+    "family": "E2",
+    "vcpu": 16,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.53609136
+  },
+  {
+    "type": "e2-standard-32",
+    "family": "E2",
+    "vcpu": 32,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 1.07218272
+  },
+  {
+    "type": "e2-highmem-2",
+    "family": "E2",
+    "vcpu": 2,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.09039966
+  },
+  {
+    "type": "e2-highmem-4",
+    "family": "E2",
+    "vcpu": 4,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.18079932
+  },
+  {
+    "type": "e2-highmem-8",
+    "family": "E2",
+    "vcpu": 8,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.36159864
+  },
+  {
+    "type": "e2-highmem-16",
+    "family": "E2",
+    "vcpu": 16,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 0.72319728
+  },
+  {
+    "type": "e2-highcpu-2",
+    "family": "E2",
+    "vcpu": 2,
+    "memGiB": 2,
+    "storageGB": 0,
+    "usd": 0.04947024
+  },
+  {
+    "type": "e2-highcpu-4",
+    "family": "E2",
+    "vcpu": 4,
+    "memGiB": 4,
+    "storageGB": 0,
+    "usd": 0.09894048
+  },
+  {
+    "type": "e2-highcpu-8",
+    "family": "E2",
+    "vcpu": 8,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.19788096
+  },
+  {
+    "type": "e2-highcpu-16",
+    "family": "E2",
+    "vcpu": 16,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.39576192
+  },
+  {
+    "type": "e2-highcpu-32",
+    "family": "E2",
+    "vcpu": 32,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.79152384
+  },
+  {
+    "type": "n2-standard-2",
+    "family": "N2",
+    "vcpu": 2,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.097118
+  },
+  {
+    "type": "n2-standard-4",
+    "family": "N2",
+    "vcpu": 4,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.194236
+  },
+  {
+    "type": "n2-standard-8",
+    "family": "N2",
+    "vcpu": 8,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.388472
+  },
+  {
+    "type": "n2-standard-16",
+    "family": "N2",
+    "vcpu": 16,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.776944
+  },
+  {
+    "type": "n2-standard-32",
+    "family": "N2",
+    "vcpu": 32,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 1.553888
+  },
+  {
+    "type": "n2-standard-48",
+    "family": "N2",
+    "vcpu": 48,
+    "memGiB": 192,
+    "storageGB": 0,
+    "usd": 2.330832
+  },
+  {
+    "type": "n2-standard-64",
+    "family": "N2",
+    "vcpu": 64,
+    "memGiB": 256,
+    "storageGB": 0,
+    "usd": 3.107776
+  },
+  {
+    "type": "n2-standard-80",
+    "family": "N2",
+    "vcpu": 80,
+    "memGiB": 320,
+    "storageGB": 0,
+    "usd": 3.88472
+  },
+  {
+    "type": "n2-standard-96",
+    "family": "N2",
+    "vcpu": 96,
+    "memGiB": 384,
+    "storageGB": 0,
+    "usd": 4.661664
+  },
+  {
+    "type": "n2-standard-128",
+    "family": "N2",
+    "vcpu": 128,
+    "memGiB": 512,
+    "storageGB": 0,
+    "usd": 6.215552
+  },
+  {
+    "type": "n2-highmem-2",
+    "family": "N2",
+    "vcpu": 2,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.131014
+  },
+  {
+    "type": "n2-highmem-4",
+    "family": "N2",
+    "vcpu": 4,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.262028
+  },
+  {
+    "type": "n2-highmem-8",
+    "family": "N2",
+    "vcpu": 8,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.524056
+  },
+  {
+    "type": "n2-highmem-16",
+    "family": "N2",
+    "vcpu": 16,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 1.048112
+  },
+  {
+    "type": "n2-highmem-32",
+    "family": "N2",
+    "vcpu": 32,
+    "memGiB": 256,
+    "storageGB": 0,
+    "usd": 2.096224
+  },
+  {
+    "type": "n2-highmem-48",
+    "family": "N2",
+    "vcpu": 48,
+    "memGiB": 384,
+    "storageGB": 0,
+    "usd": 3.144336
+  },
+  {
+    "type": "n2-highmem-64",
+    "family": "N2",
+    "vcpu": 64,
+    "memGiB": 512,
+    "storageGB": 0,
+    "usd": 4.192448
+  },
+  {
+    "type": "n2-highmem-80",
+    "family": "N2",
+    "vcpu": 80,
+    "memGiB": 640,
+    "storageGB": 0,
+    "usd": 5.24056
+  },
+  {
+    "type": "n2-highmem-96",
+    "family": "N2",
+    "vcpu": 96,
+    "memGiB": 768,
+    "storageGB": 0,
+    "usd": 6.288672
+  },
+  {
+    "type": "n2-highmem-128",
+    "family": "N2",
+    "vcpu": 128,
+    "memGiB": 864,
+    "storageGB": 0,
+    "usd": 7.706976
+  },
+  {
+    "type": "n2-highcpu-2",
+    "family": "N2",
+    "vcpu": 2,
+    "memGiB": 2,
+    "storageGB": 0,
+    "usd": 0.071696
+  },
+  {
+    "type": "n2-highcpu-4",
+    "family": "N2",
+    "vcpu": 4,
+    "memGiB": 4,
+    "storageGB": 0,
+    "usd": 0.143392
+  },
+  {
+    "type": "n2-highcpu-8",
+    "family": "N2",
+    "vcpu": 8,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.286784
+  },
+  {
+    "type": "n2-highcpu-16",
+    "family": "N2",
+    "vcpu": 16,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.573568
+  },
+  {
+    "type": "n2-highcpu-32",
+    "family": "N2",
+    "vcpu": 32,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 1.147136
+  },
+  {
+    "type": "n2-highcpu-48",
+    "family": "N2",
+    "vcpu": 48,
+    "memGiB": 48,
+    "storageGB": 0,
+    "usd": 1.720704
+  },
+  {
+    "type": "n2-highcpu-64",
+    "family": "N2",
+    "vcpu": 64,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 2.294272
+  },
+  {
+    "type": "n2-highcpu-80",
+    "family": "N2",
+    "vcpu": 80,
+    "memGiB": 80,
+    "storageGB": 0,
+    "usd": 2.86784
+  },
+  {
+    "type": "n2-highcpu-96",
+    "family": "N2",
+    "vcpu": 96,
+    "memGiB": 96,
+    "storageGB": 0,
+    "usd": 3.441408
+  },
+  {
+    "type": "n2d-standard-2",
+    "family": "N2D",
+    "vcpu": 2,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.084492
+  },
+  {
+    "type": "n2d-standard-4",
+    "family": "N2D",
+    "vcpu": 4,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.168984
+  },
+  {
+    "type": "n2d-standard-8",
+    "family": "N2D",
+    "vcpu": 8,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.337968
+  },
+  {
+    "type": "n2d-standard-16",
+    "family": "N2D",
+    "vcpu": 16,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.675936
+  },
+  {
+    "type": "n2d-standard-32",
+    "family": "N2D",
+    "vcpu": 32,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 1.351872
+  },
+  {
+    "type": "n2d-standard-48",
+    "family": "N2D",
+    "vcpu": 48,
+    "memGiB": 192,
+    "storageGB": 0,
+    "usd": 2.027808
+  },
+  {
+    "type": "n2d-standard-64",
+    "family": "N2D",
+    "vcpu": 64,
+    "memGiB": 256,
+    "storageGB": 0,
+    "usd": 2.703744
+  },
+  {
+    "type": "n2d-standard-80",
+    "family": "N2D",
+    "vcpu": 80,
+    "memGiB": 320,
+    "storageGB": 0,
+    "usd": 3.37968
+  },
+  {
+    "type": "n2d-standard-96",
+    "family": "N2D",
+    "vcpu": 96,
+    "memGiB": 384,
+    "storageGB": 0,
+    "usd": 4.055616
+  },
+  {
+    "type": "n2d-standard-128",
+    "family": "N2D",
+    "vcpu": 128,
+    "memGiB": 512,
+    "storageGB": 0,
+    "usd": 5.407488
+  },
+  {
+    "type": "n2d-standard-224",
+    "family": "N2D",
+    "vcpu": 224,
+    "memGiB": 896,
+    "storageGB": 0,
+    "usd": 9.463104
+  },
+  {
+    "type": "n2d-highmem-2",
+    "family": "N2D",
+    "vcpu": 2,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.11398
+  },
+  {
+    "type": "n2d-highmem-4",
+    "family": "N2D",
+    "vcpu": 4,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.22796
+  },
+  {
+    "type": "n2d-highmem-8",
+    "family": "N2D",
+    "vcpu": 8,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.45592
+  },
+  {
+    "type": "n2d-highmem-16",
+    "family": "N2D",
+    "vcpu": 16,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 0.91184
+  },
+  {
+    "type": "n2d-highmem-32",
+    "family": "N2D",
+    "vcpu": 32,
+    "memGiB": 256,
+    "storageGB": 0,
+    "usd": 1.82368
+  },
+  {
+    "type": "n2d-highmem-48",
+    "family": "N2D",
+    "vcpu": 48,
+    "memGiB": 384,
+    "storageGB": 0,
+    "usd": 2.73552
+  },
+  {
+    "type": "n2d-highmem-64",
+    "family": "N2D",
+    "vcpu": 64,
+    "memGiB": 512,
+    "storageGB": 0,
+    "usd": 3.64736
+  },
+  {
+    "type": "n2d-highmem-80",
+    "family": "N2D",
+    "vcpu": 80,
+    "memGiB": 640,
+    "storageGB": 0,
+    "usd": 4.5592
+  },
+  {
+    "type": "n2d-highmem-96",
+    "family": "N2D",
+    "vcpu": 96,
+    "memGiB": 768,
+    "storageGB": 0,
+    "usd": 5.47104
+  },
+  {
+    "type": "n2d-highcpu-2",
+    "family": "N2D",
+    "vcpu": 2,
+    "memGiB": 2,
+    "storageGB": 0,
+    "usd": 0.062376
+  },
+  {
+    "type": "n2d-highcpu-4",
+    "family": "N2D",
+    "vcpu": 4,
+    "memGiB": 4,
+    "storageGB": 0,
+    "usd": 0.124752
+  },
+  {
+    "type": "n2d-highcpu-8",
+    "family": "N2D",
+    "vcpu": 8,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.249504
+  },
+  {
+    "type": "n2d-highcpu-16",
+    "family": "N2D",
+    "vcpu": 16,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.499008
+  },
+  {
+    "type": "n2d-highcpu-32",
+    "family": "N2D",
+    "vcpu": 32,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.998016
+  },
+  {
+    "type": "n2d-highcpu-48",
+    "family": "N2D",
+    "vcpu": 48,
+    "memGiB": 48,
+    "storageGB": 0,
+    "usd": 1.497024
+  },
+  {
+    "type": "n2d-highcpu-64",
+    "family": "N2D",
+    "vcpu": 64,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 1.996032
+  },
+  {
+    "type": "n2d-highcpu-80",
+    "family": "N2D",
+    "vcpu": 80,
+    "memGiB": 80,
+    "storageGB": 0,
+    "usd": 2.49504
+  },
+  {
+    "type": "n2d-highcpu-96",
+    "family": "N2D",
+    "vcpu": 96,
+    "memGiB": 96,
+    "storageGB": 0,
+    "usd": 2.994048
+  },
+  {
+    "type": "n2d-highcpu-128",
+    "family": "N2D",
+    "vcpu": 128,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 3.992064
+  },
+  {
+    "type": "n2d-highcpu-224",
+    "family": "N2D",
+    "vcpu": 224,
+    "memGiB": 224,
+    "storageGB": 0,
+    "usd": 6.986112
+  },
+  {
+    "type": "t2d-standard-1",
+    "family": "Tau T2D",
+    "vcpu": 1,
+    "memGiB": 4,
+    "storageGB": 0,
+    "usd": 0.042246
+  },
+  {
+    "type": "t2d-standard-2",
+    "family": "Tau T2D",
+    "vcpu": 2,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.084492
+  },
+  {
+    "type": "t2d-standard-4",
+    "family": "Tau T2D",
+    "vcpu": 4,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.168984
+  },
+  {
+    "type": "t2d-standard-8",
+    "family": "Tau T2D",
+    "vcpu": 8,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.337968
+  },
+  {
+    "type": "t2d-standard-16",
+    "family": "Tau T2D",
+    "vcpu": 16,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.675936
+  },
+  {
+    "type": "t2d-standard-32",
+    "family": "Tau T2D",
+    "vcpu": 32,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 1.351872
+  },
+  {
+    "type": "t2d-standard-48",
+    "family": "Tau T2D",
+    "vcpu": 48,
+    "memGiB": 192,
+    "storageGB": 0,
+    "usd": 2.027808
+  },
+  {
+    "type": "t2d-standard-60",
+    "family": "Tau T2D",
+    "vcpu": 60,
+    "memGiB": 240,
+    "storageGB": 0,
+    "usd": 2.53476
+  },
+  {
+    "type": "t2a-standard-1",
+    "family": "Tau T2A",
+    "vcpu": 1,
+    "memGiB": 4,
+    "storageGB": 0,
+    "usd": 0.0385
+  },
+  {
+    "type": "t2a-standard-2",
+    "family": "Tau T2A",
+    "vcpu": 2,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.077
+  },
+  {
+    "type": "t2a-standard-4",
+    "family": "Tau T2A",
+    "vcpu": 4,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.154
+  },
+  {
+    "type": "t2a-standard-8",
+    "family": "Tau T2A",
+    "vcpu": 8,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.308
+  },
+  {
+    "type": "t2a-standard-16",
+    "family": "Tau T2A",
+    "vcpu": 16,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.616
+  },
+  {
+    "type": "t2a-standard-32",
+    "family": "Tau T2A",
+    "vcpu": 32,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 1.232
+  },
+  {
+    "type": "t2a-standard-48",
+    "family": "Tau T2A",
+    "vcpu": 48,
+    "memGiB": 192,
+    "storageGB": 0,
+    "usd": 1.848
+  },
+  {
+    "type": "n1-standard-1",
+    "family": "N1",
+    "vcpu": 1,
+    "memGiB": 3.75,
+    "storageGB": 0,
+    "usd": 0.04749975
+  },
+  {
+    "type": "n1-standard-2",
+    "family": "N1",
+    "vcpu": 2,
+    "memGiB": 7.5,
+    "storageGB": 0,
+    "usd": 0.0949995
+  },
+  {
+    "type": "n1-standard-4",
+    "family": "N1",
+    "vcpu": 4,
+    "memGiB": 15,
+    "storageGB": 0,
+    "usd": 0.189999
+  },
+  {
+    "type": "n1-standard-8",
+    "family": "N1",
+    "vcpu": 8,
+    "memGiB": 30,
+    "storageGB": 0,
+    "usd": 0.379998
+  },
+  {
+    "type": "n1-standard-16",
+    "family": "N1",
+    "vcpu": 16,
+    "memGiB": 60,
+    "storageGB": 0,
+    "usd": 0.759996
+  },
+  {
+    "type": "n1-standard-32",
+    "family": "N1",
+    "vcpu": 32,
+    "memGiB": 120,
+    "storageGB": 0,
+    "usd": 1.519992
+  },
+  {
+    "type": "n1-standard-64",
+    "family": "N1",
+    "vcpu": 64,
+    "memGiB": 240,
+    "storageGB": 0,
+    "usd": 3.039984
+  },
+  {
+    "type": "n1-highmem-2",
+    "family": "N1",
+    "vcpu": 2,
+    "memGiB": 13,
+    "storageGB": 0,
+    "usd": 0.118303
+  },
+  {
+    "type": "n1-highmem-4",
+    "family": "N1",
+    "vcpu": 4,
+    "memGiB": 26,
+    "storageGB": 0,
+    "usd": 0.236606
+  },
+  {
+    "type": "n1-highmem-8",
+    "family": "N1",
+    "vcpu": 8,
+    "memGiB": 52,
+    "storageGB": 0,
+    "usd": 0.473212
+  },
+  {
+    "type": "n1-highmem-16",
+    "family": "N1",
+    "vcpu": 16,
+    "memGiB": 104,
+    "storageGB": 0,
+    "usd": 0.946424
+  },
+  {
+    "type": "n1-highmem-32",
+    "family": "N1",
+    "vcpu": 32,
+    "memGiB": 208,
+    "storageGB": 0,
+    "usd": 1.892848
+  },
+  {
+    "type": "n1-highmem-64",
+    "family": "N1",
+    "vcpu": 64,
+    "memGiB": 416,
+    "storageGB": 0,
+    "usd": 3.785696
+  },
+  {
+    "type": "n1-highcpu-2",
+    "family": "N1",
+    "vcpu": 2,
+    "memGiB": 1.8,
+    "storageGB": 0,
+    "usd": 0.0708486
+  },
+  {
+    "type": "n1-highcpu-4",
+    "family": "N1",
+    "vcpu": 4,
+    "memGiB": 3.6,
+    "storageGB": 0,
+    "usd": 0.1416972
+  },
+  {
+    "type": "n1-highcpu-8",
+    "family": "N1",
+    "vcpu": 8,
+    "memGiB": 7.2,
+    "storageGB": 0,
+    "usd": 0.2833944
+  },
+  {
+    "type": "n1-highcpu-16",
+    "family": "N1",
+    "vcpu": 16,
+    "memGiB": 14.4,
+    "storageGB": 0,
+    "usd": 0.5667888
+  },
+  {
+    "type": "n1-highcpu-32",
+    "family": "N1",
+    "vcpu": 32,
+    "memGiB": 28.8,
+    "storageGB": 0,
+    "usd": 1.1335776
+  },
+  {
+    "type": "n1-highcpu-64",
+    "family": "N1",
+    "vcpu": 64,
+    "memGiB": 57.6,
+    "storageGB": 0,
+    "usd": 2.2671552
+  },
+  {
+    "type": "e2-micro",
+    "family": "E2",
+    "vcpu": 2,
+    "memGiB": 1,
+    "storageGB": 0,
+    "usd": 0.008376428
+  },
+  {
+    "type": "e2-small",
+    "family": "E2",
+    "vcpu": 2,
+    "memGiB": 2,
+    "storageGB": 0,
+    "usd": 0.016752855
+  },
+  {
+    "type": "e2-medium",
+    "family": "E2",
+    "vcpu": 2,
+    "memGiB": 4,
+    "storageGB": 0,
+    "usd": 0.03350571
+  },
+  {
+    "type": "f1-micro",
+    "family": "N1",
+    "vcpu": 0.2,
+    "memGiB": 0.6,
+    "storageGB": 0,
+    "usd": 0.0076
+  },
+  {
+    "type": "g1-small",
+    "family": "N1",
+    "vcpu": 0.5,
+    "memGiB": 1.7,
+    "storageGB": 0,
+    "usd": 0.0257
+  }
+]
