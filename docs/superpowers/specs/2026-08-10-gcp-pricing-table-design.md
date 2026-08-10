@@ -146,12 +146,15 @@ fixtures/gcp/disks.json             31 rows: name, rateType, usd
 fixtures/gcp/hyperdisk-compat.json  42 rows: series, balanced, balancedHA, extreme, throughput, ml
         |
         v
-src/lib/data/normalize.js    extended with normalizeGcp(raw) -> Row, reusing
-                              parseMemoryGiB / parseStorageGB / parseSeries / sizeRank
+src/lib/data/normalize.js    normalize() renamed to normalizeAws() for symmetry with
+                              the new normalizeGcp(raw) -> Row, both reusing the file's
+                              shared parseMemoryGiB / parseStorageGB / parseSeries /
+                              sizeRank helpers
         |
         v
-src/lib/data/gcpInstances.js  mirrors instances.js: imports instances.json, calls
-                              normalizeGcp, exports instances/families
+src/lib/data/awsInstances.js  renamed from instances.js, calls normalizeAws
+src/lib/data/gcpInstances.js  new, mirrors awsInstances.js: imports instances.json,
+                              calls normalizeGcp, exports instances/families
         |
         v
 src/lib/data/query.js        unchanged — applyQuery/COMPARATORS already operate on
@@ -244,7 +247,8 @@ user-supplied data, fixtures are frozen at build time):
   `don't support` and one `support` cell) and assert the JSON it produces. One test
   asserts **all 381 real rows** extract with no parse failure, mirroring the AWS spec's
   "all 1322 fixture rows normalize with no NaN" test.
-- **`normalize.test.js`** — extended with `normalizeGcp` cases: a standard row, a
+- **`normalize.test.js`** — existing `normalize(...)` calls become `normalizeAws(...)`
+  (mechanical rename, same assertions), plus new `normalizeGcp` cases: a standard row, a
   `-lssd` row (confirms `storageGB` is populated), and the two fractional-vCPU rows
   (confirms `parseFloat` not `parseInt` is in play).
 - **`query.test.js`** — unchanged tests still pass unmodified (GCP rows are just more
@@ -256,6 +260,11 @@ user-supplied data, fixtures are frozen at build time):
 
 ## Housekeeping in scope
 
+- Rename `src/lib/data/instances.js` → `awsInstances.js` and `normalize()` →
+  `normalizeAws()`, so the two providers' loader modules and normalize functions are
+  named symmetrically (`awsInstances.js`/`gcpInstances.js`,
+  `normalizeAws()`/`normalizeGcp()`) rather than the AWS side being the unqualified
+  original and GCP the odd one out. Update `App.svelte`'s import accordingly.
 - Add `scripts/extract-gcp.mjs` to `package.json` as a documented, manually-run script
   (not part of `build`), and document it in the README next to the AWS `wget` commands
   — including that it must be re-run if any of the three source HTML/CSV files are
