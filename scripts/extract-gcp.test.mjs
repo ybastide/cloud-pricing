@@ -102,8 +102,10 @@ describe('extractInstanceRows over the real fixture', () => {
     expect(bad).toEqual([])
   })
 
-  it('gives every row a positive price', () => {
+  it('gives every row a positive price, vCPU, and memory', () => {
     expect(rows.every((r) => r.usd > 0)).toBe(true)
+    expect(rows.every((r) => r.vcpu > 0)).toBe(true)
+    expect(rows.every((r) => r.memGiB > 0)).toBe(true)
   })
 
   it('finds all 14 families and no others', () => {
