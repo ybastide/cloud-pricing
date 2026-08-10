@@ -36,6 +36,7 @@
       instances: awsInstances,
       families: awsFamilies,
       showArch: true,
+      // undefined so Toolbar/InstanceTable fall through to their own AWS-shaped defaults
       placeholders: undefined,
       columns: undefined,
     },
@@ -89,7 +90,6 @@
     query.provider = next
     query.search = ''
     query.families = new Set()
-    query.arch = 'all'
   }
 </script>
 

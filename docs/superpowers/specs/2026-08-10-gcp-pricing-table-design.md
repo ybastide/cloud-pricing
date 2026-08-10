@@ -16,12 +16,13 @@ reconstruction, no other region.
 
 ## Fixture reality
 
-`fixtures/gcp/` holds three files, none of them structured data:
+`fixtures/gcp/` holds four files, none of them structured data:
 
 | File | Size | Contents |
 | --- | --- | --- |
 | `General Purpose VM pricing _ Google Cloud.html` | 35 MB | Full DOM snapshot of Google's pricing page, saved with JS already executed. 76 `<table>` elements. |
 | `Google Cloud Hyperdisk overview _ _ Compute Engine _ _ Google Cloud Documentation.html` | 400 KB | Documentation page. 6 tables; only one matters here. |
+| `CPU platforms _ Compute Engine _ Google Cloud Documentation.html` | 362 KB | Google's official machine-series-to-CPU-platform reference. Not read by the extraction script — consulted by hand to verify the `arch` derivation (added mid-implementation, see Task 8). |
 | `Pricing for My Billing Account.csv` | 36 MB, 165k rows | GCP's full SKU catalog (all products, not just Compute). **Not used by this spec** — see "Why not the CSV" below. |
 
 Unlike AWS's fixtures, none of these are close to the shape the app needs. All parsing
@@ -213,11 +214,13 @@ billing CSV's SKU description text happens to say "Arm" for `C4A`/`T2A` but not 
   region/OS label).
 - **`Toolbar.svelte`** — family chips become data-driven from whichever provider is
   active (`families` prop already exists; GCP's 14 replace AWS's 8). The architecture
-  toggle (All/ARM/x86) is AWS-only and hidden on the GCP tab, since the fixture carries
-  no architecture data.
+  toggle (All/ARM/x86) is shown on both tabs — GCP's `attrs === 'a'` families (`C4A`,
+  `N4A`, `Tau T2A`) are Arm, everyone else is x86, added in a later task once this was
+  found to be derivable after all (see the `normalizeGcp` section above).
 - **`InstanceTable.svelte`** — unchanged. Columns for GCP: Machine type, vCPU, Memory,
   Local SSD (blank for the 329 rows without one), Price. No Network Performance column
-  on this tab — the field doesn't exist.
+  on this tab — the field doesn't exist. Architecture is filtered, not displayed, same
+  as on the AWS tab.
 - **`DiskPricingPanel.svelte`** (new) — static render of `disks.json`'s 31 rows: name,
   rate ($/GiB-hour or $/hour), no sorting/filtering needed for 31 rows.
 - **`HyperdiskCompatTable.svelte`** (new) — static render of `hyperdisk-compat.json`'s

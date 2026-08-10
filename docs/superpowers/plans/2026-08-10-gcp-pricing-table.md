@@ -1566,6 +1566,21 @@ Full replacement of `src/App.svelte`:
 </main>
 ```
 
+**Two things changed after this step was first implemented, during the final whole-branch
+review's fix loop — both already landed in code, this note just makes the plan match reality:**
+
+1. A `$effect(() => { document.title = provider.label })` was added (not shown in the code block
+   above) so the browser tab title switches along with the on-page heading — caught when a human
+   noticed the tab still said "EC2 On-Demand Pricing" after switching to the GCP tab.
+2. Step 5 below (`query.js`'s `netGbps` comparator) was implemented as specified, then **fully
+   reverted**. `applyQuery`'s sort call (`sign * compare(a, b) || a.type.localeCompare(b.type)`)
+   treats a `NaN` result from `compare()` exactly like a `0` result (both are falsy, both fall
+   through to the type tiebreak) — and `applyQuery` in this app is only ever called with one
+   provider's homogeneous row set at a time, never a mix. So the `?? 0` guard changed nothing
+   observable in any reachable case; it was dead defensive code with an inaccurate rationale, not
+   a real fix. `query.js` should be treated as unmodified by this task — do not apply Step 5's
+   `netGbps` change if executing this plan from scratch.
+
 `placeholders={provider.placeholders}` and `columns={provider.columns}` passing
 `undefined` for the `aws` entry is deliberate: Svelte's prop defaults trigger on
 `undefined`, so both reach `Toolbar`'s `DEFAULT_PLACEHOLDERS` and `InstanceTable`'s

@@ -127,6 +127,7 @@ export function extractDiskRows(html) {
   const rows = []
 
   const persistentHeading = headings.find((h) => h.text === 'Persistent disk space pricing')
+  if (!persistentHeading) throw new Error('Could not find the "Persistent disk space pricing" heading')
   const persistentTable = tables.find((t) => t.index > persistentHeading.index)
   const pCells = tableCells(persistentTable.html).slice(2) // drop the 2-cell header row
   for (let i = 0; i < pCells.length; i += 2) {
@@ -134,6 +135,7 @@ export function extractDiskRows(html) {
   }
 
   const localSsdHeading = headings.find((h) => h.text === 'Local SSD pricing')
+  if (!localSsdHeading) throw new Error('Could not find the "Local SSD pricing" heading')
   const localSsdTable = tables.find((t) => t.index > localSsdHeading.index)
   const lCells = tableCells(localSsdTable.html)
   // 6-cell header (Type + 5 price columns), then the row: name at index 6, Default price at index 7
@@ -173,6 +175,9 @@ export function extractHyperdiskCompat(html) {
 
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs'
 
+// Prefix-match rather than a literal path: the real filenames on disk use
+// non-breaking spaces around their underscores, not regular spaces — a
+// literal path string here would silently fail to open the file.
 function findFixture(prefix) {
   const files = readdirSync('fixtures/gcp')
   const match = files.find((f) => f.startsWith(prefix))

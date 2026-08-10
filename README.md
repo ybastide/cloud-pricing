@@ -45,7 +45,7 @@ for the MVP.
 
 ### GCP
 
-See `fixtures/gcp`. Three files — none of them fetched with `wget`, since GCP
+See `fixtures/gcp`. Four files — none of them fetched with `wget`, since GCP
 doesn't expose a comparable public JSON endpoint (Google retired the old
 `cloudpricingcalculator.appspot.com` calculator and its static data files along
 with it). Instead:
@@ -55,9 +55,16 @@ with it). Instead:
   saves of the rendered pricing/documentation pages (File → Save Page As, with
   JS already executed), frozen at whatever region was selected when saved
   (**Iowa / us-central1** for the pricing page).
+- `CPU platforms _ Compute Engine _ Google Cloud Documentation.html` is Google's
+  official machine-series-to-CPU-platform reference — not read by the extraction
+  script, consulted by hand to verify which GCP families are Arm (`C4A`, `N4A`,
+  `Tau T2A`) vs. x86. Kept committed so that verification is checkable, not just
+  described.
 - `Pricing for My Billing Account.csv` is GCP's full SKU catalog, exported from
   a Cloud Billing account. **Not used by the app** — see the design spec for why.
 
 Run `npm run extract:gcp` to regenerate `instances.json`, `disks.json`, and
-`hyperdisk-compat.json` from the two HTML files. Re-run it if either HTML file is
-refreshed — the app only ever reads the generated JSON, never the HTML directly.
+`hyperdisk-compat.json` from the two pricing/Hyperdisk HTML files (the CPU
+platforms doc isn't read by the script — see above). Re-run it if either of
+those two files is refreshed — the app only ever reads the generated JSON,
+never the HTML directly.

@@ -98,17 +98,12 @@ export function normalizeAllAws(index) {
   )
 }
 
-const GCP_SERIES = /^([a-z]+)(\d+)([a-z0-9-]*)$/i
-
 export function normalizeGcp(raw) {
   const type = raw.type
-  const [firstSegment = ''] = type.split('-')
-  const match = GCP_SERIES.exec(firstSegment)
-  const letters = match ? match[1] : firstSegment
-  const generation = match ? finite(parseInt(match[2], 10)) : 0
-  const attrs = match ? match[3] : ''
+  const [firstSegment] = type.split('-')
+  const { letters, generation, attrs } = parseSeries(firstSegment)
   const vcpu = finite(raw.vcpu)
-  const arch = attrs === 'a' ? 'arm' : 'x86'
+  const arch = attrs.toLowerCase() === 'a' ? 'arm' : 'x86'
 
   return {
     type,
