@@ -5,13 +5,16 @@ A Vite+Svelte app to quickly compare cloud pricing.
 ## Features
 
 - display AWS EC2 pricing
-- future: display GCP pricing
+- display GCP Compute Engine pricing
 - future: S3 pricing, including cross-region transfer pricing
 - like https://instances.vantage.sh/
 
-As an MVP, we will focus on AWS EC2 pricing and use the downloaded fixtures.
+Both providers are served entirely from checked-in fixtures — no network calls at
+runtime.
 
 ## Fixtures
+
+### AWS
 
 See `fixtures/aws`. Six files, fetched with:
 
