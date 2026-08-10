@@ -4,6 +4,7 @@ import { defaultQuery, fromSearchParams, toSearchParams } from './urlState.js'
 describe('defaultQuery', () => {
   it('starts empty, sorted by price ascending, priced hourly', () => {
     expect(defaultQuery()).toEqual({
+      provider: 'aws',
       search: '',
       families: new Set(),
       arch: 'all',
@@ -107,6 +108,7 @@ describe('fromSearchParams', () => {
 describe('round trip', () => {
   it('survives a fully populated query', () => {
     const query = {
+      ...defaultQuery(),
       search: 'm5',
       families: new Set(['General purpose', 'Memory optimized']),
       arch: 'arm',
@@ -134,5 +136,32 @@ describe('round trip', () => {
 
   it('ignores empty fam parameters', () => {
     expect(fromSearchParams('fam=&fam=').families).toEqual(new Set())
+  })
+})
+
+describe('provider in the query state', () => {
+  it('defaults to aws', () => {
+    expect(defaultQuery().provider).toBe('aws')
+  })
+
+  it('omits provider from the URL when it is the default', () => {
+    expect(toSearchParams({ ...defaultQuery(), provider: 'aws' })).toBe('')
+  })
+
+  it('serialises a non-default provider', () => {
+    expect(toSearchParams({ ...defaultQuery(), provider: 'gcp' })).toBe('provider=gcp')
+  })
+
+  it('accepts a known provider', () => {
+    expect(fromSearchParams('provider=gcp').provider).toBe('gcp')
+  })
+
+  it('falls back to aws for an unknown provider', () => {
+    expect(fromSearchParams('provider=azure').provider).toBe('aws')
+  })
+
+  it('round-trips a gcp query with other fields set', () => {
+    const query = { ...defaultQuery(), provider: 'gcp', search: 'c4', sort: 'vcpu', dir: 'desc' }
+    expect(fromSearchParams(toSearchParams(query))).toEqual(query)
   })
 })

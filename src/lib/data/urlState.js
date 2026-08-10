@@ -2,10 +2,13 @@ import { DEFAULT_DIR, DEFAULT_SORT, SORT_KEYS } from './query.js'
 
 const DEFAULT_UNIT = 'hour'
 const DEFAULT_ARCH = 'all'
+const DEFAULT_PROVIDER = 'aws'
 const ARCHES = ['arm', 'x86']
+const PROVIDERS = ['aws', 'gcp']
 
 export function defaultQuery() {
   return {
+    provider: DEFAULT_PROVIDER,
     search: '',
     families: new Set(),
     arch: DEFAULT_ARCH,
@@ -17,6 +20,7 @@ export function defaultQuery() {
 
 export function toSearchParams(query) {
   const params = new URLSearchParams()
+  if (query.provider && query.provider !== DEFAULT_PROVIDER) params.set('provider', query.provider)
   if (query.search) params.set('q', query.search)
   for (const family of query.families ?? []) params.append('fam', family)
   if (query.arch && query.arch !== DEFAULT_ARCH) params.set('arch', query.arch)
@@ -29,6 +33,9 @@ export function toSearchParams(query) {
 export function fromSearchParams(search) {
   const params = new URLSearchParams(search)
   const query = defaultQuery()
+
+  const provider = params.get('provider')
+  if (provider && PROVIDERS.includes(provider)) query.provider = provider
 
   query.search = params.get('q') ?? ''
 

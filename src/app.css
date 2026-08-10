@@ -189,3 +189,35 @@ tbody tr:nth-child(even) {
 .chip.clear {
   border-style: dashed;
 }
+
+.tabs {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.tabs button {
+  padding: 0.4rem 0.9rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tabs button.active {
+  color: var(--bg);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.reference-panel {
+  margin-top: 2rem;
+}
+
+.reference-panel h2 {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+}

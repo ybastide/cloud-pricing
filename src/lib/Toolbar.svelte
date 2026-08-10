@@ -1,5 +1,16 @@
 <script>
-  let { query = $bindable(), families } = $props()
+  const DEFAULT_PLACEHOLDERS = {
+    all: 'Filter by instance type, e.g. m5 or 4xlarge',
+    arm: 'Filter by instance type, e.g. c7g or m8g',
+    x86: 'Filter by instance type, e.g. m5 or c7i',
+  }
+
+  let {
+    query = $bindable(),
+    families,
+    showArch = true,
+    placeholders = DEFAULT_PLACEHOLDERS,
+  } = $props()
 
   function toggleFamily(family) {
     const next = new Set(query.families)
@@ -24,35 +35,31 @@
     { value: 'x86', label: 'x86' },
   ]
 
-  const PLACEHOLDERS = {
-    all: 'Filter by instance type, e.g. m5 or 4xlarge',
-    arm: 'Filter by instance type, e.g. c7g or m8g',
-    x86: 'Filter by instance type, e.g. m5 or c7i',
-  }
-
-  const placeholder = $derived(PLACEHOLDERS[query.arch] ?? PLACEHOLDERS.all)
+  const placeholder = $derived(placeholders[query.arch] ?? placeholders.all)
 </script>
 
 <div class="toolbar">
   <input
     type="search"
-    placeholder={placeholder}
+    {placeholder}
     bind:value={query.search}
     aria-label="Filter by instance type"
   />
 
-  <div class="units" role="group" aria-label="Processor architecture">
-    {#each ARCHES as option (option.value)}
-      <button
-        type="button"
-        class:active={query.arch === option.value}
-        aria-pressed={query.arch === option.value}
-        onclick={() => (query.arch = option.value)}
-      >
-        {option.label}
-      </button>
-    {/each}
-  </div>
+  {#if showArch}
+    <div class="units" role="group" aria-label="Processor architecture">
+      {#each ARCHES as option (option.value)}
+        <button
+          type="button"
+          class:active={query.arch === option.value}
+          aria-pressed={query.arch === option.value}
+          onclick={() => (query.arch = option.value)}
+        >
+          {option.label}
+        </button>
+      {/each}
+    </div>
+  {/if}
 
   <div class="units" role="group" aria-label="Price unit">
     <button
