@@ -1799,6 +1799,220 @@ git commit -m "docs: document the GCP extraction script and finish the README's 
 
 ---
 
+### Task 8: Architecture filter for GCP (added mid-implementation)
+
+**Why this task exists, and why it wasn't in the original plan:** the design spec claimed "this
+fixture carries no network or CPU-architecture data," so `normalizeGcp` never got an `arch` field and
+the GCP tab's Toolbar hid the architecture toggle (`showArch: false`). That claim was wrong for
+architecture specifically — caught only because the user asked "why no arch filter on GCP?" after
+Task 5 shipped. Two rounds of verification followed:
+
+1. First pass checked `fixtures/gcp/Pricing for My Billing Account.csv`'s SKU description text for
+   the literal word "Arm" — found it for `C4A` and `T2A`, not for `N4A`, across all 192 of `N4A`'s
+   distinct SKU description strings (every tier: on-demand, custom, spot, sole-tenancy, commitments).
+2. The user corrected this: `N4A` **is** Arm, and added a fourth fixture,
+   `fixtures/gcp/CPU platforms  _  Compute Engine  _  Google Cloud Documentation.html` (Google's
+   official CPU-platforms doc; filename again uses non-breaking spaces around the underscores, same
+   as the Hyperdisk doc). Its "Arm processors" table explicitly lists `C4A`, `N4A`, and `Tau T2A` —
+   the billing CSV's description text simply doesn't always say "Arm" even when a family is Arm-based.
+
+The user then supplied the actual naming rule, verified against this table with zero exceptions across
+all 14 general-purpose families: **no suffix → Intel, `d` → AMD, `a` → Arm** (all three are x86 except
+`a`). Since `normalizeGcp` already splits the type string's first hyphenated segment into
+`letters`/`generation`/`attrs` (Task 4), `attrs` already **is** this suffix — no new parsing needed:
+`C4A`/`N4A`/`T2A` → `attrs === 'a'`, everyone else → `attrs === '' || attrs === 'd'`.
+
+This task is a proper addition to the plan, not a shortcut around it — it goes through implementer +
+task review the same as every other task, because it touches already-reviewed files (`normalize.js`,
+`App.svelte`) and a wrong `arch` value would misclassify every GCP row silently.
+
+**Files:**
+- Modify: `src/lib/data/normalize.js`
+- Modify: `src/lib/data/normalize.test.js`
+- Modify: `src/App.svelte`
+- Modify: `docs/superpowers/specs/2026-08-10-gcp-pricing-table-design.md` (correct the now-inaccurate claim)
+
+**Interfaces:**
+- Consumes: `attrs` (already computed by `normalizeGcp`, Task 4) and `showArch`/`placeholders` (already
+  props on `Toolbar`, Task 5) — no new interface needed anywhere, this task only supplies new *values*
+  to existing seams.
+- Produces: `normalizeGcp`'s row shape gains `arch: 'arm' | 'x86'`. Nothing downstream needs a new field
+  name — `query.js`'s existing `byArch`/`row.arch !== arch` filter (already generic across providers)
+  starts working correctly for GCP the moment this field exists.
+
+- [ ] **Step 1: Write the failing tests**
+
+Append to `src/lib/data/normalize.test.js`:
+
+```js
+describe('normalizeGcp arch classification', () => {
+  it('classifies the three Arm families correctly', () => {
+    expect(normalizeGcp({ ...GCP_RAW, type: 'c4a-standard-4', family: 'C4A' }).arch).toBe('arm')
+    expect(normalizeGcp({ ...GCP_RAW, type: 'n4a-standard-4', family: 'N4A' }).arch).toBe('arm')
+    expect(normalizeGcp({ ...GCP_RAW, type: 't2a-standard-1', family: 'Tau T2A' }).arch).toBe('arm')
+  })
+
+  it('classifies AMD (d suffix) and Intel (no suffix) families as x86', () => {
+    expect(normalizeGcp({ ...GCP_RAW, type: 'c4d-standard-4', family: 'C4D' }).arch).toBe('x86')
+    expect(normalizeGcp({ ...GCP_RAW, type: 'n2d-standard-4', family: 'N2D' }).arch).toBe('x86')
+    expect(normalizeGcp({ ...GCP_RAW, type: 't2d-standard-1', family: 'Tau T2D' }).arch).toBe('x86')
+    expect(normalizeGcp({ ...GCP_RAW, type: 'c4-standard-4', family: 'C4' }).arch).toBe('x86')
+    expect(normalizeGcp({ ...GCP_RAW, type: 'e2-standard-4', family: 'E2' }).arch).toBe('x86')
+  })
+})
+
+describe('arch classification over the real fixture', () => {
+  const raw = JSON.parse(readFileSync('fixtures/gcp/instances.json', 'utf8'))
+  const rows = raw.map(normalizeGcp)
+
+  it('classifies every row as arm or x86, nothing else', () => {
+    expect(rows.filter((r) => r.arch !== 'arm' && r.arch !== 'x86')).toEqual([])
+  })
+
+  it('finds Arm rows only in C4A, N4A, and Tau T2A', () => {
+    const arm = rows.filter((r) => r.arch === 'arm')
+    expect(arm.length).toBeGreaterThan(0)
+    expect(new Set(arm.map((r) => r.family))).toEqual(new Set(['C4A', 'N4A', 'Tau T2A']))
+  })
+
+  it('keeps every other family on x86', () => {
+    const x86 = rows.filter((r) => r.arch === 'x86')
+    const x86Families = new Set(x86.map((r) => r.family))
+    for (const f of ['C4A', 'N4A', 'Tau T2A']) expect(x86Families.has(f)).toBe(false)
+  })
+})
+```
+
+`GCP_RAW` is the fixture object already defined earlier in this file (Task 4) — reuse it, don't redefine it.
+
+- [ ] **Step 2: Run the tests to verify they fail**
+
+Run: `npx vitest run src/lib/data/normalize.test.js`
+Expected: FAIL — `normalizeGcp`'s returned object has no `arch` key yet, so `.arch` is `undefined`,
+which fails every `toBe('arm')`/`toBe('x86')` assertion above.
+
+- [ ] **Step 3: Add `arch` to `normalizeGcp`**
+
+In `src/lib/data/normalize.js`, `normalizeGcp` currently ends:
+
+```js
+  return {
+    type,
+    series: type,
+    letters,
+    generation,
+    attrs,
+    family: raw.family,
+    vcpu,
+    memGiB: finite(raw.memGiB),
+    storageGB: finite(raw.storageGB),
+    sizeRank: vcpu,
+    usd: finite(raw.usd),
+  }
+}
+```
+
+Add one field, right after `attrs` is computed and before the `return`:
+
+```js
+  const arch = attrs === 'a' ? 'arm' : 'x86'
+
+  return {
+    type,
+    series: type,
+    letters,
+    generation,
+    attrs,
+    arch,
+    family: raw.family,
+    vcpu,
+    memGiB: finite(raw.memGiB),
+    storageGB: finite(raw.storageGB),
+    sizeRank: vcpu,
+    usd: finite(raw.usd),
+  }
+}
+```
+
+- [ ] **Step 4: Run the tests to verify they pass**
+
+Run: `npx vitest run src/lib/data/normalize.test.js`
+Expected: all tests PASS, including both new `describe` blocks.
+
+- [ ] **Step 5: Enable the architecture toggle for GCP in `App.svelte`**
+
+Change the `gcp` entry in the `PROVIDERS` object — `showArch: false` becomes `true`, and
+`placeholders` gains arch-specific hints (mirroring AWS's own three-key placeholder map, added in
+Task 5):
+
+```js
+    gcp: {
+      label: 'GCP Compute On-Demand Pricing',
+      context: gcpRegion,
+      instances: gcpInstances,
+      families: gcpFamilies,
+      showArch: true,
+      placeholders: {
+        all: 'Filter by machine type, e.g. c4 or n2-standard',
+        arm: 'Filter by machine type, e.g. c4a or n4a',
+        x86: 'Filter by machine type, e.g. c4 or n2d',
+      },
+      columns: GCP_COLUMNS,
+    },
+```
+
+No other line in `App.svelte` changes. The `arch`-reset effect added in Task 5's fix round
+(`if (!provider.showArch && query.arch !== 'all') query.arch = 'all'`) simply stops firing for GCP now
+that `showArch` is `true` there — it still protects any future provider that doesn't support `arch`.
+
+- [ ] **Step 6: Run the app manually and verify the GCP architecture toggle**
+
+Run: `npm run dev`, open the app, switch to the GCP tab.
+
+Verify: the "All / ARM / x86" toggle is now visible (same as AWS). Click "ARM": the table filters down
+to only `C4A`, `N4A`, and `Tau T2A` rows. Click "x86": every other family shows, none of those three.
+Click "All": back to 381 rows. Confirm the AWS tab's own arch toggle is completely unaffected.
+
+- [ ] **Step 7: Run the full test suite**
+
+Run: `npm test`
+Expected: all tests pass.
+
+- [ ] **Step 8: Correct the design spec's now-inaccurate claim**
+
+In `docs/superpowers/specs/2026-08-10-gcp-pricing-table-design.md`, the `normalizeGcp(raw)` section
+says: *"No AWS field has an equivalent for `arch`, `netGbps`, `netBurst`, or `netLabel` — this fixture
+carries no network or CPU-architecture data."* This is now wrong for `arch`. Replace it with:
+
+```markdown
+No AWS field has an equivalent for `netGbps`, `netBurst`, or `netLabel` — this fixture carries no
+network data. `arch` *is* derivable, from the same `attrs` suffix already split out above: `attrs
+=== 'a'` means Arm (verified against Google's official CPU-platforms documentation — `C4A`, `N4A`,
+and `Tau T2A` are Arm; a suffix of `d` is AMD and no suffix is Intel, both x86). This was missed in
+the original research — the billing CSV's SKU description text happens to say "Arm" for `C4A`/`T2A`
+but not for `N4A`, which looked like a real signal until checked against all three families.
+```
+
+- [ ] **Step 9: Commit**
+
+```bash
+git add src/lib/data/normalize.js src/lib/data/normalize.test.js src/App.svelte docs/superpowers/specs/2026-08-10-gcp-pricing-table-design.md
+git commit -m "feat: add architecture filter for GCP (C4A/N4A/Tau T2A are Arm)
+
+The design spec claimed GCP had no CPU-architecture data; that was wrong.
+attrs (already split out by normalizeGcp) is the exact suffix Google's
+naming convention encodes it in: 'a' = Arm, 'd' = AMD, no suffix = Intel.
+Verified against fixtures/gcp/CPU platforms ... .html (Google's official
+CPU-platforms doc) rather than the billing CSV's SKU description text,
+which says \"Arm\" for C4A/T2A but not for N4A despite N4A genuinely
+being Arm (Google Axion, Neoverse N3 cores) - a real family the CSV-only
+check would have silently misclassified.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"
+```
+
+---
+
 ## Not in this plan
 
 - Any GCP region but Iowa/us-central1, CUD/preemptible/reservation pricing, Tier_1
@@ -1806,3 +2020,7 @@ git commit -m "docs: document the GCP extraction script and finish the README's 
   spec.
 - The billing CSV's multi-region data.
 - Joining the Hyperdisk compatibility table to the priced instance rows.
+- Task 6's e2e spec (not yet written when Task 8 was added) must assert the GCP arch toggle IS
+  visible, not that it's absent — the "hides the architecture toggle on the GCP tab" test named
+  earlier in this plan no longer describes correct behavior once Task 8 lands, and must be replaced
+  before it's written, not written-then-fixed.
