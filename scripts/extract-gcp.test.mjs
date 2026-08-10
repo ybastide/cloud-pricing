@@ -172,6 +172,13 @@ describe('extractDiskRows over the real fixture', () => {
   it('gives every row a positive price', () => {
     expect(rows.every((r) => r.usd > 0)).toBe(true)
   })
+
+  it('classifies every Hyperdisk Storage Pool row correctly despite the trailing tier qualifier', () => {
+    const throughputRow = rows.find((r) => r.name === 'Hyperdisk Storage Pool Balanced provisioned IOPS standard')
+    expect(throughputRow.rateType).toBe('iops')
+    const spaceRow = rows.find((r) => r.name === 'Hyperdisk Storage Pool Throughput provisioned space standard')
+    expect(spaceRow.rateType).toBe('space')
+  })
 })
 
 const COMPAT_EXCERPT = `

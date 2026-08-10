@@ -116,7 +116,8 @@ export function extractInstanceRows(html) {
 
 function parseDiskRow(name, priceCell) {
   const match = PRICE_TOKEN.exec(priceCell)
-  const rateType = name.endsWith('IOPS') ? 'iops' : name.endsWith('throughput') ? 'throughput' : 'space'
+  const base = name.replace(/ (standard|advanced)$/, '')
+  const rateType = base.endsWith('IOPS') ? 'iops' : base.endsWith('throughput') ? 'throughput' : 'space'
   return { name, rateType, usd: match ? parseFloat(match[1]) : 0 }
 }
 

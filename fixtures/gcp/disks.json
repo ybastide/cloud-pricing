@@ -101,12 +101,12 @@
   },
   {
     "name": "Hyperdisk Storage Pool Throughput provisioned throughput standard",
-    "rateType": "space",
+    "rateType": "throughput",
     "usd": 0.000342466
   },
   {
     "name": "Hyperdisk Storage Pool Throughput provisioned throughput advanced",
-    "rateType": "space",
+    "rateType": "throughput",
     "usd": 0.000650685
   },
   {
@@ -121,22 +121,22 @@
   },
   {
     "name": "Hyperdisk Storage Pool Balanced provisioned IOPS standard",
-    "rateType": "space",
+    "rateType": "iops",
     "usd": 0.000006849
   },
   {
     "name": "Hyperdisk Storage Pool Balanced provisioned IOPS advanced",
-    "rateType": "space",
+    "rateType": "iops",
     "usd": 0.000012329
   },
   {
     "name": "Hyperdisk Storage Pool Balanced provisioned throughput standard",
-    "rateType": "space",
+    "rateType": "throughput",
     "usd": 0.000054795
   },
   {
     "name": "Hyperdisk Storage Pool Balanced provisioned throughput advanced",
-    "rateType": "space",
+    "rateType": "throughput",
     "usd": 0.00010411
   },
   {
