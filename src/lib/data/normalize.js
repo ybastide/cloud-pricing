@@ -92,12 +92,6 @@ export function normalizeAws(raw) {
   }
 }
 
-export function normalizeAllAws(index) {
-  return Object.values(index.regions).flatMap((rows) =>
-    Object.values(rows).map(normalizeAws),
-  )
-}
-
 export function normalizeGcp(raw) {
   const type = raw.type
   const [firstSegment] = type.split('-')
