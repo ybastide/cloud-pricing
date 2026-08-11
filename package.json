@@ -10,6 +10,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
+    "extract:aws": "node scripts/extract-aws.mjs",
     "extract:gcp": "node scripts/extract-gcp.mjs"
   },
   "devDependencies": {
