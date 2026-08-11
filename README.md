@@ -66,6 +66,16 @@ with it). Instead:
 - `Pricing for My Billing Account.csv` is GCP's full SKU catalog, exported from
   a Cloud Billing account. **Not used by the app** — see the design spec for why.
 
+All three HTML fixtures have had their `<script>` tags stripped after saving. Measured
+against the pricing page before stripping: 74.8% of the file (32 MB of 43 MB) was
+`<script>` content, none of the 76 `<table>` elements sit inside one, and regenerating
+`instances.json`/`disks.json`/`hyperdisk-compat.json` from the stripped files produces
+byte-identical output — confirmed, not assumed. Stripping isn't just a size win: a
+signed-in Google session embeds account info (email, name, account ID) inline in
+page-bootstrap `<script>` JSON, which is exactly how this project's own commit history
+briefly carried a real email address before it was caught and scrubbed. Any future
+re-save of these pages should go through the same stripping step before committing.
+
 Run `npm run extract:gcp` to regenerate `instances.json`, `disks.json`, and
 `hyperdisk-compat.json` from the two pricing/Hyperdisk HTML files (the CPU
 platforms doc isn't read by the script — see above). Re-run it if either of
