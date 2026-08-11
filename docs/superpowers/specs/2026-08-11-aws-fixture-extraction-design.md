@@ -119,14 +119,29 @@ map over it with the provider's normalize function, derive `families`). `normali
 itself is unchanged — it still receives an object with `Instance Type`, `Network
 Performance`, etc. as keys, exactly as the extraction script's output provides.
 
-### Removed: `normalizeAllAws` and its test
+### Removed: `normalizeAllAws` (function only — its test is retargeted, not deleted)
 
 `normalizeAllAws` (`src/lib/data/normalize.js`) exists only to flatten AWS's
 `{ regions: { regionName: { rowId: row } } }` structure before mapping `normalizeAws` over
 it. Once `awsInstances.js` reads a flat `instances` array directly, `normalizeAllAws` has no
-callers. Its one test (`src/lib/data/normalize.test.js`, the `normalizeAllAws` describe
-block, currently around line 203) is removed with it — a test for code nothing calls is not
-coverage, it's the class of dead-code-with-a-test this project explicitly avoids elsewhere.
+production callers and is deleted.
+
+Its test, `src/lib/data/normalize.test.js`'s `describe('normalizeAll over the real
+fixture', ...)` block (lines 202–262), is **not** dead-code-only coverage — it asserts real
+properties of the full 1322-row fixture (every row has finite numeric fields, exactly 390
+rows classify as `arm`, sizes rank correctly, prices/vCPU are positive, types are unique,
+etc.). This is exactly the kind of real-fixture regression test `normalizeGcp over the real
+fixture` (same file, lines 326+) already runs for GCP — reading `fixtures/gcp/instances.json`
+inline via `readFileSync`/`JSON.parse` inside the `describe` block, then mapping
+`normalizeGcp` over it. The AWS block is retargeted to match that exact pattern: read the new
+`fixtures/aws/instances.json` inline the same way, `.map(normalizeAws)` instead of calling
+`normalizeAllAws`, and rename the block to `'normalizeAws over the real fixture'` for
+consistency with the GCP block's naming (the old name, `'normalizeAll over the real
+fixture'`, predates this consistency and is corrected here). All of the block's existing
+assertions are otherwise unchanged — they test `normalizeAws`'s output shape, which this
+change does not alter. The module-level `const index = JSON.parse(readFileSync
+('fixtures/aws/index.json', 'utf8'))` (line 14), used only by this block, is removed in
+favor of the inline read.
 
 ### Regression safety
 
@@ -149,8 +164,9 @@ committed test suite — see Testing below for what *does* stay in the suite.
   (`'Instance Type'`, `'Network Performance'`, `'Storage'`, `'Instance Family'`, `'vCPU'`,
   `'Memory'`, `'price'`) — not renamed/shortened keys — so `normalizeAws` in
   `src/lib/data/normalize.js` requires zero changes.
-- `normalizeAws` and its existing unit tests in `src/lib/data/normalize.test.js` (other than
-  the `normalizeAllAws` block being removed) are unchanged.
+- `normalizeAws` itself and its existing unit tests in `src/lib/data/normalize.test.js` are
+  unchanged, except the real-fixture regression block described above, which is retargeted
+  (not deleted) to the new fixture.
 - No change to `App.svelte`, `query.js`, `urlState.js`, `InstanceTable.svelte`,
   `Toolbar.svelte`, or any GCP-side file — this is scoped entirely to the AWS data-loading
   path.
@@ -170,7 +186,7 @@ committed test suite — see Testing below for what *does* stay in the suite.
 - The old-vs-new equivalence check described under Regression safety above: a one-time
   implementation-time verification against the real `fixtures/aws/index.json`, run before
   `normalizeAllAws` is deleted, not added to the committed suite.
-- Existing `normalize.test.js` (minus the removed `normalizeAllAws` block), `query.test.js`,
-  `urlState.test.js`, and the Playwright e2e suite must continue to pass unchanged — they
-  exercise `normalizeAws`'s output shape and the app's rendering, which this change does not
-  alter.
+- Existing `normalize.test.js` (with its real-fixture block retargeted as described above,
+  not deleted), `query.test.js`, `urlState.test.js`, and the Playwright e2e suite must
+  continue to pass — they exercise `normalizeAws`'s output shape and the app's rendering,
+  which this change does not alter.
