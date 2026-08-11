@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import { readFileSync } from 'node:fs'
 import { extractAwsInstances } from './extract-aws.mjs'
 
 const SAMPLE_INDEX = {
@@ -76,5 +77,13 @@ describe('extractAwsInstances', () => {
     expect(keys).not.toContain('Operating System')
     expect(keys).not.toContain('Pre Installed S/W')
     expect(keys).not.toContain('License Model')
+  })
+})
+
+describe('extractAwsInstances over the real fixture', () => {
+  it('is in sync with the committed fixture', () => {
+    const raw = JSON.parse(readFileSync('fixtures/aws/index.json', 'utf8'))
+    expect(JSON.stringify(extractAwsInstances(raw), null, 2) + '\n')
+      .toBe(readFileSync('fixtures/aws/instances.json', 'utf8'))
   })
 })
