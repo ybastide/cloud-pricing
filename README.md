@@ -116,3 +116,30 @@ never the HTML directly.
   standard defense against a tag being silently repointed by the action's own maintainer
   (the attack seen against `tj-actions/changed-files`). Renovate maintains these going
   forward; don't hand-edit a SHA without looking up the real commit first.
+
+## Deployment
+
+This is a fully static build — fixtures are baked into the JS/CSS bundle at build time,
+so there is no backend and no env vars to configure. Any static file server works;
+`deploy/nginx.conf.example` is a template for nginx behind certbot:
+
+```shell
+npm ci
+npm run build      # -> dist/index.html, dist/assets/*.js, *.css (content-hashed names)
+```
+
+Copy `dist/`'s contents to the server (e.g. `/var/www/<your-domain>/`), then:
+
+1. Point an A/AAAA record for the domain at the server *before* running certbot — its
+   nginx plugin validates the hostname against DNS.
+2. Copy `deploy/nginx.conf.example` to `/etc/nginx/sites-available/<your-domain>`,
+   replace `YOUR_DOMAIN` and the `root` path, symlink into `sites-enabled/`, then
+   `nginx -t && systemctl reload nginx`.
+3. `certbot --nginx -d <your-domain>` — this rewrites the same server block in place to
+   add the `443 ssl` server and, if accepted, an http→https redirect. Renewal is handled
+   by the systemd timer/cron the certbot package installs; nothing else to configure.
+
+Redeploying is just rebuilding and overwriting `dist/`'s contents on the server — no
+nginx reload needed, since it only ever serves static files. The `try_files ... /index.html`
+fallback in the template is a no-op today (filter/sort state lives in the query string on
+a single route — see `urlState.js` — not in separate paths), kept in case that changes.

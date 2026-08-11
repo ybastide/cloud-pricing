@@ -1,0 +1,31 @@
+# Template nginx server block for serving the built app as a static site.
+# Copy to /etc/nginx/sites-available/<your-domain>, replace YOUR_DOMAIN and
+# the root path, symlink into sites-enabled, then run `certbot --nginx -d
+# YOUR_DOMAIN` — certbot rewrites this same block in place to add the 443
+# server and the http->https redirect. See README.md "Deployment".
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name YOUR_DOMAIN;
+    root /var/www/YOUR_DOMAIN;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # index.html references content-hashed filenames under assets/, so it
+    # must never be cached — a stale copy would point at files a later
+    # deploy already deleted.
+    location = /index.html {
+        add_header Cache-Control "no-cache";
+    }
+
+    # Vite content-hashes these filenames, so a changed file always gets a
+    # new name and long immutable caching is safe.
+    location /assets/ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+}
