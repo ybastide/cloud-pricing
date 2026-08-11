@@ -46,6 +46,11 @@ path; the 106 locations x 17 operating systems in `metadata.json` are the select
 vocabulary, and each combination is a separate file. That is why multi-region
 on-demand comparison is out of scope for the MVP.
 
+Run `npm run extract:aws` to regenerate `instances.json` — the ~207 KB fixture the app
+actually bundles, containing only the 7 fields `normalizeAws` reads — from the full
+`index.json` SKU catalog above. Re-run it if `index.json` is refreshed; the app never
+imports `index.json` directly, only the generated `instances.json`.
+
 ### GCP
 
 See `fixtures/gcp`. Four files — none of them fetched with `wget`, since GCP

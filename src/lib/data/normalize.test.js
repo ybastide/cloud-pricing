@@ -2,7 +2,6 @@ import { describe, expect, it } from 'vitest'
 import { readFileSync } from 'node:fs'
 import {
   normalizeAws,
-  normalizeAllAws,
   normalizeGcp,
   parseMemoryGiB,
   parseNetwork,
@@ -10,8 +9,6 @@ import {
   parseStorageGB,
   sizeRank,
 } from './normalize.js'
-
-const index = JSON.parse(readFileSync('fixtures/aws/index.json', 'utf8'))
 
 const RAW = {
   rateCode: '6C86BEPQVG73ZGGR.JRTCKXETXF.6YS6EN2CT7',
@@ -199,8 +196,9 @@ describe('normalize', () => {
   })
 })
 
-describe('normalizeAll over the real fixture', () => {
-  const rows = normalizeAllAws(index)
+describe('normalizeAws over the real fixture', () => {
+  const raw = JSON.parse(readFileSync('fixtures/aws/instances.json', 'utf8'))
+  const rows = raw.instances.map(normalizeAws)
 
   it('returns every row', () => {
     expect(rows).toHaveLength(1322)
