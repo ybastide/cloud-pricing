@@ -76,6 +76,17 @@ page-bootstrap `<script>` JSON, which is exactly how this project's own commit h
 briefly carried a real email address before it was caught and scrubbed. Any future
 re-save of these pages should go through the same stripping step before committing.
 
+A `gitleaks` scan (run before considering this repo for public release) additionally
+found 10 unique `AIza`-format Google API keys across the three fixtures — the same 8
+keys appeared identically on both documentation pages, which strongly suggests they're
+Google's own shared, embedded keys (client-library loader, language-switcher widget) and
+not anything unique to this session, though that couldn't be independently confirmed
+without testing the keys against a live API, which wasn't attempted. Most were already
+gone once scripts were stripped; one survived in a `data-*` attribute on the pricing page
+(outside any `<script>` tag) and was redacted along with the rest of history. Re-run
+`gitleaks detect --source . --log-opts="--all"` after any future re-save, before
+committing.
+
 Run `npm run extract:gcp` to regenerate `instances.json`, `disks.json`, and
 `hyperdisk-compat.json` from the two pricing/Hyperdisk HTML files (the CPU
 platforms doc isn't read by the script — see above). Re-run it if either of
