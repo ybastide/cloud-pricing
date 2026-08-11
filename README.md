@@ -92,3 +92,27 @@ Run `npm run extract:gcp` to regenerate `instances.json`, `disks.json`, and
 platforms doc isn't read by the script — see above). Re-run it if either of
 those two files is refreshed — the app only ever reads the generated JSON,
 never the HTML directly.
+
+## Tooling
+
+- **Secret scanning and SAST**: `.pre-commit-config.yaml` runs `gitleaks` (secrets) and
+  `semgrep` (`--config auto`) on every commit — install the hook once with
+  `prek install` (or `pre-commit install`; both read the same config). `fixtures/` is
+  excluded from semgrep only — it's third-party page data, not source code, and scanning
+  a 10 MB HTML file with SAST rules just times out for nothing. Gitleaks is *not*
+  excluded from fixtures on purpose: that's exactly the class of file that caused the
+  leak documented above, so it should be re-scanned if one is ever touched again.
+  `semgrep scan --config auto --error` also runs as a separate CI job
+  (`.github/workflows/ci.yml`), using the free Community Edition rules — no account or
+  token required.
+- **Dependency and Actions updates**: `renovate.json` extends `config:recommended` +
+  `helpers:pinGitHubActionDigests`. The config is in place but Renovate itself needs the
+  GitHub App installed on this repo (or a self-hosted Action) once it's pushed to a
+  remote — that's a one-time manual step, not something a config file alone can trigger.
+  Once active, its first run opens a PR pinning any still-unpinned Actions to SHA; after
+  that it keeps proposing updates as new versions ship.
+- **GitHub Actions are pinned to commit SHA**, not a floating version tag, with the
+  resolved version as a trailing comment (e.g. `actions/checkout@<sha> # v7.0.1`) — the
+  standard defense against a tag being silently repointed by the action's own maintainer
+  (the attack seen against `tj-actions/changed-files`). Renovate maintains these going
+  forward; don't hand-edit a SHA without looking up the real commit first.

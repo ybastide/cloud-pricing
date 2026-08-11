@@ -1,0 +1,2 @@
+# Third-party fixture data, not our source code - nothing here for a SAST scanner to say.
+fixtures/
