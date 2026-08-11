@@ -1,7 +1,11 @@
 import { readFileSync, writeFileSync } from 'node:fs'
 
 export function extractAwsInstances(rawIndex) {
-  const [region] = Object.keys(rawIndex.regions)
+  const regionNames = Object.keys(rawIndex.regions)
+  if (regionNames.length !== 1) {
+    throw new Error(`expected exactly one region, got ${regionNames.length}: ${regionNames.join(', ')}`)
+  }
+  const [region] = regionNames
   const rows = Object.values(rawIndex.regions[region])
   const operatingSystem = rows[0]['Operating System']
 

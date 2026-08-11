@@ -46,10 +46,14 @@ path; the 106 locations x 17 operating systems in `metadata.json` are the select
 vocabulary, and each combination is a separate file. That is why multi-region
 on-demand comparison is out of scope for the MVP.
 
-Run `npm run extract:aws` to regenerate `instances.json` — the ~207 KB fixture the app
+Run `npm run extract:aws` to regenerate `instances.json` — a seventh, generated file in
+this directory alongside the six fetched above, and the ~334 KB fixture the app
 actually bundles, containing only the 7 fields `normalizeAws` reads — from the full
 `index.json` SKU catalog above. Re-run it if `index.json` is refreshed; the app never
-imports `index.json` directly, only the generated `instances.json`.
+imports `index.json` directly, only the generated `instances.json`. The script
+pretty-prints with `JSON.stringify(result, null, 2)` so regenerating it produces a
+reviewable diff; that indentation is stripped by Vite's bundler, so it costs zero bytes
+to visitors.
 
 ### GCP
 
@@ -133,11 +137,11 @@ npm ci
 npm run build      # -> dist/index.html, dist/assets/*.js, *.css (content-hashed names)
 ```
 
-The JS bundle is ~774 kB (~83 kB gzipped) — Vite's build warns about this since the fixtures'
-extracted data (AWS + GCP instance/disk rows) is bundled in, not fetched at runtime. The
-gzipped size is what actually ships, but only because `deploy/nginx.conf.example` turns gzip
-on explicitly — a stock Debian/Ubuntu nginx install doesn't compress `application/javascript`
-by default, which would otherwise mean serving the raw 774 kB every load.
+The JS bundle is ~328 kB (~46 kB gzipped) — the fixtures' extracted data (AWS + GCP
+instance/disk rows) is bundled in, not fetched at runtime. The gzipped size is what
+actually ships, but only because `deploy/nginx.conf.example` turns gzip on explicitly —
+a stock Debian/Ubuntu nginx install doesn't compress `application/javascript` by
+default, which would otherwise mean serving the raw 328 kB every load.
 
 Copy `dist/`'s contents to the server (e.g. `/var/www/<your-domain>/`), then:
 
