@@ -128,6 +128,12 @@ npm ci
 npm run build      # -> dist/index.html, dist/assets/*.js, *.css (content-hashed names)
 ```
 
+The JS bundle is ~774 kB (~83 kB gzipped) — Vite's build warns about this since the fixtures'
+extracted data (AWS + GCP instance/disk rows) is bundled in, not fetched at runtime. The
+gzipped size is what actually ships, but only because `deploy/nginx.conf.example` turns gzip
+on explicitly — a stock Debian/Ubuntu nginx install doesn't compress `application/javascript`
+by default, which would otherwise mean serving the raw 774 kB every load.
+
 Copy `dist/`'s contents to the server (e.g. `/var/www/<your-domain>/`), then:
 
 1. Point an A/AAAA record for the domain at the server *before* running certbot — its

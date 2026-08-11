@@ -11,6 +11,13 @@ server {
     root /var/www/YOUR_DOMAIN;
     index index.html;
 
+    # A stock Debian/Ubuntu nginx install does not gzip application/javascript
+    # by default — without this, the ~774 kB JS bundle ships raw instead of
+    # its ~83 kB gzipped size.
+    gzip on;
+    gzip_types text/css application/javascript application/json;
+    gzip_min_length 1024;
+
     location / {
         try_files $uri $uri/ /index.html;
     }
