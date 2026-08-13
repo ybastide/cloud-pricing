@@ -19,6 +19,7 @@
 
   const GCP_COLUMNS = [
     { key: 'type', label: 'Machine type', cellClass: 'type' },
+    { key: 'arch', label: 'Arch', render: (row) => (row.arch === 'arm' ? 'ARM' : 'x86') },
     { key: 'vcpu', label: 'vCPU' },
     { key: 'memGiB', label: 'Memory', render: (row) => `${row.memGiB} GiB` },
     {
