@@ -90,6 +90,10 @@
     query.provider = next
     query.search = ''
     query.families = new Set()
+    query.vcpuOp = '='
+    query.vcpuVal = ''
+    query.memOp = '='
+    query.memVal = ''
   }
 </script>
 
