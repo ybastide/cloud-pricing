@@ -810,7 +810,7 @@ test('filters by exact vCPU count', async ({ page }) => {
   await searchBox(page).fill('c5.')
   await vcpuVal(page).fill('96')
   await sortByInstance(page)
-  await expect(count(page)).toHaveText('2 of 9 instances')
+  await expect(count(page)).toHaveText(`2 of ${TOTAL} instances`)
   await expect(typeCells(page)).toHaveText(['c5.24xlarge', 'c5.metal'])
 })
 
@@ -820,7 +820,7 @@ test('filters by vCPU at-least', async ({ page }) => {
   await vcpuOp(page).selectOption('>=')
   await vcpuVal(page).fill('48')
   await sortByInstance(page)
-  await expect(count(page)).toHaveText('4 of 9 instances')
+  await expect(count(page)).toHaveText(`4 of ${TOTAL} instances`)
   await expect(typeCells(page)).toHaveText([
     'c5.12xlarge',
     'c5.18xlarge',
@@ -833,7 +833,7 @@ test('filters by exact memory size', async ({ page }) => {
   await page.goto('/')
   await searchBox(page).fill('c5.')
   await memVal(page).fill('32')
-  await expect(count(page)).toHaveText('1 of 9 instances')
+  await expect(count(page)).toHaveText(`1 of ${TOTAL} instances`)
   await expect(typeCells(page)).toHaveText(['c5.4xlarge'])
 })
 
@@ -843,7 +843,7 @@ test('filters by memory at-least', async ({ page }) => {
   await memOp(page).selectOption('>=')
   await memVal(page).fill('96')
   await sortByInstance(page)
-  await expect(count(page)).toHaveText('4 of 9 instances')
+  await expect(count(page)).toHaveText(`4 of ${TOTAL} instances`)
   await expect(typeCells(page)).toHaveText([
     'c5.12xlarge',
     'c5.18xlarge',
@@ -858,7 +858,7 @@ test('parses a vcpu token typed into the search box and strips it', async ({ pag
   await expect(searchBox(page)).toHaveValue('c5.')
   await expect(vcpuOp(page)).toHaveValue('>=')
   await expect(vcpuVal(page)).toHaveValue('48')
-  await expect(count(page)).toHaveText('4 of 9 instances')
+  await expect(count(page)).toHaveText(`4 of ${TOTAL} instances`)
 })
 
 test('leaves an unrecognised token as plain substring text', async ({ page }) => {
@@ -880,7 +880,7 @@ test('round-trips vcpu/mem filters through the URL', async ({ page }) => {
   await page.reload()
   await expect(vcpuOp(page)).toHaveValue('>=')
   await expect(vcpuVal(page)).toHaveValue('48')
-  await expect(count(page)).toHaveText('4 of 9 instances')
+  await expect(count(page)).toHaveText(`4 of ${TOTAL} instances`)
 })
 
 test('clears vcpu/mem filters along with everything else', async ({ page }) => {
