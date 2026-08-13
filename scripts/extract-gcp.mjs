@@ -6,8 +6,10 @@ const MEMORY_TOKEN = /^([\d,]+(?:\.\d+)?)\s*GiB$/
 // The Network-optimized page renders its Memory column with no "GiB" suffix
 // at all (just "7"), unlike every other page's tables.
 const MEMORY_VALUE = /^([\d,]+(?:\.\d+)?)\s*(?:GiB)?$/
+// familyFromHeading only reads the captured prefix (group 1), never the qualifier
+// text itself, so matching case-insensitively can't change the derived family name.
 const FAMILY_QUALIFIER =
-  /^(.+?) (?:standard|Standard|high-memory|Highmem|highmem|high-CPU|high-cpu|Highcpu|highcpu|shared-core|Standard with Local SSD|Highmem with Local SSD|highmem with standardlssd|highmem with highlssd)(?: machine types)?$/
+  /^(.+?) (?:standard|high-memory|highmem|high-cpu|highcpu|shared-core|standard with local ssd|highmem with local ssd|highmem with (?:standard|high)lssd)(?: machine types)?$/i
 const BARE_MACHINE_TYPES = /^(.+?) machine types?$/
 
 function stripTags(html) {
@@ -52,9 +54,9 @@ function familyFromHeading(heading) {
   return bare ? bare[1] : heading
 }
 
-function parseInstanceRow(cells, family) {
+function parseInstanceRow(cells, family, requireMemoryUnit) {
   const [type, vcpuCell, memCell, ...rest] = cells
-  const memMatch = MEMORY_VALUE.exec(memCell)
+  const memMatch = (requireMemoryUnit ? MEMORY_TOKEN : MEMORY_VALUE).exec(memCell)
   const memGiB = memMatch ? parseFloat(memMatch[1].replace(/,/g, '')) : 0
 
   // "with Local SSD" tables insert a Local SSD GiB column before the price columns —
@@ -72,14 +74,19 @@ function parseInstanceRow(cells, family) {
   return {
     type,
     family,
-    vcpu: parseFloat(vcpuCell),
+    vcpu: parseFloat(vcpuCell.replace(/,/g, '')),
     memGiB,
     storageGB,
     usd: priceMatch ? parseFloat(priceMatch[1]) : 0,
   }
 }
 
-export function extractInstanceRows(html, startHeading = GENERAL_PURPOSE_START, endHeading = GENERAL_PURPOSE_END) {
+export function extractInstanceRows(
+  html,
+  startHeading = GENERAL_PURPOSE_START,
+  endHeading = GENERAL_PURPOSE_END,
+  { requireMemoryUnit = true } = {},
+) {
   const headings = findHeadings(html)
   const tables = findTables(html)
 
@@ -95,13 +102,10 @@ export function extractInstanceRows(html, startHeading = GENERAL_PURPOSE_START, 
     if (heading.index <= start.index || heading.index >= end.index) continue
     if (heading.text === 'Consumption model ID:') continue
 
-    const table = tables.find((t) => t.index > heading.index)
+    const table = tables.find((t) => t.index > heading.index && t.index < end.index)
     if (!table) continue
-    // A heading with another heading between it and its nearest table is a
-    // section/family divider (e.g. "C4 machine types" before "C4 standard
-    // machine types") rather than a data heading — the "Consumption model
-    // ID:" tooltip headings nested inside a table's own markup sit *after*
-    // that table's start tag, so they never trigger this skip.
+    // A heading with another heading before its table is a divider, not data —
+    // "Consumption model ID:" tooltips nest inside the table, so they don't count.
     const next = headings[i + 1]
     if (next && next.index < table.index) continue
 
@@ -120,7 +124,7 @@ export function extractInstanceRows(html, startHeading = GENERAL_PURPOSE_START, 
     for (let j = 0; j < typeIdxs.length; j++) {
       const from = typeIdxs[j]
       const to = typeIdxs[j + 1] ?? dataCells.length
-      rows.push(parseInstanceRow(dataCells.slice(from, to), family))
+      rows.push(parseInstanceRow(dataCells.slice(from, to), family, requireMemoryUnit))
     }
   }
   return rows
@@ -190,7 +194,7 @@ import { readFileSync, readdirSync, writeFileSync } from 'node:fs'
 // Prefix-match rather than a literal path: the real filenames on disk use
 // non-breaking spaces around their underscores, not regular spaces — a
 // literal path string here would silently fail to open the file.
-function findFixture(prefix) {
+export function findFixture(prefix) {
   const files = readdirSync('fixtures/gcp')
   const match = files.find((f) => f.startsWith(prefix))
   if (!match) throw new Error(`No file starting with "${prefix}" in fixtures/gcp`)
@@ -199,11 +203,15 @@ function findFixture(prefix) {
 
 // Google splits VM pricing across separate category pages with no unified
 // table; each has its own section start/end heading text.
-const INSTANCE_SOURCES = [
-  { prefix: 'General Purpose VM pricing', start: GENERAL_PURPOSE_START, end: GENERAL_PURPOSE_END },
+export const INSTANCE_SOURCES = [
   { prefix: 'Compute-optimized VM pricing', start: 'Compute-optimized pricing', end: 'Simulated maintenance event pricing' },
   { prefix: 'Memory-optimized VM Pricing', start: 'Memory-optimized pricing', end: 'Tier_1 higher bandwidth network pricing' },
-  { prefix: 'Network-optimized VM pricing', start: 'Network-optimized pricing', end: 'How pricing works' },
+  {
+    prefix: 'Network-optimized VM pricing',
+    start: 'Network-optimized pricing',
+    end: 'How pricing works',
+    requireMemoryUnit: false,
+  },
   { prefix: 'Storage-optimized VM Pricing', start: 'Storage-optimized pricing', end: 'Simulated maintenance event pricing' },
 ]
 
@@ -211,9 +219,12 @@ function main() {
   const pricingHtml = readFileSync(findFixture('General Purpose VM pricing'), 'utf8')
   const hyperdiskHtml = readFileSync(findFixture('Google Cloud Hyperdisk overview'), 'utf8')
 
-  const instances = INSTANCE_SOURCES.flatMap(({ prefix, start, end }) =>
-    extractInstanceRows(readFileSync(findFixture(prefix), 'utf8'), start, end),
-  )
+  const instances = [
+    ...extractInstanceRows(pricingHtml),
+    ...INSTANCE_SOURCES.flatMap(({ prefix, start, end, requireMemoryUnit }) =>
+      extractInstanceRows(readFileSync(findFixture(prefix), 'utf8'), start, end, { requireMemoryUnit }),
+    ),
+  ]
   const disks = extractDiskRows(pricingHtml)
   const hyperdiskCompat = extractHyperdiskCompat(hyperdiskHtml)
 

@@ -1,6 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import { readFileSync, readdirSync } from 'node:fs'
-import { extractInstanceRows } from './extract-gcp.mjs'
+import { extractInstanceRows, findFixture, INSTANCE_SOURCES } from './extract-gcp.mjs'
+
+function expectPositiveRows(rows) {
+  expect(rows.every((r) => r.usd > 0)).toBe(true)
+  expect(rows.every((r) => r.vcpu > 0)).toBe(true)
+  expect(rows.every((r) => r.memGiB > 0)).toBe(true)
+}
 
 const EXCERPT = `
 <h2>General-purpose machine type family</h2>
@@ -100,6 +106,30 @@ const COMPUTE_OPTIMIZED_EXCERPT = `
 <table><tr><th>Item</th><th>Default (USD)</th></tr><tr><td>Not in scope</td><td>$1 / 1 hour</td></tr></table>
 `
 
+const UNITLESS_MEMORY_EXCERPT = `
+<h2>Network-optimized pricing</h2>
+<h3>C4N standard machine types</h3>
+<table>
+  <tr><th>Machine Type</th><th>Cores</th><th>Memory</th><th>Default (USD)</th></tr>
+  <tr><td>c4n-standard-2</td><td>2</td><td>7</td><td>$0.154987 / 1 hour</td></tr>
+</table>
+<h2>How pricing works</h2>
+`
+
+describe('extractInstanceRows memory-unit strictness', () => {
+  it('defaults to requiring the GiB suffix, reporting memGiB 0 rather than misreading a bare number', () => {
+    const rows = extractInstanceRows(UNITLESS_MEMORY_EXCERPT, 'Network-optimized pricing', 'How pricing works')
+    expect(rows.find((r) => r.type === 'c4n-standard-2').memGiB).toBe(0)
+  })
+
+  it('accepts a bare number as GiB when requireMemoryUnit is explicitly disabled', () => {
+    const rows = extractInstanceRows(UNITLESS_MEMORY_EXCERPT, 'Network-optimized pricing', 'How pricing works', {
+      requireMemoryUnit: false,
+    })
+    expect(rows.find((r) => r.type === 'c4n-standard-2').memGiB).toBe(7)
+  })
+})
+
 describe('extractInstanceRows with custom section boundaries', () => {
   const rows = extractInstanceRows(COMPUTE_OPTIMIZED_EXCERPT, 'Compute-optimized pricing', 'Simulated maintenance event pricing')
 
@@ -138,9 +168,7 @@ describe('extractInstanceRows over the real fixture', () => {
   })
 
   it('gives every row a positive price, vCPU, and memory', () => {
-    expect(rows.every((r) => r.usd > 0)).toBe(true)
-    expect(rows.every((r) => r.vcpu > 0)).toBe(true)
-    expect(rows.every((r) => r.memGiB > 0)).toBe(true)
+    expectPositiveRows(rows)
   })
 
   it('finds all 14 families and no others', () => {
@@ -169,10 +197,8 @@ describe('extractInstanceRows over the compute-optimized fixture', () => {
   })
 
   it('finds C2, C2D, H3, and H4D', () => {
-    // H4D's table sits directly under its own top-level heading with no
-    // standard/highmem/highcpu split, unlike every other family on this
-    // page — it's claimed because no other heading sits between it and
-    // its table, not because it matched a qualifier suffix.
+    // H4D has no standard/highmem/highcpu split — it's claimed only because no
+    // heading sits between it and its table, not via a qualifier match.
     expect(new Set(rows.map((r) => r.family))).toEqual(new Set(['C2', 'C2D', 'H3', 'H4D']))
   })
 
@@ -186,9 +212,7 @@ describe('extractInstanceRows over the compute-optimized fixture', () => {
   })
 
   it('gives every row a positive price, vCPU, and memory', () => {
-    expect(rows.every((r) => r.usd > 0)).toBe(true)
-    expect(rows.every((r) => r.vcpu > 0)).toBe(true)
-    expect(rows.every((r) => r.memGiB > 0)).toBe(true)
+    expectPositiveRows(rows)
   })
 })
 
@@ -202,22 +226,19 @@ describe('extractInstanceRows over the memory-optimized fixture', () => {
   })
 
   it('finds M1, M2, M3, and M4 from their bare "machine type(s)" headings', () => {
-    // None of these families split into standard/highmem sub-headings —
-    // each heading's table follows directly, so the family name comes from
-    // the bare-heading fallback, not the qualifier-suffix match.
+    // No standard/highmem split here — the family name comes from the
+    // bare-heading fallback, not a qualifier match.
     expect(new Set(rows.map((r) => r.family))).toEqual(new Set(['M1', 'M2', 'M3', 'M4']))
   })
 
   it('gives every row a positive price, vCPU, and memory', () => {
-    expect(rows.every((r) => r.usd > 0)).toBe(true)
-    expect(rows.every((r) => r.vcpu > 0)).toBe(true)
-    expect(rows.every((r) => r.memGiB > 0)).toBe(true)
+    expectPositiveRows(rows)
   })
 })
 
 describe('extractInstanceRows over the network-optimized fixture', () => {
   const html = readFileSync('fixtures/gcp/Network-optimized VM pricing v4 _ Google Cloud.html', 'utf8')
-  const rows = extractInstanceRows(html, 'Network-optimized pricing', 'How pricing works')
+  const rows = extractInstanceRows(html, 'Network-optimized pricing', 'How pricing works', { requireMemoryUnit: false })
 
   it('extracts exactly 24 C4N rows with no duplicate type', () => {
     expect(rows).toHaveLength(24)
@@ -231,9 +252,7 @@ describe('extractInstanceRows over the network-optimized fixture', () => {
   })
 
   it('gives every row a positive price, vCPU, and memory', () => {
-    expect(rows.every((r) => r.usd > 0)).toBe(true)
-    expect(rows.every((r) => r.vcpu > 0)).toBe(true)
-    expect(rows.every((r) => r.memGiB > 0)).toBe(true)
+    expectPositiveRows(rows)
   })
 })
 
@@ -254,9 +273,59 @@ describe('extractInstanceRows over the storage-optimized fixture', () => {
   })
 
   it('gives every row a positive price, vCPU, and memory', () => {
-    expect(rows.every((r) => r.usd > 0)).toBe(true)
-    expect(rows.every((r) => r.vcpu > 0)).toBe(true)
-    expect(rows.every((r) => r.memGiB > 0)).toBe(true)
+    expectPositiveRows(rows)
+  })
+})
+
+describe('extractInstanceRows wired together via INSTANCE_SOURCES', () => {
+  // Mirrors main()'s own assembly, so a mismatched start/end boundary in
+  // INSTANCE_SOURCES fails here, not just silently in instances.json.
+  const generalPurposeHtml = readFileSync(findFixture('General Purpose VM pricing'), 'utf8')
+  const rows = [
+    ...extractInstanceRows(generalPurposeHtml),
+    ...INSTANCE_SOURCES.flatMap(({ prefix, start, end, requireMemoryUnit }) =>
+      extractInstanceRows(readFileSync(findFixture(prefix), 'utf8'), start, end, { requireMemoryUnit }),
+    ),
+  ]
+
+  it('extracts exactly 470 rows with no duplicate type', () => {
+    expect(rows).toHaveLength(470)
+    expect(new Set(rows.map((r) => r.type)).size).toBe(470)
+  })
+
+  it('finds all 24 families', () => {
+    expect(new Set(rows.map((r) => r.family))).toEqual(
+      new Set([
+        'C2',
+        'C2D',
+        'C3',
+        'C3D',
+        'C4',
+        'C4A',
+        'C4D',
+        'C4N',
+        'E2',
+        'H3',
+        'H4D',
+        'M1',
+        'M2',
+        'M3',
+        'M4',
+        'N1',
+        'N2',
+        'N2D',
+        'N4',
+        'N4A',
+        'N4D',
+        'Tau T2A',
+        'Tau T2D',
+        'Z3',
+      ]),
+    )
+  })
+
+  it('gives every row a positive price, vCPU, and memory', () => {
+    expectPositiveRows(rows)
   })
 })
 
