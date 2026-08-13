@@ -110,6 +110,17 @@ test('clears vcpu/mem filters along with everything else', async ({ page }) => {
   await expect(count(page)).toHaveText(`${TOTAL} of ${TOTAL} instances`)
 })
 
+test('does not resurrect a token after Clear is clicked mid-debounce', async ({ page }) => {
+  await page.goto('/')
+  await searchBox(page).fill('vcpu>=4')
+  await page.getByRole('button', { name: 'Clear' }).click()
+  // Wait past the 350ms debounce window so the pending timer from fill() above has fired
+  // before we assert — otherwise this test passes trivially regardless of what fires.
+  await page.waitForTimeout(500)
+  await expect(vcpuVal(page)).toHaveValue('')
+  await expect(count(page)).toHaveText(`${TOTAL} of ${TOTAL} instances`)
+})
+
 test.afterEach(async ({ page }) => {
   expect(page.errors ?? []).toEqual([])
 })

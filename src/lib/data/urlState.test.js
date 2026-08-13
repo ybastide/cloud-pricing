@@ -205,6 +205,12 @@ describe('vcpu and mem filters in the query state', () => {
     expect(fromSearchParams('vcpuVal=abc').vcpuVal).toBe('')
   })
 
+  it('rejects a malformed-looking numeric value (hex, exponent, etc.)', () => {
+    expect(fromSearchParams('vcpuVal=0x10').vcpuVal).toBe('')
+    expect(fromSearchParams('vcpuVal=1e3').vcpuVal).toBe('')
+    expect(fromSearchParams('vcpuVal=-4').vcpuVal).toBe('')
+  })
+
   it('falls back to an inactive value when missing', () => {
     expect(fromSearchParams('').memVal).toBe('')
   })
