@@ -53,3 +53,19 @@ export function applyQuery(rows, query) {
     })
     .sort((a, b) => sign * compare(a, b) || a.type.localeCompare(b.type))
 }
+
+const TOKEN = /\b(vcpu|mem)\s*(>=|=)\s*(\d+(?:\.\d+)?)\b/gi
+
+export function parseFilterTokens(text) {
+  let vcpu = null
+  let mem = null
+
+  const stripped = text.replace(TOKEN, (_match, key, op, val) => {
+    const parsed = { op, val: Number(val) }
+    if (key.toLowerCase() === 'vcpu') vcpu = parsed
+    else mem = parsed
+    return ''
+  })
+
+  return { text: stripped.replace(/\s+/g, ' ').trim(), vcpu, mem }
+}

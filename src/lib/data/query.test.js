@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { SORT_KEYS, applyQuery } from './query.js'
+import { SORT_KEYS, applyQuery, parseFilterTokens } from './query.js'
 import { parseSeries, sizeRank } from './normalize.js'
 
 function row(type, over = {}) {
@@ -207,5 +207,51 @@ describe('applyQuery', () => {
 
   it('exposes the sortable keys', () => {
     expect(SORT_KEYS).toEqual(['type', 'vcpu', 'memGiB', 'storageGB', 'netGbps', 'usd'])
+  })
+})
+
+describe('parseFilterTokens', () => {
+  it('extracts a single vcpu token and strips it from the text', () => {
+    expect(parseFilterTokens('vcpu>=4')).toEqual({ text: '', vcpu: { op: '>=', val: 4 }, mem: null })
+  })
+
+  it('extracts a single mem token and strips it from the text', () => {
+    expect(parseFilterTokens('mem=16')).toEqual({ text: '', vcpu: null, mem: { op: '=', val: 16 } })
+  })
+
+  it('extracts both keys from one string, leaving the remaining substring text', () => {
+    expect(parseFilterTokens('c7g vcpu>=4 mem=16')).toEqual({
+      text: 'c7g',
+      vcpu: { op: '>=', val: 4 },
+      mem: { op: '=', val: 16 },
+    })
+  })
+
+  it('keeps the last match when the same key appears twice', () => {
+    expect(parseFilterTokens('vcpu>=4 vcpu=8')).toEqual({ text: '', vcpu: { op: '=', val: 8 }, mem: null })
+  })
+
+  it('is case- and spacing-insensitive', () => {
+    expect(parseFilterTokens('VCPU >= 4')).toEqual({ text: '', vcpu: { op: '>=', val: 4 }, mem: null })
+  })
+
+  it('parses fractional values', () => {
+    expect(parseFilterTokens('vcpu=0.2')).toEqual({ text: '', vcpu: { op: '=', val: 0.2 }, mem: null })
+  })
+
+  it('leaves an unsupported operator as plain text', () => {
+    expect(parseFilterTokens('vcpu>4')).toEqual({ text: 'vcpu>4', vcpu: null, mem: null })
+  })
+
+  it('leaves a non-numeric value as plain text', () => {
+    expect(parseFilterTokens('vcpu=abc')).toEqual({ text: 'vcpu=abc', vcpu: null, mem: null })
+  })
+
+  it('leaves a missing value as plain text', () => {
+    expect(parseFilterTokens('mem=')).toEqual({ text: 'mem=', vcpu: null, mem: null })
+  })
+
+  it('returns the original text unchanged when there are no tokens', () => {
+    expect(parseFilterTokens('m5.large')).toEqual({ text: 'm5.large', vcpu: null, mem: null })
   })
 })
