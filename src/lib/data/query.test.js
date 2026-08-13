@@ -62,6 +62,16 @@ describe('applyQuery', () => {
     expect(out.map((r) => r.memGiB)).toEqual([128, 16, 8, 8])
   })
 
+  it('sorts ascending by architecture, ARM before x86, tie-broken by type', () => {
+    const out = applyQuery(rows, { ...base, sort: 'arch', dir: 'asc' })
+    expect(out.map((r) => r.type)).toEqual(['c7g.xlarge', 'i4i.large', 'm5.large', 'r6i.4xlarge'])
+  })
+
+  it('sorts descending by architecture, x86 before ARM', () => {
+    const out = applyQuery(rows, { ...base, sort: 'arch', dir: 'desc' })
+    expect(out.map((r) => r.type)).toEqual(['i4i.large', 'm5.large', 'r6i.4xlarge', 'c7g.xlarge'])
+  })
+
   it('sorts instance type in natural AWS order', () => {
     const out = applyQuery(rows, { ...base, sort: 'type', dir: 'asc' })
     expect(out.map((r) => r.type)).toEqual(['c7g.xlarge', 'i4i.large', 'm5.large', 'r6i.4xlarge'])
@@ -206,7 +216,7 @@ describe('applyQuery', () => {
   })
 
   it('exposes the sortable keys', () => {
-    expect(SORT_KEYS).toEqual(['type', 'vcpu', 'memGiB', 'storageGB', 'netGbps', 'usd'])
+    expect(SORT_KEYS).toEqual(['type', 'arch', 'vcpu', 'memGiB', 'storageGB', 'netGbps', 'usd'])
   })
 })
 

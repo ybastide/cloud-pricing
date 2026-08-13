@@ -4,6 +4,7 @@ const COMPARATORS = {
     a.generation - b.generation ||
     a.attrs.localeCompare(b.attrs) ||
     a.sizeRank - b.sizeRank,
+  arch: (a, b) => a.arch.localeCompare(b.arch),
   vcpu: (a, b) => a.vcpu - b.vcpu,
   memGiB: (a, b) => a.memGiB - b.memGiB,
   storageGB: (a, b) => a.storageGB - b.storageGB,
