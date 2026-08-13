@@ -66,17 +66,39 @@ New pure function `parseFilterTokens(text)`:
 
 ### Wiring (`src/lib/Toolbar.svelte`)
 
-The search input's change handler runs the parsed result straight into the canonical
-fields, so a typed token and the dedicated control can never disagree about the same key:
+The search input echoes raw keystrokes into `query.search` immediately, then re-parses that
+text 350ms after the last keystroke and writes the parsed result into the canonical fields —
+so a typed token and the dedicated control can never disagree about the same key once the
+debounce settles:
 
 ```js
+let debounceTimer
+
 function onSearchInput(value) {
-  const { text, vcpu, mem } = parseFilterTokens(value)
-  query.search = text
-  if (vcpu) { query.vcpuOp = vcpu.op; query.vcpuVal = String(vcpu.val) }
-  if (mem) { query.memOp = mem.op; query.memVal = String(mem.val) }
+  query.search = value
+  clearTimeout(debounceTimer)
+  debounceTimer = setTimeout(() => {
+    const { text, vcpu, mem } = parseFilterTokens(query.search)
+    query.search = text
+    if (vcpu) { query.vcpuOp = vcpu.op; query.vcpuVal = String(vcpu.val) }
+    if (mem) { query.memOp = mem.op; query.memVal = String(mem.val) }
+  }, 350)
 }
 ```
+
+The debounce exists to fix two bugs a synchronous `parseFilterTokens(value)` call had: it
+parsed and stripped a token after every matching keystroke, so typing a multi-digit value
+(`vcpu>=4` then `8`) visibly snapped the search box down to `''` after the first matching
+digit instead of once the number was fully typed; and a pasted or programmatically-set value
+could be parsed against stale DOM text. Deferring the parse to a quiet period after typing
+stops fixes both, while the immediate echo into `query.search` keeps the search box feeling
+live rather than laggy.
+
+The callback re-reads `query.search` — not the `value` argument it closed over — when the
+timer fires. That's deliberate: it's what makes clicking "Clear" (or switching providers)
+mid-debounce safe. Either of those resets `query.search` to `''` synchronously, so by the
+time a pending timer fires it re-parses empty text and writes nothing, instead of
+resurrecting the filter state the user just cleared.
 
 Two new control pairs added to the existing top toolbar row, alongside the search box and
 the arch/unit toggles:
@@ -92,8 +114,10 @@ the arch/unit toggles:
   vCPU) and fractional GiB memory values both need decimal input. Memory gets a trailing
   `GiB` label.
 - These inputs are the only place `vcpuOp/Val` and `memOp/Val` are written directly by the
-  user; the search box only ever writes to them via `parseFilterTokens`, and never needs to
-  read them back since a matched token is stripped from the box on parse.
+  user; the search box only ever writes to them via the debounced `parseFilterTokens` call
+  above. The debounced callback does read `query.search` back (see above) — that's what
+  makes it Clear-safe — but it never reads `vcpuOp/Val` or `memOp/Val` back, since a matched
+  token is stripped from the box on parse.
 
 Existing housekeeping extends to the new fields:
 
@@ -108,8 +132,12 @@ Existing housekeeping extends to the new fields:
 `vcpuOp`/`vcpuVal`/`memOp`/`memVal` follow the existing omit-if-default pattern in
 `toSearchParams`: written only when the corresponding `*Val` is non-empty (so a bare `=`
 operator with no value never appears in the URL), and validated on read in
-`fromSearchParams` (operator must be `'='` or `'>='`, value must parse as a finite number,
-else the pair falls back to the default).
+`fromSearchParams` (operator must be `'='` or `'>='`; value must match
+`/^\d+(?:\.\d+)?$/` — an unsigned integer or decimal, the same shape `<input
+type="number">` renders — else the pair falls back to the default). The stricter regex
+(rather than `Number.isFinite(Number(val))`) exists so a URL like `?vcpuVal=0x10` or
+`?vcpuVal=1e3` doesn't slip past validation and silently disagree with the number input,
+which the browser would render empty for that same value.
 
 ## Testing
 
