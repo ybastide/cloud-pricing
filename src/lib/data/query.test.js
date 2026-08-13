@@ -154,6 +154,48 @@ describe('applyQuery', () => {
     expect(applyQuery(rows, query)).toEqual([])
   })
 
+  it('filters vcpu by exact match', () => {
+    const out = applyQuery(rows, { ...base, vcpuOp: '=', vcpuVal: '4' })
+    expect(out.map((r) => r.type)).toEqual(['c7g.xlarge'])
+  })
+
+  it('filters vcpu by >=', () => {
+    const out = applyQuery(rows, { ...base, vcpuOp: '>=', vcpuVal: '4' })
+    expect(out.map((r) => r.type).sort()).toEqual(['c7g.xlarge', 'r6i.4xlarge'])
+  })
+
+  it('filters mem by exact match', () => {
+    const out = applyQuery(rows, { ...base, memOp: '=', memVal: '8' })
+    expect(out.map((r) => r.type).sort()).toEqual(['c7g.xlarge', 'm5.large'])
+  })
+
+  it('filters mem by >=', () => {
+    const out = applyQuery(rows, { ...base, memOp: '>=', memVal: '16' })
+    expect(out.map((r) => r.type).sort()).toEqual(['i4i.large', 'r6i.4xlarge'])
+  })
+
+  it('matches fractional vcpu values, e.g. GCP shared-core types', () => {
+    const withFractional = [...rows, row('f1-micro', { vcpu: 0.2, memGiB: 0.6 })]
+    const exact = applyQuery(withFractional, { ...base, vcpuOp: '=', vcpuVal: '0.2' })
+    expect(exact.map((r) => r.type)).toEqual(['f1-micro'])
+    const atLeast = applyQuery(withFractional, { ...base, vcpuOp: '>=', vcpuVal: '0.2' })
+    expect(atLeast).toHaveLength(5)
+  })
+
+  it('treats an empty vcpu/mem value as an inactive filter', () => {
+    expect(applyQuery(rows, { ...base, vcpuOp: '>=', vcpuVal: '', memOp: '=', memVal: '' })).toHaveLength(4)
+  })
+
+  it('combines vcpu and mem filters with each other (AND)', () => {
+    const out = applyQuery(rows, { ...base, vcpuOp: '>=', vcpuVal: '2', memOp: '=', memVal: '8' })
+    expect(out.map((r) => r.type).sort()).toEqual(['c7g.xlarge', 'm5.large'])
+  })
+
+  it('combines a vcpu filter with the family filter', () => {
+    const query = { ...base, families: new Set(['Memory optimized']), vcpuOp: '>=', vcpuVal: '2' }
+    expect(applyQuery(rows, query).map((r) => r.type)).toEqual(['r6i.4xlarge'])
+  })
+
   it('returns an empty array when nothing matches', () => {
     expect(applyQuery(rows, { ...base, search: 'nope' })).toEqual([])
   })
