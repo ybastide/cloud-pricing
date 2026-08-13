@@ -536,17 +536,23 @@ Replace the `<script>` block of `src/lib/Toolbar.svelte` (currently lines 1–39
     query.families = next
   }
 
+  let debounceTimer
+
   function onSearchInput(value) {
-    const { text, vcpu, mem } = parseFilterTokens(value)
-    query.search = text
-    if (vcpu) {
-      query.vcpuOp = vcpu.op
-      query.vcpuVal = String(vcpu.val)
-    }
-    if (mem) {
-      query.memOp = mem.op
-      query.memVal = String(mem.val)
-    }
+    query.search = value
+    clearTimeout(debounceTimer)
+    debounceTimer = setTimeout(() => {
+      const { text, vcpu, mem } = parseFilterTokens(query.search)
+      query.search = text
+      if (vcpu) {
+        query.vcpuOp = vcpu.op
+        query.vcpuVal = String(vcpu.val)
+      }
+      if (mem) {
+        query.memOp = mem.op
+        query.memVal = String(mem.val)
+      }
+    }, 350)
   }
 
   function clear() {
@@ -581,7 +587,8 @@ Replace the `<script>` block of `src/lib/Toolbar.svelte` (currently lines 1–39
 
 Replace the search `<input>` (currently lines 42–47) with a controlled input that routes
 through `onSearchInput` instead of `bind:value` (it can no longer be a plain two-way bind,
-since typed text must be transformed before it lands in `query.search`):
+since raw keystrokes echo into `query.search` immediately but only get parsed into tokens
+after the 350ms debounce settles):
 
 ```svelte
   <input
