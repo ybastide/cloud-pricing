@@ -16,18 +16,38 @@ export const SORT_KEYS = Object.keys(COMPARATORS)
 export const DEFAULT_SORT = 'usd'
 export const DEFAULT_DIR = 'asc'
 
+function matchesOp(actual, op, target) {
+  return op === '>=' ? actual >= target : actual === target
+}
+
 export function applyQuery(rows, query) {
-  const { search = '', families, arch, sort, dir } = query
+  const {
+    search = '',
+    families,
+    arch,
+    sort,
+    dir,
+    vcpuOp = '=',
+    vcpuVal = '',
+    memOp = '=',
+    memVal = '',
+  } = query
   const needle = search.trim().toLowerCase()
   const compare = COMPARATORS[sort] ?? COMPARATORS[DEFAULT_SORT]
   const sign = dir === 'desc' ? -1 : 1
   const byFamily = families instanceof Set && families.size > 0
   const byArch = arch === 'arm' || arch === 'x86'
+  const byVcpu = vcpuVal !== ''
+  const byMem = memVal !== ''
+  const vcpuTarget = Number(vcpuVal)
+  const memTarget = Number(memVal)
 
   return rows
     .filter((row) => {
       if (byFamily && !families.has(row.family)) return false
       if (byArch && row.arch !== arch) return false
+      if (byVcpu && !matchesOp(row.vcpu, vcpuOp, vcpuTarget)) return false
+      if (byMem && !matchesOp(row.memGiB, memOp, memTarget)) return false
       if (needle && !row.type.toLowerCase().includes(needle)) return false
       return true
     })
