@@ -42,6 +42,7 @@ test('sorts memory numerically, not lexicographically', async ({ page }) => {
 
 test('sorts by architecture, grouping ARM before x86', async ({ page }) => {
   await page.goto('/')
+  await page.getByRole('button', { name: 'Instance', exact: true }).click()
   await page.getByRole('button', { name: 'Arch', exact: true }).click()
   await page.getByRole('button', { name: 'Arch', exact: true }).click()
   await expect(page.locator('tbody tr').first().locator('td').nth(1)).toHaveText('ARM')
