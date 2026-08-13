@@ -12,8 +12,10 @@ canonical state and are stripped from the visible text.
 `applyQuery` (`src/lib/data/query.js`) already filters by family, architecture, and an
 instance-type substring search, and sorts by any of `SORT_KEYS` (including `vcpu` and
 `memGiB`). There is no way to *filter* by vCPU or memory value today — only sort by them.
-Both fields are numeric on every row (`src/lib/data/normalize.js`): `vcpu` is always an
-integer (`parseInt`), `memGiB` can be fractional (`parseFloat`).
+Both fields are numeric on every row (`src/lib/data/normalize.js`) but neither is
+integer-only: `memGiB` is `parseFloat` on both providers, and while AWS `vcpu` is
+`parseInt`, GCP's shared-core types are fractional (`f1-micro` is `vcpu: 0.2`, `g1-small`
+is `vcpu: 0.5`) — so vCPU must accept decimals too.
 
 ## Change
 
@@ -85,9 +87,10 @@ the arch/unit toggles:
 
 - Operator `<select>`, options `=` / `≥` (values `'='` / `'>='`), bound directly to
   `query.vcpuOp` / `query.memOp`.
-- Number `<input type="number">` bound to `query.vcpuVal` / `query.memVal`. vCPU:
-  `min="0" step="1"`. Memory: `min="0" step="any"` (fixture data has fractional GiB values),
-  with a trailing `GiB` label.
+- Number `<input type="number">` bound to `query.vcpuVal` / `query.memVal`, both
+  `min="0" step="any"` — GCP's shared-core types (`f1-micro`: 0.2 vCPU, `g1-small`: 0.5
+  vCPU) and fractional GiB memory values both need decimal input. Memory gets a trailing
+  `GiB` label.
 - These inputs are the only place `vcpuOp/Val` and `memOp/Val` are written directly by the
   user; the search box only ever writes to them via `parseFilterTokens`, and never needs to
   read them back since a matched token is stripped from the box on parse.
@@ -111,8 +114,10 @@ else the pair falls back to the default).
 ## Testing
 
 - `query.test.js`: `applyQuery` filtering by `vcpu = N`, `vcpu >= N`, `mem = N`,
-  `mem >= N`; combinations of these with each other and with the existing
-  family/arch/search filters; confirms an empty value means the filter is inactive.
+  `mem >= N`, including fractional vCPU values (e.g. matching `f1-micro`'s `vcpu: 0.2`
+  with `vcpu=0.2` or `vcpu>=0.2`); combinations of these with each other and with the
+  existing family/arch/search filters; confirms an empty value means the filter is
+  inactive.
 - New tests for `parseFilterTokens`: single token, both keys in one string, last-one-wins on
   a duplicate key, mixed with plain substring text, case/spacing tolerance, and the
   literal-fallback cases (`vcpu>4`, `vcpu=abc`, `mem=`).
