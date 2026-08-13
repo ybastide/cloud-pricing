@@ -11,6 +11,8 @@ const count = (page) => page.locator('p.count')
 const typeCells = (page) => page.locator('main > table tbody td.type')
 const gcpTab = (page) => page.getByRole('tab', { name: 'GCP' })
 const awsTab = (page) => page.getByRole('tab', { name: 'AWS' })
+const vcpuVal = (page) => page.getByRole('spinbutton', { name: 'vCPU value' })
+const memVal = (page) => page.getByRole('spinbutton', { name: 'Memory value' })
 
 test('switches to the GCP tab and renders its table', async ({ page }) => {
   await page.goto('/')
@@ -75,7 +77,11 @@ test('round-trips provider through the URL and back', async ({ page }) => {
 test('resets filters when switching providers', async ({ page }) => {
   await page.goto('/')
   await searchBox(page).fill('m5')
+  await vcpuVal(page).fill('4')
+  await memVal(page).fill('16')
   await gcpTab(page).click()
   await expect(searchBox(page)).toHaveValue('')
+  await expect(vcpuVal(page)).toHaveValue('')
+  await expect(memVal(page)).toHaveValue('')
   await expect(count(page)).toHaveText(`${GCP_TOTAL} of ${GCP_TOTAL} instances`)
 })
