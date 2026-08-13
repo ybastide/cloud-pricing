@@ -82,6 +82,41 @@ describe('extractInstanceRows', () => {
   })
 })
 
+const COMPUTE_OPTIMIZED_EXCERPT = `
+<h2>Compute-optimized pricing</h2>
+<h3>C2D machine types</h3>
+<h3>C2D Standard machine types</h3>
+<table>
+  <tr><th>Machine type</th><th>vCPU</th><th>Memory</th><th>Default (USD)</th></tr>
+  <tr><td>c2d-standard-2</td><td>2</td><td>8 GiB</td><td>$0.10088 / 1 hour</td></tr>
+</table>
+<h3>C2D Highcpu machine types</h3>
+<table>
+  <tr><th>Machine type</th><th>vCPU</th><th>Memory</th><th>Default (USD)</th></tr>
+  <tr><td>c2d-highcpu-2</td><td>2</td><td>4 GiB</td><td>$0.0800 / 1 hour</td></tr>
+</table>
+<h2>Simulated maintenance event pricing</h2>
+<h3>Some later section</h3>
+<table><tr><th>Item</th><th>Default (USD)</th></tr><tr><td>Not in scope</td><td>$1 / 1 hour</td></tr></table>
+`
+
+describe('extractInstanceRows with custom section boundaries', () => {
+  const rows = extractInstanceRows(COMPUTE_OPTIMIZED_EXCERPT, 'Compute-optimized pricing', 'Simulated maintenance event pricing')
+
+  it('extracts rows from a section other than the general-purpose default', () => {
+    expect(rows.map((r) => r.type).sort()).toEqual(['c2d-highcpu-2', 'c2d-standard-2'])
+  })
+
+  it('strips a capitalized, hyphen-less qualifier like "Highcpu" from the family', () => {
+    expect(rows.find((r) => r.type === 'c2d-highcpu-2').family).toBe('C2D')
+    expect(rows.find((r) => r.type === 'c2d-standard-2').family).toBe('C2D')
+  })
+
+  it('still excludes content after this section end boundary', () => {
+    expect(rows.find((r) => r.type === 'Not in scope')).toBeUndefined()
+  })
+})
+
 describe('extractInstanceRows over the real fixture', () => {
   const files = readFileSync('fixtures/gcp/General Purpose VM pricing _ Google Cloud.html', 'utf8')
   const rows = extractInstanceRows(files)
@@ -121,6 +156,131 @@ describe('extractInstanceRows over the real fixture', () => {
   it('keeps the two fractional-vCPU rows exact', () => {
     expect(rows.find((r) => r.type === 'f1-micro').vcpu).toBe(0.2)
     expect(rows.find((r) => r.type === 'g1-small').vcpu).toBe(0.5)
+  })
+})
+
+describe('extractInstanceRows over the compute-optimized fixture', () => {
+  const html = readFileSync('fixtures/gcp/Compute-optimized VM pricing _ Google Cloud.html', 'utf8')
+  const rows = extractInstanceRows(html, 'Compute-optimized pricing', 'Simulated maintenance event pricing')
+
+  it('extracts exactly 30 rows with no duplicate type', () => {
+    expect(rows).toHaveLength(30)
+    expect(new Set(rows.map((r) => r.type)).size).toBe(30)
+  })
+
+  it('finds C2, C2D, H3, and H4D', () => {
+    // H4D's table sits directly under its own top-level heading with no
+    // standard/highmem/highcpu split, unlike every other family on this
+    // page — it's claimed because no other heading sits between it and
+    // its table, not because it matched a qualifier suffix.
+    expect(new Set(rows.map((r) => r.family))).toEqual(new Set(['C2', 'C2D', 'H3', 'H4D']))
+  })
+
+  it('includes c2d-highcpu-2 and c2d-highcpu-4 with correct specs', () => {
+    const cpu2 = rows.find((r) => r.type === 'c2d-highcpu-2')
+    expect(cpu2.vcpu).toBe(2)
+    expect(cpu2.memGiB).toBe(4)
+    const cpu4 = rows.find((r) => r.type === 'c2d-highcpu-4')
+    expect(cpu4.vcpu).toBe(4)
+    expect(cpu4.memGiB).toBe(8)
+  })
+
+  it('gives every row a positive price, vCPU, and memory', () => {
+    expect(rows.every((r) => r.usd > 0)).toBe(true)
+    expect(rows.every((r) => r.vcpu > 0)).toBe(true)
+    expect(rows.every((r) => r.memGiB > 0)).toBe(true)
+  })
+})
+
+describe('extractInstanceRows over the memory-optimized fixture', () => {
+  const html = readFileSync('fixtures/gcp/Memory-optimized VM Pricing _ Google Cloud.html', 'utf8')
+  const rows = extractInstanceRows(html, 'Memory-optimized pricing', 'Tier_1 higher bandwidth network pricing')
+
+  it('extracts exactly 23 rows with no duplicate type', () => {
+    expect(rows).toHaveLength(23)
+    expect(new Set(rows.map((r) => r.type)).size).toBe(23)
+  })
+
+  it('finds M1, M2, M3, and M4 from their bare "machine type(s)" headings', () => {
+    // None of these families split into standard/highmem sub-headings —
+    // each heading's table follows directly, so the family name comes from
+    // the bare-heading fallback, not the qualifier-suffix match.
+    expect(new Set(rows.map((r) => r.family))).toEqual(new Set(['M1', 'M2', 'M3', 'M4']))
+  })
+
+  it('gives every row a positive price, vCPU, and memory', () => {
+    expect(rows.every((r) => r.usd > 0)).toBe(true)
+    expect(rows.every((r) => r.vcpu > 0)).toBe(true)
+    expect(rows.every((r) => r.memGiB > 0)).toBe(true)
+  })
+})
+
+describe('extractInstanceRows over the network-optimized fixture', () => {
+  const html = readFileSync('fixtures/gcp/Network-optimized VM pricing v4 _ Google Cloud.html', 'utf8')
+  const rows = extractInstanceRows(html, 'Network-optimized pricing', 'How pricing works')
+
+  it('extracts exactly 24 C4N rows with no duplicate type', () => {
+    expect(rows).toHaveLength(24)
+    expect(new Set(rows.map((r) => r.type)).size).toBe(24)
+    expect(new Set(rows.map((r) => r.family))).toEqual(new Set(['C4N']))
+  })
+
+  it('strips the lowercase "highmem"/"highcpu" qualifiers, unlike the capitalized ones elsewhere', () => {
+    expect(rows.find((r) => r.type === 'c4n-highmem-2').family).toBe('C4N')
+    expect(rows.find((r) => r.type === 'c4n-highcpu-2').family).toBe('C4N')
+  })
+
+  it('gives every row a positive price, vCPU, and memory', () => {
+    expect(rows.every((r) => r.usd > 0)).toBe(true)
+    expect(rows.every((r) => r.vcpu > 0)).toBe(true)
+    expect(rows.every((r) => r.memGiB > 0)).toBe(true)
+  })
+})
+
+describe('extractInstanceRows over the storage-optimized fixture', () => {
+  const html = readFileSync('fixtures/gcp/Storage-optimized VM Pricing _ Google Cloud.html', 'utf8')
+  const rows = extractInstanceRows(html, 'Storage-optimized pricing', 'Simulated maintenance event pricing')
+
+  it('extracts exactly 12 Z3 rows with no duplicate type', () => {
+    expect(rows).toHaveLength(12)
+    expect(new Set(rows.map((r) => r.type)).size).toBe(12)
+    expect(new Set(rows.map((r) => r.family))).toEqual(new Set(['Z3']))
+  })
+
+  it('strips the "highmem with standardlssd/highlssd" qualifier down to "Z3"', () => {
+    const row = rows.find((r) => r.type === 'z3-highmem-14-standardlssd')
+    expect(row.family).toBe('Z3')
+    expect(row.storageGB).toBeGreaterThan(0)
+  })
+
+  it('gives every row a positive price, vCPU, and memory', () => {
+    expect(rows.every((r) => r.usd > 0)).toBe(true)
+    expect(rows.every((r) => r.vcpu > 0)).toBe(true)
+    expect(rows.every((r) => r.memGiB > 0)).toBe(true)
+  })
+})
+
+const FLAT_HEADING_EXCERPT = `
+<h2>Memory-optimized pricing</h2>
+<h3>M4 machine type</h3>
+<table>
+  <tr><th>Machine Type</th><th>Cores</th><th>Memory</th><th>Default (USD)</th></tr>
+  <tr><td>m4-ultramem-56</td><td>56</td><td>1488 GiB</td><td>$7.8237504 / 1 hour</td></tr>
+</table>
+<h3>M3 machine types</h3>
+<table>
+  <tr><th>Machine type</th><th>Cores</th><th>Memory</th><th>Default (USD)</th></tr>
+  <tr><td>m3-ultramem-32</td><td>32</td><td>976 GiB</td><td>$6.0912 / 1 hour</td></tr>
+</table>
+<h2>Tier_1 higher bandwidth network pricing</h2>
+`
+
+describe('extractInstanceRows claims a heading with no intervening heading before its table', () => {
+  const rows = extractInstanceRows(FLAT_HEADING_EXCERPT, 'Memory-optimized pricing', 'Tier_1 higher bandwidth network pricing')
+
+  it('derives the family from the bare heading when no qualifier suffix is present', () => {
+    expect(rows.find((r) => r.type === 'm4-ultramem-56').family).toBe('M4')
+    expect(rows.find((r) => r.type === 'm3-ultramem-32').family).toBe('M3')
   })
 })
 
@@ -226,7 +386,32 @@ describe('extractHyperdiskCompat over the real fixture', () => {
 
   it('includes every family this app prices', () => {
     const series = new Set(rows.map((r) => r.series))
-    for (const s of ['C3', 'C3D', 'C4', 'C4A', 'C4D', 'E2', 'N1', 'N2', 'N2D', 'N4', 'N4A', 'N4D', 'T2A', 'T2D']) {
+    for (const s of [
+      'C2',
+      'C2D',
+      'C3',
+      'C3D',
+      'C4',
+      'C4A',
+      'C4D',
+      'C4N',
+      'E2',
+      'H3',
+      'H4D',
+      'M1',
+      'M2',
+      'M3',
+      'M4',
+      'N1',
+      'N2',
+      'N2D',
+      'N4',
+      'N4A',
+      'N4D',
+      'T2A',
+      'T2D',
+      'Z3',
+    ]) {
       expect(series.has(s)).toBe(true)
     }
   })

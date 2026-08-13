@@ -1,11 +1,14 @@
 const GENERAL_PURPOSE_START = 'General-purpose machine type family'
 const GENERAL_PURPOSE_END = 'Tier_1 higher bandwidth network pricing'
-const DIVIDER_HEADING = /^(?:Tau )?[A-Za-z0-9]+ machine types$|^Shared-core machine types$/
 const TYPE_TOKEN = /^[a-z][a-z0-9]*(-[a-z0-9]+)+$/
 const PRICE_TOKEN = /^\$([\d.]+) \/ 1 (hour|gibibyte hour)$/
-const MEMORY_TOKEN = /^([\d.]+)\s*GiB$/
+const MEMORY_TOKEN = /^([\d,]+(?:\.\d+)?)\s*GiB$/
+// The Network-optimized page renders its Memory column with no "GiB" suffix
+// at all (just "7"), unlike every other page's tables.
+const MEMORY_VALUE = /^([\d,]+(?:\.\d+)?)\s*(?:GiB)?$/
 const FAMILY_QUALIFIER =
-  /^(.+?) (?:standard|high-memory|high-CPU|high-cpu|shared-core|Standard with Local SSD|Highmem with Local SSD)(?: machine types)?$/
+  /^(.+?) (?:standard|Standard|high-memory|Highmem|highmem|high-CPU|high-cpu|Highcpu|highcpu|shared-core|Standard with Local SSD|Highmem with Local SSD|highmem with standardlssd|highmem with highlssd)(?: machine types)?$/
+const BARE_MACHINE_TYPES = /^(.+?) machine types?$/
 
 function stripTags(html) {
   return html
@@ -43,21 +46,23 @@ function tableCells(tableHtml) {
 }
 
 function familyFromHeading(heading) {
-  const match = FAMILY_QUALIFIER.exec(heading)
-  return match ? match[1] : heading
+  const qualified = FAMILY_QUALIFIER.exec(heading)
+  if (qualified) return qualified[1]
+  const bare = BARE_MACHINE_TYPES.exec(heading)
+  return bare ? bare[1] : heading
 }
 
 function parseInstanceRow(cells, family) {
   const [type, vcpuCell, memCell, ...rest] = cells
-  const memMatch = MEMORY_TOKEN.exec(memCell)
-  const memGiB = memMatch ? parseFloat(memMatch[1]) : 0
+  const memMatch = MEMORY_VALUE.exec(memCell)
+  const memGiB = memMatch ? parseFloat(memMatch[1].replace(/,/g, '')) : 0
 
   // "with Local SSD" tables insert a Local SSD GiB column before the price columns —
   // distinguish it from the price column by the absence of a leading '$'.
   let storageGB = 0
   let priceCells = rest
   if (rest[0] && !rest[0].startsWith('$') && MEMORY_TOKEN.test(rest[0])) {
-    storageGB = parseFloat(MEMORY_TOKEN.exec(rest[0])[1])
+    storageGB = parseFloat(MEMORY_TOKEN.exec(rest[0])[1].replace(/,/g, ''))
     priceCells = rest.slice(1)
   }
 
@@ -74,24 +79,31 @@ function parseInstanceRow(cells, family) {
   }
 }
 
-export function extractInstanceRows(html) {
+export function extractInstanceRows(html, startHeading = GENERAL_PURPOSE_START, endHeading = GENERAL_PURPOSE_END) {
   const headings = findHeadings(html)
   const tables = findTables(html)
 
-  const start = headings.find((h) => h.text === GENERAL_PURPOSE_START)
-  const end = headings.find((h) => h.text === GENERAL_PURPOSE_END)
+  const start = headings.find((h) => h.text === startHeading)
+  const end = headings.find((h) => h.text === endHeading)
   if (!start || !end) {
-    throw new Error('Could not find the general-purpose machine type section boundaries')
+    throw new Error(`Could not find the "${startHeading}" / "${endHeading}" section boundaries`)
   }
 
   const rows = []
-  for (const heading of headings) {
+  for (let i = 0; i < headings.length; i++) {
+    const heading = headings[i]
     if (heading.index <= start.index || heading.index >= end.index) continue
     if (heading.text === 'Consumption model ID:') continue
-    if (DIVIDER_HEADING.test(heading.text)) continue
 
     const table = tables.find((t) => t.index > heading.index)
     if (!table) continue
+    // A heading with another heading between it and its nearest table is a
+    // section/family divider (e.g. "C4 machine types" before "C4 standard
+    // machine types") rather than a data heading — the "Consumption model
+    // ID:" tooltip headings nested inside a table's own markup sit *after*
+    // that table's start tag, so they never trigger this skip.
+    const next = headings[i + 1]
+    if (next && next.index < table.index) continue
 
     const cells = tableCells(table.html)
     const firstTypeIdx = cells.findIndex((c) => TYPE_TOKEN.test(c))
@@ -185,11 +197,23 @@ function findFixture(prefix) {
   return `fixtures/gcp/${match}`
 }
 
+// Google splits VM pricing across separate category pages with no unified
+// table; each has its own section start/end heading text.
+const INSTANCE_SOURCES = [
+  { prefix: 'General Purpose VM pricing', start: GENERAL_PURPOSE_START, end: GENERAL_PURPOSE_END },
+  { prefix: 'Compute-optimized VM pricing', start: 'Compute-optimized pricing', end: 'Simulated maintenance event pricing' },
+  { prefix: 'Memory-optimized VM Pricing', start: 'Memory-optimized pricing', end: 'Tier_1 higher bandwidth network pricing' },
+  { prefix: 'Network-optimized VM pricing', start: 'Network-optimized pricing', end: 'How pricing works' },
+  { prefix: 'Storage-optimized VM Pricing', start: 'Storage-optimized pricing', end: 'Simulated maintenance event pricing' },
+]
+
 function main() {
   const pricingHtml = readFileSync(findFixture('General Purpose VM pricing'), 'utf8')
   const hyperdiskHtml = readFileSync(findFixture('Google Cloud Hyperdisk overview'), 'utf8')
 
-  const instances = extractInstanceRows(pricingHtml)
+  const instances = INSTANCE_SOURCES.flatMap(({ prefix, start, end }) =>
+    extractInstanceRows(readFileSync(findFixture(prefix), 'utf8'), start, end),
+  )
   const disks = extractDiskRows(pricingHtml)
   const hyperdiskCompat = extractHyperdiskCompat(hyperdiskHtml)
 

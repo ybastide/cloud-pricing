@@ -326,7 +326,7 @@ describe('normalizeGcp over the real fixture', () => {
   const rows = raw.map(normalizeGcp)
 
   it('returns every row', () => {
-    expect(rows).toHaveLength(381)
+    expect(rows).toHaveLength(470)
   })
 
   it('produces a finite number for every numeric field in every row', () => {
@@ -343,7 +343,7 @@ describe('normalizeGcp over the real fixture', () => {
   })
 
   it('keys uniquely on type', () => {
-    expect(new Set(rows.map((r) => r.type)).size).toBe(381)
+    expect(new Set(rows.map((r) => r.type)).size).toBe(470)
   })
 })
 

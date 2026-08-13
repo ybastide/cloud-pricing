@@ -3046,5 +3046,717 @@
     "memGiB": 1.7,
     "storageGB": 0,
     "usd": 0.0257
+  },
+  {
+    "type": "h4d-standard-192",
+    "family": "H4D",
+    "vcpu": 192,
+    "memGiB": 720,
+    "storageGB": 0,
+    "usd": 7.85376
+  },
+  {
+    "type": "h4d-highmem-192",
+    "family": "H4D",
+    "vcpu": 192,
+    "memGiB": 1488,
+    "storageGB": 0,
+    "usd": 8.842944
+  },
+  {
+    "type": "h4d-highmem-192-lssd",
+    "family": "H4D",
+    "vcpu": 192,
+    "memGiB": 1488,
+    "storageGB": 3750,
+    "usd": 9.42409126
+  },
+  {
+    "type": "h3-standard-88",
+    "family": "H3",
+    "vcpu": 88,
+    "memGiB": 352,
+    "storageGB": 0,
+    "usd": 4.9236
+  },
+  {
+    "type": "c2-standard-4",
+    "family": "C2",
+    "vcpu": 4,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.208808
+  },
+  {
+    "type": "c2-standard-8",
+    "family": "C2",
+    "vcpu": 8,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.417616
+  },
+  {
+    "type": "c2-standard-16",
+    "family": "C2",
+    "vcpu": 16,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.835232
+  },
+  {
+    "type": "c2-standard-30",
+    "family": "C2",
+    "vcpu": 30,
+    "memGiB": 120,
+    "storageGB": 0,
+    "usd": 1.56606
+  },
+  {
+    "type": "c2-standard-60",
+    "family": "C2",
+    "vcpu": 60,
+    "memGiB": 240,
+    "storageGB": 0,
+    "usd": 3.13212
+  },
+  {
+    "type": "c2d-standard-2",
+    "family": "C2D",
+    "vcpu": 2,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.090798
+  },
+  {
+    "type": "c2d-standard-4",
+    "family": "C2D",
+    "vcpu": 4,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.181596
+  },
+  {
+    "type": "c2d-standard-8",
+    "family": "C2D",
+    "vcpu": 8,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.363192
+  },
+  {
+    "type": "c2d-standard-16",
+    "family": "C2D",
+    "vcpu": 16,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.726384
+  },
+  {
+    "type": "c2d-standard-32",
+    "family": "C2D",
+    "vcpu": 32,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 1.452768
+  },
+  {
+    "type": "c2d-standard-56",
+    "family": "C2D",
+    "vcpu": 56,
+    "memGiB": 224,
+    "storageGB": 0,
+    "usd": 2.542344
+  },
+  {
+    "type": "c2d-standard-112",
+    "family": "C2D",
+    "vcpu": 112,
+    "memGiB": 448,
+    "storageGB": 0,
+    "usd": 5.084688
+  },
+  {
+    "type": "c2d-highmem-2",
+    "family": "C2D",
+    "vcpu": 2,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.12247
+  },
+  {
+    "type": "c2d-highmem-4",
+    "family": "C2D",
+    "vcpu": 4,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.24494
+  },
+  {
+    "type": "c2d-highmem-8",
+    "family": "C2D",
+    "vcpu": 8,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 0.48988
+  },
+  {
+    "type": "c2d-highmem-16",
+    "family": "C2D",
+    "vcpu": 16,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 0.97976
+  },
+  {
+    "type": "c2d-highmem-32",
+    "family": "C2D",
+    "vcpu": 32,
+    "memGiB": 256,
+    "storageGB": 0,
+    "usd": 1.95952
+  },
+  {
+    "type": "c2d-highmem-56",
+    "family": "C2D",
+    "vcpu": 56,
+    "memGiB": 448,
+    "storageGB": 0,
+    "usd": 3.42916
+  },
+  {
+    "type": "c2d-highmem-112",
+    "family": "C2D",
+    "vcpu": 112,
+    "memGiB": 896,
+    "storageGB": 0,
+    "usd": 6.85832
+  },
+  {
+    "type": "c2d-highcpu-2",
+    "family": "C2D",
+    "vcpu": 2,
+    "memGiB": 4,
+    "storageGB": 0,
+    "usd": 0.074962
+  },
+  {
+    "type": "c2d-highcpu-4",
+    "family": "C2D",
+    "vcpu": 4,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.149924
+  },
+  {
+    "type": "c2d-highcpu-8",
+    "family": "C2D",
+    "vcpu": 8,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.299848
+  },
+  {
+    "type": "c2d-highcpu-16",
+    "family": "C2D",
+    "vcpu": 16,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 0.599696
+  },
+  {
+    "type": "c2d-highcpu-32",
+    "family": "C2D",
+    "vcpu": 32,
+    "memGiB": 64,
+    "storageGB": 0,
+    "usd": 1.199392
+  },
+  {
+    "type": "c2d-highcpu-56",
+    "family": "C2D",
+    "vcpu": 56,
+    "memGiB": 128,
+    "storageGB": 0,
+    "usd": 2.098936
+  },
+  {
+    "type": "c2d-highcpu-112",
+    "family": "C2D",
+    "vcpu": 112,
+    "memGiB": 224,
+    "storageGB": 0,
+    "usd": 4.197872
+  },
+  {
+    "type": "m4-ultramem-56",
+    "family": "M4",
+    "vcpu": 56,
+    "memGiB": 1488,
+    "storageGB": 0,
+    "usd": 7.8237504
+  },
+  {
+    "type": "m4-ultramem-112",
+    "family": "M4",
+    "vcpu": 112,
+    "memGiB": 2976,
+    "storageGB": 0,
+    "usd": 15.6475008
+  },
+  {
+    "type": "m4-ultramem-224",
+    "family": "M4",
+    "vcpu": 224,
+    "memGiB": 5952,
+    "storageGB": 0,
+    "usd": 41.464125836
+  },
+  {
+    "type": "m4-megamem-28",
+    "family": "M4",
+    "vcpu": 28,
+    "memGiB": 372,
+    "storageGB": 0,
+    "usd": 2.2118352
+  },
+  {
+    "type": "m4-megamem-56",
+    "family": "M4",
+    "vcpu": 56,
+    "memGiB": 744,
+    "storageGB": 0,
+    "usd": 4.4236704
+  },
+  {
+    "type": "m4-megamem-112",
+    "family": "M4",
+    "vcpu": 112,
+    "memGiB": 1488,
+    "storageGB": 0,
+    "usd": 8.8473408
+  },
+  {
+    "type": "m4-megamem-224",
+    "family": "M4",
+    "vcpu": 224,
+    "memGiB": 2976,
+    "storageGB": 0,
+    "usd": 17.6946816
+  },
+  {
+    "type": "m4-hypermem-16",
+    "family": "M4",
+    "vcpu": 16,
+    "memGiB": 248,
+    "storageGB": 0,
+    "usd": 1.4258144
+  },
+  {
+    "type": "m4-hypermem-32",
+    "family": "M4",
+    "vcpu": 32,
+    "memGiB": 496,
+    "storageGB": 0,
+    "usd": 2.8516288
+  },
+  {
+    "type": "m4-hypermem-64",
+    "family": "M4",
+    "vcpu": 64,
+    "memGiB": 992,
+    "storageGB": 0,
+    "usd": 5.7032576
+  },
+  {
+    "type": "m3-ultramem-32",
+    "family": "M3",
+    "vcpu": 32,
+    "memGiB": 976,
+    "storageGB": 0,
+    "usd": 6.0912
+  },
+  {
+    "type": "m3-ultramem-64",
+    "family": "M3",
+    "vcpu": 64,
+    "memGiB": 1952,
+    "storageGB": 0,
+    "usd": 12.1824
+  },
+  {
+    "type": "m3-ultramem-128",
+    "family": "M3",
+    "vcpu": 128,
+    "memGiB": 3904,
+    "storageGB": 0,
+    "usd": 24.3648
+  },
+  {
+    "type": "m3-megamem-64",
+    "family": "M3",
+    "vcpu": 64,
+    "memGiB": 976,
+    "storageGB": 0,
+    "usd": 7.2048
+  },
+  {
+    "type": "m3-megamem-128",
+    "family": "M3",
+    "vcpu": 128,
+    "memGiB": 1952,
+    "storageGB": 0,
+    "usd": 14.4096
+  },
+  {
+    "type": "m2-ultramem-208",
+    "family": "M2",
+    "vcpu": 208,
+    "memGiB": 5888,
+    "storageGB": 0,
+    "usd": 42.111936
+  },
+  {
+    "type": "m2-ultramem-416",
+    "family": "M2",
+    "vcpu": 416,
+    "memGiB": 11776,
+    "storageGB": 0,
+    "usd": 84.223872
+  },
+  {
+    "type": "m2-megamem-416",
+    "family": "M2",
+    "vcpu": 416,
+    "memGiB": 5888,
+    "storageGB": 0,
+    "usd": 50.291328
+  },
+  {
+    "type": "m2-hypermem-416",
+    "family": "M2",
+    "vcpu": 416,
+    "memGiB": 8832,
+    "storageGB": 0,
+    "usd": 67.2576
+  },
+  {
+    "type": "m1-ultramem-40",
+    "family": "M1",
+    "vcpu": 40,
+    "memGiB": 961,
+    "storageGB": 0,
+    "usd": 6.2931
+  },
+  {
+    "type": "m1-ultramem-80",
+    "family": "M1",
+    "vcpu": 80,
+    "memGiB": 1922,
+    "storageGB": 0,
+    "usd": 12.5862
+  },
+  {
+    "type": "m1-ultramem-160",
+    "family": "M1",
+    "vcpu": 160,
+    "memGiB": 3844,
+    "storageGB": 0,
+    "usd": 25.1724
+  },
+  {
+    "type": "m1-megamem-96",
+    "family": "M1",
+    "vcpu": 96,
+    "memGiB": 1433.6,
+    "storageGB": 0,
+    "usd": 10.65216
+  },
+  {
+    "type": "c4n-standard-2",
+    "family": "C4N",
+    "vcpu": 2,
+    "memGiB": 7,
+    "storageGB": 0,
+    "usd": 0.154987
+  },
+  {
+    "type": "c4n-standard-4",
+    "family": "C4N",
+    "vcpu": 4,
+    "memGiB": 15,
+    "storageGB": 0,
+    "usd": 0.316275
+  },
+  {
+    "type": "c4n-standard-8",
+    "family": "C4N",
+    "vcpu": 8,
+    "memGiB": 30,
+    "storageGB": 0,
+    "usd": 0.63255
+  },
+  {
+    "type": "c4n-standard-16",
+    "family": "C4N",
+    "vcpu": 16,
+    "memGiB": 60,
+    "storageGB": 0,
+    "usd": 1.2651
+  },
+  {
+    "type": "c4n-standard-24",
+    "family": "C4N",
+    "vcpu": 24,
+    "memGiB": 90,
+    "storageGB": 0,
+    "usd": 1.89765
+  },
+  {
+    "type": "c4n-standard-48",
+    "family": "C4N",
+    "vcpu": 48,
+    "memGiB": 180,
+    "storageGB": 0,
+    "usd": 3.7953
+  },
+  {
+    "type": "c4n-standard-96",
+    "family": "C4N",
+    "vcpu": 96,
+    "memGiB": 360,
+    "storageGB": 0,
+    "usd": 7.5906
+  },
+  {
+    "type": "c4n-standard-192",
+    "family": "C4N",
+    "vcpu": 192,
+    "memGiB": 720,
+    "storageGB": 0,
+    "usd": 15.1812
+  },
+  {
+    "type": "c4n-highmem-2",
+    "family": "C4N",
+    "vcpu": 2,
+    "memGiB": 15,
+    "storageGB": 0,
+    "usd": 0.205395
+  },
+  {
+    "type": "c4n-highmem-4",
+    "family": "C4N",
+    "vcpu": 4,
+    "memGiB": 31,
+    "storageGB": 0,
+    "usd": 0.417091
+  },
+  {
+    "type": "c4n-highmem-8",
+    "family": "C4N",
+    "vcpu": 8,
+    "memGiB": 62,
+    "storageGB": 0,
+    "usd": 0.834182
+  },
+  {
+    "type": "c4n-highmem-16",
+    "family": "C4N",
+    "vcpu": 16,
+    "memGiB": 124,
+    "storageGB": 0,
+    "usd": 1.668364
+  },
+  {
+    "type": "c4n-highmem-24",
+    "family": "C4N",
+    "vcpu": 24,
+    "memGiB": 186,
+    "storageGB": 0,
+    "usd": 2.502546
+  },
+  {
+    "type": "c4n-highmem-48",
+    "family": "C4N",
+    "vcpu": 48,
+    "memGiB": 372,
+    "storageGB": 0,
+    "usd": 5.005092
+  },
+  {
+    "type": "c4n-highmem-96",
+    "family": "C4N",
+    "vcpu": 96,
+    "memGiB": 744,
+    "storageGB": 0,
+    "usd": 10.010184
+  },
+  {
+    "type": "c4n-highmem-192",
+    "family": "C4N",
+    "vcpu": 192,
+    "memGiB": 1488,
+    "storageGB": 0,
+    "usd": 20.020368
+  },
+  {
+    "type": "c4n-highcpu-2",
+    "family": "C4N",
+    "vcpu": 2,
+    "memGiB": 4,
+    "storageGB": 0,
+    "usd": 0.136084
+  },
+  {
+    "type": "c4n-highcpu-4",
+    "family": "C4N",
+    "vcpu": 4,
+    "memGiB": 8,
+    "storageGB": 0,
+    "usd": 0.272168
+  },
+  {
+    "type": "c4n-highcpu-8",
+    "family": "C4N",
+    "vcpu": 8,
+    "memGiB": 16,
+    "storageGB": 0,
+    "usd": 0.544336
+  },
+  {
+    "type": "c4n-highcpu-16",
+    "family": "C4N",
+    "vcpu": 16,
+    "memGiB": 32,
+    "storageGB": 0,
+    "usd": 1.088672
+  },
+  {
+    "type": "c4n-highcpu-24",
+    "family": "C4N",
+    "vcpu": 24,
+    "memGiB": 48,
+    "storageGB": 0,
+    "usd": 1.633008
+  },
+  {
+    "type": "c4n-highcpu-48",
+    "family": "C4N",
+    "vcpu": 48,
+    "memGiB": 96,
+    "storageGB": 0,
+    "usd": 3.266016
+  },
+  {
+    "type": "c4n-highcpu-96",
+    "family": "C4N",
+    "vcpu": 96,
+    "memGiB": 192,
+    "storageGB": 0,
+    "usd": 6.532032
+  },
+  {
+    "type": "c4n-highcpu-192",
+    "family": "C4N",
+    "vcpu": 192,
+    "memGiB": 384,
+    "storageGB": 0,
+    "usd": 13.064064
+  },
+  {
+    "type": "z3-highmem-14-standardlssd",
+    "family": "Z3",
+    "vcpu": 14,
+    "memGiB": 112,
+    "storageGB": 3000,
+    "usd": 1.769304123
+  },
+  {
+    "type": "z3-highmem-22-standardlssd",
+    "family": "Z3",
+    "vcpu": 22,
+    "memGiB": 176,
+    "storageGB": 6000,
+    "usd": 2.921235247
+  },
+  {
+    "type": "z3-highmem-44-standardlssd",
+    "family": "Z3",
+    "vcpu": 44,
+    "memGiB": 352,
+    "storageGB": 9000,
+    "usd": 5.51370337
+  },
+  {
+    "type": "z3-highmem-88-standardlssd",
+    "family": "Z3",
+    "vcpu": 88,
+    "memGiB": 704,
+    "storageGB": 18000,
+    "usd": 11.02740674
+  },
+  {
+    "type": "z3-highmem-176-standardlssd",
+    "family": "Z3",
+    "vcpu": 176,
+    "memGiB": 1408,
+    "storageGB": 36000,
+    "usd": 22.054813479
+  },
+  {
+    "type": "z3-highmem-8-highlssd",
+    "family": "Z3",
+    "vcpu": 8,
+    "memGiB": 64,
+    "storageGB": 3000,
+    "usd": 1.151931123
+  },
+  {
+    "type": "z3-highmem-16-highlssd",
+    "family": "Z3",
+    "vcpu": 16,
+    "memGiB": 128,
+    "storageGB": 6000,
+    "usd": 2.303862247
+  },
+  {
+    "type": "z3-highmem-22-highlssd",
+    "family": "Z3",
+    "vcpu": 22,
+    "memGiB": 176,
+    "storageGB": 9000,
+    "usd": 3.25000237
+  },
+  {
+    "type": "z3-highmem-32-highlssd",
+    "family": "Z3",
+    "vcpu": 32,
+    "memGiB": 256,
+    "storageGB": 12000,
+    "usd": 4.607724493
+  },
+  {
+    "type": "z3-highmem-44-highlssd",
+    "family": "Z3",
+    "vcpu": 44,
+    "memGiB": 352,
+    "storageGB": 18000,
+    "usd": 6.50000474
+  },
+  {
+    "type": "z3-highmem-88-highlssd",
+    "family": "Z3",
+    "vcpu": 88,
+    "memGiB": 704,
+    "storageGB": 36000,
+    "usd": 13.000009479
+  },
+  {
+    "type": "z3-highmem-192-highlssd-metal",
+    "family": "Z3",
+    "vcpu": 192,
+    "memGiB": 1536,
+    "storageGB": 72000,
+    "usd": 27.646346959
   }
 ]

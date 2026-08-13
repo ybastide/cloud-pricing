@@ -57,16 +57,29 @@ to visitors.
 
 ### GCP
 
-See `fixtures/gcp`. Four files — none of them fetched with `wget`, since GCP
+See `fixtures/gcp`. Eight files — none of them fetched with `wget`, since GCP
 doesn't expose a comparable public JSON endpoint (Google retired the old
 `cloudpricingcalculator.appspot.com` calculator and its static data files along
 with it). Instead:
 
-- `General Purpose VM pricing _ Google Cloud.html` and `Google Cloud Hyperdisk
-  overview _ Compute Engine _ Google Cloud Documentation.html` are full-page
-  saves of the rendered pricing/documentation pages (File → Save Page As, with
-  JS already executed), frozen at whatever region was selected when saved
-  (**Iowa / us-central1** for the pricing page).
+- Five pricing pages are full-page saves of the rendered pricing pages (File →
+  Save Page As, with JS already executed), frozen at whatever region was
+  selected when saved (**Iowa / us-central1**). Google splits VM pricing across
+  these with no unified table, and each covers a disjoint set of families:
+  - `General Purpose VM pricing _ Google Cloud.html` — E2, N1, N2, N2D, N4,
+    N4A, N4D, Tau T2A, Tau T2D. Also the only one read for disk/Hyperdisk
+    pricing (`disks.json`).
+  - `Compute-optimized VM pricing _ Google Cloud.html` — C2, C2D, H3, H4D.
+  - `Memory-optimized VM Pricing _ Google Cloud.html` — M1, M2, M3, M4.
+  - `Network-optimized VM pricing v4 _ Google Cloud.html` — C4N.
+  - `Storage-optimized VM Pricing _ Google Cloud.html` — Z3.
+
+  (C3, C3D, C4, C4A, C4D live on the General Purpose page too, despite being
+  compute-optimized families — Google's own category boundaries here are
+  inconsistent between the page you'd expect a family to live on and the
+  pricing-page nav.)
+- `Google Cloud Hyperdisk overview _ Compute Engine _ Google Cloud
+  Documentation.html` is a documentation page saved the same way.
 - `CPU platforms _ Compute Engine _ Google Cloud Documentation.html` is Google's
   official machine-series-to-CPU-platform reference — not read by the extraction
   script, consulted by hand to verify which GCP families are Arm (`C4A`, `N4A`,
@@ -75,32 +88,43 @@ with it). Instead:
 - `Pricing for My Billing Account.csv` is GCP's full SKU catalog, exported from
   a Cloud Billing account. **Not used by the app** — see the design spec for why.
 
-All three HTML fixtures have had their `<script>` tags stripped after saving. Measured
-against the pricing page before stripping: 74.8% of the file (32 MB of 43 MB) was
-`<script>` content, none of the 76 `<table>` elements sit inside one, and regenerating
-`instances.json`/`disks.json`/`hyperdisk-compat.json` from the stripped files produces
-byte-identical output — confirmed, not assumed. Stripping isn't just a size win: a
-signed-in Google session embeds account info (email, name, account ID) inline in
-page-bootstrap `<script>` JSON, which is exactly how this project's own commit history
-briefly carried a real email address before it was caught and scrubbed. Any future
-re-save of these pages should go through the same stripping step before committing.
+All seven HTML fixtures have had their `<script>` tags stripped after saving — for
+the original General Purpose page, measured before stripping: 74.8% of the file
+(32 MB of 43 MB) was `<script>` content, none of the 76 `<table>` elements sit
+inside one, and regenerating `instances.json`/`disks.json`/`hyperdisk-compat.json`
+from the stripped file produced byte-identical output — confirmed, not assumed.
+The same before/after check was repeated for the Compute-optimized page when it
+was added. The three most recently added pages (Memory/Network/Storage-optimized)
+were stripped before ever being extracted from, so that specific byte-identical
+claim hasn't been (and can no longer be) verified for them — only that extraction
+from the stripped files produces sane rows (see the extraction script's tests).
+
+Stripping isn't just a size win: a signed-in Google session embeds account info
+(email, name) inline, both in page-bootstrap `<script>` JSON and, on every one of
+these pages, in a plain-HTML account-switcher `aria-label`/`div` in the page header
+— outside any `<script>` tag, so stripping scripts alone doesn't remove it. This is
+exactly how this project's own commit history briefly carried a real email address
+before it was caught and scrubbed the first time, and it recurred on all four
+pages added after that fix; each was redacted by hand before committing. Any future
+re-save of these pages should go through the same stripping-and-redaction step.
 
 A `gitleaks` scan (run before considering this repo for public release) additionally
-found 10 unique `AIza`-format Google API keys across the three fixtures — the same 8
-keys appeared identically on both documentation pages, which strongly suggests they're
-Google's own shared, embedded keys (client-library loader, language-switcher widget) and
-not anything unique to this session, though that couldn't be independently confirmed
-without testing the keys against a live API, which wasn't attempted. Most were already
-gone once scripts were stripped; one survived in a `data-*` attribute on the pricing page
-(outside any `<script>` tag) and was redacted along with the rest of history. Re-run
-`gitleaks detect --source . --log-opts="--all"` after any future re-save, before
-committing.
+found 10 unique `AIza`-format Google API keys across the original three fixtures — the
+same 8 keys appeared identically on both documentation pages, which strongly suggests
+they're Google's own shared, embedded keys (client-library loader, language-switcher
+widget) and not anything unique to this session, though that couldn't be independently
+confirmed without testing the keys against a live API, which wasn't attempted. Most were
+already gone once scripts were stripped; one survived in a `data-*` attribute on the
+pricing page (outside any `<script>` tag) and was redacted along with the rest of
+history. The four pages added later each carry one more `AIza` key, identical across all
+four — consistent with the same "Google's own shared key" theory, not independently
+re-verified either. Re-run `gitleaks detect --source . --log-opts="--all"` after any
+future re-save, before committing.
 
 Run `npm run extract:gcp` to regenerate `instances.json`, `disks.json`, and
-`hyperdisk-compat.json` from the two pricing/Hyperdisk HTML files (the CPU
-platforms doc isn't read by the script — see above). Re-run it if either of
-those two files is refreshed — the app only ever reads the generated JSON,
-never the HTML directly.
+`hyperdisk-compat.json` from the pricing/Hyperdisk HTML files (the CPU platforms doc
+isn't read by the script — see above). Re-run it if any of those files are refreshed —
+the app only ever reads the generated JSON, never the HTML directly.
 
 ## Tooling
 

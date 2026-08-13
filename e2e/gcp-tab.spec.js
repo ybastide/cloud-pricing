@@ -1,13 +1,13 @@
 import { expect, test } from '@playwright/test'
 
-const GCP_TOTAL = 381
+const GCP_TOTAL = 470
 
 const searchBox = (page) => page.getByRole('searchbox', { name: 'Filter by instance type' })
 const archButton = (page, name) =>
   page.getByRole('group', { name: 'Processor architecture' }).getByRole('button', { name })
 const count = (page) => page.locator('p.count')
 // Scoped to the main pricing table: an unscoped `tbody td.type` also matches rows in the
-// Disk pricing / Hyperdisk compatibility panels rendered below it on the GCP tab (454 vs 381).
+// Disk pricing / Hyperdisk compatibility panels rendered below it on the GCP tab (543 vs 470).
 const typeCells = (page) => page.locator('main > table tbody td.type')
 const gcpTab = (page) => page.getByRole('tab', { name: 'GCP' })
 const awsTab = (page) => page.getByRole('tab', { name: 'AWS' })
@@ -28,7 +28,7 @@ test('shows the architecture toggle on the GCP tab and filters correctly', async
   await archButton(page, 'ARM').click()
   await expect(count(page)).toHaveText(`72 of ${GCP_TOTAL} instances`)
   await archButton(page, 'x86').click()
-  await expect(count(page)).toHaveText(`309 of ${GCP_TOTAL} instances`)
+  await expect(count(page)).toHaveText(`398 of ${GCP_TOTAL} instances`)
   await archButton(page, 'All').click()
   await expect(count(page)).toHaveText(`${GCP_TOTAL} of ${GCP_TOTAL} instances`)
 })
