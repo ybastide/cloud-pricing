@@ -137,6 +137,33 @@ tbody tr:nth-child(even) {
   outline-offset: 1px;
 }
 
+.numeric-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.numeric-filter-label,
+.numeric-filter-unit {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.numeric-filter select,
+.numeric-filter input[type='number'] {
+  padding: 0.5rem 0.5rem;
+  font: inherit;
+  color: inherit;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.numeric-filter input[type='number'] {
+  width: 4.5rem;
+}
+
 .units {
   display: flex;
   border: 1px solid var(--border);

@@ -1,4 +1,6 @@
 <script>
+  import { parseFilterTokens } from './data/query.js'
+
   const DEFAULT_PLACEHOLDERS = {
     all: 'Filter by instance type, e.g. m5 or 4xlarge',
     arm: 'Filter by instance type, e.g. c7g or m8g',
@@ -19,14 +21,41 @@
     query.families = next
   }
 
+  let debounceTimer
+
+  function onSearchInput(value) {
+    query.search = value
+    clearTimeout(debounceTimer)
+    debounceTimer = setTimeout(() => {
+      const { text, vcpu, mem } = parseFilterTokens(query.search)
+      query.search = text
+      if (vcpu) {
+        query.vcpuOp = vcpu.op
+        query.vcpuVal = String(vcpu.val)
+      }
+      if (mem) {
+        query.memOp = mem.op
+        query.memVal = String(mem.val)
+      }
+    }, 350)
+  }
+
   function clear() {
     query.search = ''
     query.families = new Set()
     query.arch = 'all'
+    query.vcpuOp = '='
+    query.vcpuVal = ''
+    query.memOp = '='
+    query.memVal = ''
   }
 
   const filtering = $derived(
-    query.search !== '' || query.families.size > 0 || query.arch !== 'all',
+    query.search !== '' ||
+      query.families.size > 0 ||
+      query.arch !== 'all' ||
+      query.vcpuVal !== '' ||
+      query.memVal !== '',
   )
 
   const ARCHES = [
@@ -42,9 +71,43 @@
   <input
     type="search"
     {placeholder}
-    bind:value={query.search}
+    value={query.search}
+    oninput={(e) => onSearchInput(e.currentTarget.value)}
     aria-label="Filter by instance type"
   />
+
+  <div class="numeric-filter" role="group" aria-label="vCPU filter">
+    <span class="numeric-filter-label">vCPU</span>
+    <select bind:value={query.vcpuOp} aria-label="vCPU operator">
+      <option value="=">=</option>
+      <option value=">=">≥</option>
+    </select>
+    <input
+      type="number"
+      min="0"
+      step="any"
+      value={query.vcpuVal}
+      oninput={(e) => (query.vcpuVal = e.currentTarget.value)}
+      aria-label="vCPU value"
+    />
+  </div>
+
+  <div class="numeric-filter" role="group" aria-label="Memory filter">
+    <span class="numeric-filter-label">Memory</span>
+    <select bind:value={query.memOp} aria-label="Memory operator">
+      <option value="=">=</option>
+      <option value=">=">≥</option>
+    </select>
+    <input
+      type="number"
+      min="0"
+      step="any"
+      value={query.memVal}
+      oninput={(e) => (query.memVal = e.currentTarget.value)}
+      aria-label="Memory value"
+    />
+    <span class="numeric-filter-unit">GiB</span>
+  </div>
 
   {#if showArch}
     <div class="units" role="group" aria-label="Processor architecture">
