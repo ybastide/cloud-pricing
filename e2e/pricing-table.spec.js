@@ -37,7 +37,15 @@ test('sorts memory numerically, not lexicographically', async ({ page }) => {
   await page.goto('/')
   await page.getByRole('button', { name: 'Memory', exact: true }).click()
   await expect(typeCells(page).first()).toHaveText('u7in-32tb.224xlarge')
-  await expect(page.locator('tbody tr').first().locator('td').nth(2)).toHaveText('32768 GiB')
+  await expect(page.locator('tbody tr').first().locator('td').nth(3)).toHaveText('32768 GiB')
+})
+
+test('sorts by architecture, grouping ARM before x86', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Arch', exact: true }).click()
+  await page.getByRole('button', { name: 'Arch', exact: true }).click()
+  await expect(page.locator('tbody tr').first().locator('td').nth(1)).toHaveText('ARM')
+  await expect(page.locator('tbody tr').last().locator('td').nth(1)).toHaveText('x86')
 })
 
 test('orders the instance-type size ladder naturally', async ({ page }) => {

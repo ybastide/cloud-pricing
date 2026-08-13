@@ -53,7 +53,17 @@ test('sorts by Local SSD without NaN corrupting the order', async ({ page }) => 
   await page.getByRole('button', { name: 'Local SSD', exact: true }).click()
   await page.getByRole('button', { name: 'Local SSD', exact: true }).click()
   const firstRowCells = page.locator('main > table tbody tr').first().locator('td')
-  await expect(firstRowCells.nth(3)).toHaveText('') // ascending: no-Local-SSD rows sort first
+  await expect(firstRowCells.nth(4)).toHaveText('') // ascending: no-Local-SSD rows sort first
+})
+
+test('sorts by architecture, grouping ARM before x86', async ({ page }) => {
+  await page.goto('/')
+  await gcpTab(page).click()
+  await page.getByRole('button', { name: 'Arch', exact: true }).click()
+  await page.getByRole('button', { name: 'Arch', exact: true }).click()
+  const rows = page.locator('main > table tbody tr')
+  await expect(rows.first().locator('td').nth(1)).toHaveText('ARM')
+  await expect(rows.last().locator('td').nth(1)).toHaveText('x86')
 })
 
 test('renders the disk pricing and Hyperdisk compatibility panels', async ({ page }) => {
