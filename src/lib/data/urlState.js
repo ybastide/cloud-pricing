@@ -3,8 +3,10 @@ import { DEFAULT_DIR, DEFAULT_SORT, SORT_KEYS } from './query.js'
 const DEFAULT_UNIT = 'hour'
 const DEFAULT_ARCH = 'all'
 const DEFAULT_PROVIDER = 'aws'
+const DEFAULT_OP = '='
 const ARCHES = ['arm', 'x86']
 const PROVIDERS = ['aws', 'gcp']
+const OPS = ['=', '>=']
 
 export function defaultQuery() {
   return {
@@ -15,6 +17,10 @@ export function defaultQuery() {
     sort: DEFAULT_SORT,
     dir: DEFAULT_DIR,
     unit: DEFAULT_UNIT,
+    vcpuOp: DEFAULT_OP,
+    vcpuVal: '',
+    memOp: DEFAULT_OP,
+    memVal: '',
   }
 }
 
@@ -27,7 +33,25 @@ export function toSearchParams(query) {
   if (query.sort && query.sort !== DEFAULT_SORT) params.set('sort', query.sort)
   if (query.dir && query.dir !== DEFAULT_DIR) params.set('dir', query.dir)
   if (query.unit && query.unit !== DEFAULT_UNIT) params.set('unit', query.unit)
+  if (query.vcpuVal) {
+    params.set('vcpuVal', query.vcpuVal)
+    if (query.vcpuOp && query.vcpuOp !== DEFAULT_OP) params.set('vcpuOp', query.vcpuOp)
+  }
+  if (query.memVal) {
+    params.set('memVal', query.memVal)
+    if (query.memOp && query.memOp !== DEFAULT_OP) params.set('memOp', query.memOp)
+  }
   return params.toString()
+}
+
+function readOp(params, key) {
+  const op = params.get(key)
+  return OPS.includes(op) ? op : DEFAULT_OP
+}
+
+function readVal(params, key) {
+  const val = params.get(key)
+  return val !== null && Number.isFinite(Number(val)) ? val : ''
 }
 
 export function fromSearchParams(search) {
@@ -50,6 +74,11 @@ export function fromSearchParams(search) {
 
   if (params.get('dir') === 'desc') query.dir = 'desc'
   if (params.get('unit') === 'month') query.unit = 'month'
+
+  query.vcpuOp = readOp(params, 'vcpuOp')
+  query.vcpuVal = readVal(params, 'vcpuVal')
+  query.memOp = readOp(params, 'memOp')
+  query.memVal = readVal(params, 'memVal')
 
   return query
 }

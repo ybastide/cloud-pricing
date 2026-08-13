@@ -11,6 +11,10 @@ describe('defaultQuery', () => {
       sort: 'usd',
       dir: 'asc',
       unit: 'hour',
+      vcpuOp: '=',
+      vcpuVal: '',
+      memOp: '=',
+      memVal: '',
     })
   })
 
@@ -162,6 +166,58 @@ describe('provider in the query state', () => {
 
   it('round-trips a gcp query with other fields set', () => {
     const query = { ...defaultQuery(), provider: 'gcp', search: 'c4', sort: 'vcpu', dir: 'desc' }
+    expect(fromSearchParams(toSearchParams(query))).toEqual(query)
+  })
+})
+
+describe('vcpu and mem filters in the query state', () => {
+  it('omits vcpu/mem params when the values are empty', () => {
+    expect(toSearchParams(defaultQuery())).toBe('')
+  })
+
+  it('serialises a vcpu value with the default operator omitted', () => {
+    expect(toSearchParams({ ...defaultQuery(), vcpuVal: '4' })).toBe('vcpuVal=4')
+  })
+
+  it('serialises a vcpu value with a non-default operator', () => {
+    expect(toSearchParams({ ...defaultQuery(), vcpuOp: '>=', vcpuVal: '4' })).toBe(
+      'vcpuVal=4&vcpuOp=%3E%3D',
+    )
+  })
+
+  it('serialises a mem value with a non-default operator', () => {
+    expect(toSearchParams({ ...defaultQuery(), memOp: '>=', memVal: '16' })).toBe(
+      'memVal=16&memOp=%3E%3D',
+    )
+  })
+
+  it('accepts a known operator paired with a valid value', () => {
+    const q = fromSearchParams('vcpuVal=4&vcpuOp=%3E%3D')
+    expect(q.vcpuOp).toBe('>=')
+    expect(q.vcpuVal).toBe('4')
+  })
+
+  it('falls back to the default operator for an unknown operator', () => {
+    expect(fromSearchParams('vcpuVal=4&vcpuOp=%3C').vcpuOp).toBe('=')
+  })
+
+  it('falls back to an inactive (empty) value for a non-numeric value', () => {
+    expect(fromSearchParams('vcpuVal=abc').vcpuVal).toBe('')
+  })
+
+  it('falls back to an inactive value when missing', () => {
+    expect(fromSearchParams('').memVal).toBe('')
+  })
+
+  it('round-trips vcpu and mem filters together with other fields', () => {
+    const query = {
+      ...defaultQuery(),
+      search: 'm5',
+      vcpuOp: '>=',
+      vcpuVal: '4',
+      memOp: '=',
+      memVal: '16',
+    }
     expect(fromSearchParams(toSearchParams(query))).toEqual(query)
   })
 })
