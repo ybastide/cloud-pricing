@@ -1,6 +1,7 @@
 <script>
   const DEFAULT_COLUMNS = [
     { key: 'type', label: 'Instance', cellClass: 'type' },
+    { key: 'arch', label: 'Arch', render: (row) => (row.arch === 'arm' ? 'ARM' : 'x86') },
     { key: 'vcpu', label: 'vCPU' },
     { key: 'memGiB', label: 'Memory', render: (row) => `${row.memGiB} GiB` },
     { key: 'storageGB', label: 'Storage', render: (row) => row.storage },
