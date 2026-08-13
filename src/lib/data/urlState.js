@@ -51,7 +51,7 @@ function readOp(params, key) {
 
 function readVal(params, key) {
   const val = params.get(key)
-  return val !== null && Number.isFinite(Number(val)) ? val : ''
+  return val !== null && /^\d+(?:\.\d+)?$/.test(val) ? val : ''
 }
 
 export function fromSearchParams(search) {
