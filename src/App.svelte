@@ -19,13 +19,13 @@
 
   const GCP_COLUMNS = [
     { key: 'type', label: 'Machine type', cellClass: 'type' },
-    { key: 'arch', label: 'Arch', render: (row) => (row.arch === 'arm' ? 'ARM' : 'x86') },
+    { key: 'arch', label: 'Arch', render: (/** @type {{ arch: string; }} */ row) => (row.arch === 'arm' ? 'ARM' : 'x86') },
     { key: 'vcpu', label: 'vCPU' },
-    { key: 'memGiB', label: 'Memory', render: (row) => `${row.memGiB} GiB` },
+    { key: 'memGiB', label: 'Memory', render: (/** @type {{ memGiB: number; }} */ row) => `${row.memGiB} GiB` },
     {
       key: 'storageGB',
       label: 'Local SSD',
-      render: (row) => (row.storageGB > 0 ? `${row.storageGB} GiB` : ''),
+      render: (/** @type {{ storageGB: number; }} */ row) => (row.storageGB > 0 ? `${row.storageGB} GiB` : ''),
     },
     { key: 'usd', label: 'Price', cellClass: 'price' },
   ]
@@ -77,6 +77,9 @@
     }
   })
 
+  /**
+     * @param {string} key
+     */
   function sortBy(key) {
     if (query.sort === key) {
       query.dir = query.dir === 'asc' ? 'desc' : 'asc'
@@ -86,6 +89,9 @@
     }
   }
 
+  /**
+     * @param {string} next
+     */
   function switchProvider(next) {
     if (query.provider === next) return
     query.provider = next

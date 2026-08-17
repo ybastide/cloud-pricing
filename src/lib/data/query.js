@@ -49,8 +49,7 @@ export function applyQuery(rows, query) {
       if (byArch && row.arch !== arch) return false
       if (byVcpu && !matchesOp(row.vcpu, vcpuOp, vcpuTarget)) return false
       if (byMem && !matchesOp(row.memGiB, memOp, memTarget)) return false
-      if (needle && !row.type.toLowerCase().includes(needle)) return false
-      return true
+      return !(needle && !row.type.toLowerCase().includes(needle))
     })
     .sort((a, b) => sign * compare(a, b) || a.type.localeCompare(b.type))
 }

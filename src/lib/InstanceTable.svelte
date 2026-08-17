@@ -1,11 +1,11 @@
 <script>
   const DEFAULT_COLUMNS = [
     { key: 'type', label: 'Instance', cellClass: 'type' },
-    { key: 'arch', label: 'Arch', render: (row) => (row.arch === 'arm' ? 'ARM' : 'x86') },
+    { key: 'arch', label: 'Arch', render: (/** @type {{ arch: string; }} */ row) => (row.arch === 'arm' ? 'ARM' : 'x86') },
     { key: 'vcpu', label: 'vCPU' },
-    { key: 'memGiB', label: 'Memory', render: (row) => `${row.memGiB} GiB` },
-    { key: 'storageGB', label: 'Storage', render: (row) => row.storage },
-    { key: 'netGbps', label: 'Network', render: (row) => row.netLabel },
+    { key: 'memGiB', label: 'Memory', render: (/** @type {{ memGiB: number; }} */ row) => `${row.memGiB} GiB` },
+    { key: 'storageGB', label: 'Storage', render: (/** @type {{ storage: number; }} */ row) => row.storage },
+    { key: 'netGbps', label: 'Network', render: (/** @type {{ netLabel: string; }} */ row) => row.netLabel },
     { key: 'usd', label: 'Price', cellClass: 'price' },
   ]
 
@@ -25,16 +25,26 @@
     maximumFractionDigits: 2,
   })
 
+  /**
+     * @param {{ usd: number; }} row
+     */
   function price(row) {
     return unit === 'month' ? monthly.format(row.usd * 730) : hourly.format(row.usd)
   }
 
+  /**
+     * @param {{ [x: string]: any; usd?: number; }} row
+     * @param {{ key: string; label: string; cellClass: string; render?: undefined; } | { key: string; label: string; render: (row: { arch: string; }) => "ARM" | "x86"; cellClass?: undefined; } | { key: string; label: string; cellClass?: undefined; render?: undefined; } | { key: string; label: string; render: (row: { memGiB: number; }) => string; cellClass?: undefined; } | { key: string; label: string; render: (row: { storage: number; }) => number; cellClass?: undefined; } | { key: string; label: string; render: (row: { netLabel: string; }) => string; cellClass?: undefined; }} column
+     */
   function cell(row, column) {
     if (column.key === 'usd') return price(row)
     if (column.render) return column.render(row)
     return row[column.key]
   }
 
+  /**
+     * @param {string} key
+     */
   function ariaSort(key) {
     if (sort !== key) return 'none'
     return dir === 'asc' ? 'ascending' : 'descending'

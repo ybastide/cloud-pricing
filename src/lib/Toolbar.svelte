@@ -14,6 +14,9 @@
     placeholders = DEFAULT_PLACEHOLDERS,
   } = $props()
 
+  /**
+     * @param {string} family
+     */
   function toggleFamily(family) {
     const next = new Set(query.families)
     if (next.has(family)) next.delete(family)
@@ -21,8 +24,14 @@
     query.families = next
   }
 
+  /**
+     * @type {number | undefined}
+     */
   let debounceTimer
 
+  /**
+     * @param {string} value
+     */
   function onSearchInput(value) {
     query.search = value
     clearTimeout(debounceTimer)
