@@ -106,7 +106,7 @@ export function normalizeGcp(raw) {
     generation,
     attrs,
     arch,
-    family: raw.family,
+    family: raw.familyType,
     vcpu,
     memGiB: finite(raw.memGiB),
     storageGB: finite(raw.storageGB),
