@@ -5,7 +5,8 @@
     "vcpu": 2,
     "memGiB": 7,
     "storageGB": 0,
-    "usd": 0.096866
+    "usd": 0.096866,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-4",
@@ -13,7 +14,8 @@
     "vcpu": 4,
     "memGiB": 15,
     "storageGB": 0,
-    "usd": 0.19767
+    "usd": 0.19767,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-8",
@@ -21,7 +23,8 @@
     "vcpu": 8,
     "memGiB": 30,
     "storageGB": 0,
-    "usd": 0.39534
+    "usd": 0.39534,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-16",
@@ -29,7 +32,8 @@
     "vcpu": 16,
     "memGiB": 60,
     "storageGB": 0,
-    "usd": 0.79068
+    "usd": 0.79068,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-24",
@@ -37,7 +41,8 @@
     "vcpu": 24,
     "memGiB": 90,
     "storageGB": 0,
-    "usd": 1.18602
+    "usd": 1.18602,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-32",
@@ -45,7 +50,8 @@
     "vcpu": 32,
     "memGiB": 120,
     "storageGB": 0,
-    "usd": 1.58136
+    "usd": 1.58136,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-48",
@@ -53,7 +59,8 @@
     "vcpu": 48,
     "memGiB": 180,
     "storageGB": 0,
-    "usd": 2.37204
+    "usd": 2.37204,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-96",
@@ -61,7 +68,8 @@
     "vcpu": 96,
     "memGiB": 360,
     "storageGB": 0,
-    "usd": 4.74408
+    "usd": 4.74408,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-144",
@@ -69,7 +77,8 @@
     "vcpu": 144,
     "memGiB": 540,
     "storageGB": 0,
-    "usd": 7.11612
+    "usd": 7.11612,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-192",
@@ -77,7 +86,8 @@
     "vcpu": 192,
     "memGiB": 720,
     "storageGB": 0,
-    "usd": 9.48816
+    "usd": 9.48816,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-288",
@@ -85,7 +95,8 @@
     "vcpu": 288,
     "memGiB": 1080,
     "storageGB": 0,
-    "usd": 14.23224
+    "usd": 14.23224,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-288-metal",
@@ -93,7 +104,8 @@
     "vcpu": 288,
     "memGiB": 1080,
     "storageGB": 0,
-    "usd": 14.23224
+    "usd": 14.23224,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-2",
@@ -101,7 +113,8 @@
     "vcpu": 2,
     "memGiB": 15,
     "storageGB": 0,
-    "usd": 0.12837
+    "usd": 0.12837,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-4",
@@ -109,7 +122,8 @@
     "vcpu": 4,
     "memGiB": 31,
     "storageGB": 0,
-    "usd": 0.260678
+    "usd": 0.260678,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-8",
@@ -117,7 +131,8 @@
     "vcpu": 8,
     "memGiB": 62,
     "storageGB": 0,
-    "usd": 0.521356
+    "usd": 0.521356,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-16",
@@ -125,7 +140,8 @@
     "vcpu": 16,
     "memGiB": 124,
     "storageGB": 0,
-    "usd": 1.042712
+    "usd": 1.042712,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-24",
@@ -133,7 +149,8 @@
     "vcpu": 24,
     "memGiB": 186,
     "storageGB": 0,
-    "usd": 1.564068
+    "usd": 1.564068,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-32",
@@ -141,7 +158,8 @@
     "vcpu": 32,
     "memGiB": 248,
     "storageGB": 0,
-    "usd": 2.085424
+    "usd": 2.085424,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-48",
@@ -149,7 +167,8 @@
     "vcpu": 48,
     "memGiB": 372,
     "storageGB": 0,
-    "usd": 3.128136
+    "usd": 3.128136,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-96",
@@ -157,7 +176,8 @@
     "vcpu": 96,
     "memGiB": 744,
     "storageGB": 0,
-    "usd": 6.256272
+    "usd": 6.256272,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-144",
@@ -165,7 +185,8 @@
     "vcpu": 144,
     "memGiB": 1116,
     "storageGB": 0,
-    "usd": 9.384408
+    "usd": 9.384408,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-192",
@@ -173,7 +194,8 @@
     "vcpu": 192,
     "memGiB": 1488,
     "storageGB": 0,
-    "usd": 12.512544
+    "usd": 12.512544,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-288",
@@ -181,7 +203,8 @@
     "vcpu": 288,
     "memGiB": 2232,
     "storageGB": 0,
-    "usd": 18.768816
+    "usd": 18.768816,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-288-metal",
@@ -189,7 +212,8 @@
     "vcpu": 288,
     "memGiB": 2232,
     "storageGB": 0,
-    "usd": 18.768816
+    "usd": 18.768816,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highcpu-2",
@@ -197,7 +221,8 @@
     "vcpu": 2,
     "memGiB": 4,
     "storageGB": 0,
-    "usd": 0.085052
+    "usd": 0.085052,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highcpu-4",
@@ -205,7 +230,8 @@
     "vcpu": 4,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.170104
+    "usd": 0.170104,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highcpu-8",
@@ -213,7 +239,8 @@
     "vcpu": 8,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.340208
+    "usd": 0.340208,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highcpu-16",
@@ -221,7 +248,8 @@
     "vcpu": 16,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.680416
+    "usd": 0.680416,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highcpu-24",
@@ -229,7 +257,8 @@
     "vcpu": 24,
     "memGiB": 48,
     "storageGB": 0,
-    "usd": 1.020624
+    "usd": 1.020624,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highcpu-32",
@@ -237,7 +266,8 @@
     "vcpu": 32,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 1.360832
+    "usd": 1.360832,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highcpu-48",
@@ -245,7 +275,8 @@
     "vcpu": 48,
     "memGiB": 96,
     "storageGB": 0,
-    "usd": 2.041248
+    "usd": 2.041248,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highcpu-96",
@@ -253,7 +284,8 @@
     "vcpu": 96,
     "memGiB": 192,
     "storageGB": 0,
-    "usd": 4.082496
+    "usd": 4.082496,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highcpu-144",
@@ -261,7 +293,8 @@
     "vcpu": 144,
     "memGiB": 288,
     "storageGB": 0,
-    "usd": 6.123744
+    "usd": 6.123744,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highcpu-192",
@@ -269,7 +302,8 @@
     "vcpu": 192,
     "memGiB": 384,
     "storageGB": 0,
-    "usd": 8.164992
+    "usd": 8.164992,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highcpu-288",
@@ -277,7 +311,8 @@
     "vcpu": 288,
     "memGiB": 576,
     "storageGB": 0,
-    "usd": 12.247488
+    "usd": 12.247488,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highcpu-288-metal",
@@ -285,7 +320,8 @@
     "vcpu": 288,
     "memGiB": 576,
     "storageGB": 0,
-    "usd": 12.247488
+    "usd": 12.247488,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-4-lssd",
@@ -293,7 +329,8 @@
     "vcpu": 4,
     "memGiB": 15,
     "storageGB": 375,
-    "usd": 0.279861781
+    "usd": 0.279861781,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-8-lssd",
@@ -301,7 +338,8 @@
     "vcpu": 8,
     "memGiB": 30,
     "storageGB": 375,
-    "usd": 0.477531781
+    "usd": 0.477531781,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-16-lssd",
@@ -309,7 +347,8 @@
     "vcpu": 16,
     "memGiB": 60,
     "storageGB": 750,
-    "usd": 0.955063562
+    "usd": 0.955063562,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-24-lssd",
@@ -317,7 +356,8 @@
     "vcpu": 24,
     "memGiB": 90,
     "storageGB": 1500,
-    "usd": 1.514787123
+    "usd": 1.514787123,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-32-lssd",
@@ -325,7 +365,8 @@
     "vcpu": 32,
     "memGiB": 120,
     "storageGB": 1875,
-    "usd": 1.992318904
+    "usd": 1.992318904,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-48-lssd",
@@ -333,7 +374,8 @@
     "vcpu": 48,
     "memGiB": 180,
     "storageGB": 3000,
-    "usd": 3.029574247
+    "usd": 3.029574247,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-96-lssd",
@@ -341,7 +383,8 @@
     "vcpu": 96,
     "memGiB": 360,
     "storageGB": 6000,
-    "usd": 6.059148493
+    "usd": 6.059148493,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-144-lssd",
@@ -349,7 +392,8 @@
     "vcpu": 144,
     "memGiB": 540,
     "storageGB": 9000,
-    "usd": 9.08872274
+    "usd": 9.08872274,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-192-lssd",
@@ -357,7 +401,8 @@
     "vcpu": 192,
     "memGiB": 720,
     "storageGB": 12000,
-    "usd": 12.118296986
+    "usd": 12.118296986,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-288-lssd",
@@ -365,7 +410,8 @@
     "vcpu": 288,
     "memGiB": 1080,
     "storageGB": 18000,
-    "usd": 18.177445479
+    "usd": 18.177445479,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-standard-288-lssd-metal",
@@ -373,7 +419,8 @@
     "vcpu": 288,
     "memGiB": 1080,
     "storageGB": 18000,
-    "usd": 18.177445479
+    "usd": 18.177445479,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-4-lssd",
@@ -381,7 +428,8 @@
     "vcpu": 4,
     "memGiB": 31,
     "storageGB": 375,
-    "usd": 0.342869781
+    "usd": 0.342869781,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-8-lssd",
@@ -389,7 +437,8 @@
     "vcpu": 8,
     "memGiB": 62,
     "storageGB": 375,
-    "usd": 0.603547781
+    "usd": 0.603547781,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-16-lssd",
@@ -397,7 +446,8 @@
     "vcpu": 16,
     "memGiB": 124,
     "storageGB": 750,
-    "usd": 1.207095562
+    "usd": 1.207095562,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-24-lssd",
@@ -405,7 +455,8 @@
     "vcpu": 24,
     "memGiB": 186,
     "storageGB": 1500,
-    "usd": 1.892835123
+    "usd": 1.892835123,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-32-lssd",
@@ -413,7 +464,8 @@
     "vcpu": 32,
     "memGiB": 248,
     "storageGB": 1875,
-    "usd": 2.496382904
+    "usd": 2.496382904,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-48-lssd",
@@ -421,7 +473,8 @@
     "vcpu": 48,
     "memGiB": 372,
     "storageGB": 3000,
-    "usd": 3.785670247
+    "usd": 3.785670247,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-96-lssd",
@@ -429,7 +482,8 @@
     "vcpu": 96,
     "memGiB": 744,
     "storageGB": 6000,
-    "usd": 7.571340493
+    "usd": 7.571340493,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-144-lssd",
@@ -437,7 +491,8 @@
     "vcpu": 144,
     "memGiB": 1116,
     "storageGB": 9000,
-    "usd": 11.35701074
+    "usd": 11.35701074,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-192-lssd",
@@ -445,7 +500,8 @@
     "vcpu": 192,
     "memGiB": 1488,
     "storageGB": 12000,
-    "usd": 15.142680986
+    "usd": 15.142680986,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-288-lssd",
@@ -453,7 +509,8 @@
     "vcpu": 288,
     "memGiB": 2232,
     "storageGB": 18000,
-    "usd": 22.714021479
+    "usd": 22.714021479,
+    "familyType": "General purpose"
   },
   {
     "type": "c4-highmem-288-lssd-metal",
@@ -461,7 +518,8 @@
     "vcpu": 288,
     "memGiB": 2232,
     "storageGB": 18000,
-    "usd": 22.714021479
+    "usd": 22.714021479,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-standard-1",
@@ -469,7 +527,8 @@
     "vcpu": 1,
     "memGiB": 4,
     "storageGB": 0,
-    "usd": 0.0449
+    "usd": 0.0449,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-standard-2",
@@ -477,7 +536,8 @@
     "vcpu": 2,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.0898
+    "usd": 0.0898,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-standard-4",
@@ -485,7 +545,8 @@
     "vcpu": 4,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.1796
+    "usd": 0.1796,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-standard-8",
@@ -493,7 +554,8 @@
     "vcpu": 8,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.3592
+    "usd": 0.3592,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-standard-16",
@@ -501,7 +563,8 @@
     "vcpu": 16,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.7184
+    "usd": 0.7184,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-standard-32",
@@ -509,7 +572,8 @@
     "vcpu": 32,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 1.4368
+    "usd": 1.4368,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-standard-48",
@@ -517,7 +581,8 @@
     "vcpu": 48,
     "memGiB": 192,
     "storageGB": 0,
-    "usd": 2.1552
+    "usd": 2.1552,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-standard-64",
@@ -525,7 +590,8 @@
     "vcpu": 64,
     "memGiB": 256,
     "storageGB": 0,
-    "usd": 2.8736
+    "usd": 2.8736,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-standard-72",
@@ -533,7 +599,8 @@
     "vcpu": 72,
     "memGiB": 288,
     "storageGB": 0,
-    "usd": 3.2328
+    "usd": 3.2328,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highmem-1",
@@ -541,7 +608,8 @@
     "vcpu": 1,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.05894
+    "usd": 0.05894,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highmem-2",
@@ -549,7 +617,8 @@
     "vcpu": 2,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.11788
+    "usd": 0.11788,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highmem-4",
@@ -557,7 +626,8 @@
     "vcpu": 4,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.23576
+    "usd": 0.23576,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highmem-8",
@@ -565,7 +635,8 @@
     "vcpu": 8,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.47152
+    "usd": 0.47152,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highmem-16",
@@ -573,7 +644,8 @@
     "vcpu": 16,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 0.94304
+    "usd": 0.94304,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highmem-32",
@@ -581,7 +653,8 @@
     "vcpu": 32,
     "memGiB": 256,
     "storageGB": 0,
-    "usd": 1.88608
+    "usd": 1.88608,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highmem-48",
@@ -589,7 +662,8 @@
     "vcpu": 48,
     "memGiB": 384,
     "storageGB": 0,
-    "usd": 2.82912
+    "usd": 2.82912,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highmem-64",
@@ -597,7 +671,8 @@
     "vcpu": 64,
     "memGiB": 512,
     "storageGB": 0,
-    "usd": 3.77216
+    "usd": 3.77216,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highmem-72",
@@ -605,7 +680,8 @@
     "vcpu": 72,
     "memGiB": 576,
     "storageGB": 0,
-    "usd": 4.24368
+    "usd": 4.24368,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highcpu-1",
@@ -613,7 +689,8 @@
     "vcpu": 1,
     "memGiB": 2,
     "storageGB": 0,
-    "usd": 0.03788
+    "usd": 0.03788,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highcpu-2",
@@ -621,7 +698,8 @@
     "vcpu": 2,
     "memGiB": 4,
     "storageGB": 0,
-    "usd": 0.07576
+    "usd": 0.07576,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highcpu-4",
@@ -629,7 +707,8 @@
     "vcpu": 4,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.15152
+    "usd": 0.15152,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highcpu-8",
@@ -637,7 +716,8 @@
     "vcpu": 8,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.30304
+    "usd": 0.30304,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highcpu-16",
@@ -645,7 +725,8 @@
     "vcpu": 16,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.60608
+    "usd": 0.60608,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highcpu-32",
@@ -653,7 +734,8 @@
     "vcpu": 32,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 1.21216
+    "usd": 1.21216,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highcpu-48",
@@ -661,7 +743,8 @@
     "vcpu": 48,
     "memGiB": 96,
     "storageGB": 0,
-    "usd": 1.81824
+    "usd": 1.81824,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highcpu-64",
@@ -669,7 +752,8 @@
     "vcpu": 64,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 2.42432
+    "usd": 2.42432,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highcpu-72",
@@ -677,7 +761,8 @@
     "vcpu": 72,
     "memGiB": 144,
     "storageGB": 0,
-    "usd": 2.72736
+    "usd": 2.72736,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-standard-4-lssd",
@@ -685,7 +770,8 @@
     "vcpu": 4,
     "memGiB": 16,
     "storageGB": 375,
-    "usd": 0.241243836
+    "usd": 0.241243836,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-standard-8-lssd",
@@ -693,7 +779,8 @@
     "vcpu": 8,
     "memGiB": 32,
     "storageGB": 750,
-    "usd": 0.482487671
+    "usd": 0.482487671,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-standard-16-lssd",
@@ -701,7 +788,8 @@
     "vcpu": 16,
     "memGiB": 64,
     "storageGB": 1500,
-    "usd": 0.964975342
+    "usd": 0.964975342,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-standard-32-lssd",
@@ -709,7 +797,8 @@
     "vcpu": 32,
     "memGiB": 128,
     "storageGB": 2250,
-    "usd": 1.806663014
+    "usd": 1.806663014,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-standard-48-lssd",
@@ -717,7 +806,8 @@
     "vcpu": 48,
     "memGiB": 192,
     "storageGB": 3750,
-    "usd": 2.771638356
+    "usd": 2.771638356,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-standard-64-lssd",
@@ -725,7 +815,8 @@
     "vcpu": 64,
     "memGiB": 256,
     "storageGB": 5250,
-    "usd": 3.736613699
+    "usd": 3.736613699,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-standard-72-lssd",
@@ -733,7 +824,8 @@
     "vcpu": 72,
     "memGiB": 288,
     "storageGB": 6000,
-    "usd": 4.21910137
+    "usd": 4.21910137,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highmem-4-lssd",
@@ -741,7 +833,8 @@
     "vcpu": 4,
     "memGiB": 32,
     "storageGB": 375,
-    "usd": 0.297403836
+    "usd": 0.297403836,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highmem-8-lssd",
@@ -749,7 +842,8 @@
     "vcpu": 8,
     "memGiB": 64,
     "storageGB": 750,
-    "usd": 0.594807671
+    "usd": 0.594807671,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highmem-16-lssd",
@@ -757,7 +851,8 @@
     "vcpu": 16,
     "memGiB": 128,
     "storageGB": 1500,
-    "usd": 1.189615342
+    "usd": 1.189615342,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highmem-32-lssd",
@@ -765,7 +860,8 @@
     "vcpu": 32,
     "memGiB": 256,
     "storageGB": 2250,
-    "usd": 2.255943014
+    "usd": 2.255943014,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highmem-48-lssd",
@@ -773,7 +869,8 @@
     "vcpu": 48,
     "memGiB": 384,
     "storageGB": 3750,
-    "usd": 3.445558356
+    "usd": 3.445558356,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highmem-64-lssd",
@@ -781,7 +878,8 @@
     "vcpu": 64,
     "memGiB": 512,
     "storageGB": 5250,
-    "usd": 4.635173699
+    "usd": 4.635173699,
+    "familyType": "General purpose"
   },
   {
     "type": "c4a-highmem-72-lssd",
@@ -789,7 +887,8 @@
     "vcpu": 72,
     "memGiB": 576,
     "storageGB": 6000,
-    "usd": 5.22998137
+    "usd": 5.22998137,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-standard-2",
@@ -797,7 +896,8 @@
     "vcpu": 2,
     "memGiB": 7,
     "storageGB": 0,
-    "usd": 0.091680438
+    "usd": 0.091680438,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-standard-4",
@@ -805,7 +905,8 @@
     "vcpu": 4,
     "memGiB": 15,
     "storageGB": 0,
-    "usd": 0.187114224
+    "usd": 0.187114224,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-standard-8",
@@ -813,7 +914,8 @@
     "vcpu": 8,
     "memGiB": 31,
     "storageGB": 0,
-    "usd": 0.377981797
+    "usd": 0.377981797,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-standard-16",
@@ -821,7 +923,8 @@
     "vcpu": 16,
     "memGiB": 62,
     "storageGB": 0,
-    "usd": 0.755963594
+    "usd": 0.755963594,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-standard-32",
@@ -829,7 +932,8 @@
     "vcpu": 32,
     "memGiB": 124,
     "storageGB": 0,
-    "usd": 1.511927189
+    "usd": 1.511927189,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-standard-48",
@@ -837,7 +941,8 @@
     "vcpu": 48,
     "memGiB": 186,
     "storageGB": 0,
-    "usd": 2.267890783
+    "usd": 2.267890783,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-standard-64",
@@ -845,7 +950,8 @@
     "vcpu": 64,
     "memGiB": 248,
     "storageGB": 0,
-    "usd": 3.023854378
+    "usd": 3.023854378,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-standard-96",
@@ -853,7 +959,8 @@
     "vcpu": 96,
     "memGiB": 372,
     "storageGB": 0,
-    "usd": 4.535781567
+    "usd": 4.535781567,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-standard-192",
@@ -861,7 +968,8 @@
     "vcpu": 192,
     "memGiB": 744,
     "storageGB": 0,
-    "usd": 9.071563133
+    "usd": 9.071563133,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-standard-384",
@@ -869,7 +977,8 @@
     "vcpu": 384,
     "memGiB": 1488,
     "storageGB": 0,
-    "usd": 18.143126267
+    "usd": 18.143126267,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-standard-384-metal",
@@ -877,7 +986,8 @@
     "vcpu": 384,
     "memGiB": 1536,
     "storageGB": 0,
-    "usd": 18.323286985
+    "usd": 18.323286985,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highmem-2",
@@ -885,7 +995,8 @@
     "vcpu": 2,
     "memGiB": 15,
     "storageGB": 0,
-    "usd": 0.121707224
+    "usd": 0.121707224,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highmem-4",
@@ -893,7 +1004,8 @@
     "vcpu": 4,
     "memGiB": 31,
     "storageGB": 0,
-    "usd": 0.247167797
+    "usd": 0.247167797,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highmem-8",
@@ -901,7 +1013,8 @@
     "vcpu": 8,
     "memGiB": 63,
     "storageGB": 0,
-    "usd": 0.498088943
+    "usd": 0.498088943,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highmem-16",
@@ -909,7 +1022,8 @@
     "vcpu": 16,
     "memGiB": 126,
     "storageGB": 0,
-    "usd": 0.996177886
+    "usd": 0.996177886,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highmem-32",
@@ -917,7 +1031,8 @@
     "vcpu": 32,
     "memGiB": 252,
     "storageGB": 0,
-    "usd": 1.992355771
+    "usd": 1.992355771,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highmem-48",
@@ -925,7 +1040,8 @@
     "vcpu": 48,
     "memGiB": 378,
     "storageGB": 0,
-    "usd": 2.988533657
+    "usd": 2.988533657,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highmem-64",
@@ -933,7 +1049,8 @@
     "vcpu": 64,
     "memGiB": 504,
     "storageGB": 0,
-    "usd": 3.984711542
+    "usd": 3.984711542,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highmem-96",
@@ -941,7 +1058,8 @@
     "vcpu": 96,
     "memGiB": 756,
     "storageGB": 0,
-    "usd": 5.977067313
+    "usd": 5.977067313,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highmem-192",
@@ -949,7 +1067,8 @@
     "vcpu": 192,
     "memGiB": 1512,
     "storageGB": 0,
-    "usd": 11.954134626
+    "usd": 11.954134626,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highmem-384",
@@ -957,7 +1076,8 @@
     "vcpu": 384,
     "memGiB": 3024,
     "storageGB": 0,
-    "usd": 23.908269252
+    "usd": 23.908269252,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highmem-384-metal",
@@ -965,7 +1085,8 @@
     "vcpu": 384,
     "memGiB": 3072,
     "storageGB": 0,
-    "usd": 24.08842997
+    "usd": 24.08842997,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highcpu-2",
@@ -973,7 +1094,8 @@
     "vcpu": 2,
     "memGiB": 3,
     "storageGB": 0,
-    "usd": 0.076667045
+    "usd": 0.076667045,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highcpu-4",
@@ -981,7 +1103,8 @@
     "vcpu": 4,
     "memGiB": 7,
     "storageGB": 0,
-    "usd": 0.157087438
+    "usd": 0.157087438,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highcpu-8",
@@ -989,7 +1112,8 @@
     "vcpu": 8,
     "memGiB": 15,
     "storageGB": 0,
-    "usd": 0.317928224
+    "usd": 0.317928224,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highcpu-16",
@@ -997,7 +1121,8 @@
     "vcpu": 16,
     "memGiB": 30,
     "storageGB": 0,
-    "usd": 0.635856449
+    "usd": 0.635856449,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highcpu-32",
@@ -1005,7 +1130,8 @@
     "vcpu": 32,
     "memGiB": 60,
     "storageGB": 0,
-    "usd": 1.271712898
+    "usd": 1.271712898,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highcpu-48",
@@ -1013,7 +1139,8 @@
     "vcpu": 48,
     "memGiB": 90,
     "storageGB": 0,
-    "usd": 1.907569347
+    "usd": 1.907569347,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highcpu-64",
@@ -1021,7 +1148,8 @@
     "vcpu": 64,
     "memGiB": 120,
     "storageGB": 0,
-    "usd": 2.543425796
+    "usd": 2.543425796,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highcpu-96",
@@ -1029,7 +1157,8 @@
     "vcpu": 96,
     "memGiB": 180,
     "storageGB": 0,
-    "usd": 3.815138694
+    "usd": 3.815138694,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highcpu-192",
@@ -1037,7 +1166,8 @@
     "vcpu": 192,
     "memGiB": 360,
     "storageGB": 0,
-    "usd": 7.630277387
+    "usd": 7.630277387,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highcpu-384",
@@ -1045,7 +1175,8 @@
     "vcpu": 384,
     "memGiB": 720,
     "storageGB": 0,
-    "usd": 15.260554774
+    "usd": 15.260554774,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highcpu-384-metal",
@@ -1053,7 +1184,8 @@
     "vcpu": 384,
     "memGiB": 768,
     "storageGB": 0,
-    "usd": 15.440715493
+    "usd": 15.440715493,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-standard-8-lssd",
@@ -1061,7 +1193,8 @@
     "vcpu": 8,
     "memGiB": 31,
     "storageGB": 375,
-    "usd": 0.460173578
+    "usd": 0.460173578,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-standard-16-lssd",
@@ -1069,7 +1202,8 @@
     "vcpu": 16,
     "memGiB": 62,
     "storageGB": 375,
-    "usd": 0.838155375
+    "usd": 0.838155375,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-standard-32-lssd",
@@ -1077,7 +1211,8 @@
     "vcpu": 32,
     "memGiB": 124,
     "storageGB": 750,
-    "usd": 1.676310751
+    "usd": 1.676310751,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-standard-48-lssd",
@@ -1085,7 +1220,8 @@
     "vcpu": 48,
     "memGiB": 186,
     "storageGB": 1500,
-    "usd": 2.596657906
+    "usd": 2.596657906,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-standard-64-lssd",
@@ -1093,7 +1229,8 @@
     "vcpu": 64,
     "memGiB": 248,
     "storageGB": 2250,
-    "usd": 3.517005063
+    "usd": 3.517005063,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-standard-96-lssd",
@@ -1101,7 +1238,8 @@
     "vcpu": 96,
     "memGiB": 372,
     "storageGB": 3000,
-    "usd": 5.193315814
+    "usd": 5.193315814,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-standard-192-lssd",
@@ -1109,7 +1247,8 @@
     "vcpu": 192,
     "memGiB": 744,
     "storageGB": 6000,
-    "usd": 10.386631626
+    "usd": 10.386631626,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-standard-384-lssd",
@@ -1117,7 +1256,8 @@
     "vcpu": 384,
     "memGiB": 1488,
     "storageGB": 12000,
-    "usd": 20.773263253
+    "usd": 20.773263253,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highmem-8-lssd",
@@ -1125,7 +1265,8 @@
     "vcpu": 8,
     "memGiB": 63,
     "storageGB": 375,
-    "usd": 0.580280724
+    "usd": 0.580280724,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highmem-16-lssd",
@@ -1133,7 +1274,8 @@
     "vcpu": 16,
     "memGiB": 126,
     "storageGB": 375,
-    "usd": 1.078369667
+    "usd": 1.078369667,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highmem-32-lssd",
@@ -1141,7 +1283,8 @@
     "vcpu": 32,
     "memGiB": 252,
     "storageGB": 750,
-    "usd": 2.156739333
+    "usd": 2.156739333,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highmem-48-lssd",
@@ -1149,7 +1292,8 @@
     "vcpu": 48,
     "memGiB": 378,
     "storageGB": 1500,
-    "usd": 3.31730078
+    "usd": 3.31730078,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highmem-64-lssd",
@@ -1157,7 +1301,8 @@
     "vcpu": 64,
     "memGiB": 504,
     "storageGB": 2250,
-    "usd": 4.477862227
+    "usd": 4.477862227,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highmem-96-lssd",
@@ -1165,7 +1310,8 @@
     "vcpu": 96,
     "memGiB": 756,
     "storageGB": 3000,
-    "usd": 6.63460156
+    "usd": 6.63460156,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highmem-192-lssd",
@@ -1173,7 +1319,8 @@
     "vcpu": 192,
     "memGiB": 1512,
     "storageGB": 6000,
-    "usd": 13.269203119
+    "usd": 13.269203119,
+    "familyType": "General purpose"
   },
   {
     "type": "c4d-highmem-384-lssd",
@@ -1181,7 +1328,8 @@
     "vcpu": 384,
     "memGiB": 3024,
     "storageGB": 12000,
-    "usd": 26.538406238
+    "usd": 26.538406238,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-standard-2",
@@ -1189,7 +1337,8 @@
     "vcpu": 2,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.0907
+    "usd": 0.0907,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-standard-4",
@@ -1197,7 +1346,8 @@
     "vcpu": 4,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.1814
+    "usd": 0.1814,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-standard-8",
@@ -1205,7 +1355,8 @@
     "vcpu": 8,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.3628
+    "usd": 0.3628,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-standard-16",
@@ -1213,7 +1364,8 @@
     "vcpu": 16,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.7256
+    "usd": 0.7256,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-standard-32",
@@ -1221,7 +1373,8 @@
     "vcpu": 32,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 1.4512
+    "usd": 1.4512,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-standard-48",
@@ -1229,7 +1382,8 @@
     "vcpu": 48,
     "memGiB": 192,
     "storageGB": 0,
-    "usd": 2.1768
+    "usd": 2.1768,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-standard-64",
@@ -1237,7 +1391,8 @@
     "vcpu": 64,
     "memGiB": 256,
     "storageGB": 0,
-    "usd": 2.9024
+    "usd": 2.9024,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-standard-80",
@@ -1245,7 +1400,8 @@
     "vcpu": 80,
     "memGiB": 320,
     "storageGB": 0,
-    "usd": 3.628
+    "usd": 3.628,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-highmem-2",
@@ -1253,7 +1409,8 @@
     "vcpu": 2,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.11902
+    "usd": 0.11902,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-highmem-4",
@@ -1261,7 +1418,8 @@
     "vcpu": 4,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.23804
+    "usd": 0.23804,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-highmem-8",
@@ -1269,7 +1427,8 @@
     "vcpu": 8,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.47608
+    "usd": 0.47608,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-highmem-16",
@@ -1277,7 +1436,8 @@
     "vcpu": 16,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 0.95216
+    "usd": 0.95216,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-highmem-32",
@@ -1285,7 +1445,8 @@
     "vcpu": 32,
     "memGiB": 256,
     "storageGB": 0,
-    "usd": 1.90432
+    "usd": 1.90432,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-highmem-48",
@@ -1293,7 +1454,8 @@
     "vcpu": 48,
     "memGiB": 384,
     "storageGB": 0,
-    "usd": 2.85648
+    "usd": 2.85648,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-highmem-64",
@@ -1301,7 +1463,8 @@
     "vcpu": 64,
     "memGiB": 512,
     "storageGB": 0,
-    "usd": 3.80864
+    "usd": 3.80864,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-highmem-80",
@@ -1309,7 +1472,8 @@
     "vcpu": 80,
     "memGiB": 640,
     "storageGB": 0,
-    "usd": 4.7608
+    "usd": 4.7608,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-highcpu-2",
@@ -1317,7 +1481,8 @@
     "vcpu": 2,
     "memGiB": 4,
     "storageGB": 0,
-    "usd": 0.07654
+    "usd": 0.07654,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-highcpu-4",
@@ -1325,7 +1490,8 @@
     "vcpu": 4,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.15308
+    "usd": 0.15308,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-highcpu-8",
@@ -1333,7 +1499,8 @@
     "vcpu": 8,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.30616
+    "usd": 0.30616,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-highcpu-16",
@@ -1341,7 +1508,8 @@
     "vcpu": 16,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.61232
+    "usd": 0.61232,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-highcpu-32",
@@ -1349,7 +1517,8 @@
     "vcpu": 32,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 1.22464
+    "usd": 1.22464,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-highcpu-48",
@@ -1357,7 +1526,8 @@
     "vcpu": 48,
     "memGiB": 96,
     "storageGB": 0,
-    "usd": 1.83696
+    "usd": 1.83696,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-highcpu-64",
@@ -1365,7 +1535,8 @@
     "vcpu": 64,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 2.44928
+    "usd": 2.44928,
+    "familyType": "General purpose"
   },
   {
     "type": "n4-highcpu-80",
@@ -1373,7 +1544,8 @@
     "vcpu": 80,
     "memGiB": 160,
     "storageGB": 0,
-    "usd": 3.0616
+    "usd": 3.0616,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-standard-2",
@@ -1381,7 +1553,8 @@
     "vcpu": 2,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.0847
+    "usd": 0.0847,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-standard-4",
@@ -1389,7 +1562,8 @@
     "vcpu": 4,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.1694
+    "usd": 0.1694,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-standard-8",
@@ -1397,7 +1571,8 @@
     "vcpu": 8,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.3388
+    "usd": 0.3388,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-standard-16",
@@ -1405,7 +1580,8 @@
     "vcpu": 16,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.6776
+    "usd": 0.6776,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-standard-32",
@@ -1413,7 +1589,8 @@
     "vcpu": 32,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 1.3552
+    "usd": 1.3552,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-standard-48",
@@ -1421,7 +1598,8 @@
     "vcpu": 48,
     "memGiB": 192,
     "storageGB": 0,
-    "usd": 2.0328
+    "usd": 2.0328,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-standard-64",
@@ -1429,7 +1607,8 @@
     "vcpu": 64,
     "memGiB": 256,
     "storageGB": 0,
-    "usd": 2.7104
+    "usd": 2.7104,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-standard-80",
@@ -1437,7 +1616,8 @@
     "vcpu": 80,
     "memGiB": 320,
     "storageGB": 0,
-    "usd": 3.388
+    "usd": 3.388,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-standard-96",
@@ -1445,7 +1625,8 @@
     "vcpu": 96,
     "memGiB": 384,
     "storageGB": 0,
-    "usd": 4.0656
+    "usd": 4.0656,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-highmem-2",
@@ -1453,7 +1634,8 @@
     "vcpu": 2,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.11118
+    "usd": 0.11118,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-highmem-4",
@@ -1461,7 +1643,8 @@
     "vcpu": 4,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.22236
+    "usd": 0.22236,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-highmem-8",
@@ -1469,7 +1652,8 @@
     "vcpu": 8,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.44472
+    "usd": 0.44472,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-highmem-16",
@@ -1477,7 +1661,8 @@
     "vcpu": 16,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 0.88944
+    "usd": 0.88944,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-highmem-32",
@@ -1485,7 +1670,8 @@
     "vcpu": 32,
     "memGiB": 256,
     "storageGB": 0,
-    "usd": 1.77888
+    "usd": 1.77888,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-highmem-48",
@@ -1493,7 +1679,8 @@
     "vcpu": 48,
     "memGiB": 384,
     "storageGB": 0,
-    "usd": 2.66832
+    "usd": 2.66832,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-highmem-64",
@@ -1501,7 +1688,8 @@
     "vcpu": 64,
     "memGiB": 512,
     "storageGB": 0,
-    "usd": 3.55776
+    "usd": 3.55776,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-highmem-80",
@@ -1509,7 +1697,8 @@
     "vcpu": 80,
     "memGiB": 640,
     "storageGB": 0,
-    "usd": 4.4472
+    "usd": 4.4472,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-highmem-96",
@@ -1517,7 +1706,8 @@
     "vcpu": 96,
     "memGiB": 768,
     "storageGB": 0,
-    "usd": 5.33664
+    "usd": 5.33664,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-highcpu-2",
@@ -1525,7 +1715,8 @@
     "vcpu": 2,
     "memGiB": 4,
     "storageGB": 0,
-    "usd": 0.07146
+    "usd": 0.07146,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-highcpu-4",
@@ -1533,7 +1724,8 @@
     "vcpu": 4,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.14292
+    "usd": 0.14292,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-highcpu-8",
@@ -1541,7 +1733,8 @@
     "vcpu": 8,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.28584
+    "usd": 0.28584,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-highcpu-16",
@@ -1549,7 +1742,8 @@
     "vcpu": 16,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.57168
+    "usd": 0.57168,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-highcpu-32",
@@ -1557,7 +1751,8 @@
     "vcpu": 32,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 1.14336
+    "usd": 1.14336,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-highcpu-48",
@@ -1565,7 +1760,8 @@
     "vcpu": 48,
     "memGiB": 96,
     "storageGB": 0,
-    "usd": 1.71504
+    "usd": 1.71504,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-highcpu-64",
@@ -1573,7 +1769,8 @@
     "vcpu": 64,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 2.28672
+    "usd": 2.28672,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-highcpu-80",
@@ -1581,7 +1778,8 @@
     "vcpu": 80,
     "memGiB": 160,
     "storageGB": 0,
-    "usd": 2.8584
+    "usd": 2.8584,
+    "familyType": "General purpose"
   },
   {
     "type": "n4d-highcpu-96",
@@ -1589,7 +1787,8 @@
     "vcpu": 96,
     "memGiB": 192,
     "storageGB": 0,
-    "usd": 3.43008
+    "usd": 3.43008,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-standard-1",
@@ -1597,7 +1796,8 @@
     "vcpu": 1,
     "memGiB": 4,
     "storageGB": 0,
-    "usd": 0.0385
+    "usd": 0.0385,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-standard-2",
@@ -1605,7 +1805,8 @@
     "vcpu": 2,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.077
+    "usd": 0.077,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-standard-4",
@@ -1613,7 +1814,8 @@
     "vcpu": 4,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.154
+    "usd": 0.154,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-standard-8",
@@ -1621,7 +1823,8 @@
     "vcpu": 8,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.308
+    "usd": 0.308,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-standard-16",
@@ -1629,7 +1832,8 @@
     "vcpu": 16,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.616
+    "usd": 0.616,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-standard-32",
@@ -1637,7 +1841,8 @@
     "vcpu": 32,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 1.232
+    "usd": 1.232,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-standard-48",
@@ -1645,7 +1850,8 @@
     "vcpu": 48,
     "memGiB": 192,
     "storageGB": 0,
-    "usd": 1.848
+    "usd": 1.848,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-standard-64",
@@ -1653,7 +1859,8 @@
     "vcpu": 64,
     "memGiB": 256,
     "storageGB": 0,
-    "usd": 2.464
+    "usd": 2.464,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-highmem-1",
@@ -1661,7 +1868,8 @@
     "vcpu": 1,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.05054
+    "usd": 0.05054,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-highmem-2",
@@ -1669,7 +1877,8 @@
     "vcpu": 2,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.10108
+    "usd": 0.10108,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-highmem-4",
@@ -1677,7 +1886,8 @@
     "vcpu": 4,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.20216
+    "usd": 0.20216,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-highmem-8",
@@ -1685,7 +1895,8 @@
     "vcpu": 8,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.40432
+    "usd": 0.40432,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-highmem-16",
@@ -1693,7 +1904,8 @@
     "vcpu": 16,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 0.80864
+    "usd": 0.80864,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-highmem-32",
@@ -1701,7 +1913,8 @@
     "vcpu": 32,
     "memGiB": 256,
     "storageGB": 0,
-    "usd": 1.61728
+    "usd": 1.61728,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-highmem-48",
@@ -1709,7 +1922,8 @@
     "vcpu": 48,
     "memGiB": 384,
     "storageGB": 0,
-    "usd": 2.42592
+    "usd": 2.42592,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-highmem-64",
@@ -1717,7 +1931,8 @@
     "vcpu": 64,
     "memGiB": 512,
     "storageGB": 0,
-    "usd": 3.23456
+    "usd": 3.23456,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-highcpu-1",
@@ -1725,7 +1940,8 @@
     "vcpu": 1,
     "memGiB": 2,
     "storageGB": 0,
-    "usd": 0.03248
+    "usd": 0.03248,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-highcpu-2",
@@ -1733,7 +1949,8 @@
     "vcpu": 2,
     "memGiB": 4,
     "storageGB": 0,
-    "usd": 0.06496
+    "usd": 0.06496,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-highcpu-4",
@@ -1741,7 +1958,8 @@
     "vcpu": 4,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.12992
+    "usd": 0.12992,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-highcpu-8",
@@ -1749,7 +1967,8 @@
     "vcpu": 8,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.25984
+    "usd": 0.25984,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-highcpu-16",
@@ -1757,7 +1976,8 @@
     "vcpu": 16,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.51968
+    "usd": 0.51968,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-highcpu-32",
@@ -1765,7 +1985,8 @@
     "vcpu": 32,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 1.03936
+    "usd": 1.03936,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-highcpu-48",
@@ -1773,7 +1994,8 @@
     "vcpu": 48,
     "memGiB": 96,
     "storageGB": 0,
-    "usd": 1.55904
+    "usd": 1.55904,
+    "familyType": "General purpose"
   },
   {
     "type": "n4a-highcpu-64",
@@ -1781,7 +2003,8 @@
     "vcpu": 64,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 2.07872
+    "usd": 2.07872,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-standard-4",
@@ -1789,7 +2012,8 @@
     "vcpu": 4,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.201608
+    "usd": 0.201608,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-standard-8",
@@ -1797,7 +2021,8 @@
     "vcpu": 8,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.403216
+    "usd": 0.403216,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-standard-22",
@@ -1805,7 +2030,8 @@
     "vcpu": 22,
     "memGiB": 88,
     "storageGB": 0,
-    "usd": 1.108844
+    "usd": 1.108844,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-standard-44",
@@ -1813,7 +2039,8 @@
     "vcpu": 44,
     "memGiB": 176,
     "storageGB": 0,
-    "usd": 2.217688
+    "usd": 2.217688,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-standard-88",
@@ -1821,7 +2048,8 @@
     "vcpu": 88,
     "memGiB": 352,
     "storageGB": 0,
-    "usd": 4.435376
+    "usd": 4.435376,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-standard-176",
@@ -1829,7 +2057,8 @@
     "vcpu": 176,
     "memGiB": 704,
     "storageGB": 0,
-    "usd": 8.870752
+    "usd": 8.870752,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-standard-192-metal",
@@ -1837,7 +2066,8 @@
     "vcpu": 192,
     "memGiB": 768,
     "storageGB": 0,
-    "usd": 9.677184
+    "usd": 9.677184,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-highmem-4",
@@ -1845,7 +2075,8 @@
     "vcpu": 4,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.264616
+    "usd": 0.264616,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-highmem-8",
@@ -1853,7 +2084,8 @@
     "vcpu": 8,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.529232
+    "usd": 0.529232,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-highmem-22",
@@ -1861,7 +2093,8 @@
     "vcpu": 22,
     "memGiB": 176,
     "storageGB": 0,
-    "usd": 1.455388
+    "usd": 1.455388,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-highmem-44",
@@ -1869,7 +2102,8 @@
     "vcpu": 44,
     "memGiB": 352,
     "storageGB": 0,
-    "usd": 2.910776
+    "usd": 2.910776,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-highmem-88",
@@ -1877,7 +2111,8 @@
     "vcpu": 88,
     "memGiB": 704,
     "storageGB": 0,
-    "usd": 5.821552
+    "usd": 5.821552,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-highmem-176",
@@ -1885,7 +2120,8 @@
     "vcpu": 176,
     "memGiB": 1408,
     "storageGB": 0,
-    "usd": 11.643104
+    "usd": 11.643104,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-highmem-192-metal",
@@ -1893,7 +2129,8 @@
     "vcpu": 192,
     "memGiB": 1536,
     "storageGB": 0,
-    "usd": 12.701568
+    "usd": 12.701568,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-highcpu-4",
@@ -1901,7 +2138,8 @@
     "vcpu": 4,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.170104
+    "usd": 0.170104,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-highcpu-8",
@@ -1909,7 +2147,8 @@
     "vcpu": 8,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.340208
+    "usd": 0.340208,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-highcpu-22",
@@ -1917,7 +2156,8 @@
     "vcpu": 22,
     "memGiB": 44,
     "storageGB": 0,
-    "usd": 0.935572
+    "usd": 0.935572,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-highcpu-44",
@@ -1925,7 +2165,8 @@
     "vcpu": 44,
     "memGiB": 88,
     "storageGB": 0,
-    "usd": 1.871144
+    "usd": 1.871144,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-highcpu-88",
@@ -1933,7 +2174,8 @@
     "vcpu": 88,
     "memGiB": 176,
     "storageGB": 0,
-    "usd": 3.742288
+    "usd": 3.742288,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-highcpu-176",
@@ -1941,7 +2183,8 @@
     "vcpu": 176,
     "memGiB": 352,
     "storageGB": 0,
-    "usd": 7.484576
+    "usd": 7.484576,
+    "familyType": "General purpose"
   },
   {
     "type": "c3-highcpu-192-metal",
@@ -1949,7 +2192,8 @@
     "vcpu": 192,
     "memGiB": 512,
     "storageGB": 0,
-    "usd": 8.669056
+    "usd": 8.669056,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-standard-4",
@@ -1957,7 +2201,8 @@
     "vcpu": 4,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.181596
+    "usd": 0.181596,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-standard-8",
@@ -1965,7 +2210,8 @@
     "vcpu": 8,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.363192
+    "usd": 0.363192,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-standard-16",
@@ -1973,7 +2219,8 @@
     "vcpu": 16,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.726384
+    "usd": 0.726384,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-standard-30",
@@ -1981,7 +2228,8 @@
     "vcpu": 30,
     "memGiB": 120,
     "storageGB": 0,
-    "usd": 1.36197
+    "usd": 1.36197,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-standard-60",
@@ -1989,7 +2237,8 @@
     "vcpu": 60,
     "memGiB": 240,
     "storageGB": 0,
-    "usd": 2.72394
+    "usd": 2.72394,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-standard-90",
@@ -1997,7 +2246,8 @@
     "vcpu": 90,
     "memGiB": 360,
     "storageGB": 0,
-    "usd": 4.08591
+    "usd": 4.08591,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-standard-180",
@@ -2005,7 +2255,8 @@
     "vcpu": 180,
     "memGiB": 720,
     "storageGB": 0,
-    "usd": 8.17182
+    "usd": 8.17182,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-standard-360",
@@ -2013,7 +2264,8 @@
     "vcpu": 360,
     "memGiB": 1440,
     "storageGB": 0,
-    "usd": 16.34364
+    "usd": 16.34364,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-highmem-4",
@@ -2021,7 +2273,8 @@
     "vcpu": 4,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.24494
+    "usd": 0.24494,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-highmem-8",
@@ -2029,7 +2282,8 @@
     "vcpu": 8,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.48988
+    "usd": 0.48988,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-highmem-16",
@@ -2037,7 +2291,8 @@
     "vcpu": 16,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 0.97976
+    "usd": 0.97976,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-highmem-30",
@@ -2045,7 +2300,8 @@
     "vcpu": 30,
     "memGiB": 240,
     "storageGB": 0,
-    "usd": 1.83705
+    "usd": 1.83705,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-highmem-60",
@@ -2053,7 +2309,8 @@
     "vcpu": 60,
     "memGiB": 480,
     "storageGB": 0,
-    "usd": 3.6741
+    "usd": 3.6741,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-highmem-90",
@@ -2061,7 +2318,8 @@
     "vcpu": 90,
     "memGiB": 720,
     "storageGB": 0,
-    "usd": 5.51115
+    "usd": 5.51115,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-highmem-180",
@@ -2069,7 +2327,8 @@
     "vcpu": 180,
     "memGiB": 1440,
     "storageGB": 0,
-    "usd": 11.0223
+    "usd": 11.0223,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-highmem-360",
@@ -2077,7 +2336,8 @@
     "vcpu": 360,
     "memGiB": 2880,
     "storageGB": 0,
-    "usd": 22.0446
+    "usd": 22.0446,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-highcpu-4",
@@ -2085,7 +2345,8 @@
     "vcpu": 4,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.149924
+    "usd": 0.149924,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-highcpu-8",
@@ -2093,7 +2354,8 @@
     "vcpu": 8,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.299848
+    "usd": 0.299848,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-highcpu-16",
@@ -2101,7 +2363,8 @@
     "vcpu": 16,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.599696
+    "usd": 0.599696,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-highcpu-30",
@@ -2109,7 +2372,8 @@
     "vcpu": 30,
     "memGiB": 60,
     "storageGB": 0,
-    "usd": 1.12443
+    "usd": 1.12443,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-highcpu-60",
@@ -2117,7 +2381,8 @@
     "vcpu": 60,
     "memGiB": 120,
     "storageGB": 0,
-    "usd": 2.24886
+    "usd": 2.24886,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-highcpu-90",
@@ -2125,7 +2390,8 @@
     "vcpu": 90,
     "memGiB": 180,
     "storageGB": 0,
-    "usd": 3.37329
+    "usd": 3.37329,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-highcpu-180",
@@ -2133,7 +2399,8 @@
     "vcpu": 180,
     "memGiB": 360,
     "storageGB": 0,
-    "usd": 6.74658
+    "usd": 6.74658,
+    "familyType": "General purpose"
   },
   {
     "type": "c3d-highcpu-360",
@@ -2141,7 +2408,8 @@
     "vcpu": 360,
     "memGiB": 720,
     "storageGB": 0,
-    "usd": 13.49316
+    "usd": 13.49316,
+    "familyType": "General purpose"
   },
   {
     "type": "e2-standard-2",
@@ -2149,7 +2417,8 @@
     "vcpu": 2,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.06701142
+    "usd": 0.06701142,
+    "familyType": "General purpose"
   },
   {
     "type": "e2-standard-4",
@@ -2157,7 +2426,8 @@
     "vcpu": 4,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.13402284
+    "usd": 0.13402284,
+    "familyType": "General purpose"
   },
   {
     "type": "e2-standard-8",
@@ -2165,7 +2435,8 @@
     "vcpu": 8,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.26804568
+    "usd": 0.26804568,
+    "familyType": "General purpose"
   },
   {
     "type": "e2-standard-16",
@@ -2173,7 +2444,8 @@
     "vcpu": 16,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.53609136
+    "usd": 0.53609136,
+    "familyType": "General purpose"
   },
   {
     "type": "e2-standard-32",
@@ -2181,7 +2453,8 @@
     "vcpu": 32,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 1.07218272
+    "usd": 1.07218272,
+    "familyType": "General purpose"
   },
   {
     "type": "e2-highmem-2",
@@ -2189,7 +2462,8 @@
     "vcpu": 2,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.09039966
+    "usd": 0.09039966,
+    "familyType": "General purpose"
   },
   {
     "type": "e2-highmem-4",
@@ -2197,7 +2471,8 @@
     "vcpu": 4,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.18079932
+    "usd": 0.18079932,
+    "familyType": "General purpose"
   },
   {
     "type": "e2-highmem-8",
@@ -2205,7 +2480,8 @@
     "vcpu": 8,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.36159864
+    "usd": 0.36159864,
+    "familyType": "General purpose"
   },
   {
     "type": "e2-highmem-16",
@@ -2213,7 +2489,8 @@
     "vcpu": 16,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 0.72319728
+    "usd": 0.72319728,
+    "familyType": "General purpose"
   },
   {
     "type": "e2-highcpu-2",
@@ -2221,7 +2498,8 @@
     "vcpu": 2,
     "memGiB": 2,
     "storageGB": 0,
-    "usd": 0.04947024
+    "usd": 0.04947024,
+    "familyType": "General purpose"
   },
   {
     "type": "e2-highcpu-4",
@@ -2229,7 +2507,8 @@
     "vcpu": 4,
     "memGiB": 4,
     "storageGB": 0,
-    "usd": 0.09894048
+    "usd": 0.09894048,
+    "familyType": "General purpose"
   },
   {
     "type": "e2-highcpu-8",
@@ -2237,7 +2516,8 @@
     "vcpu": 8,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.19788096
+    "usd": 0.19788096,
+    "familyType": "General purpose"
   },
   {
     "type": "e2-highcpu-16",
@@ -2245,7 +2525,8 @@
     "vcpu": 16,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.39576192
+    "usd": 0.39576192,
+    "familyType": "General purpose"
   },
   {
     "type": "e2-highcpu-32",
@@ -2253,7 +2534,8 @@
     "vcpu": 32,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.79152384
+    "usd": 0.79152384,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-standard-2",
@@ -2261,7 +2543,8 @@
     "vcpu": 2,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.097118
+    "usd": 0.097118,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-standard-4",
@@ -2269,7 +2552,8 @@
     "vcpu": 4,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.194236
+    "usd": 0.194236,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-standard-8",
@@ -2277,7 +2561,8 @@
     "vcpu": 8,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.388472
+    "usd": 0.388472,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-standard-16",
@@ -2285,7 +2570,8 @@
     "vcpu": 16,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.776944
+    "usd": 0.776944,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-standard-32",
@@ -2293,7 +2579,8 @@
     "vcpu": 32,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 1.553888
+    "usd": 1.553888,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-standard-48",
@@ -2301,7 +2588,8 @@
     "vcpu": 48,
     "memGiB": 192,
     "storageGB": 0,
-    "usd": 2.330832
+    "usd": 2.330832,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-standard-64",
@@ -2309,7 +2597,8 @@
     "vcpu": 64,
     "memGiB": 256,
     "storageGB": 0,
-    "usd": 3.107776
+    "usd": 3.107776,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-standard-80",
@@ -2317,7 +2606,8 @@
     "vcpu": 80,
     "memGiB": 320,
     "storageGB": 0,
-    "usd": 3.88472
+    "usd": 3.88472,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-standard-96",
@@ -2325,7 +2615,8 @@
     "vcpu": 96,
     "memGiB": 384,
     "storageGB": 0,
-    "usd": 4.661664
+    "usd": 4.661664,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-standard-128",
@@ -2333,7 +2624,8 @@
     "vcpu": 128,
     "memGiB": 512,
     "storageGB": 0,
-    "usd": 6.215552
+    "usd": 6.215552,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-highmem-2",
@@ -2341,7 +2633,8 @@
     "vcpu": 2,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.131014
+    "usd": 0.131014,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-highmem-4",
@@ -2349,7 +2642,8 @@
     "vcpu": 4,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.262028
+    "usd": 0.262028,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-highmem-8",
@@ -2357,7 +2651,8 @@
     "vcpu": 8,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.524056
+    "usd": 0.524056,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-highmem-16",
@@ -2365,7 +2660,8 @@
     "vcpu": 16,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 1.048112
+    "usd": 1.048112,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-highmem-32",
@@ -2373,7 +2669,8 @@
     "vcpu": 32,
     "memGiB": 256,
     "storageGB": 0,
-    "usd": 2.096224
+    "usd": 2.096224,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-highmem-48",
@@ -2381,7 +2678,8 @@
     "vcpu": 48,
     "memGiB": 384,
     "storageGB": 0,
-    "usd": 3.144336
+    "usd": 3.144336,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-highmem-64",
@@ -2389,7 +2687,8 @@
     "vcpu": 64,
     "memGiB": 512,
     "storageGB": 0,
-    "usd": 4.192448
+    "usd": 4.192448,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-highmem-80",
@@ -2397,7 +2696,8 @@
     "vcpu": 80,
     "memGiB": 640,
     "storageGB": 0,
-    "usd": 5.24056
+    "usd": 5.24056,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-highmem-96",
@@ -2405,7 +2705,8 @@
     "vcpu": 96,
     "memGiB": 768,
     "storageGB": 0,
-    "usd": 6.288672
+    "usd": 6.288672,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-highmem-128",
@@ -2413,7 +2714,8 @@
     "vcpu": 128,
     "memGiB": 864,
     "storageGB": 0,
-    "usd": 7.706976
+    "usd": 7.706976,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-highcpu-2",
@@ -2421,7 +2723,8 @@
     "vcpu": 2,
     "memGiB": 2,
     "storageGB": 0,
-    "usd": 0.071696
+    "usd": 0.071696,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-highcpu-4",
@@ -2429,7 +2732,8 @@
     "vcpu": 4,
     "memGiB": 4,
     "storageGB": 0,
-    "usd": 0.143392
+    "usd": 0.143392,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-highcpu-8",
@@ -2437,7 +2741,8 @@
     "vcpu": 8,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.286784
+    "usd": 0.286784,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-highcpu-16",
@@ -2445,7 +2750,8 @@
     "vcpu": 16,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.573568
+    "usd": 0.573568,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-highcpu-32",
@@ -2453,7 +2759,8 @@
     "vcpu": 32,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 1.147136
+    "usd": 1.147136,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-highcpu-48",
@@ -2461,7 +2768,8 @@
     "vcpu": 48,
     "memGiB": 48,
     "storageGB": 0,
-    "usd": 1.720704
+    "usd": 1.720704,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-highcpu-64",
@@ -2469,7 +2777,8 @@
     "vcpu": 64,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 2.294272
+    "usd": 2.294272,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-highcpu-80",
@@ -2477,7 +2786,8 @@
     "vcpu": 80,
     "memGiB": 80,
     "storageGB": 0,
-    "usd": 2.86784
+    "usd": 2.86784,
+    "familyType": "General purpose"
   },
   {
     "type": "n2-highcpu-96",
@@ -2485,7 +2795,8 @@
     "vcpu": 96,
     "memGiB": 96,
     "storageGB": 0,
-    "usd": 3.441408
+    "usd": 3.441408,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-standard-2",
@@ -2493,7 +2804,8 @@
     "vcpu": 2,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.084492
+    "usd": 0.084492,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-standard-4",
@@ -2501,7 +2813,8 @@
     "vcpu": 4,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.168984
+    "usd": 0.168984,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-standard-8",
@@ -2509,7 +2822,8 @@
     "vcpu": 8,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.337968
+    "usd": 0.337968,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-standard-16",
@@ -2517,7 +2831,8 @@
     "vcpu": 16,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.675936
+    "usd": 0.675936,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-standard-32",
@@ -2525,7 +2840,8 @@
     "vcpu": 32,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 1.351872
+    "usd": 1.351872,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-standard-48",
@@ -2533,7 +2849,8 @@
     "vcpu": 48,
     "memGiB": 192,
     "storageGB": 0,
-    "usd": 2.027808
+    "usd": 2.027808,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-standard-64",
@@ -2541,7 +2858,8 @@
     "vcpu": 64,
     "memGiB": 256,
     "storageGB": 0,
-    "usd": 2.703744
+    "usd": 2.703744,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-standard-80",
@@ -2549,7 +2867,8 @@
     "vcpu": 80,
     "memGiB": 320,
     "storageGB": 0,
-    "usd": 3.37968
+    "usd": 3.37968,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-standard-96",
@@ -2557,7 +2876,8 @@
     "vcpu": 96,
     "memGiB": 384,
     "storageGB": 0,
-    "usd": 4.055616
+    "usd": 4.055616,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-standard-128",
@@ -2565,7 +2885,8 @@
     "vcpu": 128,
     "memGiB": 512,
     "storageGB": 0,
-    "usd": 5.407488
+    "usd": 5.407488,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-standard-224",
@@ -2573,7 +2894,8 @@
     "vcpu": 224,
     "memGiB": 896,
     "storageGB": 0,
-    "usd": 9.463104
+    "usd": 9.463104,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-highmem-2",
@@ -2581,7 +2903,8 @@
     "vcpu": 2,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.11398
+    "usd": 0.11398,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-highmem-4",
@@ -2589,7 +2912,8 @@
     "vcpu": 4,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.22796
+    "usd": 0.22796,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-highmem-8",
@@ -2597,7 +2921,8 @@
     "vcpu": 8,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.45592
+    "usd": 0.45592,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-highmem-16",
@@ -2605,7 +2930,8 @@
     "vcpu": 16,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 0.91184
+    "usd": 0.91184,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-highmem-32",
@@ -2613,7 +2939,8 @@
     "vcpu": 32,
     "memGiB": 256,
     "storageGB": 0,
-    "usd": 1.82368
+    "usd": 1.82368,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-highmem-48",
@@ -2621,7 +2948,8 @@
     "vcpu": 48,
     "memGiB": 384,
     "storageGB": 0,
-    "usd": 2.73552
+    "usd": 2.73552,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-highmem-64",
@@ -2629,7 +2957,8 @@
     "vcpu": 64,
     "memGiB": 512,
     "storageGB": 0,
-    "usd": 3.64736
+    "usd": 3.64736,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-highmem-80",
@@ -2637,7 +2966,8 @@
     "vcpu": 80,
     "memGiB": 640,
     "storageGB": 0,
-    "usd": 4.5592
+    "usd": 4.5592,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-highmem-96",
@@ -2645,7 +2975,8 @@
     "vcpu": 96,
     "memGiB": 768,
     "storageGB": 0,
-    "usd": 5.47104
+    "usd": 5.47104,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-highcpu-2",
@@ -2653,7 +2984,8 @@
     "vcpu": 2,
     "memGiB": 2,
     "storageGB": 0,
-    "usd": 0.062376
+    "usd": 0.062376,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-highcpu-4",
@@ -2661,7 +2993,8 @@
     "vcpu": 4,
     "memGiB": 4,
     "storageGB": 0,
-    "usd": 0.124752
+    "usd": 0.124752,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-highcpu-8",
@@ -2669,7 +3002,8 @@
     "vcpu": 8,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.249504
+    "usd": 0.249504,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-highcpu-16",
@@ -2677,7 +3011,8 @@
     "vcpu": 16,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.499008
+    "usd": 0.499008,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-highcpu-32",
@@ -2685,7 +3020,8 @@
     "vcpu": 32,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.998016
+    "usd": 0.998016,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-highcpu-48",
@@ -2693,7 +3029,8 @@
     "vcpu": 48,
     "memGiB": 48,
     "storageGB": 0,
-    "usd": 1.497024
+    "usd": 1.497024,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-highcpu-64",
@@ -2701,7 +3038,8 @@
     "vcpu": 64,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 1.996032
+    "usd": 1.996032,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-highcpu-80",
@@ -2709,7 +3047,8 @@
     "vcpu": 80,
     "memGiB": 80,
     "storageGB": 0,
-    "usd": 2.49504
+    "usd": 2.49504,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-highcpu-96",
@@ -2717,7 +3056,8 @@
     "vcpu": 96,
     "memGiB": 96,
     "storageGB": 0,
-    "usd": 2.994048
+    "usd": 2.994048,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-highcpu-128",
@@ -2725,7 +3065,8 @@
     "vcpu": 128,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 3.992064
+    "usd": 3.992064,
+    "familyType": "General purpose"
   },
   {
     "type": "n2d-highcpu-224",
@@ -2733,7 +3074,8 @@
     "vcpu": 224,
     "memGiB": 224,
     "storageGB": 0,
-    "usd": 6.986112
+    "usd": 6.986112,
+    "familyType": "General purpose"
   },
   {
     "type": "t2d-standard-1",
@@ -2741,7 +3083,8 @@
     "vcpu": 1,
     "memGiB": 4,
     "storageGB": 0,
-    "usd": 0.042246
+    "usd": 0.042246,
+    "familyType": "General purpose"
   },
   {
     "type": "t2d-standard-2",
@@ -2749,7 +3092,8 @@
     "vcpu": 2,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.084492
+    "usd": 0.084492,
+    "familyType": "General purpose"
   },
   {
     "type": "t2d-standard-4",
@@ -2757,7 +3101,8 @@
     "vcpu": 4,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.168984
+    "usd": 0.168984,
+    "familyType": "General purpose"
   },
   {
     "type": "t2d-standard-8",
@@ -2765,7 +3110,8 @@
     "vcpu": 8,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.337968
+    "usd": 0.337968,
+    "familyType": "General purpose"
   },
   {
     "type": "t2d-standard-16",
@@ -2773,7 +3119,8 @@
     "vcpu": 16,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.675936
+    "usd": 0.675936,
+    "familyType": "General purpose"
   },
   {
     "type": "t2d-standard-32",
@@ -2781,7 +3128,8 @@
     "vcpu": 32,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 1.351872
+    "usd": 1.351872,
+    "familyType": "General purpose"
   },
   {
     "type": "t2d-standard-48",
@@ -2789,7 +3137,8 @@
     "vcpu": 48,
     "memGiB": 192,
     "storageGB": 0,
-    "usd": 2.027808
+    "usd": 2.027808,
+    "familyType": "General purpose"
   },
   {
     "type": "t2d-standard-60",
@@ -2797,7 +3146,8 @@
     "vcpu": 60,
     "memGiB": 240,
     "storageGB": 0,
-    "usd": 2.53476
+    "usd": 2.53476,
+    "familyType": "General purpose"
   },
   {
     "type": "t2a-standard-1",
@@ -2805,7 +3155,8 @@
     "vcpu": 1,
     "memGiB": 4,
     "storageGB": 0,
-    "usd": 0.0385
+    "usd": 0.0385,
+    "familyType": "General purpose"
   },
   {
     "type": "t2a-standard-2",
@@ -2813,7 +3164,8 @@
     "vcpu": 2,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.077
+    "usd": 0.077,
+    "familyType": "General purpose"
   },
   {
     "type": "t2a-standard-4",
@@ -2821,7 +3173,8 @@
     "vcpu": 4,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.154
+    "usd": 0.154,
+    "familyType": "General purpose"
   },
   {
     "type": "t2a-standard-8",
@@ -2829,7 +3182,8 @@
     "vcpu": 8,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.308
+    "usd": 0.308,
+    "familyType": "General purpose"
   },
   {
     "type": "t2a-standard-16",
@@ -2837,7 +3191,8 @@
     "vcpu": 16,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.616
+    "usd": 0.616,
+    "familyType": "General purpose"
   },
   {
     "type": "t2a-standard-32",
@@ -2845,7 +3200,8 @@
     "vcpu": 32,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 1.232
+    "usd": 1.232,
+    "familyType": "General purpose"
   },
   {
     "type": "t2a-standard-48",
@@ -2853,7 +3209,8 @@
     "vcpu": 48,
     "memGiB": 192,
     "storageGB": 0,
-    "usd": 1.848
+    "usd": 1.848,
+    "familyType": "General purpose"
   },
   {
     "type": "n1-standard-1",
@@ -2861,7 +3218,8 @@
     "vcpu": 1,
     "memGiB": 3.75,
     "storageGB": 0,
-    "usd": 0.04749975
+    "usd": 0.04749975,
+    "familyType": "General purpose"
   },
   {
     "type": "n1-standard-2",
@@ -2869,7 +3227,8 @@
     "vcpu": 2,
     "memGiB": 7.5,
     "storageGB": 0,
-    "usd": 0.0949995
+    "usd": 0.0949995,
+    "familyType": "General purpose"
   },
   {
     "type": "n1-standard-4",
@@ -2877,7 +3236,8 @@
     "vcpu": 4,
     "memGiB": 15,
     "storageGB": 0,
-    "usd": 0.189999
+    "usd": 0.189999,
+    "familyType": "General purpose"
   },
   {
     "type": "n1-standard-8",
@@ -2885,7 +3245,8 @@
     "vcpu": 8,
     "memGiB": 30,
     "storageGB": 0,
-    "usd": 0.379998
+    "usd": 0.379998,
+    "familyType": "General purpose"
   },
   {
     "type": "n1-standard-16",
@@ -2893,7 +3254,8 @@
     "vcpu": 16,
     "memGiB": 60,
     "storageGB": 0,
-    "usd": 0.759996
+    "usd": 0.759996,
+    "familyType": "General purpose"
   },
   {
     "type": "n1-standard-32",
@@ -2901,7 +3263,8 @@
     "vcpu": 32,
     "memGiB": 120,
     "storageGB": 0,
-    "usd": 1.519992
+    "usd": 1.519992,
+    "familyType": "General purpose"
   },
   {
     "type": "n1-standard-64",
@@ -2909,7 +3272,8 @@
     "vcpu": 64,
     "memGiB": 240,
     "storageGB": 0,
-    "usd": 3.039984
+    "usd": 3.039984,
+    "familyType": "General purpose"
   },
   {
     "type": "n1-highmem-2",
@@ -2917,7 +3281,8 @@
     "vcpu": 2,
     "memGiB": 13,
     "storageGB": 0,
-    "usd": 0.118303
+    "usd": 0.118303,
+    "familyType": "General purpose"
   },
   {
     "type": "n1-highmem-4",
@@ -2925,7 +3290,8 @@
     "vcpu": 4,
     "memGiB": 26,
     "storageGB": 0,
-    "usd": 0.236606
+    "usd": 0.236606,
+    "familyType": "General purpose"
   },
   {
     "type": "n1-highmem-8",
@@ -2933,7 +3299,8 @@
     "vcpu": 8,
     "memGiB": 52,
     "storageGB": 0,
-    "usd": 0.473212
+    "usd": 0.473212,
+    "familyType": "General purpose"
   },
   {
     "type": "n1-highmem-16",
@@ -2941,7 +3308,8 @@
     "vcpu": 16,
     "memGiB": 104,
     "storageGB": 0,
-    "usd": 0.946424
+    "usd": 0.946424,
+    "familyType": "General purpose"
   },
   {
     "type": "n1-highmem-32",
@@ -2949,7 +3317,8 @@
     "vcpu": 32,
     "memGiB": 208,
     "storageGB": 0,
-    "usd": 1.892848
+    "usd": 1.892848,
+    "familyType": "General purpose"
   },
   {
     "type": "n1-highmem-64",
@@ -2957,7 +3326,8 @@
     "vcpu": 64,
     "memGiB": 416,
     "storageGB": 0,
-    "usd": 3.785696
+    "usd": 3.785696,
+    "familyType": "General purpose"
   },
   {
     "type": "n1-highcpu-2",
@@ -2965,7 +3335,8 @@
     "vcpu": 2,
     "memGiB": 1.8,
     "storageGB": 0,
-    "usd": 0.0708486
+    "usd": 0.0708486,
+    "familyType": "General purpose"
   },
   {
     "type": "n1-highcpu-4",
@@ -2973,7 +3344,8 @@
     "vcpu": 4,
     "memGiB": 3.6,
     "storageGB": 0,
-    "usd": 0.1416972
+    "usd": 0.1416972,
+    "familyType": "General purpose"
   },
   {
     "type": "n1-highcpu-8",
@@ -2981,7 +3353,8 @@
     "vcpu": 8,
     "memGiB": 7.2,
     "storageGB": 0,
-    "usd": 0.2833944
+    "usd": 0.2833944,
+    "familyType": "General purpose"
   },
   {
     "type": "n1-highcpu-16",
@@ -2989,7 +3362,8 @@
     "vcpu": 16,
     "memGiB": 14.4,
     "storageGB": 0,
-    "usd": 0.5667888
+    "usd": 0.5667888,
+    "familyType": "General purpose"
   },
   {
     "type": "n1-highcpu-32",
@@ -2997,7 +3371,8 @@
     "vcpu": 32,
     "memGiB": 28.8,
     "storageGB": 0,
-    "usd": 1.1335776
+    "usd": 1.1335776,
+    "familyType": "General purpose"
   },
   {
     "type": "n1-highcpu-64",
@@ -3005,7 +3380,8 @@
     "vcpu": 64,
     "memGiB": 57.6,
     "storageGB": 0,
-    "usd": 2.2671552
+    "usd": 2.2671552,
+    "familyType": "General purpose"
   },
   {
     "type": "e2-micro",
@@ -3013,7 +3389,8 @@
     "vcpu": 2,
     "memGiB": 1,
     "storageGB": 0,
-    "usd": 0.008376428
+    "usd": 0.008376428,
+    "familyType": "General purpose"
   },
   {
     "type": "e2-small",
@@ -3021,7 +3398,8 @@
     "vcpu": 2,
     "memGiB": 2,
     "storageGB": 0,
-    "usd": 0.016752855
+    "usd": 0.016752855,
+    "familyType": "General purpose"
   },
   {
     "type": "e2-medium",
@@ -3029,7 +3407,8 @@
     "vcpu": 2,
     "memGiB": 4,
     "storageGB": 0,
-    "usd": 0.03350571
+    "usd": 0.03350571,
+    "familyType": "General purpose"
   },
   {
     "type": "f1-micro",
@@ -3037,7 +3416,8 @@
     "vcpu": 0.2,
     "memGiB": 0.6,
     "storageGB": 0,
-    "usd": 0.0076
+    "usd": 0.0076,
+    "familyType": "General purpose"
   },
   {
     "type": "g1-small",
@@ -3045,7 +3425,8 @@
     "vcpu": 0.5,
     "memGiB": 1.7,
     "storageGB": 0,
-    "usd": 0.0257
+    "usd": 0.0257,
+    "familyType": "General purpose"
   },
   {
     "type": "h4d-standard-192",
@@ -3053,7 +3434,8 @@
     "vcpu": 192,
     "memGiB": 720,
     "storageGB": 0,
-    "usd": 7.85376
+    "usd": 7.85376,
+    "familyType": "Compute optimized"
   },
   {
     "type": "h4d-highmem-192",
@@ -3061,7 +3443,8 @@
     "vcpu": 192,
     "memGiB": 1488,
     "storageGB": 0,
-    "usd": 8.842944
+    "usd": 8.842944,
+    "familyType": "Compute optimized"
   },
   {
     "type": "h4d-highmem-192-lssd",
@@ -3069,7 +3452,8 @@
     "vcpu": 192,
     "memGiB": 1488,
     "storageGB": 3750,
-    "usd": 9.42409126
+    "usd": 9.42409126,
+    "familyType": "Compute optimized"
   },
   {
     "type": "h3-standard-88",
@@ -3077,7 +3461,8 @@
     "vcpu": 88,
     "memGiB": 352,
     "storageGB": 0,
-    "usd": 4.9236
+    "usd": 4.9236,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2-standard-4",
@@ -3085,7 +3470,8 @@
     "vcpu": 4,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.208808
+    "usd": 0.208808,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2-standard-8",
@@ -3093,7 +3479,8 @@
     "vcpu": 8,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.417616
+    "usd": 0.417616,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2-standard-16",
@@ -3101,7 +3488,8 @@
     "vcpu": 16,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.835232
+    "usd": 0.835232,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2-standard-30",
@@ -3109,7 +3497,8 @@
     "vcpu": 30,
     "memGiB": 120,
     "storageGB": 0,
-    "usd": 1.56606
+    "usd": 1.56606,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2-standard-60",
@@ -3117,7 +3506,8 @@
     "vcpu": 60,
     "memGiB": 240,
     "storageGB": 0,
-    "usd": 3.13212
+    "usd": 3.13212,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-standard-2",
@@ -3125,7 +3515,8 @@
     "vcpu": 2,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.090798
+    "usd": 0.090798,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-standard-4",
@@ -3133,7 +3524,8 @@
     "vcpu": 4,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.181596
+    "usd": 0.181596,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-standard-8",
@@ -3141,7 +3533,8 @@
     "vcpu": 8,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.363192
+    "usd": 0.363192,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-standard-16",
@@ -3149,7 +3542,8 @@
     "vcpu": 16,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.726384
+    "usd": 0.726384,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-standard-32",
@@ -3157,7 +3551,8 @@
     "vcpu": 32,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 1.452768
+    "usd": 1.452768,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-standard-56",
@@ -3165,7 +3560,8 @@
     "vcpu": 56,
     "memGiB": 224,
     "storageGB": 0,
-    "usd": 2.542344
+    "usd": 2.542344,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-standard-112",
@@ -3173,7 +3569,8 @@
     "vcpu": 112,
     "memGiB": 448,
     "storageGB": 0,
-    "usd": 5.084688
+    "usd": 5.084688,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-highmem-2",
@@ -3181,7 +3578,8 @@
     "vcpu": 2,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.12247
+    "usd": 0.12247,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-highmem-4",
@@ -3189,7 +3587,8 @@
     "vcpu": 4,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.24494
+    "usd": 0.24494,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-highmem-8",
@@ -3197,7 +3596,8 @@
     "vcpu": 8,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 0.48988
+    "usd": 0.48988,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-highmem-16",
@@ -3205,7 +3605,8 @@
     "vcpu": 16,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 0.97976
+    "usd": 0.97976,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-highmem-32",
@@ -3213,7 +3614,8 @@
     "vcpu": 32,
     "memGiB": 256,
     "storageGB": 0,
-    "usd": 1.95952
+    "usd": 1.95952,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-highmem-56",
@@ -3221,7 +3623,8 @@
     "vcpu": 56,
     "memGiB": 448,
     "storageGB": 0,
-    "usd": 3.42916
+    "usd": 3.42916,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-highmem-112",
@@ -3229,7 +3632,8 @@
     "vcpu": 112,
     "memGiB": 896,
     "storageGB": 0,
-    "usd": 6.85832
+    "usd": 6.85832,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-highcpu-2",
@@ -3237,7 +3641,8 @@
     "vcpu": 2,
     "memGiB": 4,
     "storageGB": 0,
-    "usd": 0.074962
+    "usd": 0.074962,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-highcpu-4",
@@ -3245,7 +3650,8 @@
     "vcpu": 4,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.149924
+    "usd": 0.149924,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-highcpu-8",
@@ -3253,7 +3659,8 @@
     "vcpu": 8,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.299848
+    "usd": 0.299848,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-highcpu-16",
@@ -3261,7 +3668,8 @@
     "vcpu": 16,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 0.599696
+    "usd": 0.599696,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-highcpu-32",
@@ -3269,7 +3677,8 @@
     "vcpu": 32,
     "memGiB": 64,
     "storageGB": 0,
-    "usd": 1.199392
+    "usd": 1.199392,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-highcpu-56",
@@ -3277,7 +3686,8 @@
     "vcpu": 56,
     "memGiB": 128,
     "storageGB": 0,
-    "usd": 2.098936
+    "usd": 2.098936,
+    "familyType": "Compute optimized"
   },
   {
     "type": "c2d-highcpu-112",
@@ -3285,7 +3695,8 @@
     "vcpu": 112,
     "memGiB": 224,
     "storageGB": 0,
-    "usd": 4.197872
+    "usd": 4.197872,
+    "familyType": "Compute optimized"
   },
   {
     "type": "m4-ultramem-56",
@@ -3293,7 +3704,8 @@
     "vcpu": 56,
     "memGiB": 1488,
     "storageGB": 0,
-    "usd": 7.8237504
+    "usd": 7.8237504,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m4-ultramem-112",
@@ -3301,7 +3713,8 @@
     "vcpu": 112,
     "memGiB": 2976,
     "storageGB": 0,
-    "usd": 15.6475008
+    "usd": 15.6475008,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m4-ultramem-224",
@@ -3309,7 +3722,8 @@
     "vcpu": 224,
     "memGiB": 5952,
     "storageGB": 0,
-    "usd": 41.464125836
+    "usd": 41.464125836,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m4-megamem-28",
@@ -3317,7 +3731,8 @@
     "vcpu": 28,
     "memGiB": 372,
     "storageGB": 0,
-    "usd": 2.2118352
+    "usd": 2.2118352,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m4-megamem-56",
@@ -3325,7 +3740,8 @@
     "vcpu": 56,
     "memGiB": 744,
     "storageGB": 0,
-    "usd": 4.4236704
+    "usd": 4.4236704,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m4-megamem-112",
@@ -3333,7 +3749,8 @@
     "vcpu": 112,
     "memGiB": 1488,
     "storageGB": 0,
-    "usd": 8.8473408
+    "usd": 8.8473408,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m4-megamem-224",
@@ -3341,7 +3758,8 @@
     "vcpu": 224,
     "memGiB": 2976,
     "storageGB": 0,
-    "usd": 17.6946816
+    "usd": 17.6946816,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m4-hypermem-16",
@@ -3349,7 +3767,8 @@
     "vcpu": 16,
     "memGiB": 248,
     "storageGB": 0,
-    "usd": 1.4258144
+    "usd": 1.4258144,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m4-hypermem-32",
@@ -3357,7 +3776,8 @@
     "vcpu": 32,
     "memGiB": 496,
     "storageGB": 0,
-    "usd": 2.8516288
+    "usd": 2.8516288,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m4-hypermem-64",
@@ -3365,7 +3785,8 @@
     "vcpu": 64,
     "memGiB": 992,
     "storageGB": 0,
-    "usd": 5.7032576
+    "usd": 5.7032576,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m3-ultramem-32",
@@ -3373,7 +3794,8 @@
     "vcpu": 32,
     "memGiB": 976,
     "storageGB": 0,
-    "usd": 6.0912
+    "usd": 6.0912,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m3-ultramem-64",
@@ -3381,7 +3803,8 @@
     "vcpu": 64,
     "memGiB": 1952,
     "storageGB": 0,
-    "usd": 12.1824
+    "usd": 12.1824,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m3-ultramem-128",
@@ -3389,7 +3812,8 @@
     "vcpu": 128,
     "memGiB": 3904,
     "storageGB": 0,
-    "usd": 24.3648
+    "usd": 24.3648,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m3-megamem-64",
@@ -3397,7 +3821,8 @@
     "vcpu": 64,
     "memGiB": 976,
     "storageGB": 0,
-    "usd": 7.2048
+    "usd": 7.2048,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m3-megamem-128",
@@ -3405,7 +3830,8 @@
     "vcpu": 128,
     "memGiB": 1952,
     "storageGB": 0,
-    "usd": 14.4096
+    "usd": 14.4096,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m2-ultramem-208",
@@ -3413,7 +3839,8 @@
     "vcpu": 208,
     "memGiB": 5888,
     "storageGB": 0,
-    "usd": 42.111936
+    "usd": 42.111936,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m2-ultramem-416",
@@ -3421,7 +3848,8 @@
     "vcpu": 416,
     "memGiB": 11776,
     "storageGB": 0,
-    "usd": 84.223872
+    "usd": 84.223872,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m2-megamem-416",
@@ -3429,7 +3857,8 @@
     "vcpu": 416,
     "memGiB": 5888,
     "storageGB": 0,
-    "usd": 50.291328
+    "usd": 50.291328,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m2-hypermem-416",
@@ -3437,7 +3866,8 @@
     "vcpu": 416,
     "memGiB": 8832,
     "storageGB": 0,
-    "usd": 67.2576
+    "usd": 67.2576,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m1-ultramem-40",
@@ -3445,7 +3875,8 @@
     "vcpu": 40,
     "memGiB": 961,
     "storageGB": 0,
-    "usd": 6.2931
+    "usd": 6.2931,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m1-ultramem-80",
@@ -3453,7 +3884,8 @@
     "vcpu": 80,
     "memGiB": 1922,
     "storageGB": 0,
-    "usd": 12.5862
+    "usd": 12.5862,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m1-ultramem-160",
@@ -3461,7 +3893,8 @@
     "vcpu": 160,
     "memGiB": 3844,
     "storageGB": 0,
-    "usd": 25.1724
+    "usd": 25.1724,
+    "familyType": "Memory optimized"
   },
   {
     "type": "m1-megamem-96",
@@ -3469,7 +3902,8 @@
     "vcpu": 96,
     "memGiB": 1433.6,
     "storageGB": 0,
-    "usd": 10.65216
+    "usd": 10.65216,
+    "familyType": "Memory optimized"
   },
   {
     "type": "c4n-standard-2",
@@ -3477,7 +3911,8 @@
     "vcpu": 2,
     "memGiB": 7,
     "storageGB": 0,
-    "usd": 0.154987
+    "usd": 0.154987,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-standard-4",
@@ -3485,7 +3920,8 @@
     "vcpu": 4,
     "memGiB": 15,
     "storageGB": 0,
-    "usd": 0.316275
+    "usd": 0.316275,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-standard-8",
@@ -3493,7 +3929,8 @@
     "vcpu": 8,
     "memGiB": 30,
     "storageGB": 0,
-    "usd": 0.63255
+    "usd": 0.63255,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-standard-16",
@@ -3501,7 +3938,8 @@
     "vcpu": 16,
     "memGiB": 60,
     "storageGB": 0,
-    "usd": 1.2651
+    "usd": 1.2651,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-standard-24",
@@ -3509,7 +3947,8 @@
     "vcpu": 24,
     "memGiB": 90,
     "storageGB": 0,
-    "usd": 1.89765
+    "usd": 1.89765,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-standard-48",
@@ -3517,7 +3956,8 @@
     "vcpu": 48,
     "memGiB": 180,
     "storageGB": 0,
-    "usd": 3.7953
+    "usd": 3.7953,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-standard-96",
@@ -3525,7 +3965,8 @@
     "vcpu": 96,
     "memGiB": 360,
     "storageGB": 0,
-    "usd": 7.5906
+    "usd": 7.5906,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-standard-192",
@@ -3533,7 +3974,8 @@
     "vcpu": 192,
     "memGiB": 720,
     "storageGB": 0,
-    "usd": 15.1812
+    "usd": 15.1812,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-highmem-2",
@@ -3541,7 +3983,8 @@
     "vcpu": 2,
     "memGiB": 15,
     "storageGB": 0,
-    "usd": 0.205395
+    "usd": 0.205395,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-highmem-4",
@@ -3549,7 +3992,8 @@
     "vcpu": 4,
     "memGiB": 31,
     "storageGB": 0,
-    "usd": 0.417091
+    "usd": 0.417091,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-highmem-8",
@@ -3557,7 +4001,8 @@
     "vcpu": 8,
     "memGiB": 62,
     "storageGB": 0,
-    "usd": 0.834182
+    "usd": 0.834182,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-highmem-16",
@@ -3565,7 +4010,8 @@
     "vcpu": 16,
     "memGiB": 124,
     "storageGB": 0,
-    "usd": 1.668364
+    "usd": 1.668364,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-highmem-24",
@@ -3573,7 +4019,8 @@
     "vcpu": 24,
     "memGiB": 186,
     "storageGB": 0,
-    "usd": 2.502546
+    "usd": 2.502546,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-highmem-48",
@@ -3581,7 +4028,8 @@
     "vcpu": 48,
     "memGiB": 372,
     "storageGB": 0,
-    "usd": 5.005092
+    "usd": 5.005092,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-highmem-96",
@@ -3589,7 +4037,8 @@
     "vcpu": 96,
     "memGiB": 744,
     "storageGB": 0,
-    "usd": 10.010184
+    "usd": 10.010184,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-highmem-192",
@@ -3597,7 +4046,8 @@
     "vcpu": 192,
     "memGiB": 1488,
     "storageGB": 0,
-    "usd": 20.020368
+    "usd": 20.020368,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-highcpu-2",
@@ -3605,7 +4055,8 @@
     "vcpu": 2,
     "memGiB": 4,
     "storageGB": 0,
-    "usd": 0.136084
+    "usd": 0.136084,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-highcpu-4",
@@ -3613,7 +4064,8 @@
     "vcpu": 4,
     "memGiB": 8,
     "storageGB": 0,
-    "usd": 0.272168
+    "usd": 0.272168,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-highcpu-8",
@@ -3621,7 +4073,8 @@
     "vcpu": 8,
     "memGiB": 16,
     "storageGB": 0,
-    "usd": 0.544336
+    "usd": 0.544336,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-highcpu-16",
@@ -3629,7 +4082,8 @@
     "vcpu": 16,
     "memGiB": 32,
     "storageGB": 0,
-    "usd": 1.088672
+    "usd": 1.088672,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-highcpu-24",
@@ -3637,7 +4091,8 @@
     "vcpu": 24,
     "memGiB": 48,
     "storageGB": 0,
-    "usd": 1.633008
+    "usd": 1.633008,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-highcpu-48",
@@ -3645,7 +4100,8 @@
     "vcpu": 48,
     "memGiB": 96,
     "storageGB": 0,
-    "usd": 3.266016
+    "usd": 3.266016,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-highcpu-96",
@@ -3653,7 +4109,8 @@
     "vcpu": 96,
     "memGiB": 192,
     "storageGB": 0,
-    "usd": 6.532032
+    "usd": 6.532032,
+    "familyType": "Network optimized"
   },
   {
     "type": "c4n-highcpu-192",
@@ -3661,7 +4118,8 @@
     "vcpu": 192,
     "memGiB": 384,
     "storageGB": 0,
-    "usd": 13.064064
+    "usd": 13.064064,
+    "familyType": "Network optimized"
   },
   {
     "type": "z3-highmem-14-standardlssd",
@@ -3669,7 +4127,8 @@
     "vcpu": 14,
     "memGiB": 112,
     "storageGB": 3000,
-    "usd": 1.769304123
+    "usd": 1.769304123,
+    "familyType": "Storage optimized"
   },
   {
     "type": "z3-highmem-22-standardlssd",
@@ -3677,7 +4136,8 @@
     "vcpu": 22,
     "memGiB": 176,
     "storageGB": 6000,
-    "usd": 2.921235247
+    "usd": 2.921235247,
+    "familyType": "Storage optimized"
   },
   {
     "type": "z3-highmem-44-standardlssd",
@@ -3685,7 +4145,8 @@
     "vcpu": 44,
     "memGiB": 352,
     "storageGB": 9000,
-    "usd": 5.51370337
+    "usd": 5.51370337,
+    "familyType": "Storage optimized"
   },
   {
     "type": "z3-highmem-88-standardlssd",
@@ -3693,7 +4154,8 @@
     "vcpu": 88,
     "memGiB": 704,
     "storageGB": 18000,
-    "usd": 11.02740674
+    "usd": 11.02740674,
+    "familyType": "Storage optimized"
   },
   {
     "type": "z3-highmem-176-standardlssd",
@@ -3701,7 +4163,8 @@
     "vcpu": 176,
     "memGiB": 1408,
     "storageGB": 36000,
-    "usd": 22.054813479
+    "usd": 22.054813479,
+    "familyType": "Storage optimized"
   },
   {
     "type": "z3-highmem-8-highlssd",
@@ -3709,7 +4172,8 @@
     "vcpu": 8,
     "memGiB": 64,
     "storageGB": 3000,
-    "usd": 1.151931123
+    "usd": 1.151931123,
+    "familyType": "Storage optimized"
   },
   {
     "type": "z3-highmem-16-highlssd",
@@ -3717,7 +4181,8 @@
     "vcpu": 16,
     "memGiB": 128,
     "storageGB": 6000,
-    "usd": 2.303862247
+    "usd": 2.303862247,
+    "familyType": "Storage optimized"
   },
   {
     "type": "z3-highmem-22-highlssd",
@@ -3725,7 +4190,8 @@
     "vcpu": 22,
     "memGiB": 176,
     "storageGB": 9000,
-    "usd": 3.25000237
+    "usd": 3.25000237,
+    "familyType": "Storage optimized"
   },
   {
     "type": "z3-highmem-32-highlssd",
@@ -3733,7 +4199,8 @@
     "vcpu": 32,
     "memGiB": 256,
     "storageGB": 12000,
-    "usd": 4.607724493
+    "usd": 4.607724493,
+    "familyType": "Storage optimized"
   },
   {
     "type": "z3-highmem-44-highlssd",
@@ -3741,7 +4208,8 @@
     "vcpu": 44,
     "memGiB": 352,
     "storageGB": 18000,
-    "usd": 6.50000474
+    "usd": 6.50000474,
+    "familyType": "Storage optimized"
   },
   {
     "type": "z3-highmem-88-highlssd",
@@ -3749,7 +4217,8 @@
     "vcpu": 88,
     "memGiB": 704,
     "storageGB": 36000,
-    "usd": 13.000009479
+    "usd": 13.000009479,
+    "familyType": "Storage optimized"
   },
   {
     "type": "z3-highmem-192-highlssd-metal",
@@ -3757,6 +4226,7 @@
     "vcpu": 192,
     "memGiB": 1536,
     "storageGB": 72000,
-    "usd": 27.646346959
+    "usd": 27.646346959,
+    "familyType": "Storage optimized"
   }
 ]

@@ -1,0 +1,51 @@
+[
+  {
+    "familyType": "General purpose",
+    "families": [
+      "C4",
+      "C4A",
+      "C4D",
+      "N4",
+      "N4D",
+      "N4A",
+      "C3",
+      "C3D",
+      "E2",
+      "N2",
+      "N2D",
+      "Tau T2D",
+      "Tau T2A",
+      "N1"
+    ]
+  },
+  {
+    "familyType": "Compute optimized",
+    "families": [
+      "H4D",
+      "H3",
+      "C2",
+      "C2D"
+    ]
+  },
+  {
+    "familyType": "Memory optimized",
+    "families": [
+      "M4",
+      "M3",
+      "M2",
+      "M1"
+    ]
+  },
+  {
+    "familyType": "Network optimized",
+    "families": [
+      "C4N"
+    ]
+  },
+  {
+    "familyType": "Storage optimized",
+    "families": [
+      "Z3"
+    ]
+  }
+]
