@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-const TOTAL = 1322
+const TOTAL = 1348
 
 const searchBox = (page) => page.getByRole('searchbox', { name: 'Filter by instance type' })
 const archButton = (page, name) =>
@@ -69,20 +69,20 @@ test('orders the instance-type size ladder naturally', async ({ page }) => {
 test('unions family filters rather than intersecting them', async ({ page }) => {
   await page.goto('/')
   await page.getByRole('button', { name: 'General purpose' }).click()
-  await expect(count(page)).toHaveText(`392 of ${TOTAL} instances`)
+  await expect(count(page)).toHaveText(`396 of ${TOTAL} instances`)
   await page.getByRole('button', { name: 'Compute optimized' }).click()
-  await expect(count(page)).toHaveText(`712 of ${TOTAL} instances`)
+  await expect(count(page)).toHaveText(`716 of ${TOTAL} instances`)
 })
 
 test('splits the fleet into ARM and x86 with no overlap', async ({ page }) => {
   await page.goto('/')
   await archButton(page, 'ARM').click()
-  await expect(count(page)).toHaveText(`390 of ${TOTAL} instances`)
+  await expect(count(page)).toHaveText(`412 of ${TOTAL} instances`)
   for (const gpu of ['g4dn', 'g6e', 'gr6']) {
     await expect(typeCells(page).filter({ hasText: new RegExp(`^${gpu}\\.`) })).toHaveCount(0)
   }
   await archButton(page, 'x86').click()
-  await expect(count(page)).toHaveText(`932 of ${TOTAL} instances`)
+  await expect(count(page)).toHaveText(`936 of ${TOTAL} instances`)
 })
 
 test('varies the search placeholder with the architecture filter', async ({ page }) => {

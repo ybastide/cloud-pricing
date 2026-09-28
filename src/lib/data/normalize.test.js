@@ -201,7 +201,7 @@ describe('normalizeAws over the real fixture', () => {
   const rows = raw.instances.map(normalizeAws)
 
   it('returns every row', () => {
-    expect(rows).toHaveLength(1322)
+    expect(rows).toHaveLength(1348)
   })
 
   it('produces a finite number for every numeric field in every row', () => {
@@ -227,10 +227,10 @@ describe('normalizeAws over the real fixture', () => {
     expect(rows.filter((r) => r.arch !== 'arm' && r.arch !== 'x86')).toEqual([])
   })
 
-  it('finds the 40 Graviton prefixes and nothing else', () => {
+  it('finds the 42 Graviton prefixes and nothing else', () => {
     const arm = rows.filter((r) => r.arch === 'arm')
-    expect(arm).toHaveLength(390)
-    expect(new Set(arm.map((r) => r.series)).size).toBe(40)
+    expect(arm).toHaveLength(412)
+    expect(new Set(arm.map((r) => r.series)).size).toBe(42)
     expect(arm.every((r) => r.attrs.startsWith('g'))).toBe(true)
   })
 
@@ -255,7 +255,7 @@ describe('normalizeAws over the real fixture', () => {
   })
 
   it('keys uniquely on instance type', () => {
-    expect(new Set(rows.map((r) => r.type)).size).toBe(1322)
+    expect(new Set(rows.map((r) => r.type)).size).toBe(1348)
   })
 })
 
@@ -326,7 +326,7 @@ describe('normalizeGcp over the real fixture', () => {
   const rows = raw.map(normalizeGcp)
 
   it('returns every row', () => {
-    expect(rows).toHaveLength(470)
+    expect(rows).toHaveLength(494)
   })
 
   it('produces a finite number for every numeric field in every row', () => {
@@ -343,7 +343,7 @@ describe('normalizeGcp over the real fixture', () => {
   })
 
   it('keys uniquely on type', () => {
-    expect(new Set(rows.map((r) => r.type)).size).toBe(470)
+    expect(new Set(rows.map((r) => r.type)).size).toBe(494)
   })
 })
 

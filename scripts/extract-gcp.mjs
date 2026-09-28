@@ -9,7 +9,7 @@ const MEMORY_VALUE = /^([\d,]+(?:\.\d+)?)\s*(?:GiB)?$/
 // familyFromHeading only reads the captured prefix (group 1), never the qualifier
 // text itself, so matching case-insensitively can't change the derived family name.
 const FAMILY_QUALIFIER =
-    /^(.+?) (?:standard|high-memory|highmem|high-cpu|highcpu|shared-core|standard with local ssd|highmem with local ssd|highmem with (?:standard|high)lssd)(?: machine types)?$/i
+    /^(.+?) (?:standard|high-memory|highmem|high-cpu|highcpu|shared-core|megamem|ultramem|hypermem|standard with local ssd|highmem with local ssd|highmem with (?:standard|high)lssd)(?: machine types)?$/i
 const BARE_MACHINE_TYPES = /^(.+?) machine types?$/
 
 function stripTags(html) {

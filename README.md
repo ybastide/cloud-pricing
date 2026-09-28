@@ -34,9 +34,9 @@ body raw, producing a gzip file with a `.json` extension that `fetch` and
 
 | File | Contents |
 | --- | --- |
-| `index.json` | 1322 on-demand rows — us-east-1 / Linux only. The price data. |
-| `spot.json` | Spot prices, 40 regions x linux/mswin. No instance specs. |
-| `locations.json` | 109 locations: display name → region code, continent. |
+| `index.json` | 1348 on-demand rows — us-east-1 / Linux only. The price data. |
+| `spot.json` | Spot prices, 44 regions x linux/mswin. No instance specs. |
+| `locations.json` | 111 locations: display name → region code, continent. |
 | `metadata.json` | Selector vocabulary: 106 locations, 17 operating systems. |
 | `on-demand-plan.json` | Table column labels and display order. |
 | `configuration.json` | AWS pricing origin base URLs. |
@@ -47,7 +47,7 @@ vocabulary, and each combination is a separate file. That is why multi-region
 on-demand comparison is out of scope for the MVP.
 
 Run `npm run extract:aws` to regenerate `instances.json` — a seventh, generated file in
-this directory alongside the six fetched above, and the ~334 KB fixture the app
+this directory alongside the six fetched above, and the ~341 KB fixture the app
 actually bundles, containing only the 7 fields `normalizeAws` reads — from the full
 `index.json` SKU catalog above. Re-run it if `index.json` is refreshed; the app never
 imports `index.json` directly, only the generated `instances.json`. The script
@@ -62,51 +62,58 @@ doesn't expose a comparable public JSON endpoint (Google retired the old
 `cloudpricingcalculator.appspot.com` calculator and its static data files along
 with it). Instead:
 
-- Five pricing pages are full-page saves of the rendered pricing pages (File →
-  Save Page As, with JS already executed), frozen at whatever region was
-  selected when saved (**Iowa / us-central1**). Google splits VM pricing across
-  these with no unified table, and each covers a disjoint set of families:
+- Five pricing pages are snapshots of the rendered pricing pages, with JS already
+  executed, frozen at the default region (**Iowa / us-central1**). Google splits
+  VM pricing across these with no unified table, and each covers a disjoint set
+  of families:
   - `General Purpose VM pricing _ Google Cloud.html` — E2, N1, N2, N2D, N4,
     N4A, N4D, Tau T2A, Tau T2D. Also the only one read for disk/Hyperdisk
     pricing (`disks.json`).
   - `Compute-optimized VM pricing _ Google Cloud.html` — C2, C2D, H3, H4D.
   - `Memory-optimized VM Pricing _ Google Cloud.html` — M1, M2, M3, M4.
-  - `Network-optimized VM pricing v4 _ Google Cloud.html` — C4N.
-  - `Storage-optimized VM Pricing _ Google Cloud.html` — Z3.
+  - `Network-optimized VM pricing v4 _ Google Cloud.html` — C4N, M4N.
+  - `Storage-optimized VM Pricing _ Google Cloud.html` — Z3, Z4D.
 
   (C3, C3D, C4, C4A, C4D live on the General Purpose page too, despite being
   compute-optimized families — Google's own category boundaries here are
   inconsistent between the page you'd expect a family to live on and the
   pricing-page nav.)
 - `Google Cloud Hyperdisk overview _ Compute Engine _ Google Cloud
-  Documentation.html` is a documentation page saved the same way.
+  Documentation.html` is a documentation page captured the same way.
 - `CPU platforms _ Compute Engine _ Google Cloud Documentation.html` is Google's
   official machine-series-to-CPU-platform reference — not read by the extraction
   script, consulted by hand to verify which GCP families are Arm (`C4A`, `N4A`,
-  `Tau T2A`) vs. x86. Kept committed so that verification is checkable, not just
-  described.
+  `Tau T2A`) vs. x86 (M4N is Intel Xeon 8581C, Z4D is AMD EPYC Turin). Kept
+  committed so that verification is checkable, not just described.
+
+`node scripts/render-gcp.mjs` refreshes all seven HTML fixtures in place: it loads
+each page in a fresh, signed-out headless Chromium, waits for the network to go idle
+plus a few seconds, refuses to save a pricing page whose region picker isn't on
+Iowa, removes every `<script>` element from the DOM, and writes the result over the
+existing file (matched by filename prefix, since the real names contain
+non-breaking spaces).
 - `Pricing for My Billing Account.csv` is GCP's full SKU catalog, exported from
   a Cloud Billing account. **Not used by the app** — see the design spec for why.
 
-All seven HTML fixtures have had their `<script>` tags stripped after saving — for
-the original General Purpose page, measured before stripping: 74.8% of the file
-(32 MB of 43 MB) was `<script>` content, none of the 76 `<table>` elements sit
-inside one, and regenerating `instances.json`/`disks.json`/`hyperdisk-compat.json`
-from the stripped file produced byte-identical output — confirmed, not assumed.
-The same before/after check was repeated for the Compute-optimized page when it
-was added. The three most recently added pages (Memory/Network/Storage-optimized)
-were stripped before ever being extracted from, so that specific byte-identical
-claim hasn't been (and can no longer be) verified for them — only that extraction
-from the stripped files produces sane rows (see the extraction script's tests).
+All seven HTML fixtures have their `<script>` tags stripped — for the original
+General Purpose page, measured before stripping: 74.8% of the file (32 MB of 43 MB)
+was `<script>` content, none of the 76 `<table>` elements sit inside one, and
+regenerating `instances.json`/`disks.json`/`hyperdisk-compat.json` from the stripped
+file produced byte-identical output — confirmed, not assumed. The 2026-09-28
+refresh with `render-gcp.mjs` was checked the same way against the previous
+hand-saved pages: every one of the 470 previously extracted instance rows came out
+identical (price, vCPU, memory, storage), and `disks.json` was byte-identical; the
+only differences were new rows (M4N, Z4D) and Google's own Hyperdisk
+compatibility updates.
 
 Stripping isn't just a size win: a signed-in Google session embeds account info
 (email, name) inline, both in page-bootstrap `<script>` JSON and, on every one of
 these pages, in a plain-HTML account-switcher `aria-label`/`div` in the page header
 — outside any `<script>` tag, so stripping scripts alone doesn't remove it. This is
 exactly how this project's own commit history briefly carried a real email address
-before it was caught and scrubbed the first time, and it recurred on all four
-pages added after that fix; each was redacted by hand before committing. Any future
-re-save of these pages should go through the same stripping-and-redaction step.
+before it was caught and scrubbed. `render-gcp.mjs` avoids it by rendering signed
+out; if a page is ever saved from a signed-in browser instead, redact the
+account-switcher header by hand before committing.
 
 A `gitleaks` scan (run before considering this repo for public release) additionally
 found 10 unique `AIza`-format Google API keys across the original three fixtures — the
@@ -115,11 +122,12 @@ they're Google's own shared, embedded keys (client-library loader, language-swit
 widget) and not anything unique to this session, though that couldn't be independently
 confirmed without testing the keys against a live API, which wasn't attempted. Most were
 already gone once scripts were stripped; one survived in a `data-*` attribute on the
-pricing page (outside any `<script>` tag) and was redacted along with the rest of
-history. The four pages added later each carry one more `AIza` key, identical across all
-four — consistent with the same "Google's own shared key" theory, not independently
-re-verified either. Re-run `gitleaks detect --source . --log-opts="--all"` after any
-future re-save, before committing.
+General Purpose page (outside any `<script>` tag) and was redacted along with the rest
+of history. The four pages added later each carried that same `AIza` key — consistent
+with the same "Google's own shared key" theory, not independently re-verified either.
+`render-gcp.mjs` now replaces every `AIza` key with `REDACTED_GOOGLE_API_KEY_1` on all
+seven pages. Re-run `gitleaks detect --source . --log-opts="--all"` after any future
+re-save, before committing.
 
 Run `npm run extract:gcp` to regenerate `instances.json`, `disks.json`, and
 `hyperdisk-compat.json` from the pricing/Hyperdisk HTML files (the CPU platforms doc
@@ -132,7 +140,7 @@ the app only ever reads the generated JSON, never the HTML directly.
   `semgrep` (`--config auto`) on every commit — install the hook once with
   `prek install` (or `pre-commit install`; both read the same config). `fixtures/` is
   excluded from semgrep only — it's third-party page data, not source code, and scanning
-  a 10 MB HTML file with SAST rules just times out for nothing. Gitleaks is *not*
+  a 6 MB HTML file with SAST rules just times out for nothing. Gitleaks is *not*
   excluded from fixtures on purpose: that's exactly the class of file that caused the
   leak documented above, so it should be re-scanned if one is ever touched again.
   `semgrep scan --config auto --error` also runs as a separate CI job
@@ -161,11 +169,11 @@ npm ci
 npm run build      # -> dist/index.html, dist/assets/*.js, *.css (content-hashed names)
 ```
 
-The JS bundle is ~328 kB (~46 kB gzipped) — the fixtures' extracted data (AWS + GCP
+The JS bundle is ~362 kB (~50 kB gzipped) — the fixtures' extracted data (AWS + GCP
 instance/disk rows) is bundled in, not fetched at runtime. The gzipped size is what
 actually ships, but only because `deploy/nginx.conf.example` turns gzip on explicitly —
 a stock Debian/Ubuntu nginx install doesn't compress `application/javascript` by
-default, which would otherwise mean serving the raw 328 kB every load.
+default, which would otherwise mean serving the raw 362 kB every load.
 
 Copy `dist/`'s contents to the server (e.g. `/var/www/<your-domain>/`), then:
 
