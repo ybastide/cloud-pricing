@@ -262,6 +262,7 @@ describe('normalizeAws over the real fixture', () => {
 const GCP_RAW = {
   type: 'c4-standard-4',
   family: 'C4',
+  familyType: 'General purpose',
   vcpu: 4,
   memGiB: 15,
   storageGB: 0,
@@ -277,7 +278,7 @@ describe('normalizeGcp', () => {
       generation: 4,
       attrs: '',
       arch: 'x86',
-      family: 'C4',
+      family: 'General purpose',
       vcpu: 4,
       memGiB: 15,
       storageGB: 0,
@@ -371,15 +372,15 @@ describe('arch classification over the real fixture', () => {
     expect(rows.filter((r) => r.arch !== 'arm' && r.arch !== 'x86')).toEqual([])
   })
 
+  const machineFamilies = (arch) => new Set(raw.filter((_, i) => rows[i].arch === arch).map((r) => r.family))
+
   it('finds Arm rows only in C4A, N4A, and Tau T2A', () => {
-    const arm = rows.filter((r) => r.arch === 'arm')
-    expect(arm.length).toBeGreaterThan(0)
-    expect(new Set(arm.map((r) => r.family))).toEqual(new Set(['C4A', 'N4A', 'Tau T2A']))
+    expect(machineFamilies('arm')).toEqual(new Set(['C4A', 'N4A', 'Tau T2A']))
   })
 
   it('keeps every other family on x86', () => {
-    const x86 = rows.filter((r) => r.arch === 'x86')
-    const x86Families = new Set(x86.map((r) => r.family))
+    const x86Families = machineFamilies('x86')
+    expect(x86Families.size).toBeGreaterThan(0)
     for (const f of ['C4A', 'N4A', 'Tau T2A']) expect(x86Families.has(f)).toBe(false)
   })
 })

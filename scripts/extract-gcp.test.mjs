@@ -95,22 +95,16 @@ describe('extractInstanceRows', () => {
     })
 })
 
-describe('SplitRows', () => {
+describe('splitRows', () => {
     const rows = extractInstanceRows(EXCERPT)
-    const {instances, familyTypeToFamilyArray} = splitRows(rows)
-    expect(instances.map((r) => r.type).sort()).toEqual([
-        'c4-standard-2',
-        'c4-standard-4',
-        'c4-standard-4-lssd',
-        'f1-micro',
-        'g1-small',
-    ])
-    expect(familyTypeToFamilyArray).toEqual([
-        {
-            familyType: 'General purpose',
-            families: expect.arrayContaining(['C4', 'N1']),
-        },
-    ])
+
+    it('tags every row with the family type from the section heading', () => {
+        expect(new Set(rows.map((r) => r.familyType))).toEqual(new Set(['General purpose']))
+    })
+
+    it('groups families under their family type, in first-seen order', () => {
+        expect(splitRows(rows)).toEqual([{familyType: 'General purpose', families: ['C4', 'N1']}])
+    })
 })
 
 const COMPUTE_OPTIMIZED_EXCERPT = `
