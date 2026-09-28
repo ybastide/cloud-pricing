@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-const TOTAL = 1322
+const TOTAL = 1348
 
 const searchBox = (page) => page.getByRole('searchbox', { name: 'Filter by instance type' })
 const vcpuOp = (page) => page.getByRole('combobox', { name: 'vCPU operator' })

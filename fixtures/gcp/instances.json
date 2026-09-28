@@ -4122,6 +4122,222 @@
     "familyType": "Network optimized"
   },
   {
+    "type": "m4n-megamem-28",
+    "family": "M4N",
+    "vcpu": 28,
+    "memGiB": 372,
+    "storageGB": 0,
+    "usd": 3.9813028,
+    "familyType": "Network optimized"
+  },
+  {
+    "type": "m4n-megamem-56",
+    "family": "M4N",
+    "vcpu": 56,
+    "memGiB": 744,
+    "storageGB": 0,
+    "usd": 7.9626056,
+    "familyType": "Network optimized"
+  },
+  {
+    "type": "m4n-megamem-112",
+    "family": "M4N",
+    "vcpu": 112,
+    "memGiB": 1488,
+    "storageGB": 0,
+    "usd": 15.9252112,
+    "familyType": "Network optimized"
+  },
+  {
+    "type": "m4n-megamem-224",
+    "family": "M4N",
+    "vcpu": 224,
+    "memGiB": 2976,
+    "storageGB": 0,
+    "usd": 31.8504224,
+    "familyType": "Network optimized"
+  },
+  {
+    "type": "m4n-ultramem-56",
+    "family": "M4N",
+    "vcpu": 56,
+    "memGiB": 1488,
+    "storageGB": 0,
+    "usd": 14.0827496,
+    "familyType": "Network optimized"
+  },
+  {
+    "type": "m4n-ultramem-112",
+    "family": "M4N",
+    "vcpu": 112,
+    "memGiB": 2976,
+    "storageGB": 0,
+    "usd": 28.1654992,
+    "familyType": "Network optimized"
+  },
+  {
+    "type": "m4n-ultramem-224",
+    "family": "M4N",
+    "vcpu": 224,
+    "memGiB": 5952,
+    "storageGB": 0,
+    "usd": 70.1513472,
+    "familyType": "Network optimized"
+  },
+  {
+    "type": "m4n-hypermem-16",
+    "family": "M4N",
+    "vcpu": 16,
+    "memGiB": 248,
+    "storageGB": 0,
+    "usd": 2.5664656,
+    "familyType": "Network optimized"
+  },
+  {
+    "type": "m4n-hypermem-32",
+    "family": "M4N",
+    "vcpu": 32,
+    "memGiB": 496,
+    "storageGB": 0,
+    "usd": 5.1329312,
+    "familyType": "Network optimized"
+  },
+  {
+    "type": "m4n-hypermem-64",
+    "family": "M4N",
+    "vcpu": 64,
+    "memGiB": 992,
+    "storageGB": 0,
+    "usd": 10.2658624,
+    "familyType": "Network optimized"
+  },
+  {
+    "type": "z4d-highmem-16-standardlssd",
+    "family": "Z4D",
+    "vcpu": 16,
+    "memGiB": 126,
+    "storageGB": 3500,
+    "usd": 2.145129863,
+    "familyType": "Storage optimized"
+  },
+  {
+    "type": "z4d-highmem-32-standardlssd",
+    "family": "Z4D",
+    "vcpu": 32,
+    "memGiB": 252,
+    "storageGB": 7000,
+    "usd": 4.290259726,
+    "familyType": "Storage optimized"
+  },
+  {
+    "type": "z4d-highmem-48-standardlssd",
+    "family": "Z4D",
+    "vcpu": 48,
+    "memGiB": 378,
+    "storageGB": 10500,
+    "usd": 6.435389589,
+    "familyType": "Storage optimized"
+  },
+  {
+    "type": "z4d-highmem-64-standardlssd",
+    "family": "Z4D",
+    "vcpu": 64,
+    "memGiB": 504,
+    "storageGB": 14000,
+    "usd": 8.580519452,
+    "familyType": "Storage optimized"
+  },
+  {
+    "type": "z4d-highmem-96-standardlssd",
+    "family": "Z4D",
+    "vcpu": 96,
+    "memGiB": 756,
+    "storageGB": 21000,
+    "usd": 12.870779178,
+    "familyType": "Storage optimized"
+  },
+  {
+    "type": "z4d-highmem-192-standardlssd",
+    "family": "Z4D",
+    "vcpu": 192,
+    "memGiB": 1512,
+    "storageGB": 42000,
+    "usd": 25.741558356,
+    "familyType": "Storage optimized"
+  },
+  {
+    "type": "z4d-highmem-384-standardlssd",
+    "family": "Z4D",
+    "vcpu": 384,
+    "memGiB": 3024,
+    "storageGB": 84000,
+    "usd": 51.483116712,
+    "familyType": "Storage optimized"
+  },
+  {
+    "type": "z4d-highmem-8-highlssd",
+    "family": "Z4D",
+    "vcpu": 8,
+    "memGiB": 63,
+    "storageGB": 3500,
+    "usd": 1.264345753,
+    "familyType": "Storage optimized"
+  },
+  {
+    "type": "z4d-highmem-16-highlssd",
+    "family": "Z4D",
+    "vcpu": 16,
+    "memGiB": 126,
+    "storageGB": 7000,
+    "usd": 2.528691507,
+    "familyType": "Storage optimized"
+  },
+  {
+    "type": "z4d-highmem-32-highlssd",
+    "family": "Z4D",
+    "vcpu": 32,
+    "memGiB": 252,
+    "storageGB": 14000,
+    "usd": 5.057383014,
+    "familyType": "Storage optimized"
+  },
+  {
+    "type": "z4d-highmem-48-highlssd",
+    "family": "Z4D",
+    "vcpu": 48,
+    "memGiB": 378,
+    "storageGB": 21000,
+    "usd": 7.586074521,
+    "familyType": "Storage optimized"
+  },
+  {
+    "type": "z4d-highmem-64-highlssd",
+    "family": "Z4D",
+    "vcpu": 64,
+    "memGiB": 504,
+    "storageGB": 28000,
+    "usd": 10.114766027,
+    "familyType": "Storage optimized"
+  },
+  {
+    "type": "z4d-highmem-96-highlssd",
+    "family": "Z4D",
+    "vcpu": 96,
+    "memGiB": 756,
+    "storageGB": 42000,
+    "usd": 15.172149041,
+    "familyType": "Storage optimized"
+  },
+  {
+    "type": "z4d-highmem-192-highlssd",
+    "family": "Z4D",
+    "vcpu": 192,
+    "memGiB": 1512,
+    "storageGB": 84000,
+    "usd": 30.344298082,
+    "familyType": "Storage optimized"
+  },
+  {
     "type": "z3-highmem-14-standardlssd",
     "family": "Z3",
     "vcpu": 14,

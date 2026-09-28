@@ -265,10 +265,16 @@ describe('extractInstanceRows over the network-optimized fixture', () => {
     const html = readFileSync('fixtures/gcp/Network-optimized VM pricing v4 _ Google Cloud.html', 'utf8')
     const rows = extractInstanceRows(html, 'Network-optimized pricing', 'How pricing works', {requireMemoryUnit: false})
 
-    it('extracts exactly 24 C4N rows with no duplicate type', () => {
-        expect(rows).toHaveLength(24)
-        expect(new Set(rows.map((r) => r.type)).size).toBe(24)
-        expect(new Set(rows.map((r) => r.family))).toEqual(new Set(['C4N']))
+    it('extracts exactly 34 C4N and M4N rows with no duplicate type', () => {
+        expect(rows).toHaveLength(34)
+        expect(new Set(rows.map((r) => r.type)).size).toBe(34)
+        expect(new Set(rows.map((r) => r.family))).toEqual(new Set(['C4N', 'M4N']))
+    })
+
+    it('strips the "megamem"/"ultramem"/"hypermem" qualifiers down to "M4N"', () => {
+        expect(rows.find((r) => r.type === 'm4n-megamem-28').family).toBe('M4N')
+        expect(rows.find((r) => r.type === 'm4n-ultramem-56').family).toBe('M4N')
+        expect(rows.find((r) => r.type === 'm4n-hypermem-16').family).toBe('M4N')
     })
 
     it('strips the lowercase "highmem"/"highcpu" qualifiers, unlike the capitalized ones elsewhere', () => {
@@ -285,10 +291,10 @@ describe('extractInstanceRows over the storage-optimized fixture', () => {
     const html = readFileSync('fixtures/gcp/Storage-optimized VM Pricing _ Google Cloud.html', 'utf8')
     const rows = extractInstanceRows(html, 'Storage-optimized pricing', 'Simulated maintenance event pricing')
 
-    it('extracts exactly 12 Z3 rows with no duplicate type', () => {
-        expect(rows).toHaveLength(12)
-        expect(new Set(rows.map((r) => r.type)).size).toBe(12)
-        expect(new Set(rows.map((r) => r.family))).toEqual(new Set(['Z3']))
+    it('extracts exactly 26 Z3 and Z4D rows with no duplicate type', () => {
+        expect(rows).toHaveLength(26)
+        expect(new Set(rows.map((r) => r.type)).size).toBe(26)
+        expect(new Set(rows.map((r) => r.family))).toEqual(new Set(['Z3', 'Z4D']))
     })
 
     it('strips the "highmem with standardlssd/highlssd" qualifier down to "Z3"', () => {
@@ -313,12 +319,12 @@ describe('extractInstanceRows wired together via INSTANCE_SOURCES', () => {
         ),
     ]
 
-    it('extracts exactly 470 rows with no duplicate type', () => {
-        expect(rows).toHaveLength(470)
-        expect(new Set(rows.map((r) => r.type)).size).toBe(470)
+    it('extracts exactly 494 rows with no duplicate type', () => {
+        expect(rows).toHaveLength(494)
+        expect(new Set(rows.map((r) => r.type)).size).toBe(494)
     })
 
-    it('finds all 24 families', () => {
+    it('finds all 26 families', () => {
         expect(new Set(rows.map((r) => r.family))).toEqual(
             new Set([
                 'C2',
@@ -336,6 +342,7 @@ describe('extractInstanceRows wired together via INSTANCE_SOURCES', () => {
                 'M2',
                 'M3',
                 'M4',
+                'M4N',
                 'N1',
                 'N2',
                 'N2D',
@@ -345,6 +352,7 @@ describe('extractInstanceRows wired together via INSTANCE_SOURCES', () => {
                 'Tau T2A',
                 'Tau T2D',
                 'Z3',
+                'Z4D',
             ]),
         )
     })
@@ -474,8 +482,8 @@ describe('extractHyperdiskCompat over the real fixture', () => {
     const html = readFileSync(`fixtures/gcp/${hyperdiskFile}`, 'utf8')
     const rows = extractHyperdiskCompat(html)
 
-    it('extracts exactly 42 machine series', () => {
-        expect(rows).toHaveLength(42)
+    it('extracts exactly 44 machine series', () => {
+        expect(rows).toHaveLength(44)
     })
 
     it('includes every family this app prices', () => {
@@ -496,6 +504,7 @@ describe('extractHyperdiskCompat over the real fixture', () => {
             'M2',
             'M3',
             'M4',
+            'M4N',
             'N1',
             'N2',
             'N2D',
@@ -505,6 +514,7 @@ describe('extractHyperdiskCompat over the real fixture', () => {
             'T2A',
             'T2D',
             'Z3',
+            'Z4D',
         ]) {
             expect(series.has(s)).toBe(true)
         }

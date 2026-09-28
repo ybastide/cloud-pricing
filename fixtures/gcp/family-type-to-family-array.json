@@ -39,12 +39,14 @@
   {
     "familyType": "Network optimized",
     "families": [
-      "C4N"
+      "C4N",
+      "M4N"
     ]
   },
   {
     "familyType": "Storage optimized",
     "families": [
+      "Z4D",
       "Z3"
     ]
   }

@@ -57,8 +57,8 @@
   },
   {
     "series": "C2D",
-    "balanced": false,
-    "balancedHA": false,
+    "balanced": true,
+    "balancedHA": true,
     "extreme": false,
     "throughput": false,
     "ml": false
@@ -113,8 +113,8 @@
   },
   {
     "series": "E2",
-    "balanced": false,
-    "balancedHA": false,
+    "balanced": true,
+    "balancedHA": true,
     "extreme": false,
     "throughput": false,
     "ml": false
@@ -186,15 +186,15 @@
   {
     "series": "M4N",
     "balanced": true,
-    "balancedHA": false,
+    "balancedHA": true,
     "extreme": true,
-    "throughput": false,
-    "ml": false
+    "throughput": true,
+    "ml": true
   },
   {
     "series": "N1",
-    "balanced": false,
-    "balancedHA": false,
+    "balanced": true,
+    "balancedHA": true,
     "extreme": false,
     "throughput": false,
     "ml": false
@@ -209,16 +209,16 @@
   },
   {
     "series": "N2",
-    "balanced": false,
-    "balancedHA": false,
+    "balanced": true,
+    "balancedHA": true,
     "extreme": true,
     "throughput": true,
     "ml": false
   },
   {
     "series": "N2D",
-    "balanced": false,
-    "balancedHA": false,
+    "balanced": true,
+    "balancedHA": true,
     "extreme": false,
     "throughput": true,
     "ml": false
@@ -328,11 +328,27 @@
     "ml": false
   },
   {
+    "series": "X5",
+    "balanced": true,
+    "balancedHA": true,
+    "extreme": true,
+    "throughput": true,
+    "ml": true
+  },
+  {
     "series": "Z3",
     "balanced": true,
     "balancedHA": true,
     "extreme": true,
     "throughput": true,
     "ml": false
+  },
+  {
+    "series": "Z4D",
+    "balanced": true,
+    "balancedHA": true,
+    "extreme": true,
+    "throughput": true,
+    "ml": true
   }
 ]
